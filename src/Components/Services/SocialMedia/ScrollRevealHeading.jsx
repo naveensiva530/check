@@ -32,23 +32,23 @@ export default function ScrollRevealHeading({ words, className = "", style = {},
           const end = start + (1 / animatedWords.length);
           const opacity = useTransform(scrollYProgress, [start, end], [0.15, 1]);
           animIndex++;
-          
+
           if (word.italic) {
             return (
-              <motion.em 
-                key={i} 
-                style={{ 
+              <motion.em
+                key={i}
+                style={{
                   opacity,
-                  fontFamily: "'Playfair Display', Georgia, serif", 
-                  fontStyle: 'italic', 
-                  color: 'var(--accent-orange, #e08326)' 
+                  fontFamily: "'Playfair Display', Georgia, serif",
+                  fontStyle: 'italic',
+                  color: 'var(--accent-orange, #e08326)'
                 }}
               >
                 {word.text}
               </motion.em>
             );
           }
-          
+
           return (
             <motion.span key={i} style={{ opacity }}>
               {word.text}

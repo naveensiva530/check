@@ -1,9 +1,9 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { LayoutGroup, motion, useScroll, useTransform } from 'motion/react';
 import { TextRotate } from '../../../Components/ui/text-rotate';
 import { ArrowUpRight } from 'lucide-react';
 import '../common.css';
-import processImg from '../../../assets/k (2).png';
+import processImg from '../../../assets/HomePage/Process/Process_image.webp';
 
 export default function Process() {
   const sectionRef = useRef(null);
@@ -40,7 +40,7 @@ export default function Process() {
               className="flex flex-col sm:flex-row items-center justify-center gap-x-3 gap-y-2 text-[36px] md:text-[50px] font-extrabold leading-[1.1] tracking-tight text-center flex-wrap"
               style={{ color: 'var(--text-dark)' }}
             >
-              <motion.span layout transition={{ type: 'spring', damping: 30, stiffness: 400 }} className="whitespace-nowrap">
+              <motion.span layout transition={{ type: 'spring', damping: 25, stiffness: 600 }} className="whitespace-nowrap">
                 We don't start with
               </motion.span>
               <TextRotate
@@ -51,10 +51,10 @@ export default function Process() {
                 initial={{ y: '100%' }}
                 animate={{ y: 0 }}
                 exit={{ y: '-120%' }}
-                staggerDuration={0.03}
+                staggerDuration={0.02}
                 splitLevelClassName="overflow-hidden pb-0.5"
-                transition={{ type: 'spring', damping: 30, stiffness: 400 }}
-                rotationInterval={2500}
+                transition={{ type: 'spring', damping: 25, stiffness: 600 }}
+                rotationInterval={1500}
               />
             </motion.div>
           </LayoutGroup>
@@ -89,7 +89,7 @@ export default function Process() {
           {/* Left Column - 3 Cards */}
           <div className="flex flex-col gap-12 md:gap-16 w-full z-20">
             {/* 1. Understand */}
-            <motion.div initial={{ opacity: 0, x: -60 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }} className="relative w-full max-w-[320px] mr-auto">
+            <motion.div initial={{ opacity: 0, x: -60 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.35, delay: 0.05 }} className="relative w-full max-w-[320px] mr-auto">
               <div className="absolute top-1/2 -translate-y-1/2 left-[-40px] w-[100px] h-[80px] rounded-full bg-[#3a7eb7] z-0 flex items-center justify-start pl-4 text-white text-[28px] font-bold shadow-md">1</div>
               <div className="relative z-10 bg-white rounded-[30px] py-5 px-6 shadow-[0_8px_30px_rgb(0,0,0,0.08)] flex items-center min-h-[110px]">
                 <div className="flex-1 pr-3">
@@ -100,7 +100,7 @@ export default function Process() {
             </motion.div>
 
             {/* 3. Create */}
-            <motion.div initial={{ opacity: 0, x: -60 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.3 }} className="relative w-full max-w-[320px] mr-auto">
+            <motion.div initial={{ opacity: 0, x: -60 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.35, delay: 0.15 }} className="relative w-full max-w-[320px] mr-auto">
               <div className="absolute top-1/2 -translate-y-1/2 left-[-40px] w-[100px] h-[80px] rounded-full bg-[#d97c23] z-0 flex items-center justify-start pl-4 text-white text-[28px] font-bold shadow-md">3</div>
               <div className="relative z-10 bg-white rounded-[30px] py-5 px-6 shadow-[0_8px_30px_rgb(0,0,0,0.08)] flex items-center min-h-[110px]">
                 <div className="flex-1 pr-3">
@@ -111,7 +111,7 @@ export default function Process() {
             </motion.div>
 
             {/* 5. Learn */}
-            <motion.div initial={{ opacity: 0, x: -60 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.5 }} className="relative w-full max-w-[320px] mr-auto">
+            <motion.div initial={{ opacity: 0, x: -60 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.35, delay: 0.25 }} className="relative w-full max-w-[320px] mr-auto">
               <div className="absolute top-1/2 -translate-y-1/2 left-[-40px] w-[100px] h-[80px] rounded-full bg-[#8a4baf] z-0 flex items-center justify-start pl-4 text-white text-[28px] font-bold shadow-md">5</div>
               <div className="relative z-10 bg-white rounded-[30px] py-5 px-6 shadow-[0_8px_30px_rgb(0,0,0,0.08)] flex items-center min-h-[110px]">
                 <div className="flex-1 pr-3">
@@ -127,7 +127,7 @@ export default function Process() {
           {/* Right Column - 3 Cards */}
           <div className="flex flex-col gap-12 md:gap-16 w-full z-20">
             {/* 2. Define */}
-            <motion.div initial={{ opacity: 0, x: 60 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }} className="relative w-full max-w-[320px] ml-auto">
+            <motion.div initial={{ opacity: 0, x: 60 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.35, delay: 0.1 }} className="relative w-full max-w-[320px] ml-auto">
               <div className="absolute top-1/2 -translate-y-1/2 right-[-40px] w-[100px] h-[80px] rounded-full bg-[#1a7974] z-0 flex items-center justify-end pr-4 text-white text-[28px] font-bold shadow-md">2</div>
               <div className="relative z-10 bg-white rounded-[30px] py-5 px-6 shadow-[0_8px_30px_rgb(0,0,0,0.08)] flex items-center min-h-[110px]">
                 <div className="flex-1 text-right pl-3">
@@ -138,7 +138,7 @@ export default function Process() {
             </motion.div>
 
             {/* 4. Launch */}
-            <motion.div initial={{ opacity: 0, x: 60 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.4 }} className="relative w-full max-w-[320px] ml-auto">
+            <motion.div initial={{ opacity: 0, x: 60 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.35, delay: 0.2 }} className="relative w-full max-w-[320px] ml-auto">
               <div className="absolute top-1/2 -translate-y-1/2 right-[-40px] w-[100px] h-[80px] rounded-full bg-[#4e5e4d] z-0 flex items-center justify-end pr-4 text-white text-[28px] font-bold shadow-md">4</div>
               <div className="relative z-10 bg-white rounded-[30px] py-5 px-6 shadow-[0_8px_30px_rgb(0,0,0,0.08)] flex items-center min-h-[110px]">
                 <div className="flex-1 text-right pl-3">
@@ -149,7 +149,7 @@ export default function Process() {
             </motion.div>
 
             {/* 6. Improve */}
-            <motion.div initial={{ opacity: 0, x: 60 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.6 }} className="relative w-full max-w-[320px] ml-auto">
+            <motion.div initial={{ opacity: 0, x: 60 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.35, delay: 0.3 }} className="relative w-full max-w-[320px] ml-auto">
               <div className="absolute top-1/2 -translate-y-1/2 right-[-40px] w-[100px] h-[80px] rounded-full bg-[#c6538c] z-0 flex items-center justify-end pr-4 text-white text-[28px] font-bold shadow-md">6</div>
               <div className="relative z-10 bg-white rounded-[30px] py-5 px-6 shadow-[0_8px_30px_rgb(0,0,0,0.08)] flex items-center min-h-[110px]">
                 <div className="flex-1 text-right pl-3">

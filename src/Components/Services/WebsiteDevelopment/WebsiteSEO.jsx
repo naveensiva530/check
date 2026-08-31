@@ -69,7 +69,7 @@ export default function WebsiteSEO() {
                 className="italic font-semibold uppercase tracking-widest"
                 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '13px', color: 'var(--accent-orange)' }}
               >
-                SEO-READY DEVELOPMENT
+                BUILT WITH SEARCH IN MIND
               </span>
             </div>
             <ScrollRevealHeading
@@ -77,6 +77,7 @@ export default function WebsiteSEO() {
                 { text: "SEO", italic: true },
                 { text: "shouldn't" },
                 { text: "be" },
+                { text: "something" },
                 { text: "added" },
                 { text: "after" },
                 { text: "launch." }

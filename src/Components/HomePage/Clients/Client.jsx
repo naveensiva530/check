@@ -2,25 +2,25 @@ import React, { useRef, useEffect } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { LayoutGroup, motion } from 'motion/react';
 import { TextRotate } from '../../../Components/ui/text-rotate';
-import client1 from '../../../assets/clients/client1.webp';
-import client2 from '../../../assets/clients/client2.webp';
-import client3 from '../../../assets/clients/client3.webp';
-import client4 from '../../../assets/clients/client4.webp';
-import client5 from '../../../assets/clients/client5.webp';
-import client6 from '../../../assets/clients/client6.webp';
-import client7 from '../../../assets/clients/client7.webp';
-import client8 from '../../../assets/clients/client8.webp';
-import client9 from '../../../assets/clients/client9.webp';
-import client10 from '../../../assets/clients/client10.webp';
-import client11 from '../../../assets/clients/client11.webp';
-import client12 from '../../../assets/clients/client12.webp';
-import client13 from '../../../assets/clients/client13.webp';
-import client14 from '../../../assets/clients/client14.webp';
-import client15 from '../../../assets/clients/client15.webp';
-import client16 from '../../../assets/clients/client16.webp';
-import client17 from '../../../assets/clients/client17.webp';
-import client18 from '../../../assets/clients/client18.webp';
-import client19 from '../../../assets/clients/client19.webp';
+import client1 from '../../../assets/HomePage/clients/client1.webp';
+import client2 from '../../../assets/HomePage/clients/client2.webp';
+import client3 from '../../../assets/HomePage/clients/client3.webp';
+import client4 from '../../../assets/HomePage/clients/client4.webp';
+import client5 from '../../../assets/HomePage/clients/client5.webp';
+import client6 from '../../../assets/HomePage/clients/client6.webp';
+import client7 from '../../../assets/HomePage/clients/client7.webp';
+import client8 from '../../../assets/HomePage/clients/client8.webp';
+import client9 from '../../../assets/HomePage/clients/client9.webp';
+import client10 from '../../../assets/HomePage/clients/client10.webp';
+import client11 from '../../../assets/HomePage/clients/client11.webp';
+import client12 from '../../../assets/HomePage/clients/client12.webp';
+import client13 from '../../../assets/HomePage/clients/client13.webp';
+import client14 from '../../../assets/HomePage/clients/client14.webp';
+import client15 from '../../../assets/HomePage/clients/client15.webp';
+import client16 from '../../../assets/HomePage/clients/client16.webp';
+import client17 from '../../../assets/HomePage/clients/client17.webp';
+import client18 from '../../../assets/HomePage/clients/client18.webp';
+import client19 from '../../../assets/HomePage/clients/client19.webp';
 import '../common.css';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -371,7 +371,7 @@ const Client = () => {
 
       .client-logo-card:hover {
         transform: translateY(-3px);
-        box-shadow: 0 8px 20px -6px rgba(0,0,0,0.12);
+      
       }
 
       .client-logo-img {

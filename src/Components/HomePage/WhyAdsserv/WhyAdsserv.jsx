@@ -2,41 +2,61 @@ import React from 'react';
 import { Zap, Target, Layers, Briefcase, MessageSquare, RefreshCw } from 'lucide-react';
 import '../common.css';
 
+import imgGenZ        from '../../../assets/HomePage/WhyAdsserv/Gen_Z_thinking.webp';
+import imgCreative    from '../../../assets/HomePage/WhyAdsserv/Creative_meets_performance.webp';
+import imgPlatform    from '../../../assets/HomePage/WhyAdsserv/Platform-native_execution.webp';
+import imgBusiness    from '../../../assets/HomePage/WhyAdsserv/Business-aware_marketing.webp';
+import imgClarity     from '../../../assets/HomePage/WhyAdsserv/Less_jargon._More_clarity.webp';
+import imgLearning    from '../../../assets/HomePage/WhyAdsserv/Always_learning.webp';
+
 const differences = [
-  { title: "Gen Z thinking", desc: "We understand how modern audiences discover, consume, share, ignore, and respond to digital content.", icon: Zap, color: "#e08326" },
-  { title: "Creative meets performance", desc: "Ideas matter. So do the numbers. We bring creative execution and measurable thinking into the same conversation.", icon: Target, color: "#7c3aed" },
-  { title: "Platform-native execution", desc: "Content should fit the environment it appears in—not look like one idea copied ten times.", icon: Layers, color: "#3a7eb7" },
-  { title: "Business-aware marketing", desc: "Attention is useful only when it connects to something meaningful for the business.", icon: Briefcase, color: "#1a7974" },
-  { title: "Less jargon. More clarity.", desc: "You shouldn't need a marketing dictionary to understand what your agency is doing.", icon: MessageSquare, color: "#d97c23" },
-  { title: "Always learning", desc: "Platforms change. Audiences change. Markets change. Good digital work keeps learning.", icon: RefreshCw, color: "#c6538c" },
+  { title: "Gen Z thinking", desc: "We understand how modern audiences discover, consume, share, ignore, and respond to digital content.", icon: Zap, color: "#e08326", img: imgGenZ },
+  { title: "Creative meets performance", desc: "Ideas matter. So do the numbers. We bring creative execution and measurable thinking into the same conversation.", icon: Target, color: "#7c3aed", img: imgCreative },
+  { title: "Platform-native execution", desc: "Content should fit the environment it appears in—not look like one idea copied ten times.", icon: Layers, color: "#3a7eb7", img: imgPlatform },
+  { title: "Business-aware marketing", desc: "Attention is useful only when it connects to something meaningful for the business.", icon: Briefcase, color: "#1a7974", img: imgBusiness },
+  { title: "Less jargon. More clarity.", desc: "You shouldn't need a marketing dictionary to understand what your agency is doing.", icon: MessageSquare, color: "#d97c23", img: imgClarity },
+  { title: "Always learning", desc: "Platforms change. Audiences change. Markets change. Good digital work keeps learning.", icon: RefreshCw, color: "#c6538c", img: imgLearning },
 ];
 
-const DifferenceCard = ({ title, desc, color, Icon }) => {
+const DifferenceCard = ({ title, desc, color, Icon, img }) => {
   return (
     <div 
-      className="rounded-2xl border bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-md group"
+      className="rounded-2xl border bg-white overflow-hidden shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1 group p-6"
       style={{ borderColor: 'rgba(0,0,0,0.06)' }}
     >
       <div className="relative">
-        {/* Icon Container */}
-        <div 
-          className="w-12 h-12 flex items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110"
-          style={{ backgroundColor: `${color}15`, color: color }}
-        >
-          <Icon size={24} strokeWidth={2.5} />
-        </div>
+        {/* Icon-format Image Container */}
+        {img ? (
+          <div 
+            className="w-14 h-14 flex items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110 overflow-hidden"
+            style={{ backgroundColor: `${color}15` }}
+          >
+            <img
+              src={img}
+              alt={title}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        ) : (
+          <div 
+            className="w-14 h-14 flex items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110"
+            style={{ backgroundColor: `${color}15`, color: color }}
+          >
+            <Icon size={24} strokeWidth={2.5} />
+          </div>
+        )}
 
         {/* Text Content */}
-        <div className="mt-8 space-y-2">
+        <div className="mt-5 space-y-2">
           <h3 
-            className="text-lg font-bold transition-colors duration-300 group-hover:text-[var(--brand-orange)]" 
+            className="text-base font-bold transition-colors duration-300 group-hover:text-[var(--brand-orange)]" 
             style={{ color: 'var(--text-dark-blue)' }}
           >
             {title}
           </h3>
           <p 
             className="font-medium leading-relaxed line-clamp-3" 
-            style={{ color: 'var(--text-gray)', fontSize: '14.5px' }}
+            style={{ color: 'var(--text-gray)', fontSize: '13.5px' }}
           >
             {desc}
           </p>
@@ -89,6 +109,7 @@ export default function WhyAdsserv() {
               desc={diff.desc}
               color={diff.color}
               Icon={diff.icon}
+              img={diff.img}
             />
           ))}
         </div>

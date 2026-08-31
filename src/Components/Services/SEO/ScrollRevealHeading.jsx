@@ -27,18 +27,33 @@ export default function ScrollRevealHeading({ words, className = "", style = {},
           if (word.break) {
             return <div key={`br-${i}`} className="w-full basis-full h-0" />;
           }
+
           const start = animIndex / animatedWords.length;
           const end = start + (1 / animatedWords.length);
           const opacity = useTransform(scrollYProgress, [start, end], [0.15, 1]);
           animIndex++;
+
           if (word.italic) {
             return (
-              <motion.em key={i} style={{ opacity, fontFamily: "'Playfair Display', Georgia, serif", fontStyle: 'italic', color: 'var(--accent-orange, #e08326)' }}>
+              <motion.em
+                key={i}
+                style={{
+                  opacity,
+                  fontFamily: "'Playfair Display', Georgia, serif",
+                  fontStyle: 'italic',
+                  color: 'var(--accent-orange, #e08326)'
+                }}
+              >
                 {word.text}
               </motion.em>
             );
           }
-          return <motion.span key={i} style={{ opacity }}>{word.text}</motion.span>;
+
+          return (
+            <motion.span key={i} style={{ opacity }}>
+              {word.text}
+            </motion.span>
+          );
         })}
       </h2>
     </div>

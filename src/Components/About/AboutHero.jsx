@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import ButtonWithIcon from '../ui/button-with-icon';
 import { ArrowUpRight, Home, ChevronRight } from 'lucide-react';
 import bgImage from '../../assets/Services_Provide/Social media marketing.webp'; // Reusing this bg for now
-import ScrollRevealHeading from '../Services/SocialMedia/ScrollRevealHeading';
+import ScrollRevealHeading from '../Services/common/ScrollRevealHeading';
 import { useScrollAnimation, fadeUp } from '../Services/SocialMedia/useScrollAnimation';
 
 export default function AboutHero() {

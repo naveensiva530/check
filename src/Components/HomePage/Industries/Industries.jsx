@@ -3,11 +3,11 @@ import { motion, LayoutGroup } from 'framer-motion';
 import { TextRotate } from '../../../Components/ui/text-rotate';
 import '../common.css';
 
-import healthImg from "../../../assets/Services/Health Care.webp";
-import realEstateImg from "../../../assets/Services/Real Estate.webp";
-import educationImg from "../../../assets/Services/Education care.webp";
+import healthImg from "../../../assets/HomePage/Industries/Health Care.webp";
+import realEstateImg from "../../../assets/HomePage/Industries/Real Estate.webp";
+import educationImg from "../../../assets/HomePage/Industries/Education care.webp";
 import saasImg from "../../../assets/Services/IT-SAAS.webp";
-import beautyImg from "../../../assets/Services/Beauty & Salon.webp";
+import beautyImg from "../../../assets/HomePage/Industries/Beauty & Salon.webp";
 
 const industries = [
   {
@@ -15,35 +15,35 @@ const industries = [
     title: "Health Care",
     subtitle: "Building trust in a sensitive space.",
     image: healthImg,
-    path: "/services/health-care",
+
   },
   {
     category: "Property Marketing",
     title: "Real Estate",
     subtitle: "Turning properties into digital stories.",
     image: realEstateImg,
-    path: "/services/real-estate",
+
   },
   {
     category: "Education Marketing",
     title: "Education",
     subtitle: "Connecting institutions with students.",
     image: educationImg,
-    path: "/services/education",
+
   },
   {
     category: "Tech Marketing",
     title: "IT-Tech / SaaS",
     subtitle: "Making technology easy to choose.",
     image: saasImg,
-    path: "/services/it-tech-saas",
+
   },
   {
     category: "Lifestyle Marketing",
     title: "Beauty & Salon",
     subtitle: "Visual brands that command attention.",
     image: beautyImg,
-    path: "/services/beauty-and-salon",
+
   },
 ];
 
@@ -110,32 +110,43 @@ export default function Industries() {
           </p>
         </div>
 
-        {/* Single row of pill cards — all equal size */}
-        <div className="flex flex-row items-start justify-between gap-4 md:gap-6 overflow-x-auto pb-4" style={{ scrollbarWidth: 'none', paddingTop: '20px' }}>
+        {/* Cards Row */}
+        <div className="flex flex-col lg:flex-row items-end justify-center gap-4 lg:gap-3 xl:gap-5 mb-8 overflow-x-auto" style={{ scrollbarWidth: 'none', paddingTop: '20px' }}>
           {industries.map((item, index) => {
+            // Middle card (index 2) is tallest, cards taper outward
+            const heights = ['260px', '300px', '340px', '300px', '260px'];
+            const cardHeight = heights[index] || '280px';
+
             return (
               <motion.a
                 key={index}
                 href={item.path}
-                className="flex-1 min-w-[140px] flex flex-col items-center group"
-                style={{ textDecoration: 'none' }}
+                className="flex flex-col items-center group relative z-10 hover:z-20"
+                style={{ textDecoration: 'none', flex: '1 1 0', maxWidth: '220px', minWidth: '160px' }}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                {/* Pill Image — same size for all */}
-                <motion.div
-                  whileHover={{ scale: 1.04, y: -8 }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 22 }}
+                {/* Oval Image Card */}
+                <div
                   style={{
                     width: '100%',
-                    maxWidth: 230,
-                    height: 340,
-                    borderRadius: '44%',
+                    height: cardHeight,
+                    borderRadius: '120px',
                     overflow: 'hidden',
+                    backgroundColor: '#E8DCFA',
                     position: 'relative',
-                    boxShadow: '0 10px 32px rgba(30,47,87,0.14)',
+                    transition: 'transform 0.4s ease, box-shadow 0.4s ease',
+                    boxShadow: '0 8px 32px rgba(139, 92, 246, 0.12)',
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.transform = 'translateY(-10px)';
+                    e.currentTarget.style.boxShadow = '0 20px 50px rgba(139, 92, 246, 0.22)';
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 8px 32px rgba(139, 92, 246, 0.12)';
                   }}
                 >
                   <img
@@ -145,39 +156,44 @@ export default function Industries() {
                       width: '100%',
                       height: '100%',
                       objectFit: 'cover',
-                      display: 'block',
-                      transition: 'transform 0.6s ease',
+                      objectPosition: 'center top',
+                      transition: 'transform 0.5s ease',
                     }}
-                    className="group-hover:scale-[1.06]"
+                    onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.06)'}
+                    onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
                   />
-                  {/* Bottom gradient */}
+                  {/* Subtle purple overlay at bottom */}
                   <div style={{
-                    position: 'absolute', inset: 0,
-                    background: 'linear-gradient(to top, rgba(30,47,87,0.50) 0%, transparent 55%)',
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    height: '40%',
+                    background: 'linear-gradient(to top, rgba(196, 168, 237, 0.5), transparent)',
                     pointerEvents: 'none',
                   }} />
-                </motion.div>
+                </div>
 
                 {/* Text Below */}
-                <div className="flex flex-col items-center text-center mt-5 px-1 w-full">
+                <div className="flex flex-col items-center text-center mt-6 px-2 w-full">
                   <span
-                    className="text-[11px] font-bold uppercase tracking-[0.12em] mb-1"
+                    className="text-[10px] md:text-[11px] font-extrabold uppercase tracking-[0.12em] mb-2"
                     style={{ color: 'var(--brand-orange)' }}
                   >
                     {item.category}
                   </span>
-                  <span
-                    className="text-[16px] md:text-[17px] font-bold leading-tight"
+                  <h3
+                    className="text-[18px] md:text-[20px] font-extrabold mb-2 leading-tight"
                     style={{ color: 'var(--text-dark-blue)' }}
                   >
                     {item.title}
-                  </span>
-                  <span
-                    className="text-[12px] mt-1 font-medium leading-snug max-w-[150px]"
+                  </h3>
+                  <p
+                    className="text-[12.5px] md:text-[13px] font-medium leading-relaxed max-w-[180px]"
                     style={{ color: 'var(--text-gray)' }}
                   >
                     {item.subtitle}
-                  </span>
+                  </p>
                 </div>
               </motion.a>
             );

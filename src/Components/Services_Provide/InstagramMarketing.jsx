@@ -3,18 +3,25 @@ import Navbar from '../Navbar/Navbar';
 import Footer from '../HomePage/Footer/Footer';
 import '../HomePage/common.css';
 
-import InstagramHero from '../Services/InstagramMarketing/InstagramHero';
-import InstagramIntro from '../Services/InstagramMarketing/InstagramIntro';
-import TheProblem from '../Services/InstagramMarketing/TheProblem';
-import InstagramServices from '../Services/InstagramMarketing/InstagramServices';
+import CommonHero from '../Services/common/CommonHero';
+import CommonProblem from '../Services/common/CommonProblem';
+import CommonApproach from '../Services/common/CommonApproach';
+import CommonWhatWeDo from '../Services/common/CommonWhatWeDo';
+import CommonWhyAdsserv from '../Services/common/CommonWhyAdsserv';
+import CommonFAQ from '../Services/common/CommonFAQ';
+import CommonRelatedServices from '../Services/common/CommonRelatedServices';
+import CommonCTA from '../Services/common/CommonCTA';
+import CommonStages from '../Services/common/CommonStages';
+
+// Import custom sections
 import ContentStrategy from '../Services/InstagramMarketing/ContentStrategy';
-import InstagramProcess from '../Services/InstagramMarketing/InstagramProcess';
-import { PlatformFirstContent, ConversionJourney } from '../Services/InstagramMarketing/InstagramSpecialtySections';
-import WhoItsFor from '../Services/InstagramMarketing/WhoItsFor';
-import WhyAdsservInstagram from '../Services/InstagramMarketing/WhyAdsservInstagram';
-import RelatedServices from '../Services/InstagramMarketing/RelatedServices';
-import InstagramFAQ from '../Services/InstagramMarketing/InstagramFAQ';
-import FinalCTAInstagram from '../Services/InstagramMarketing/FinalCTAInstagram';
+import { ConversionJourney } from '../Services/InstagramMarketing/InstagramSpecialtySections';
+
+// Import data
+import {
+  heroData, problemData, approachData, whatWeDoData, whyAdsservInstagramData,
+  faqData, relatedServicesData, ctaData, whoItsForData
+} from './InstagramMarketingData';
 
 export default function InstagramMarketing() {
   useEffect(() => {
@@ -25,19 +32,30 @@ export default function InstagramMarketing() {
     <div className="font-sans bg-white min-h-screen flex flex-col">
       <Navbar />
 
-      <InstagramHero />
-      <InstagramIntro />
-      <TheProblem />
-      <InstagramServices />
+      <CommonHero {...heroData} />
+      
+      {/* Instagram Intro section combined into Problem or Hero - skipping separate intro as it's repetitive */}
+      
+      <CommonProblem {...problemData} variant="fragments" />
+      
+      <CommonWhatWeDo {...whatWeDoData} />
+      
       <ContentStrategy />
-      <InstagramProcess />
-      <PlatformFirstContent />
+      
+      <CommonApproach {...approachData} />
+      
       <ConversionJourney />
-      <WhoItsFor />
-      <WhyAdsservInstagram />
-      <RelatedServices />
-      <InstagramFAQ />
-      <FinalCTAInstagram />
+      
+      <CommonStages {...whoItsForData} />
+      
+      <CommonWhyAdsserv {...whyAdsservInstagramData} variant="list" />
+      
+      <CommonFAQ {...faqData} />
+      
+      <CommonRelatedServices {...relatedServicesData} />
+      
+      <CommonCTA {...ctaData} />
+
       <Footer />
     </div>
   );

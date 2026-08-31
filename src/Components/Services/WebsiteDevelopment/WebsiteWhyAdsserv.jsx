@@ -1,16 +1,17 @@
 import { useEffect, useRef } from 'react';
 import '../../../Components/HomePage/common.css';
-import ScrollRevealHeading from '../SocialMedia/ScrollRevealHeading';
+import ScrollRevealHeading from './ScrollRevealHeading';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+gsap.registerPlugin(ScrollTrigger);
+
 const points = [
-  "We start with the business, the audience, and the intended outcome.",
-  "Every recommendation is justified.",
-  "Structure, copy, and design are treated as one conversation.",
-  "Performance, accessibility, and SEO aren't afterthoughts.",
-  "The website is built to be updated — not rebuilt.",
-  "We keep working with you after launch.",
+  "The audience is the starting point, not the design brief.",
+  "Structure and content are developed alongside the visual design, not after.",
+  "SEO, performance, and accessibility are built in from the start.",
+  "The website is handed over with the context needed to manage it.",
+  "We continue to work with businesses after launch to improve results.",
 ];
 
 export default function WebsiteWhyAdsserv() {
@@ -71,29 +72,31 @@ export default function WebsiteWhyAdsserv() {
                 className="italic font-semibold uppercase tracking-widest"
                 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '13px', color: 'var(--accent-orange)' }}
               >
-                WHY WEBSITE DEVELOPMENT WITH ADSSERV
+                WHY ADSSERV
               </span>
             </div>
             <ScrollRevealHeading
               words={[
-                { text: "We" },
-                { text: "build" },
-                { text: "websites" },
-                { text: "around" },
-                { text: "what" },
-                { text: "matters.", italic: true }
+                { text: "Websites" },
+                { text: "built" },
+                { text: "to" },
+                { text: "work," },
+                { text: "not" },
+                { text: "just", italic: true },
+                { text: "to" },
+                { text: "exist." }
               ]}
             />
           </div>
 
           <div ref={rightRef} className="flex flex-col gap-4 text-[16px] md:text-[18px] font-medium leading-relaxed text-slate-700">
             <p ref={el => paraRefs.current[0] = el}>
-              A website is one of the few assets that keeps working for the business long after the project is delivered.
+              Website development is not about producing something that looks impressive in a portfolio.
             </p>
             <p ref={el => paraRefs.current[1] = el}>
-              How well it works depends on how it's built — and why.
+              It's about building a digital environment where the right visitor can find the business, understand what it offers, and take the next step with confidence.
             </p>
-            <p ref={el => paraRefs.current[2] = el}>A website developed with ADSSERV is shaped by:</p>
+            <p ref={el => paraRefs.current[2] = el}>Our approach ensures:</p>
 
             <ul className="flex flex-col gap-3 mt-1 mb-2 pl-1">
               {points.map((p, i) => (
@@ -102,14 +105,14 @@ export default function WebsiteWhyAdsserv() {
                   ref={el => listItemRefs.current[i] = el}
                   className="flex items-start gap-3"
                 >
-                  <span className="text-[var(--accent-orange)] font-bold text-[18px] mt-0.5 leading-none">•</span>
+                  <span className="text-[var(--accent-orange)] font-bold text-[18px] mt-0.5 leading-none">›</span>
                   <span className="text-[15.5px] font-semibold" style={{ color: 'var(--brand-navy)' }}>{p}</span>
                 </li>
               ))}
             </ul>
 
             <p ref={finalRef} className="font-bold mt-2" style={{ color: 'var(--brand-navy)' }}>
-              The result is a website that doesn't just look the part — it does its part.
+              That's the difference between a website that looks like a business and one that grows it.
             </p>
           </div>
 

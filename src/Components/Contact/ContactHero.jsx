@@ -2,7 +2,7 @@ import React from 'react';
 import { ArrowRight, Send, ChevronRight, Home } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import bgImage from '../../assets/Services_Provide/Social media marketing.webp';
-import ScrollRevealHeading from '../Services/SocialMedia/ScrollRevealHeading';
+import ScrollRevealHeading from '../Services/common/ScrollRevealHeading';
 import { useScrollAnimation, fadeUp } from '../Services/SocialMedia/useScrollAnimation';
 import { heroData } from './contactData';
 

@@ -4,36 +4,43 @@ import { ArrowUpRight } from 'lucide-react';
 import '../../../Components/HomePage/common.css';
 import ScrollRevealHeading from './ScrollRevealHeading';
 
+import imgStartups from '../../../assets/Servicess/WhoThisIsFor/Startups.webp';
+import imgGrowing from '../../../assets/Servicess/WhoThisIsFor/Growing Businesses.webp';
+import imgEstablished from '../../../assets/Servicess/WhoThisIsFor/Established Brands.webp';
+import imgSaaS from '../../../assets/Servicess/WhoThisIsFor/SaaS & Technology.webp';
+import imgLocal from '../../../assets/Servicess/WhoThisIsFor/Local Businesses.webp';
+import imgCreators from '../../../assets/Servicess/WhoThisIsFor/Creators & Personal Brands.webp';
+
 const audiences = [
   {
     title: "Startups",
     desc: "Build a recognisable social presence and communicate your value from the beginning.",
-    image: "https://images.unsplash.com/photo-1559136555-e4616d9d15e2?auto=format&fit=crop&q=80&w=800",
+    image: imgStartups,
   },
   {
     title: "Growing Businesses",
     desc: "Bring consistency, strategy, and stronger creative thinking into your existing social activity.",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800",
+    image: imgGrowing,
   },
   {
     title: "Established Brands",
     desc: "Refresh social communication and create content that feels relevant to today's audiences.",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800",
+    image: imgEstablished,
   },
   {
     title: "SaaS & Technology",
     desc: "Turn complex products and ideas into content people can understand and engage with.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
+    image: imgSaaS,
   },
   {
     title: "Local Businesses",
     desc: "Build awareness, community, and stronger connections with people in your market.",
-    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800",
+    image: imgLocal,
   },
   {
     title: "Creators & Personal Brands",
     desc: "Turn expertise, personality, and audience attention into a more intentional digital presence.",
-    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=800",
+    image: imgCreators,
   }
 ];
 

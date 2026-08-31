@@ -7,11 +7,12 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Target, Laptop } from 'lucide-react';
 
 const audiences = [
-  "Build a digital presence from scratch",
-  "Replace an outdated, slow website",
-  "Launch a service, product, or campaign that needs dedicated pages",
-  "Improve the conversions coming from paid traffic, organic search, or social",
-  "Organise content, pages, and structure for a growing business",
+  "Service Businesses (Need clear value propositions...)",
+  "B2B Companies (Need to build authority...)",
+  "E-commerce & Retail (Need seamless buying experiences...)",
+  "SaaS & Technology (Need to explain complex products...)",
+  "Professional Services (Need to establish credibility...)",
+  "Established Brands (Need modern platforms...)",
 ];
 
 export default function WebsiteWhoThisIsFor() {
@@ -84,17 +85,19 @@ export default function WebsiteWhoThisIsFor() {
             </div>
             <ScrollRevealHeading
               words={[
-                { text: "You" },
-                { text: "need" },
-                { text: "a" },
-                { text: "website,", italic: true }
+                { text: "Build" },
+                { text: "for" },
+                { text: "the" },
+                { text: "business" },
+                { text: "you" },
+                { text: "are" },
+                { text: "becoming.", italic: true }
               ]}
             />
             <div className="w-12 h-[3px] opacity-70 rounded-full mt-4 mb-8" style={{ backgroundColor: 'var(--brand-purple, #8b5cf6)' }}></div>
 
             <div className="flex flex-col gap-4 text-[16px] md:text-[18px] font-medium leading-relaxed text-slate-700 max-w-[550px]">
-              <p>Most teams don't need "a website." They need a website that does a job.</p>
-              <p>That usually looks like one of the following:</p>
+              <p>We work with businesses that recognise their website should be an active part of their growth, not just a digital brochure.</p>
 
               <div ref={cardRef} className="bg-[var(--bg-light-purple)] p-6 rounded-2xl border border-white shadow-sm">
                 <ul className="flex flex-col gap-3">
@@ -107,9 +110,7 @@ export default function WebsiteWhoThisIsFor() {
                 </ul>
               </div>
 
-              <p ref={finalRef} className="font-bold mt-2" style={{ color: 'var(--brand-navy)' }}>
-                If your website currently exists only to exist, that's the problem we solve.
-              </p>
+              {/* Removed finalRef paragraph to match user copy */}
             </div>
           </div>
 

@@ -3,36 +3,43 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import '../common.css';
 
+import startupsImg        from '../../../assets/HomePage/WhoWeWorkWith/Startups.webp';
+import growingBizImg      from '../../../assets/HomePage/WhoWeWorkWith/Growing Businesses.webp';
+import establishedImg     from '../../../assets/HomePage/WhoWeWorkWith/Established Brands.webp';
+import saasImg            from '../../../assets/HomePage/WhoWeWorkWith/SaaS & Technology.webp';
+import localBizImg        from '../../../assets/HomePage/WhoWeWorkWith/Local Businesses.webp';
+import creatorsImg        from '../../../assets/HomePage/WhoWeWorkWith/Creators & Personal Brands.webp';
+
 const audiences = [
   {
     title: "Startups",
     desc: "Build visibility, positioning, content, and digital foundations without making the brand feel bigger than it really is.",
-    image: "https://images.unsplash.com/photo-1559136555-e4616d9d15e2?auto=format&fit=crop&q=80&w=800",
+    image: startupsImg,
   },
   {
     title: "Growing Businesses",
     desc: "Bring more structure to marketing while finding new ways to reach and convert the right audience.",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800",
+    image: growingBizImg,
   },
   {
     title: "Established Brands",
     desc: "Refresh digital communication, strengthen relevance, and connect established brand equity with modern audience behaviour.",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800",
+    image: establishedImg,
   },
   {
     title: "SaaS & Technology",
     desc: "Turn complex products and technical ideas into clearer stories, stronger experiences, and useful digital journeys.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
+    image: saasImg,
   },
   {
     title: "Local Businesses",
     desc: "Build visibility and meaningful connections with the customers who matter in your market.",
-    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800",
+    image: localBizImg,
   },
   {
     title: "Creators & Personal Brands",
     desc: "Turn expertise, personality, and audience attention into a stronger digital presence.",
-    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=800",
+    image: creatorsImg,
   }
 ];
 

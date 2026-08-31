@@ -60,7 +60,7 @@ export default function WebsiteDesign() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="w-full py-24 relative font-primary" style={{ backgroundColor: 'var(--bg-light-purple)' }}>
+    <section ref={sectionRef} className="w-full py-24 relative font-primary" style={{ backgroundColor: '#ffffff' }}>
       <div className="max-w-[1200px] w-full mx-auto px-4 md:px-8 relative z-10">
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
@@ -74,7 +74,7 @@ export default function WebsiteDesign() {
                 className="italic font-semibold uppercase tracking-widest"
                 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '13px', color: 'var(--accent-orange)' }}
               >
-                DESIGN & EXPERIENCE
+                UI / UX
               </span>
             </div>
             <ScrollRevealHeading
@@ -94,7 +94,7 @@ export default function WebsiteDesign() {
           <div ref={rightTextRef} className="lg:col-span-7 flex flex-col gap-6 text-[16px] md:text-[18px] font-medium leading-relaxed text-slate-700">
             <p>We don't design interfaces simply to fill a screen.</p>
 
-            <div ref={cardRef} className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 mt-2">
+            <div ref={cardRef} className="p-8 rounded-2xl mt-2" style={{ backgroundColor: 'var(--bg-light-purple)', border: '1px solid rgba(139,92,246,0.12)' }}>
               <ul className="flex flex-col gap-4">
                 {designPoints.map((p, idx) => (
                   <li key={idx} ref={el => pointRefs.current[idx] = el} className="flex items-start gap-3">

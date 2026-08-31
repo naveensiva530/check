@@ -5,14 +5,14 @@ import ScrollRevealHeading from './ScrollRevealHeading';
 import '../../../Components/HomePage/common.css';
 
 // Import images for the slider
-import img1 from '../../../assets/Services_Provide/Social media marketing.webp';
-import img2 from '../../../assets/Services_Provide/Content Writing.webp';
-import img3 from '../../../assets/Services_Provide/Instragram marketing.webp';
-import img4 from '../../../assets/Services_Provide/Branding Solution.webp';
-import img5 from '../../../assets/Services_Provide/video production.webp';
-import img6 from '../../../assets/Services_Provide/Digital Consulting.webp';
-import img7 from '../../../assets/Services_Provide/Performance marketing.webp';
-import img8 from '../../../assets/Services_Provide/Seo services.webp';
+import img1 from '../../../assets/Servicess/SocialMedia/WhatWeDo/Social Media Strategy.webp';
+import img2 from '../../../assets/Servicess/SocialMedia/WhatWeDo/Content Strategy.webp';
+import img3 from '../../../assets/Servicess/SocialMedia/WhatWeDo/Social Media Management.webp';
+import img4 from '../../../assets/Servicess/SocialMedia/WhatWeDo/Social Media Content.webp';
+import img5 from '../../../assets/Servicess/SocialMedia/WhatWeDo/Reels & Short-Form Content.webp';
+import img6 from '../../../assets/Servicess/SocialMedia/WhatWeDo/Community Management.webp';
+import img7 from '../../../assets/Servicess/SocialMedia/WhatWeDo/Social Media Campaigns.webp';
+import img8 from '../../../assets/Servicess/SocialMedia/WhatWeDo/Social Media Analytics.webp';
 
 const services = [
   {

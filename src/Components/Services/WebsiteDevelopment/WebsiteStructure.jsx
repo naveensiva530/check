@@ -4,22 +4,22 @@ import ScrollRevealHeading from '../SocialMedia/ScrollRevealHeading';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import imgEducate from '../../../assets/SocailMedia/Educate.webp';
-import imgEntertain from '../../../assets/SocailMedia/Entertain.webp';
-import imgTrust from '../../../assets/SocailMedia/Build Trust.webp';
-import imgConnect from '../../../assets/SocailMedia/Connect.webp';
-import imgConvert from '../../../assets/SocailMedia/Convert.webp';
-import imgLaptop from '../../../assets/SocailMedia/Laptop.webp';
+import imgDiscover from '../../../assets/Servicess/PerformanceStructure/Discovery.webp';
+import imgStrategy from '../../../assets/Servicess/PerformanceStructure/Strategy.webp';
+import imgBuild from '../../../assets/Servicess/PerformanceStructure/Build.webp';
+import imgLaunch from '../../../assets/Servicess/PerformanceStructure/Launch.webp';
+import imgOptimise from '../../../assets/Servicess/PerformanceStructure/Optimise.webp';
+import imgAudit from '../../../assets/Servicess/PerformanceStructure/Audit.webp';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const stages = [
-  { num: "01", title: "Discover",  desc: "Who are you and what do you do?",                 img: imgEducate },
-  { num: "02", title: "Understand",desc: "Why does your product or service matter to me?",  img: imgEntertain },
-  { num: "03", title: "Trust",     desc: "Why should I believe you?",                      img: imgTrust },
-  { num: "04", title: "Evaluate",  desc: "Is this the right solution for my situation?",   img: imgConnect },
-  { num: "05", title: "Act",       desc: "What should I do next?",                          img: imgConvert },
-  { num: "06", title: "Continue",  desc: "What happens after I enquire, book, buy, or contact you?", img: imgLaptop },
+  { num: "01", title: "Discover", desc: "Who are you and what do you do?", img: imgDiscover },
+  { num: "02", title: "Understand", desc: "Why does your product or service matter to me?", img: imgStrategy },
+  { num: "03", title: "Trust", desc: "Why should I believe you?", img: imgAudit },
+  { num: "04", title: "Evaluate", desc: "Is this the right solution for my situation?", img: imgBuild },
+  { num: "05", title: "Act", desc: "What should I do next?", img: imgOptimise },
+  { num: "06", title: "Continue", desc: "What happens after I enquire, book, buy, or contact you?", img: imgLaunch },
 ];
 
 export default function WebsiteStructure() {
@@ -31,7 +31,8 @@ export default function WebsiteStructure() {
     const ctx = gsap.context(() => {
       gsap.fromTo(headingRef.current,
         { opacity: 0, y: 40, scale: 0.96 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: 'power3.out',
+        {
+          opacity: 1, y: 0, scale: 1, duration: 0.5, ease: 'power3.out',
           scrollTrigger: { trigger: sectionRef.current, start: 'top 78%', toggleActions: 'play none none none' }
         }
       );
@@ -39,7 +40,8 @@ export default function WebsiteStructure() {
         const xDir = i % 2 === 0 ? -60 : 60;
         gsap.fromTo(card,
           { opacity: 0, x: xDir, y: 40, scale: 0.92 },
-          { opacity: 1, x: 0, y: 0, scale: 1, duration: 0.45, ease: 'power3.out', delay: i * 0.05,
+          {
+            opacity: 1, x: 0, y: 0, scale: 1, duration: 0.45, ease: 'power3.out', delay: i * 0.05,
             scrollTrigger: { trigger: card, start: 'top 88%', toggleActions: 'play none none none' }
           }
         );
@@ -62,21 +64,20 @@ export default function WebsiteStructure() {
               className="italic font-semibold uppercase tracking-widest"
               style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '13px', color: 'var(--accent-orange)' }}
             >
-              WEBSITE STRUCTURE
+              BUILT AROUND THE USER JOURNEY
             </span>
           </div>
           <ScrollRevealHeading maxW="900px"
             words={[
-              { text: "Built" },
-              { text: "around" },
-              { text: "the" },
-              { text: "user", italic: true },
-              { text: "journey." }
+              { text: "Every" },
+              { text: "page" },
+              { text: "should" },
+              { text: "answer" },
+              { text: "the", italic: true },
+              { text: "next" },
+              { text: "question." }
             ]}
           />
-          <p className="mt-6 text-[18px] md:text-[20px] font-bold leading-snug max-w-[680px]" style={{ color: 'var(--brand-navy)' }}>
-            Every page should answer the next question.
-          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -91,7 +92,7 @@ export default function WebsiteStructure() {
                 {stage.num}
               </div>
 
-              <div className="absolute top-3 right-4 w-[140px] h-[140px] flex-shrink-0 transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-1">
+              <div className="absolute top-3 right-4 w-[200px] h-[200px] flex-shrink-0 transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-1">
                 <img src={stage.img} alt={stage.title} className="w-full h-full object-contain drop-shadow-lg" />
               </div>
 

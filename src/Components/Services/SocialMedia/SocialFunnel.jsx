@@ -6,12 +6,12 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-import imgDiscover from '../../../assets/SocailMedia/Educate.webp';
-import imgEngage from '../../../assets/SocailMedia/Connect.webp';
-import imgExplore from '../../../assets/SocailMedia/Entertain.webp';
-import imgTrust from '../../../assets/SocailMedia/Build Trust.webp';
-import imgAct from '../../../assets/SocailMedia/Convert.webp';
-import imgReturn from '../../../assets/SocailMedia/Connect.webp';
+import imgDiscover from '../../../assets/Servicess/Funnel/Discover.webp';
+import imgEngage from '../../../assets/Servicess/Funnel/Engage.webp';
+import imgExplore from '../../../assets/Servicess/Funnel/Explore.webp';
+import imgTrust from '../../../assets/Servicess/Funnel/Trust.webp';
+import imgAct from '../../../assets/Servicess/Funnel/Act.webp';
+import imgReturn from '../../../assets/Servicess/Funnel/Return.webp';
 
 const stages = [
   { num: "01", title: "Discover", goal: "GOAL: AWARENESS", desc: "Someone encounters your content for the first time.", img: imgDiscover },

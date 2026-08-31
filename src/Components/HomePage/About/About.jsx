@@ -1,7 +1,7 @@
-import React, { useRef, useEffect } from "react";
-import person1 from "../../../assets/h.png";
-import person2 from "../../../assets/j.png";
-import person3 from "../../../assets/f.png"; // small camera-woman image on the right
+import { useRef, useEffect } from "react";
+import person1 from "../../../assets/HomePage/About/About_First_image.webp";
+import person2 from "../../../assets/HomePage/About/About_Second_image.webp";
+import person3 from "../../../assets/HomePage/About/About_Third_image.webp";
 import { ArrowUpRight } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -24,7 +24,7 @@ export default function About() {
         {
           x: 0,
           opacity: 1,
-          duration: 1.1,
+          duration: 0.6,
           ease: "power3.out",
           scrollTrigger: {
             trigger: sectionRef.current,
@@ -41,8 +41,8 @@ export default function About() {
         {
           x: 0,
           opacity: 1,
-          duration: 1.1,
-          delay: 0.15,
+          duration: 0.6,
+          delay: 0.08,
           ease: "power3.out",
           scrollTrigger: {
             trigger: sectionRef.current,
@@ -59,8 +59,8 @@ export default function About() {
         {
           y: 0,
           opacity: 1,
-          duration: 0.8,
-          delay: 0.35,
+          duration: 0.45,
+          delay: 0.18,
           ease: "power3.out",
           scrollTrigger: {
             trigger: sectionRef.current,

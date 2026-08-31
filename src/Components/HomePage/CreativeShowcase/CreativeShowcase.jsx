@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../common.css';
 import { ArrowUpRight, Plus, Minus } from 'lucide-react';
-import jImage from '../../../assets/j.png';
+import creativeImg from '../../../assets/HomePage/CreativeShowcase/Creative_site.webp';
 
 const categories = [
   { title: "Social Content", desc: "Platform-native content built around audience behaviour." },
@@ -17,7 +17,7 @@ export default function CreativeShowcase() {
     <section className="w-full pt-20 bg-white relative font-primary">
       <div className="max-w-[1200px] w-full mx-auto px-4 md:px-8 relative z-10">
         
-        <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-10 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-10 lg:gap-12 lg:items-start pt-10">
           
           {/* Left Column: Content & Accordion */}
           <div className="flex flex-col pb-20 lg:pb-32">
@@ -72,13 +72,15 @@ export default function CreativeShowcase() {
                     </div>
                     
                     <div 
-                      className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                        isOpen ? 'max-h-[150px] mt-3 opacity-100' : 'max-h-0 opacity-0'
+                      className={`grid transition-all duration-300 ease-in-out ${
+                        isOpen ? 'grid-rows-[1fr] mt-3 opacity-100' : 'grid-rows-[0fr] opacity-0'
                       }`}
                     >
-                      <p className="text-[13.5px] font-medium text-gray-500 pl-10 leading-relaxed">
-                        {cat.desc}
-                      </p>
+                      <div className="overflow-hidden">
+                        <p className="text-[13.5px] font-medium text-gray-500 pl-10 leading-relaxed pb-1">
+                          {cat.desc}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 );
@@ -95,11 +97,11 @@ export default function CreativeShowcase() {
           </div>
 
           {/* Right Column: Image Display */}
-          <div className="relative w-full mt-8 lg:mt-0 flex justify-end items-end h-full">
+          <div className="relative w-full mt-8 lg:mt-0 flex justify-center lg:justify-end items-end h-full">
             <img 
-              src={jImage} 
+              src={creativeImg} 
               alt="Creative Digital Work" 
-              className="w-full max-w-[600px] lg:max-w-none lg:w-[110%] h-auto object-contain transform lg:translate-x-[5%]"
+              className="w-full max-w-[600px] lg:max-w-none lg:w-[145%] h-auto object-contain transform lg:scale-[1.15] lg:translate-x-[15%] lg:translate-y-[-5%]"
             />
           </div>
 

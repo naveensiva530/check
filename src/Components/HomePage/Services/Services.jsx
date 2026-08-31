@@ -1,26 +1,21 @@
 // src/components/Services.jsx
 
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import "../common.css";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// Import all service images from assets/Services folder
-import socialMediaImg from "../../../assets/Services/Social Media Marketing.webp";
-import performanceImg from "../../../assets/Services/Performance marketing.webp";
-import websiteDevImg from "../../../assets/Services/Website Development.webp";
-import influencerImg from "../../../assets/Services/Influncer Marketing.webp";
-import seoImg from "../../../assets/Services/SEO.webp";
-import videoImg from "../../../assets/Services/Video Production.webp";
-import brandingImg from "../../../assets/Services/Branding Solution.webp";
-import consultingImg from "../../../assets/Services/Digital consulting.webp";
-import contentImg from "../../../assets/Services/Content Writing.webp";
-import instagramImg from "../../../assets/Services/Instragram marketing.webp";
-import healthImg from "../../../assets/Services/Health Care.webp";
-import realEstateImg from "../../../assets/Services/Real Estate.webp";
-import educationImg from "../../../assets/Services/Education care.webp";
-import saasImg from "../../../assets/Services/IT-SAAS.webp";
-import beautyImg from "../../../assets/Services/Beauty & Salon.webp";
+// Import all service images from assets/HomePage/Services folder
+import socialMediaImg from "../../../assets/HomePage/Services/Social Media Marketing.webp";
+import performanceImg from "../../../assets/HomePage/Services/Performance marketing.webp";
+import websiteDevImg  from "../../../assets/HomePage/Services/Website Development.webp";
+import influencerImg  from "../../../assets/HomePage/Services/Influncer Marketing.webp";
+import seoImg         from "../../../assets/HomePage/Services/SEO.webp";
+import videoImg       from "../../../assets/HomePage/Services/Video Production.webp";
+import brandingImg    from "../../../assets/Services/Branding Solution.webp";
+import consultingImg  from "../../../assets/HomePage/Services/Digital consulting.webp";
+import contentImg     from "../../../assets/HomePage/Services/Content Writing.webp";
+import instagramImg   from "../../../assets/HomePage/Services/Instragram marketing.webp";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -139,7 +134,7 @@ export default function Services() {
         {
           y: 0,
           opacity: 1,
-          duration: 1,
+          duration: 0.55,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: sectionRef.current,
@@ -157,8 +152,8 @@ export default function Services() {
           y: 0,
           opacity: 1,
           scale: 1,
-          duration: 1,
-          delay: 0.2,
+          duration: 0.55,
+          delay: 0.1,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: sectionRef.current,
@@ -245,7 +240,7 @@ export default function Services() {
               alignItems: "stretch",
               width: `calc(${EXT_LEN} / ${CARDS_PER_VIEW} * 100%)`,
               transform: `translateX(${translateX})`,
-              transition: animated ? "transform 0.55s cubic-bezier(0.4, 0, 0.2, 1)" : "none",
+              transition: animated ? "transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)" : "none",
               willChange: "transform",
             }}
           >
@@ -260,7 +255,7 @@ export default function Services() {
                   style={{
                     width: `calc(100% / ${EXT_LEN})`,
                     transform: isHovered ? "translateY(-12px)" : "translateY(0)",
-                    transition: "transform 0.4s ease",
+                    transition: "transform 0.22s ease",
                   }}
                   onMouseEnter={() => setHoveredKey(s._key)}
                   onMouseLeave={() => setHoveredKey(null)}
@@ -273,7 +268,7 @@ export default function Services() {
                       // Hover:   white bg, orange icon
                       background: isHovered ? "#fff" : "var(--accent-orange)",
                       transform: `translateX(-50%) scale(${isHovered ? 1.12 : 1})`,
-                      transition: "background 0.4s ease, transform 0.4s ease",
+                      transition: "background 0.22s ease, transform 0.22s ease",
                       boxShadow: isHovered ? "0 8px 24px rgba(224,131,38,0.35)" : undefined,
                     }}
                   >
@@ -281,7 +276,7 @@ export default function Services() {
                       className="h-6 w-6"
                       style={{
                         color: isHovered ? "var(--accent-orange)" : "#fff",
-                        transition: "color 0.4s ease",
+                        transition: "color 0.22s ease",
                       }}
                     />
                   </div>
@@ -292,7 +287,7 @@ export default function Services() {
                     style={{
                       background: isHovered ? "var(--text-dark-blue)" : "var(--primary-white)",
                       border: isHovered ? "1px solid transparent" : "1px solid var(--border-gray-light)",
-                      transition: "background 0.4s ease, border 0.4s ease, box-shadow 0.4s ease",
+                      transition: "background 0.22s ease, border 0.22s ease, box-shadow 0.22s ease",
                       boxShadow: isHovered ? "0 25px 60px rgba(26,26,64,0.35)" : undefined,
                     }}
                   >
@@ -302,7 +297,7 @@ export default function Services() {
                         className="text-right text-5xl font-bold"
                         style={{
                           color: isHovered ? "var(--accent-orange)" : "var(--text-gray)",
-                          transition: "color 0.4s ease",
+                          transition: "color 0.22s ease",
                         }}
                       >
                         {s.num}
@@ -311,7 +306,7 @@ export default function Services() {
                         className="mt-6 text-xs font-semibold uppercase tracking-[3px]"
                         style={{
                           color: isHovered ? "rgba(255,255,255,0.65)" : "var(--text-gray)",
-                          transition: "color 0.4s ease",
+                          transition: "color 0.22s ease",
                         }}
                       >
                         {s.tag}
@@ -320,7 +315,7 @@ export default function Services() {
                         className="mt-3 whitespace-pre-line text-2xl font-bold leading-snug"
                         style={{
                           color: isHovered ? "#fff" : "var(--text-dark-blue)",
-                          transition: "color 0.4s ease",
+                          transition: "color 0.22s ease",
                         }}
                       >
                         {s.title}
@@ -329,7 +324,7 @@ export default function Services() {
                         className="mt-3 text-[13px] leading-relaxed font-medium"
                         style={{
                           color: isHovered ? "rgba(255,255,255,0.8)" : "var(--text-gray)",
-                          transition: "color 0.4s ease",
+                          transition: "color 0.22s ease",
                         }}
                       >
                         {s.desc}
@@ -347,14 +342,14 @@ export default function Services() {
                             width: "100%",
                             objectFit: "cover",
                             transform: isHovered ? "scale(1.1)" : "scale(1)",
-                            transition: "transform 0.7s ease",
+                            transition: "transform 0.4s ease",
                           }}
                         />
                         <div
                           className="absolute inset-0"
                           style={{
                             background: isHovered ? "rgba(0,0,0,0.25)" : "rgba(0,0,0,0.1)",
-                            transition: "background 0.4s ease",
+                            transition: "background 0.22s ease",
                           }}
                         />
                         <button
@@ -369,7 +364,7 @@ export default function Services() {
                     {/* GLOW */}
                     <div
                       className="absolute inset-0 pointer-events-none"
-                      style={{ opacity: isHovered ? 1 : 0, transition: "opacity 0.5s ease" }}
+                      style={{ opacity: isHovered ? 1 : 0, transition: "opacity 0.25s ease" }}
                     >
                       <div className="absolute -left-10 top-10 h-32 w-32 rounded-full blur-3xl" style={{ background: "rgba(255,107,157,0.15)" }} />
                       <div className="absolute bottom-0 right-0 h-32 w-32 rounded-full blur-3xl" style={{ background: "rgba(224,131,38,0.2)" }} />

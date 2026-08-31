@@ -5,69 +5,70 @@ import ScrollRevealHeading from './ScrollRevealHeading';
 import '../../../Components/HomePage/common.css';
 
 // Import images for the slider
-import img1 from '../../../assets/Services_Provide/Social media marketing.webp';
-import img2 from '../../../assets/Services_Provide/Content Writing.webp';
-import img3 from '../../../assets/Services_Provide/Instragram marketing.webp';
-import img4 from '../../../assets/Services_Provide/Branding Solution.webp';
-import img5 from '../../../assets/Services_Provide/video production.webp';
-import img6 from '../../../assets/Services_Provide/Digital Consulting.webp';
-import img7 from '../../../assets/Services_Provide/Performance marketing.webp';
-import img8 from '../../../assets/Services_Provide/Seo services.webp';
+import imgGoogleAds from '../../../assets/Servicess/PerformanceMarketing/PerformanceWhatWeDo/Google Ads.webp';
+import imgPaidSocial from '../../../assets/Servicess/PerformanceMarketing/PerformanceWhatWeDo/Paid Social Advertising.webp';
+import imgSearchAdv from '../../../assets/Servicess/PerformanceMarketing/PerformanceWhatWeDo/Search Advertising.webp';
+import imgDisplay from '../../../assets/Servicess/PerformanceMarketing/PerformanceWhatWeDo/Display & Remarketing.webp';
+import imgCampaignStrategy from '../../../assets/Servicess/PerformanceMarketing/PerformanceWhatWeDo/Campaign Strategy.webp';
+import imgAdCreative from '../../../assets/Servicess/PerformanceMarketing/PerformanceWhatWeDo/Ad Creative & Copy.webp';
+import imgLandingPage from '../../../assets/Servicess/PerformanceMarketing/PerformanceWhatWeDo/Landing Page Optimisation.webp';
+import imgConvTracking from '../../../assets/Servicess/PerformanceMarketing/PerformanceWhatWeDo/Conversion Tracking.webp';
+import imgCampaignOpt from '../../../assets/Servicess/PerformanceMarketing/PerformanceWhatWeDo/Campaign Optimisation.webp';
 
 const services = [
   {
     num: "01",
     title: "Google Ads",
     desc: "Search and other relevant Google advertising campaigns built around intent, targeting, messaging, and measurable actions.",
-    img: img1
+    img: imgGoogleAds
   },
   {
     num: "02",
     title: "Paid Social Advertising",
     desc: "Paid campaigns across relevant social platforms designed around audience, creative, offer, and campaign objective.",
-    img: img2
+    img: imgPaidSocial
   },
   {
     num: "03",
     title: "Search Advertising",
     desc: "Reach people actively searching for relevant products, services, solutions, or information.",
-    img: img3
+    img: imgSearchAdv
   },
   {
     num: "04",
     title: "Display & Remarketing",
     desc: "Reconnect with relevant audiences through carefully planned display or remarketing activity where appropriate.",
-    img: img4
+    img: imgDisplay
   },
   {
     num: "05",
     title: "Campaign Strategy",
     desc: "Plan the audience, offer, channels, budget, creative direction, landing experience, and measurement before launch.",
-    img: img5
+    img: imgCampaignStrategy
   },
   {
     num: "06",
     title: "Ad Creative & Copy",
     desc: "Develop campaign messaging and creative concepts designed to communicate the value of the offer clearly.",
-    img: img6
+    img: imgAdCreative
   },
   {
     num: "07",
     title: "Landing Page Optimisation",
     desc: "Identify friction and opportunities across the page users reach after clicking an advertisement.",
-    img: img7
+    img: imgLandingPage
   },
   {
     num: "08",
     title: "Conversion Tracking",
     desc: "Connect campaign activity with meaningful actions so performance can be evaluated beyond clicks and impressions.",
-    img: img8
+    img: imgConvTracking
   },
   {
     num: "09",
     title: "Campaign Optimisation",
     desc: "Continuously review campaign data and make informed changes to targeting, budgets, creative, bidding, keywords, and other relevant variables.",
-    img: img1
+    img: imgCampaignOpt
   }
 ];
 

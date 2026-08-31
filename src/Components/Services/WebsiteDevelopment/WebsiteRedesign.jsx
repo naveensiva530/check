@@ -4,15 +4,7 @@ import ScrollRevealHeading from '../SocialMedia/ScrollRevealHeading';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-const signs = [
-  "Visitors land on the homepage and leave.",
-  "Mobile users get a worse experience than desktop users.",
-  "Content is scattered, outdated, or has stopped reflecting the business.",
-  "Pages take too long to load.",
-  "Navigation makes sense to the team, but not to the visitor.",
-  "Enquiries feel like they should be higher.",
-  "The website no longer matches the business direction.",
-];
+const signs = [];
 
 export default function WebsiteRedesign() {
   const sectionRef = useRef(null);
@@ -72,39 +64,33 @@ export default function WebsiteRedesign() {
                 className="italic font-semibold uppercase tracking-widest"
                 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '13px', color: 'var(--accent-orange)' }}
               >
-                FOR WHEN THE WEBSITE EXISTS, BUT ISN'T WORKING
+                WEBSITE REDESIGN
               </span>
             </div>
             <ScrollRevealHeading
               words={[
-                { text: "Sometimes" },
-                { text: "the", italic: true },
-                { text: "website" },
-                { text: "needs" },
-                { text: "a" },
-                { text: "fresh" },
-                { text: "start." }
+                { text: "Don't" },
+                { text: "lose" },
+                { text: "the" },
+                { text: "value" },
+                { text: "you" },
+                { text: "already" },
+                { text: "have.", italic: true }
               ]}
             />
             <div className="w-12 h-[3px] opacity-70 rounded-full mt-4 mb-8" style={{ backgroundColor: 'var(--brand-purple, #8b5cf6)' }}></div>
 
-            <p className="text-[16px] md:text-[17px] font-medium leading-relaxed mb-6 max-w-[550px]" style={{ color: '#334155' }}>
-              Not every website needs a redesign. But if any of these feel familiar, it probably does.
+            <p className="text-[16px] md:text-[17px] font-medium leading-relaxed mb-4 max-w-[550px]" style={{ color: '#334155' }}>
+              A redesign shouldn't mean starting from zero.
             </p>
-
-            <div ref={cardRef} className="bg-white p-7 rounded-2xl shadow-sm border border-gray-100 max-w-[550px]">
-              <ul className="flex flex-col gap-3">
-                {signs.map((s, idx) => (
-                  <li key={idx} ref={el => itemRefs.current[idx] = el} className="flex items-start gap-3">
-                    <span className="text-[var(--accent-orange)] font-bold text-[18px] mt-0.5">•</span>
-                    <span className="text-[15.5px] font-semibold" style={{ color: 'var(--brand-navy)' }}>{s}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <p ref={finalRef} className="mt-6 text-[16px] font-bold leading-relaxed max-w-[550px]" style={{ color: 'var(--brand-navy)' }}>
-              A redesign isn't about changing colours. It's about rebuilding the website around what the business needs today — and what it's going to need tomorrow.
+            <p className="text-[16px] md:text-[17px] font-medium leading-relaxed mb-4 max-w-[550px]" style={{ color: '#334155' }}>
+              If an existing website has built up search rankings, content, and history, that value needs to be protected during a rebuild.
+            </p>
+            <p className="text-[16px] md:text-[17px] font-medium leading-relaxed mb-4 max-w-[550px]" style={{ color: '#334155' }}>
+              We manage the transition so businesses get the benefit of a better website without losing the momentum they've already built.
+            </p>
+            <p ref={finalRef} className="text-[16px] md:text-[17px] font-bold leading-relaxed max-w-[550px]" style={{ color: 'var(--brand-navy)' }}>
+              That means mapping redirects, preserving URLs where possible, migrating content cleanly, and ensuring search engines understand the new structure.
             </p>
           </div>
 

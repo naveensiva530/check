@@ -3,9 +3,15 @@ import Navbar from '../Navbar/Navbar';
 import Footer from '../HomePage/Footer/Footer';
 import '../HomePage/common.css';
 
-// Social Media Marketing Page Components
-import SocialHero from '../Services/SocialMedia/SocialHero';
-import TheProblem from '../Services/SocialMedia/TheProblem';
+// Common Components
+import CommonHero from '../Services/common/CommonHero';
+import CommonProblem from '../Services/common/CommonProblem';
+import CommonWhyAdsserv from '../Services/common/CommonWhyAdsserv';
+import CommonFAQ from '../Services/common/CommonFAQ';
+import CommonRelatedServices from '../Services/common/CommonRelatedServices';
+import CommonCTA from '../Services/common/CommonCTA';
+
+// Custom sections kept (highly unique layouts)
 import OurApproach from '../Services/SocialMedia/OurApproach';
 import WhatWeDo from '../Services/SocialMedia/WhatWeDo';
 import Platforms from '../Services/SocialMedia/Platforms';
@@ -13,12 +19,14 @@ import ContentStrategy from '../Services/SocialMedia/ContentStrategy';
 import WhoThisIsFor from '../Services/SocialMedia/WhoThisIsFor';
 import SocialIndustries from '../Services/SocialMedia/SocialIndustries';
 import MeasuringSuccess from '../Services/SocialMedia/MeasuringSuccess';
-import WhyAdsservSocial from '../Services/SocialMedia/WhyAdsservSocial';
 import SocialFunnel from '../Services/SocialMedia/SocialFunnel';
 import Collaboration from '../Services/SocialMedia/Collaboration';
-import SocialFAQ from '../Services/SocialMedia/SocialFAQ';
-import RelatedServices from '../Services/SocialMedia/RelatedServices';
-import FinalCTASocial from '../Services/SocialMedia/FinalCTASocial';
+
+// Data
+import {
+  heroData, problemData, whyAdsservSocialData,
+  faqData, relatedServicesData, ctaData
+} from './SocialMediaMarketingData';
 
 export default function SocialMediaMarketing() {
   useEffect(() => {
@@ -29,22 +37,36 @@ export default function SocialMediaMarketing() {
     <div className="font-sans bg-white min-h-screen flex flex-col">
       <Navbar />
 
-      {/* Full editorial page sequence */}
-      <SocialHero />
-      <TheProblem />
+      <CommonHero {...heroData} />
+
+      <CommonProblem {...problemData} variant="fragments" />
+
       <OurApproach />
+
       <WhatWeDo />
+
       <Platforms />
+
       <ContentStrategy />
+
       <WhoThisIsFor />
+
       <SocialIndustries />
+
       <MeasuringSuccess />
-      <WhyAdsservSocial />
+
+      <CommonWhyAdsserv {...whyAdsservSocialData} variant="list" />
+
       <SocialFunnel />
+
       <Collaboration />
-      <SocialFAQ />
-      <RelatedServices />
-      <FinalCTASocial />
+
+      <CommonFAQ {...faqData} />
+
+      <CommonRelatedServices {...relatedServicesData} />
+
+      <CommonCTA {...ctaData} />
+
       <Footer />
     </div>
   );

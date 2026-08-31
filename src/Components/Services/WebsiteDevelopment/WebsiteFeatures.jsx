@@ -23,7 +23,7 @@ const features = [
   {
     num: '01',
     title: 'Responsive Design',
-    desc: 'Layouts that adapt cleanly across desktop, tablet, and mobile devices.',
+    desc: 'A consistent experience across desktop, tablet, and mobile devices.',
     pinColor: 'var(--accent-orange)',
     bg: 'rgba(224,131,38,0.08)',
     border: 'rgba(224,131,38,0.22)',
@@ -181,7 +181,7 @@ function FeatureCard({ card, position }) {
 export default function WebsiteFeatures() {
   return (
     <LazyMotion features={domAnimation}>
-      <section className="w-full relative font-primary py-24 px-4 md:px-8 overflow-hidden bg-white">
+      <section className="w-full relative font-primary py-24 px-4 md:px-8 overflow-hidden" style={{ backgroundColor: 'var(--bg-light-purple)' }}>
 
 
         <div className="max-w-[1100px] mx-auto relative z-10">
@@ -200,25 +200,27 @@ export default function WebsiteFeatures() {
                   className="italic font-semibold uppercase tracking-widest"
                   style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '13px', color: 'var(--accent-orange)' }}
                 >
-                  WHAT'S BUILT INTO THE EXPERIENCE
+                  MORE THAN VISUALS
                 </span>
               </div>
               <ScrollRevealHeading
                 words={[
-                  { text: "More" },
-                  { text: "than" },
-                  { text: "visuals.", italic: true }
+                  { text: "The" },
+                  { text: "details" },
+                  { text: "users" },
+                  { text: "notice" },
+                  { text: "—" },
+                  { text: "and" },
+                  { text: "the" },
+                  { text: "ones" },
+                  { text: "they" },
+                  { text: "don't.", italic: true }
                 ]}
               />
             </div>
-
-            <div className="flex flex-col justify-center">
-              <p
-                className="text-[16px] md:text-[18px] font-medium leading-relaxed"
-                style={{ color: 'var(--text-gray)' }}
-              >
-                The details users notice — and the ones they don't — work together to shape how the website feels, performs, and supports the business behind it.
-              </p>
+            
+            <div className="flex flex-col justify-center hidden">
+              {/* Optional sub-copy section if needed */}
             </div>
           </div>
 

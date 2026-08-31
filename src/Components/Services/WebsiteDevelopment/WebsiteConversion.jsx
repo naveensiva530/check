@@ -9,14 +9,16 @@ import imgLaptop from '../../../assets/SocailMedia/Laptop.webp';
 gsap.registerPlugin(ScrollTrigger);
 
 const conversionPoints = [
-  "Clear messaging",
-  "Logical page hierarchy",
-  "Visible trust signals",
-  "Strong calls to action",
-  "Frictionless forms",
-  "Mobile-friendly layouts",
-  "Honest, useful content",
-  "Performance that holds attention",
+  "Enquire",
+  "Book a consultation",
+  "Request a quote",
+  "Call",
+  "WhatsApp",
+  "Submit a form",
+  "Purchase",
+  "Register",
+  "Explore a service",
+  "Start a conversation",
 ];
 
 export default function WebsiteConversion() {
@@ -77,20 +79,27 @@ export default function WebsiteConversion() {
                 className="italic font-semibold uppercase tracking-widest"
                 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '13px', color: 'var(--accent-orange)' }}
               >
-                CONVERSION-FOCUSED BUILD
+                FROM TRAFFIC TO ACTION
               </span>
             </div>
             <ScrollRevealHeading
               words={[
-                { text: "Design" },
-                { text: "with" },
-                { text: "intent.", italic: true }
+                { text: "Getting" },
+                { text: "visitors" },
+                { text: "is" },
+                { text: "only" },
+                { text: "half" },
+                { text: "the" },
+                { text: "job.", italic: true }
               ]}
             />
             <div className="w-12 h-[3px] opacity-70 rounded-full mt-4 mb-8" style={{ backgroundColor: 'var(--brand-purple, #8b5cf6)' }}></div>
 
+            <p className="text-[16px] md:text-[17px] font-medium leading-relaxed mb-3 max-w-[550px]" style={{ color: '#334155' }}>
+              Your website may receive visitors from Google, social media, paid advertising, referrals, email, or direct traffic. The experience after that visit matters.
+            </p>
             <p className="text-[16px] md:text-[17px] font-medium leading-relaxed mb-6 max-w-[550px]" style={{ color: '#334155' }}>
-              A website shouldn't just exist. It should work.
+              We structure key pages around clear actions such as:
             </p>
 
             <div ref={cardRef} className="bg-white p-7 rounded-2xl shadow-sm border border-gray-100 max-w-[550px]">
@@ -105,7 +114,7 @@ export default function WebsiteConversion() {
             </div>
 
             <p ref={finalRef} className="mt-6 text-[16px] md:text-[17px] font-bold leading-relaxed max-w-[550px]" style={{ color: 'var(--brand-navy)' }}>
-              A website is only useful if it gets the visitor where they should be — and earns that next step.
+              The right conversion depends on the business and the visitor's stage in the journey.
             </p>
           </div>
 
