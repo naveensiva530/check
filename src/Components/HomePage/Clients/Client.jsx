@@ -46,7 +46,15 @@ const LogoTrack = () => {
       <div className="client-scroll-track">
         {items.map((img, i) => (
           <div key={i} className="client-logo-card">
-            <img src={img} alt={`Client ${i + 1}`} className="client-logo-img" />
+            <img
+              src={img}
+              alt={`Client ${i + 1}`}
+              className="client-logo-img"
+              loading="lazy"
+              decoding="async"
+              width="120"
+              height="60"
+            />
           </div>
         ))}
       </div>
@@ -141,21 +149,27 @@ const Client = () => {
       /* ── Section Wrapper ── */
       .client-section {
         width: 100%;
-        padding: 52px 54px 10px;
+        padding: 48px 24px 10px;
         background: #fff;
         font-family: var(--font-primary, 'Inter', sans-serif);
+      }
+
+      @media (max-width: 640px) {
+        .client-section {
+          padding: 32px 16px 10px;
+        }
       }
 
       /* ── Intro Block (eyebrow + heading + supporting copy) ── */
       .client-intro-block {
         max-width: 1200px;
-        margin: 0 auto 28px;
-        padding: 0 24px;
+        margin: 0 auto 24px;
+        padding: 0 16px;
         text-align: center;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 12px;
+        gap: 10px;
       }
 
       /* ── Eyebrow row (dot + label) — matches Process.jsx ── */
@@ -180,12 +194,18 @@ const Client = () => {
       }
 
       .client-eyebrow-text {
-        font-size: 16px;
+        font-size: 15px;
         font-style: italic;
         font-weight: 500;
         color: #1a233a;
         font-family: 'Playfair Display', Georgia, serif;
         letter-spacing: 0;
+      }
+
+      @media (max-width: 640px) {
+        .client-eyebrow-text {
+          font-size: 13px;
+        }
       }
 
       /* ── Heading row with rotating text pill — matches Process.jsx ── */
@@ -239,10 +259,13 @@ const Client = () => {
       }
 
       @media (max-width: 640px) {
+        .client-supporting-copy {
+          font-size: 13.5px;
+        }
         .client-heading-row,
         .client-heading-pill {
-          font-size: 30px;
-          gap: 10px;
+          font-size: 26px;
+          gap: 8px;
         }
       }
 
@@ -250,7 +273,7 @@ const Client = () => {
       .client-inner {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 0 24px;
+        padding: 0 16px;
         display: flex;
         align-items: center;
         gap: 0;
@@ -259,7 +282,15 @@ const Client = () => {
         background: #fff;
         box-shadow: 0 4px 24px -6px rgba(0,0,0,0.06);
         overflow: hidden;
-        min-height: 90px;
+        min-height: 80px;
+      }
+
+      @media (max-width: 768px) {
+        .client-inner {
+          flex-direction: column;
+          padding: 14px 12px;
+          border-radius: 16px;
+        }
       }
 
       /* ── Left Heading Block ── */
@@ -268,8 +299,17 @@ const Client = () => {
         align-items: center;
         gap: 10px;
         flex-shrink: 0;
-        padding: 20px 28px 20px 24px;
+        padding: 16px 24px 16px 16px;
         position: relative;
+      }
+
+      @media (max-width: 768px) {
+        .client-heading-block {
+          padding: 6px 12px 12px;
+          border-bottom: 1.5px solid #e8e8ee;
+          width: 100%;
+          justify-content: center;
+        }
       }
 
       .client-heading-text {
@@ -279,6 +319,14 @@ const Client = () => {
         color: #1a233a;
         white-space: nowrap;
         margin: 0;
+      }
+
+      @media (max-width: 768px) {
+        .client-heading-text {
+          font-size: 13px;
+          text-align: center;
+          white-space: normal;
+        }
       }
 
       .client-heading-arrow {

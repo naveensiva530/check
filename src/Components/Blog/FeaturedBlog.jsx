@@ -7,42 +7,68 @@ export default function FeaturedBlog({ post }) {
   if (!post) return null;
 
   return (
-    <section className="w-full pb-16 pt-4 relative font-primary bg-white">
+    <section className="w-full pb-8 pt-4 relative font-primary bg-white">
       <div className="max-w-[1200px] w-full mx-auto px-4 md:px-8">
         <div className="flex items-center gap-2 mb-8">
-          <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white border border-gray-200 shadow-sm flex-shrink-0">
-            <span style={{ color: '#f97316', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
+          <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white border border-slate-200 flex-shrink-0">
+            <span style={{ color: 'var(--brand-orange)', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
           </span>
-          <span className="italic font-semibold uppercase tracking-widest" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '13px', color: 'var(--accent-orange)' }}>
+          <span className="italic font-semibold uppercase tracking-widest" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '13px', color: 'var(--brand-orange)' }}>
             FEATURED BLOG
           </span>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center bg-white rounded-[32px] overflow-hidden shadow-[0_20px_60px_rgba(30,47,87,0.08)] border border-gray-100">
-          <div className="relative aspect-[4/3] lg:aspect-auto lg:h-full min-h-[280px] overflow-hidden">
-            <img src={post.image} alt={post.title} className="w-full h-full object-cover" />
-            <div className="absolute top-5 left-5 bg-white/95 backdrop-blur-sm px-4 py-1.5 rounded-full text-[11px] font-extrabold uppercase tracking-wider shadow-sm" style={{ color: 'var(--brand-navy)' }}>
-              Blog {post.id}
-            </div>
+        {/* Exact Stadium Capsule Card (Brand Colors) */}
+        <div
+          className="group relative flex flex-col md:flex-row items-center rounded-[36px] md:rounded-full p-4 sm:p-6 md:p-3 lg:p-4 transition-all duration-300"
+          style={{
+            backgroundColor: post.cardBg || '#FFF9F5',
+          }}
+        >
+          {/* Circular 3D Illustration Area */}
+          <div
+            className="w-[300px] h-[300px] sm:w-[350px] sm:h-[350px] md:w-[390px] md:h-[390px] lg:w-[420px] lg:h-[420px] rounded-full overflow-hidden flex items-center justify-center flex-shrink-0 mb-6 md:mb-0 md:-ml-1 md:-my-4 transition-transform duration-500 group-hover:scale-[1.02]"
+            style={{
+              backgroundColor: post.circleBg || '#FCE6D2',
+            }}
+          >
+            <img
+              src={post.image}
+              alt={post.title}
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
           </div>
 
-          <div className="p-8 md:p-12 lg:py-14">
-            <span className="text-[12px] font-extrabold uppercase tracking-widest mb-4 block" style={{ color: 'var(--accent-orange)' }}>
+          {/* Content Area */}
+          <div className="w-full md:flex-1 flex flex-col justify-center px-4 sm:px-8 md:px-10 lg:px-14 py-4 md:py-8">
+            <span className="text-[12px] font-bold uppercase tracking-widest text-[var(--brand-orange)] mb-2 block">
               {post.category}
             </span>
-            <h2 className="text-[28px] md:text-[36px] font-extrabold leading-[1.15] tracking-tight mb-5" style={{ color: 'var(--brand-navy)' }}>
+            <h2 className="text-[22px] sm:text-[26px] lg:text-[29px] font-extrabold text-[var(--brand-navy)] leading-[1.25] mb-3">
               {post.title}
             </h2>
-            <p className="text-[16px] font-medium leading-relaxed text-slate-600 mb-6">
-              {post.excerpt}
-            </p>
-            <p className="text-[13px] font-semibold text-slate-400 mb-8">{post.meta}</p>
+
+            {/* Excerpt */}
+            {post.excerpt && (
+              <p className="text-[14px] sm:text-[15px] font-normal text-slate-600 leading-relaxed mb-4">
+                {post.excerpt}
+              </p>
+            )}
+
+            {/* Article Information */}
+            {post.meta && (
+              <div className="text-[12px] sm:text-[13px] font-semibold text-slate-400 mb-6">
+                {post.meta}
+              </div>
+            )}
+
+            {/* Brand Pill Button */}
             <Link
               to={`/blog/${post.slug}`}
-              className="group inline-flex items-center gap-3 px-7 py-3.5 bg-[var(--brand-navy)] text-white text-[14px] font-bold rounded-full hover:bg-[var(--accent-orange)] transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center px-8 py-3 bg-[var(--brand-orange)] hover:bg-[var(--brand-navy)] text-white text-[14px] font-bold rounded-full transition-colors duration-200 w-fit"
             >
-              <span>Read Article</span>
-              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              Read Article
             </Link>
           </div>
         </div>

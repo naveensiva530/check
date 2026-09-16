@@ -4,24 +4,24 @@ import ButtonWithIcon from '../../../Components/ui/button-with-icon';
 import ScrollRevealHeading from './ScrollRevealHeading';
 import '../../../Components/HomePage/common.css';
 
-import img1 from '../../../assets/Services/Content Writing.webp';
-import img2 from '../../../assets/SocailMedia/Educate.webp';
-import img3 from '../../../assets/SocailMedia/Connect.webp';
-import img4 from '../../../assets/SocailMedia/Convert.webp';
-import img5 from '../../../assets/SocailMedia/Laptop.webp';
-import img6 from '../../../assets/SocailMedia/Entertain.webp';
-import img7 from '../../../assets/SocailMedia/Build Trust.webp';
-import img8 from '../../../assets/Services/Branding Solution.webp';
+import imgWebsiteContent from '../../../assets/Servicess/ContentWriting/WhatWeDo/Website Content.webp';
+import imgSEOContent from '../../../assets/Servicess/ContentWriting/WhatWeDo/SEO Content.webp';
+import imgBlogWriting from '../../../assets/Servicess/ContentWriting/WhatWeDo/Blog Writing.webp';
+import imgLandingPageCopy from '../../../assets/Servicess/ContentWriting/WhatWeDo/Landing Page Copy.webp';
+import imgServiceProductContent from '../../../assets/Servicess/ContentWriting/WhatWeDo/Service & Product Content.webp';
+import imgSocialMediaContent from '../../../assets/Servicess/ContentWriting/WhatWeDo/Social Media Content.webp';
+import imgAdCopy from '../../../assets/Servicess/ContentWriting/WhatWeDo/Ad Copy.webp';
+import imgBrandMessaging from '../../../assets/Servicess/ContentWriting/WhatWeDo/Brand Messaging.webp';
 
 const services = [
-  { num: "01", title: "Website Content", desc: "Clear, persuasive website copy for Home, About, Services, industry pages, landing pages and other important customer touchpoints.", img: img1 },
-  { num: "02", title: "SEO Content", desc: "Search-focused content built around relevant topics, search intent, useful information and logical content structure.", img: img2 },
-  { num: "03", title: "Blog Writing", desc: "Useful articles that answer audience questions, demonstrate expertise and create opportunities for long-term organic visibility.", img: img3 },
-  { num: "04", title: "Landing Page Copy", desc: "Focused messaging that connects the audience's problem with your offer and gives them a clear reason to take action.", img: img4 },
-  { num: "05", title: "Service & Product Content", desc: "Straightforward explanations that help potential customers understand what you provide, who it is for and why it matters.", img: img5 },
-  { num: "06", title: "Social Media Content", desc: "Platform-aware captions and written content designed for fast-moving social environments and audience interaction.", img: img6 },
-  { num: "07", title: "Ad Copy", desc: "Concise, benefit-focused messaging designed to communicate an offer quickly and support paid campaign objectives.", img: img7 },
-  { num: "08", title: "Brand Messaging", desc: "Consistent words, positioning and messaging that help your brand sound recognisable across different channels.", img: img8 },
+  { num: "01", title: "Website Content", desc: "Clear, persuasive website copy for Home, About, Services, industry pages, landing pages and other important customer touchpoints.", img: imgWebsiteContent },
+  { num: "02", title: "SEO Content", desc: "Search-focused content built around relevant topics, search intent, useful information and logical content structure.", img: imgSEOContent },
+  { num: "03", title: "Blog Writing", desc: "Useful articles that answer audience questions, demonstrate expertise and create opportunities for long-term organic visibility.", img: imgBlogWriting },
+  { num: "04", title: "Landing Page Copy", desc: "Focused messaging that connects the audience's problem with your offer and gives them a clear reason to take action.", img: imgLandingPageCopy },
+  { num: "05", title: "Service & Product Content", desc: "Straightforward explanations that help potential customers understand what you provide, who it is for and why it matters.", img: imgServiceProductContent },
+  { num: "06", title: "Social Media Content", desc: "Platform-aware captions and written content designed for fast-moving social environments and audience interaction.", img: imgSocialMediaContent },
+  { num: "07", title: "Ad Copy", desc: "Concise, benefit-focused messaging designed to communicate an offer quickly and support paid campaign objectives.", img: imgAdCopy },
+  { num: "08", title: "Brand Messaging", desc: "Consistent words, positioning and messaging that help your brand sound recognisable across different channels.", img: imgBrandMessaging },
 ];
 
 export default function WhatWeWrite() {
@@ -35,7 +35,7 @@ export default function WhatWeWrite() {
   }, [isPaused]);
 
   return (
-    <section className="w-full py-24 relative font-primary overflow-hidden bg-white">
+    <section className="w-full py-24 relative font-primary overflow-hidden" style={{ backgroundColor: 'var(--bg-light-purple)' }}>
       <div className="max-w-[1200px] w-full mx-auto px-4 md:px-8 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
           <div className="flex-1 text-center lg:text-left relative z-10">
@@ -66,8 +66,7 @@ export default function WhatWeWrite() {
               <div className="flex h-full w-full transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]" style={{ transform: `translateX(-${currentIdx * 100}%)` }}>
                 {services.map((svc, idx) => (
                   <div key={idx} className="min-w-full h-full relative bg-white">
-                    <div className="absolute top-16 left-5 z-40 bg-white border border-gray-200 text-[var(--brand-navy)] text-[11px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm">Service {svc.num}</div>
-                    <div className="absolute top-[88px] inset-x-5 bottom-[35%] rounded-2xl overflow-hidden bg-gray-50 border border-gray-100 shadow-sm flex items-center justify-center">
+                    <div className="absolute top-14 inset-x-5 bottom-[35%] rounded-2xl overflow-hidden bg-gray-50 border border-gray-100 shadow-sm flex items-center justify-center">
                       <img src={svc.img} alt={svc.title} className="w-full h-full object-cover object-center" />
                     </div>
                     <div className="absolute bottom-0 inset-x-0 h-[35%] flex flex-col justify-end p-6 pb-12 z-40 bg-white">

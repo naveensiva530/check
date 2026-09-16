@@ -1,77 +1,190 @@
 import React from 'react';
 import ScrollRevealHeading from './ScrollRevealHeading';
-import { FaInstagram, FaYoutube, FaGlobe } from 'react-icons/fa6';
+import {
+  FaInstagram,
+  FaFacebookF,
+  FaLinkedinIn,
+  FaTiktok,
+  FaYoutube,
+  FaXTwitter,
+  FaPinterestP,
+  FaSnapchat,
+  FaWhatsapp,
+  FaAt,
+} from 'react-icons/fa6';
 import '../../../Components/HomePage/common.css';
 
+/* ─── Platform data ─────────────────────────────────────── */
 const platforms = [
   {
     name: 'Instagram',
-    handle: '@creator',
+    handle: '@Adsserv',
     desc: 'Creator collaborations designed around Reels, Stories, posts, product content, and other relevant Instagram formats.',
     Icon: FaInstagram,
     color: '#E1306C',
     bg: '#fff0f5',
-    stat: 'Reels & Stories',
+    stat: '2.3B users',
   },
   {
     name: 'YouTube',
-    handle: 'Creator Channel',
-    desc: 'Long-form integrations, Shorts, reviews, explainers, demonstrations, and creator-led storytelling where appropriate.',
+    handle: 'Adsserv',
+    desc: 'Long-form integrations, Shorts, reviews, explainers, demonstrations, and creator-led storytelling.',
     Icon: FaYoutube,
     color: '#FF0000',
     bg: '#fff5f5',
-    stat: 'Long & Short Form',
+    stat: '2.7B users',
   },
   {
-    name: 'Other Platforms',
-    handle: 'Multi-platform',
-    desc: 'Campaigns can be adapted to other relevant platforms when the audience and creator ecosystem justify the investment.',
-    Icon: FaGlobe,
-    color: '#1e2f57',
+    name: 'TikTok',
+    handle: '@Adsserv',
+    desc: 'Short-form creator content, trend participation, product discovery, and influencer-led campaigns.',
+    Icon: FaTiktok,
+    color: '#010101',
+    bg: '#f5f5f5',
+    stat: '1.7B users',
+  },
+  {
+    name: 'Facebook',
+    handle: 'Adsserv',
+    desc: 'Creator partnerships, community engagement, live content, and influencer-driven campaigns.',
+    Icon: FaFacebookF,
+    color: '#1877F2',
     bg: '#f0f5ff',
-    stat: 'Platform Flexible',
+    stat: '3.1B users',
+  },
+  {
+    name: 'LinkedIn',
+    handle: 'Adsserv',
+    desc: 'Professional thought leadership, B2B influencer collaborations, and industry expert partnerships.',
+    Icon: FaLinkedinIn,
+    color: '#0A66C2',
+    bg: '#f0f7ff',
+    stat: '1B users',
+  },
+  {
+    name: 'X (Twitter)',
+    handle: '@Adsserv',
+    desc: 'Real-time influencer engagement, trending conversations, and creator-led brand discussions.',
+    Icon: FaXTwitter,
+    color: '#000000',
+    bg: '#f5f5f5',
+    stat: '550M users',
+  },
+  {
+    name: 'Pinterest',
+    handle: '@Adsserv',
+    desc: 'Visual discovery, influencer pins, product recommendations, and lifestyle content.',
+    Icon: FaPinterestP,
+    color: '#E60023',
+    bg: '#fff0f0',
+    stat: '518M users',
+  },
+  {
+    name: 'Snapchat',
+    handle: '@Adsserv',
+    desc: 'Ephemeral influencer content, AR experiences, and younger audience engagement.',
+    Icon: FaSnapchat,
+    color: '#FFFC00',
+    bg: '#fffde8',
+    stat: '750M users',
+  },
+  {
+    name: 'WhatsApp',
+    handle: '+1 7603912438',
+    desc: 'Direct influencer communication, broadcast collaborations, and community management.',
+    Icon: FaWhatsapp,
+    color: '#25D366',
+    bg: '#f0fff5',
+    stat: '2.9B users',
+  },
+  {
+    name: 'Threads',
+    handle: '@Adsserv',
+    desc: 'Text-based influencer engagement, community conversations, and brand personality.',
+    Icon: FaAt,
+    color: '#000000',
+    bg: '#f5f5f5',
+    stat: '200M users',
   },
 ];
 
-const rowA = [...platforms, ...platforms];
-const rowB = [...platforms.slice(1), ...platforms.slice(0, 1), ...platforms.slice(1), ...platforms.slice(0, 1)];
+/* ─── Split into two rows ───────────────────────────────── */
+const rowA = [...platforms, ...platforms]; // duplicate for seamless loop
+const rowB = [...platforms.slice(5), ...platforms.slice(0, 5), ...platforms.slice(5), ...platforms.slice(0, 5)];
 
+/* ─── Individual Card ───────────────────────────────────── */
 function PlatformCard({ platform }) {
   const { name, handle, desc, Icon, color, bg, stat } = platform;
   return (
     <div
-      className="relative flex-shrink-0 w-[300px] rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden"
+      className="relative flex-shrink-0 w-[240px] sm:w-[270px] md:w-[300px] rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden"
       style={{ boxShadow: '0 4px 20px rgba(30,47,87,0.06)' }}
     >
-      <div className="relative p-6 flex items-start justify-between" style={{ background: bg }}>
-        <div className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-md" style={{ background: color }}>
-          <Icon size={26} color="#fff" />
+      {/* Top section with icon */}
+      <div
+        className="relative p-4 sm:p-5 md:p-6 flex items-start justify-between"
+        style={{ background: bg }}
+      >
+        {/* Platform icon */}
+        <div
+          className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center shadow-md"
+          style={{ background: color }}
+        >
+          <Icon size={18} color="#fff" />
         </div>
+
+        {/* Stat badge */}
         <span
-          className="text-[12px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider border"
-          style={{ color: 'var(--brand-navy)', borderColor: 'rgba(30,47,87,0.12)', background: '#fff' }}
+          className="text-[10px] sm:text-[11px] md:text-[12px] font-extrabold px-2 sm:px-3 py-0.5 sm:py-1 rounded-full uppercase tracking-wider border"
+          style={{
+            color: 'var(--brand-navy)',
+            borderColor: 'rgba(30,47,87,0.12)',
+            background: '#fff',
+          }}
         >
           {stat}
         </span>
+
+        {/* Decorative dot pattern */}
         <div
           className="absolute inset-0 -z-0 opacity-10"
-          style={{ backgroundImage: `radial-gradient(${color} 1px, transparent 1px)`, backgroundSize: '16px 16px' }}
+          style={{
+            backgroundImage: `radial-gradient(${color} 1px, transparent 1px)`,
+            backgroundSize: '16px 16px',
+          }}
         />
       </div>
 
-      <div className="p-6 pt-5">
+      {/* Bottom content */}
+      <div className="p-4 pt-3 sm:p-5 sm:pt-4 md:p-6 md:pt-5">
         <div className="flex items-center gap-2 mb-1">
-          <h3 className="text-[18px] font-extrabold" style={{ color: 'var(--brand-navy)' }}>{name}</h3>
-          <span className="w-4 h-4 rounded-full flex items-center justify-center text-white flex-shrink-0" style={{ background: color, fontSize: '9px', fontWeight: 900 }}>✓</span>
+          <h3 className="text-[14px] sm:text-[16px] md:text-[18px] font-extrabold" style={{ color: 'var(--brand-navy)' }}>
+            {name}
+          </h3>
+          {/* Verified dot */}
+          <span
+            className="w-4 h-4 rounded-full flex items-center justify-center text-white flex-shrink-0"
+            style={{ background: color, fontSize: '9px', fontWeight: 900 }}
+          >
+            ✓
+          </span>
         </div>
-        <p className="text-[12px] font-semibold mb-3" style={{ color }}>{handle}</p>
-        <p className="text-[13.5px] leading-relaxed" style={{ color: 'var(--text-gray)' }}>{desc}</p>
+        <p className="text-[10px] sm:text-[11px] md:text-[12px] font-semibold mb-2 sm:mb-3" style={{ color }}>
+          {handle}
+        </p>
+        <p className="text-[11px] sm:text-[12px] md:text-[13.5px] leading-relaxed" style={{ color: 'var(--text-gray)' }}>
+          {desc}
+        </p>
 
+        {/* Dashed divider */}
         <div className="border-t border-dashed border-slate-200 mt-4 pt-3 flex items-center justify-between">
           <span className="text-[11px] font-bold uppercase tracking-wider" style={{ color: 'var(--brand-navy)' }}>
-            Platform fit
+            We manage this
           </span>
-          <div className="w-5 h-5 rounded-full flex items-center justify-center" style={{ background: color }}>
+          <div
+            className="w-5 h-5 rounded-full flex items-center justify-center"
+            style={{ background: color }}
+          >
             <span className="text-white font-black" style={{ fontSize: '10px' }}>→</span>
           </div>
         </div>
@@ -83,8 +196,11 @@ function PlatformCard({ platform }) {
 export default function PlatformFit() {
   return (
     <section className="w-full py-24 bg-white relative font-primary overflow-hidden">
+      {/* Header */}
       <div className="max-w-[1200px] w-full mx-auto px-4 md:px-8 mb-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+          
+          {/* Left Column */}
           <div className="flex flex-col">
             <div className="flex items-center gap-2 mb-6">
               <span
@@ -117,15 +233,18 @@ export default function PlatformFit() {
             />
           </div>
 
+          {/* Right Column */}
           <div className="flex flex-col gap-4 text-[16px] md:text-[18px] font-medium leading-relaxed text-slate-700 justify-center">
             <p>Every platform has its own content language, audience behaviour, and creator ecosystem.</p>
+            <p>We match creators and campaign formats to where your audience actually spends time.</p>
             <p className="font-bold" style={{ color: 'var(--brand-navy)' }}>
-              We match creators and campaign formats to where your audience actually spends time.
+              We adapt the influencer approach accordingly.
             </p>
           </div>
         </div>
       </div>
 
+      {/* ── Marquee Row A — scrolls LEFT ─────────────── */}
       <div
         className="relative overflow-hidden mb-4"
         style={{
@@ -133,13 +252,20 @@ export default function PlatformFit() {
           WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)',
         }}
       >
-        <div className="flex gap-4" style={{ width: 'max-content', animation: 'marqueeLeft 40s linear infinite' }}>
+        <div
+          className="flex gap-4"
+          style={{
+            width: 'max-content',
+            animation: 'marqueeLeft 25s linear infinite',
+          }}
+        >
           {rowA.map((p, i) => (
             <PlatformCard key={i} platform={p} />
           ))}
         </div>
       </div>
 
+      {/* ── Marquee Row B — scrolls RIGHT ────────────── */}
       <div
         className="relative overflow-hidden"
         style={{
@@ -147,13 +273,20 @@ export default function PlatformFit() {
           WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)',
         }}
       >
-        <div className="flex gap-4" style={{ width: 'max-content', animation: 'marqueeRight 40s linear infinite' }}>
+        <div
+          className="flex gap-4"
+          style={{
+            width: 'max-content',
+            animation: 'marqueeRight 30s linear infinite',
+          }}
+        >
           {rowB.map((p, i) => (
             <PlatformCard key={i} platform={p} />
           ))}
         </div>
       </div>
 
+      {/* Keyframes injected inline */}
       <style>{`
         @keyframes marqueeLeft {
           from { transform: translateX(0); }

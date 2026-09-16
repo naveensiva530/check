@@ -3,21 +3,29 @@ import Navbar from '../Navbar/Navbar';
 import Footer from '../HomePage/Footer/Footer';
 import '../HomePage/common.css';
 
+// Common Components
 import CommonHero from '../Services/common/CommonHero';
 import CommonProblem from '../Services/common/CommonProblem';
-import CommonApproach from '../Services/common/CommonApproach';
-import CommonWhatWeDo from '../Services/common/CommonWhatWeDo';
-import CommonSpecialty from '../Services/common/CommonSpecialty';
 import CommonWhyAdsserv from '../Services/common/CommonWhyAdsserv';
 import CommonFAQ from '../Services/common/CommonFAQ';
 import CommonRelatedServices from '../Services/common/CommonRelatedServices';
 import CommonCTA from '../Services/common/CommonCTA';
-import CommonStages from '../Services/common/CommonStages';
 
-// Import data
+// Custom sections (following template pattern)
+import ConsultingApproach from '../Services/DigitalConsulting/ConsultingApproach';
+import WhatWeHelpSolve from '../Services/DigitalConsulting/WhatWeHelpSolve';
+import ConsultingProcess from '../Services/DigitalConsulting/ConsultingProcess';
+import ConsultingServices from '../Services/DigitalConsulting/ConsultingServices';
+import StrategySection from '../Services/DigitalConsulting/StrategySection';
+import RoadmapSection from '../Services/DigitalConsulting/RoadmapSection';
+import ServiceConnection from '../Services/DigitalConsulting/ServiceConnection';
+import TrustSection from '../Services/DigitalConsulting/TrustSection';
+import WhoItsFor from '../Services/DigitalConsulting/WhoItsFor';
+
+// Data
 import {
-  heroData, problemData, whatWeHelpSolveData, approachData, consultingServicesData,
-  whoItsForData, whyAdsservConsultingData, faqData, relatedServicesData, ctaData
+  heroData, problemData, whyAdsservConsultingData,
+  faqData, relatedServicesData, ctaData
 } from './DigitalConsultingData';
 
 export default function DigitalConsulting() {
@@ -29,70 +37,51 @@ export default function DigitalConsulting() {
     <div className="font-sans bg-white min-h-screen flex flex-col">
       <Navbar />
 
+      {/* 1. HERO */}
       <CommonHero {...heroData} />
-      
+
+      {/* 2. STRATEGIC INTRODUCTION */}
       <CommonProblem {...problemData} variant="fragments" />
-      
-      <CommonWhatWeDo {...whatWeHelpSolveData} />
-      
-      <CommonSpecialty 
-        tagText="OUR CONSULTING APPROACH"
-        headingWords={[
-          { text: "We" }, { text: "look" }, { text: "at" }, { text: "the" },
-          { text: "whole", italic: true }, { text: "digital" }, { text: "picture" },
-          { text: "before" }, { text: "recommending" }, { text: "the" }, { text: "next" }, { text: "move." }
-        ]}
-        paragraphs={[
-          "Good consulting starts with understanding, not assumptions. We look at your business objectives, audience, existing digital activity, competitors, customer journey and available data before deciding where the biggest opportunities are.",
-          "The goal isn't to give you a huge list of recommendations. It's to identify the moves that matter most."
-        ]}
-        leftContent={
-          <div className="relative mt-8">
-            <div className="absolute -bottom-4 -right-4 bg-white rounded-2xl p-5 shadow-xl border border-gray-100 hidden md:block max-w-[200px]">
-              <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2">Focus</p>
-              <p className="text-[14px] font-extrabold leading-snug" style={{ color: 'var(--brand-navy)' }}>High-impact moves over long task lists</p>
-            </div>
-          </div>
-        }
-        bgColor="white"
-      />
 
-      <CommonApproach {...approachData} />
-      
-      <CommonWhatWeDo {...consultingServicesData} />
-      
-      {/* Strategy Section */}
-      <CommonSpecialty 
-        tagText="THE DIGITAL STRATEGY"
-        headingWords={[{ text: "Strategy" }, { text: "gives" }, { text: "the" }, { text: "tactics", italic: true }, { text: "a" }, { text: "job" }, { text: "to" }, { text: "do." }]}
-        paragraphs={[
-          "Without a strategy, digital marketing is just a collection of random activities. We help businesses define the overarching plan that guides those activities.",
-          "This includes identifying which audience segments hold the most value, which channels are best suited to reach them, how the budget should be allocated and what metrics actually matter."
-        ]}
-        bgColor="white"
-      />
+      {/* 3. WHAT WE HELP YOU SOLVE */}
+      <WhatWeHelpSolve />
 
-      {/* Roadmap Section */}
-      <CommonSpecialty 
-        tagText="THE EXECUTION PLAN"
-        headingWords={[{ text: "Knowing" }, { text: "what" }, { text: "to" }, { text: "do" }, { text: "is" }, { text: "only" }, { text: "half", italic: true }, { text: "the" }, { text: "challenge." }]}
-        paragraphs={[
-          "A strategy is useless if the team doesn't know how to execute it. We turn strategic recommendations into a practical roadmap.",
-          "This means assigning clear priorities, defining who is responsible for what, setting timelines and outlining the specific steps required to get the work done."
-        ]}
-        bgColor="purple"
-      />
+      {/* 4. OUR CONSULTING APPROACH */}
+      <ConsultingApproach />
 
-      <CommonStages {...whoItsForData} />
+      {/* 5. PROCESS */}
+      <ConsultingProcess />
 
+      {/* 6. CONSULTING SERVICES */}
+      <ConsultingServices />
+
+      {/* 7. THE DIGITAL STRATEGY */}
+      <StrategySection />
+
+      {/* 8. THE EXECUTION PLAN / ROADMAP */}
+      <RoadmapSection />
+
+
+
+      {/* 10. TRUST / PROOF SECTION */}
+      <TrustSection />
+
+      {/* 11. WHO IT'S FOR */}
+      <WhoItsFor />
+
+      {/* 12. WHY ADSSERV */}
       <CommonWhyAdsserv {...whyAdsservConsultingData} variant="list" />
-      
+
+      {/* 13. FAQ */}
       <CommonFAQ {...faqData} />
-      
+
+      {/* RELATED SERVICES */}
       <CommonRelatedServices {...relatedServicesData} />
-      
+
+      {/* 14. FINAL CTA */}
       <CommonCTA {...ctaData} />
 
+      {/* 15. FOOTER */}
       <Footer />
     </div>
   );

@@ -3,11 +3,16 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import ScrollRevealHeading from './ScrollRevealHeading';
 import '../../../Components/HomePage/common.css';
 
+import imgStartups from '../../../assets/Servicess/WhoThisIsFor/Startups.webp';
+import imgSaaS from '../../../assets/Servicess/WhoThisIsFor/SaaS & Technology.webp';
+import imgLocal from '../../../assets/Servicess/WhoThisIsFor/Local Businesses.webp';
+import imgGrowing from '../../../assets/Servicess/WhoThisIsFor/Growing Businesses.webp';
+
 const audiences = [
-  { title: 'Startups', desc: 'Clear positioning and content that explains a new product or service without making it unnecessarily complicated.', image: 'https://images.unsplash.com/photo-1559136555-e4616d9d15e2?auto=format&fit=crop&q=80&w=800' },
-  { title: 'SaaS & Technology', desc: 'Content that turns technical features, workflows and capabilities into understandable business value.', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800' },
-  { title: 'Local Businesses', desc: 'Useful, relevant content that helps potential customers discover your business and understand why they should choose you.', image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800' },
-  { title: 'Growing Brands', desc: 'A consistent content approach across websites, search, social media and campaigns as the brand expands.', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800' },
+  { title: 'Startups', desc: 'Clear positioning and content that explains a new product or service without making it unnecessarily complicated.', image: imgStartups },
+  { title: 'SaaS & Technology', desc: 'Content that turns technical features, workflows and capabilities into understandable business value.', image: imgSaaS },
+  { title: 'Local Businesses', desc: 'Useful, relevant content that helps potential customers discover your business and understand why they should choose you.', image: imgLocal },
+  { title: 'Growing Brands', desc: 'A consistent content approach across websites, search, social media and campaigns as the brand expands.', image: imgGrowing },
 ];
 
 const StepRow = ({ step, index }) => {
@@ -20,7 +25,6 @@ const StepRow = ({ step, index }) => {
   return (
     <div ref={ref} className="relative w-full flex flex-col md:flex-row gap-8 md:gap-0 items-center py-6 md:py-10 group">
       <div className={`w-full md:w-1/2 flex flex-col justify-center ${isReversed ? 'md:order-2 md:pl-16 lg:pl-20' : 'md:order-1 md:pr-16 lg:pr-20'}`}>
-        <span className="text-[13px] font-extrabold mb-2 block" style={{ color: 'var(--brand-purple, #8b5cf6)', fontFamily: "'Playfair Display', Georgia, serif" }}>Card {String(index + 1).padStart(2, '0')}</span>
         <motion.h3 className="text-[26px] md:text-[32px] font-bold leading-[1.2] mb-4 tracking-tight" style={{ color: 'var(--brand-navy)', opacity, y }}>{step.title}</motion.h3>
         <motion.p className="text-[15px] md:text-[16px] leading-[1.7] font-medium" style={{ color: 'var(--text-gray, #475569)', opacity, y }}>{step.desc}</motion.p>
       </div>
@@ -28,6 +32,9 @@ const StepRow = ({ step, index }) => {
         <motion.div className="w-full md:w-[95%] lg:w-full aspect-[21/9] rounded-[24px] overflow-hidden bg-white shadow-xl ring-1 ring-black/5" style={{ opacity, y }}>
           <img src={step.image} alt={step.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
         </motion.div>
+        <div className={`hidden md:block absolute top-1/2 -translate-y-1/2 h-[2px] bg-slate-200 ${isReversed ? 'right-0 w-12' : 'left-0 w-12'}`}>
+          <motion.div className={`w-full h-full bg-[var(--accent-orange)] ${isReversed ? 'origin-right' : 'origin-left'}`} style={{ scaleX: scrollYProgress }} />
+        </div>
       </div>
     </div>
   );
@@ -55,10 +62,30 @@ export default function AudienceSection() {
             A startup founder, a SaaS buyer, a local customer and a social media follower do not read content with the same expectations. We adapt the message to the audience, platform, buying stage and business objective while keeping the underlying brand voice consistent.
           </p>
         </div>
-        <div className="flex flex-col relative z-10">
-          {audiences.map((item, index) => (
-            <StepRow key={index} step={item} index={index} />
-          ))}
+        {/* TIMELINE SECTION */}
+        <div className="relative w-full">
+          
+          {/* Central Vertical Line (Desktop) */}
+          <div className="hidden md:block absolute top-[5%] bottom-[5%] left-1/2 -translate-x-1/2 w-[2px] bg-slate-200 z-0">
+             <motion.div 
+               className="w-full bg-[var(--accent-orange)] origin-top"
+               style={{ 
+                 height: '100%',
+                 scaleY: scrollYProgress 
+               }}
+             />
+             {/* Timeline dot */}
+             <motion.div 
+               className="absolute left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-[var(--accent-orange)] shadow-[0_0_0_6px_#fff]"
+               style={{ top: useTransform(scrollYProgress, [0, 1], ["0%", "100%"]) }}
+             />
+          </div>
+
+          <div className="flex flex-col relative z-10">
+            {audiences.map((item, index) => (
+              <StepRow key={index} step={item} index={index} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

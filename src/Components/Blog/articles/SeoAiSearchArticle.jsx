@@ -2,63 +2,70 @@ import React from 'react';
 import '../../HomePage/common.css';
 
 const H2 = ({ children }) => (
-  <h2 className="text-[22px] md:text-[26px] font-extrabold tracking-tight mt-14 mb-5" style={{ color: 'var(--brand-navy)' }}>{children}</h2>
+  <h2 className="text-[22px] md:text-[26px] font-extrabold tracking-tight mt-14 mb-5 text-[var(--brand-navy)] flex items-center gap-3">
+    <span className="w-1.5 h-6 rounded-full bg-[var(--brand-orange)] flex-shrink-0" />
+    <span>{children}</span>
+  </h2>
 );
 
 const P = ({ children }) => (
-  <p className="text-[16px] font-medium leading-[1.75] text-slate-600 mb-4">{children}</p>
+  <p className="text-[16.5px] font-normal leading-[1.85] text-slate-700 mb-5">{children}</p>
 );
 
 const UL = ({ items }) => (
-  <ul className="space-y-2 mb-6 pl-1">
+  <ul className="space-y-3 mb-6 pl-1">
     {items.map((item) => (
-      <li key={item} className="flex items-start gap-3 text-[15px] font-medium leading-relaxed text-slate-600">
-        <span className="mt-2 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--accent-orange)' }} />
-        {item}
+      <li key={item} className="flex items-start gap-3 text-[15.5px] font-medium leading-relaxed text-slate-700">
+        <span className="text-[var(--brand-orange)] text-[16px] font-black leading-none mt-1 select-none flex-shrink-0">✓</span>
+        <span>{item}</span>
       </li>
     ))}
   </ul>
 );
 
 const ShiftBox = ({ from, to }) => (
-  <div className="my-8 p-6 md:p-8 rounded-[20px] border border-gray-100 bg-slate-50">
-    <p className="text-[15px] font-semibold text-slate-500 mb-3">Businesses should start thinking beyond:</p>
-    <p className="text-[17px] font-bold mb-5 italic" style={{ color: 'var(--brand-navy)' }}>"{from}"</p>
-    <p className="text-[15px] font-semibold text-slate-500 mb-3">and also ask:</p>
-    <p className="text-[17px] font-bold italic" style={{ color: 'var(--accent-orange)' }}>"{to}"</p>
+  <div className="my-8 p-6 md:p-8 rounded-[22px] border border-purple-200/80 border-l-4 border-l-[var(--brand-orange)] shadow-sm" style={{ backgroundColor: 'var(--bg-light-purple)' }}>
+    <p className="text-[12.5px] font-bold uppercase tracking-wider text-slate-600 mb-2">Businesses should start thinking beyond:</p>
+    <div className="bg-white p-4 rounded-xl border border-purple-100 mb-4">
+      <p className="text-[16.5px] font-bold italic text-[var(--brand-navy)]">"{from}"</p>
+    </div>
+    <p className="text-[12.5px] font-bold uppercase tracking-wider text-slate-600 mb-2">and also ask:</p>
+    <div className="bg-white p-4 rounded-xl border border-purple-100">
+      <p className="text-[16.5px] font-bold italic text-[var(--brand-orange)]">"{to}"</p>
+    </div>
   </div>
 );
 
 const DefinitionBox = ({ acronym, full, description, example }) => (
-  <div className="my-8 p-6 md:p-8 rounded-[20px] border border-gray-100 bg-white shadow-[0_8px_30px_rgba(30,47,87,0.06)]">
-    <div className="flex items-baseline gap-3 mb-2">
-      <span className="text-[28px] font-extrabold" style={{ color: 'var(--accent-orange)' }}>{acronym}</span>
-      <span className="text-[14px] font-bold uppercase tracking-wider text-slate-400">{full}</span>
+  <div className="my-8 p-6 md:p-8 rounded-[22px] border border-purple-200/80 shadow-sm" style={{ backgroundColor: 'var(--bg-light-purple)' }}>
+    <div className="flex items-baseline gap-3 mb-3">
+      <span className="text-[28px] font-black text-[var(--brand-orange)]">{acronym}</span>
+      <span className="text-[13px] font-bold uppercase tracking-wider text-slate-600">{full}</span>
     </div>
     <P>{description}</P>
     {example && (
-      <div className="mt-4 p-4 rounded-xl bg-slate-50 border border-gray-100">
-        <p className="text-[12px] font-extrabold uppercase tracking-wider text-slate-400 mb-2">{example.label}</p>
-        <p className="text-[15px] font-semibold mb-2" style={{ color: 'var(--brand-navy)' }}>{example.question}</p>
-        <p className="text-[12px] font-extrabold uppercase tracking-wider text-slate-400 mb-2">Direct answer</p>
-        <p className="text-[15px] font-medium leading-relaxed text-slate-600">{example.answer}</p>
+      <div className="mt-4 p-5 rounded-xl bg-white border border-purple-100">
+        <p className="text-[11.5px] font-extrabold uppercase tracking-wider text-slate-400 mb-1.5">{example.label}</p>
+        <p className="text-[15.5px] font-bold mb-3 text-[var(--brand-navy)]">{example.question}</p>
+        <p className="text-[11.5px] font-extrabold uppercase tracking-wider text-[var(--brand-orange)] mb-1.5">Direct answer</p>
+        <p className="text-[15px] font-medium leading-relaxed text-slate-700">{example.answer}</p>
       </div>
     )}
   </div>
 );
 
 const NumberedItem = ({ num, title, intro, items }) => (
-  <div className="mb-8 p-6 md:p-8 rounded-[20px] border border-gray-100 bg-white shadow-sm">
+  <div className="mb-8 p-6 md:p-8 rounded-[22px] border border-purple-200/80 shadow-sm hover:border-[var(--brand-orange)] transition-all" style={{ backgroundColor: 'var(--bg-light-purple)' }}>
     <div className="flex items-start gap-4 mb-4">
-      <span className="text-[32px] font-extrabold leading-none flex-shrink-0" style={{ color: 'var(--accent-orange)' }}>{num}</span>
-      <h3 className="text-[18px] md:text-[20px] font-extrabold leading-snug pt-1" style={{ color: 'var(--brand-navy)' }}>{title}</h3>
+      <span className="text-[30px] font-black leading-none flex-shrink-0 text-[var(--brand-orange)]">{num}</span>
+      <h3 className="text-[18px] md:text-[20px] font-extrabold leading-snug pt-0.5 text-[var(--brand-navy)]">{title}</h3>
     </div>
     {intro && <P>{intro}</P>}
     {items && (
-      <>
-        <p className="text-[14px] font-bold text-slate-500 mb-3">Review:</p>
+      <div className="mt-4 bg-white p-5 rounded-xl border border-purple-100">
+        <p className="text-[12.5px] font-bold uppercase tracking-wider text-slate-600 mb-3">Review:</p>
         <UL items={items} />
-      </>
+      </div>
     )}
   </div>
 );
@@ -67,11 +74,11 @@ const FlowChain = ({ items }) => (
   <div className="my-8 flex flex-col items-center gap-0">
     {items.map((item, i) => (
       <React.Fragment key={item}>
-        <div className="w-full max-w-[400px] px-6 py-3 rounded-full text-center text-[14px] font-bold border border-gray-200 bg-white shadow-sm" style={{ color: 'var(--brand-navy)' }}>
+        <div className="w-full max-w-[420px] px-6 py-3.5 rounded-full text-center text-[14.5px] font-bold border border-purple-200/80 text-[var(--brand-navy)] shadow-sm" style={{ backgroundColor: 'var(--bg-light-purple)' }}>
           {item}
         </div>
         {i < items.length - 1 && (
-          <span className="text-[20px] font-bold py-1" style={{ color: 'var(--accent-orange)' }}>↓</span>
+          <span className="text-[20px] font-black py-1 text-[var(--brand-orange)]">↓</span>
         )}
       </React.Fragment>
     ))}
@@ -82,50 +89,66 @@ const IntentFlow = () => (
   <div className="my-8 flex flex-wrap items-center justify-center gap-2 text-[13px] md:text-[14px] font-bold">
     {['Keyword', 'Search Intent', 'Question', 'Need', 'Decision'].map((item, i) => (
       <React.Fragment key={item}>
-        <span className="px-4 py-2 rounded-full bg-slate-50 border border-gray-200" style={{ color: 'var(--brand-navy)' }}>{item}</span>
-        {i < 4 && <span style={{ color: 'var(--accent-orange)' }}>→</span>}
+        <span className="px-4 py-2 rounded-full border border-purple-200/80 text-[var(--brand-navy)]" style={{ backgroundColor: 'var(--bg-light-purple)' }}>{item}</span>
+        {i < 4 && <span className="text-[var(--brand-orange)] font-black">→</span>}
       </React.Fragment>
     ))}
   </div>
 );
 
 const LayerCard = ({ title, desc }) => (
-  <div className="p-5 rounded-[16px] border border-gray-100 bg-white">
-    <h4 className="text-[16px] font-extrabold mb-2" style={{ color: 'var(--accent-orange)' }}>{title}</h4>
-    <p className="text-[14px] font-medium leading-relaxed text-slate-600">{desc}</p>
+  <div className="p-5 rounded-[18px] border border-purple-200/80" style={{ backgroundColor: 'var(--bg-light-purple)' }}>
+    <h4 className="text-[16px] font-extrabold mb-2 text-[var(--brand-orange)]">{title}</h4>
+    <p className="text-[14.5px] font-medium leading-relaxed text-slate-700">{desc}</p>
   </div>
 );
 
 const StepItem = ({ num, title, desc }) => (
   <div className="flex gap-4 mb-6">
-    <div className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-[14px] font-extrabold text-white" style={{ background: 'var(--brand-navy)' }}>
+    <div className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-[14px] font-extrabold text-white bg-[var(--brand-navy)] shadow-sm">
       {num}
     </div>
     <div>
-      <h4 className="text-[15px] font-extrabold mb-1 uppercase tracking-wide" style={{ color: 'var(--brand-navy)' }}>{title}</h4>
-      <p className="text-[15px] font-medium leading-relaxed text-slate-600">{desc}</p>
+      <h4 className="text-[15.5px] font-extrabold mb-1 uppercase tracking-wide text-[var(--brand-navy)]">{title}</h4>
+      <p className="text-[15px] font-medium leading-relaxed text-slate-700">{desc}</p>
     </div>
   </div>
 );
 
 const TakeawayBox = ({ title, paragraphs }) => (
-  <div className="my-10 p-8 md:p-10 rounded-[24px] border-2" style={{ borderColor: 'var(--accent-orange)', background: 'rgba(224,131,38,0.06)' }}>
-    <h2 className="text-[22px] md:text-[26px] font-extrabold tracking-tight mb-5" style={{ color: 'var(--brand-navy)' }}>{title}</h2>
-    {paragraphs.map((p) => <P key={p.slice(0, 30)}>{p}</P>)}
+  <div className="my-10 p-8 md:p-10 rounded-[24px] border-2 border-purple-200 shadow-sm relative overflow-hidden" style={{ backgroundColor: 'var(--bg-light-purple)' }}>
+    <div className="flex items-center gap-2 mb-4">
+      <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white border border-purple-200 shadow-sm flex-shrink-0">
+        <span style={{ color: 'var(--brand-orange)', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
+      </span>
+      <span className="italic font-semibold uppercase tracking-widest text-[13px] text-[var(--brand-orange)]" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
+        KEY TAKEAWAY
+      </span>
+    </div>
+    <h2 className="text-[22px] md:text-[26px] font-extrabold tracking-tight mb-5 text-[var(--brand-navy)]">{title}</h2>
+    <div className="space-y-4">
+      {paragraphs.map((p) => (
+        <p key={p.slice(0, 30)} className="text-[16px] font-medium leading-[1.85] text-slate-700">{p}</p>
+      ))}
+    </div>
   </div>
 );
 
 export default function SeoAiSearchArticle() {
   return (
-    <article className="max-w-[800px] mx-auto px-4 md:px-8 pb-8 font-primary">
-      {/* Introduction */}
-      <div className="pt-6 pb-2">
+    <article className="max-w-[850px] mx-auto px-4 md:px-8 py-10 font-primary">
+      {/* Introduction with Key Insight Callout */}
+      <div className="p-6 md:p-8 rounded-[22px] border border-purple-200/80 mb-10 shadow-sm" style={{ backgroundColor: 'var(--bg-light-purple)' }}>
+        <p className="text-[12px] font-bold uppercase tracking-widest text-[var(--brand-orange)] mb-2">Core Article Insight</p>
+        <p className="text-[18px] md:text-[20px] font-bold leading-relaxed text-[var(--brand-navy)]">
+          Search is changing beyond traditional blue links. Businesses need to build content that clearly explains who they are, what they offer and why their information should be trusted by both users and AI discovery systems.
+        </p>
+      </div>
         <P>Search is changing.</P>
         <P>People are no longer relying only on traditional search results to find information, compare options and make decisions. AI-powered search experiences are changing how information is discovered, summarised and presented.</P>
         <P>For businesses, this does not mean traditional SEO is dead. It means the way businesses approach search visibility needs to become broader and more useful.</P>
         <P>Ranking for a keyword is no longer the only objective. Businesses also need to build content that clearly explains who they are, what they offer, who they serve and why their information should be trusted.</P>
         <P>The opportunity is to build a digital presence that works for people, traditional search engines and emerging AI-powered discovery experiences.</P>
-      </div>
 
       <H2>What Is Changing in Search?</H2>
       <P>Traditional search generally requires a user to enter a query, review a list of results and visit websites to find the information they need.</P>
@@ -212,25 +235,29 @@ export default function SeoAiSearchArticle() {
         title="Create Content Around Real Search Intent"
         intro="Do not create an article simply because a keyword has search volume. Start with the audience."
       />
-      <div className="mb-8 p-6 rounded-[20px] bg-slate-50 border border-gray-100 -mt-4">
-        <p className="text-[14px] font-bold text-slate-500 mb-3">Ask:</p>
-        <UL items={[
-          'What is this person trying to accomplish?',
-          'What problem are they trying to solve?',
-          'What information would help them make a decision?',
-          'What would they ask next?',
-        ]} />
+      <div className="mb-8 p-6 rounded-[22px] border border-purple-200/80 -mt-4 shadow-sm" style={{ backgroundColor: 'var(--bg-light-purple)' }}>
+        <p className="text-[13px] font-bold text-slate-700 mb-3 uppercase tracking-wider">Ask:</p>
+        <div className="bg-white p-5 rounded-xl border border-purple-100">
+          <UL items={[
+            'What is this person trying to accomplish?',
+            'What problem are they trying to solve?',
+            'What information would help them make a decision?',
+            'What would they ask next?',
+          ]} />
+        </div>
       </div>
       <p className="text-[15px] font-medium leading-relaxed text-slate-600 mb-8 -mt-4">This approach can produce content that is more useful than pages created primarily to satisfy keyword targets.</p>
 
       <NumberedItem num="03" title="Answer Important Questions Directly" intro="Your website should answer the questions your prospects actually ask." />
-      <div className="mb-8 p-6 rounded-[20px] bg-slate-50 border border-gray-100 -mt-4">
-        <p className="text-[14px] font-bold text-slate-500 mb-3">For example:</p>
-        <UL items={[
-          'What does your service include?', 'Who is it suitable for?', 'How does the process work?',
-          'How long does it take?', 'What factors affect results?', 'What does it cost?',
-          'How should a business choose a provider?', 'What mistakes should businesses avoid?',
-        ]} />
+      <div className="mb-8 p-6 rounded-[22px] border border-purple-200/80 -mt-4 shadow-sm" style={{ backgroundColor: 'var(--bg-light-purple)' }}>
+        <p className="text-[13px] font-bold text-slate-700 mb-3 uppercase tracking-wider">For example:</p>
+        <div className="bg-white p-5 rounded-xl border border-purple-100">
+          <UL items={[
+            'What does your service include?', 'Who is it suitable for?', 'How does the process work?',
+            'How long does it take?', 'What factors affect results?', 'What does it cost?',
+            'How should a business choose a provider?', 'What mistakes should businesses avoid?',
+          ]} />
+        </div>
       </div>
       <P>Not every question needs a separate article. Some can be answered directly on service pages, while others can become detailed blog articles or FAQ content.</P>
 
@@ -297,7 +324,7 @@ export default function SeoAiSearchArticle() {
         <LayerCard title="GEO" desc="Focuses on making information understandable and useful within generative search and AI-powered discovery environments." />
       </div>
       <P>Together, they support a broader objective:</P>
-      <p className="text-[17px] font-extrabold text-center my-6 px-6 py-4 rounded-[16px] bg-slate-50" style={{ color: 'var(--brand-navy)' }}>
+      <p className="text-[17px] font-extrabold text-center my-6 px-6 py-4 rounded-[18px] border border-purple-200/80 text-[var(--brand-navy)] shadow-sm" style={{ backgroundColor: 'var(--bg-light-purple)' }}>
         Make your business easy to discover, understand and trust.
       </p>
 

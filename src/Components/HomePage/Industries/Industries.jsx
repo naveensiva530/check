@@ -50,27 +50,27 @@ const industries = [
 export default function Industries() {
   return (
     <section
-      className="w-full pt-20 pb-32 relative overflow-hidden"
+      className="w-full pt-16 sm:pt-20 pb-16 sm:pb-32 relative overflow-hidden"
       style={{ background: 'var(--bg-light-purple)', fontFamily: 'var(--font-primary)' }}
     >
       {/* Top Curve Shape */}
       <div className="absolute top-0 left-0 w-full overflow-hidden leading-none z-10 pointer-events-none" style={{ transform: 'translateY(-1px)' }}>
-        <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="w-full h-[60px] md:h-[100px]" style={{ display: 'block' }}>
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="w-full h-[50px] sm:h-[70px] md:h-[100px]" style={{ display: 'block' }}>
           <path d="M0,0 L1440,0 L1440,0 Q720,120 0,0 Z" fill="#ffffff" />
         </svg>
       </div>
 
-      <div className="w-full px-[10px] relative z-20">
+      <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 relative z-20">
 
         {/* Heading */}
-        <div className="flex flex-col items-center justify-center gap-3 mb-20 text-center">
+        <div className="flex flex-col items-center justify-center gap-3 mb-12 sm:mb-20 text-center">
           {/* Eyebrow — ⊕ icon + italic Playfair serif */}
           <div className="flex items-center gap-2 mb-4">
             <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white border border-gray-200 shadow-sm flex-shrink-0">
               <span style={{ color: '#f97316', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
             </span>
             <span
-              className="text-[16px] italic font-medium text-[#1a233a]"
+              className="text-[14px] sm:text-[16px] italic font-medium text-[#1a233a]"
               style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
             >
               INDUSTRY EXPERIENCE
@@ -80,7 +80,7 @@ export default function Industries() {
           <LayoutGroup>
             <motion.div
               layout
-              className="flex flex-col sm:flex-row items-center justify-center gap-x-3 gap-y-2 text-[36px] md:text-[50px] font-extrabold leading-[1.1] tracking-tight text-center flex-wrap"
+              className="flex flex-col sm:flex-row items-center justify-center gap-x-3 gap-y-2 text-[26px] sm:text-[36px] md:text-[50px] font-extrabold leading-[1.1] tracking-tight text-center flex-wrap"
               style={{ color: 'var(--text-dark-blue)' }}
             >
               <motion.span layout transition={{ type: 'spring', damping: 30, stiffness: 400 }} className="whitespace-nowrap">
@@ -88,7 +88,7 @@ export default function Industries() {
               </motion.span>
               <TextRotate
                 texts={['everything. ✦', 'the approach.', 'the audience.', 'the message.', 'the outcome.']}
-                mainClassName="text-white px-4 py-1 overflow-hidden rounded-xl justify-center shadow-md"
+                mainClassName="text-white px-3 sm:px-4 py-1 overflow-hidden rounded-xl justify-center shadow-md"
                 style={{ background: 'var(--text-dark-blue)' }}
                 staggerFrom="last"
                 initial={{ y: '100%' }}
@@ -103,37 +103,37 @@ export default function Industries() {
           </LayoutGroup>
 
           <p
-            className="text-[15px] font-medium mt-4 max-w-[680px] leading-relaxed"
+            className="text-[14px] sm:text-[15px] font-medium mt-4 max-w-[680px] leading-relaxed"
             style={{ color: 'var(--text-gray)' }}
           >
             A marketing idea that works for a beauty brand may make no sense for a healthcare business. We adapt the strategy to the audience, buying journey, competition, and communication requirements of the industry.
           </p>
         </div>
 
-        {/* Cards Row */}
-        <div className="flex flex-col lg:flex-row items-end justify-center gap-4 lg:gap-3 xl:gap-5 mb-8 overflow-x-auto" style={{ scrollbarWidth: 'none', paddingTop: '20px' }}>
+        {/* Cards Row: 2 columns on mobile, 3 on tablet, flex row on desktop */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 lg:flex lg:flex-nowrap items-center lg:items-end justify-center gap-5 sm:gap-6 lg:gap-3 xl:gap-5 mb-8 w-full max-w-[280px] sm:max-w-none mx-auto" style={{ paddingTop: '10px' }}>
           {industries.map((item, index) => {
-            // Middle card (index 2) is tallest, cards taper outward
-            const heights = ['260px', '300px', '340px', '300px', '260px'];
-            const cardHeight = heights[index] || '280px';
+            // Middle card (index 2) is tallest on desktop, cards taper outward
+            const desktopHeights = ['260px', '300px', '340px', '300px', '260px'];
+            const dHeight = desktopHeights[index] || '280px';
 
             return (
               <motion.a
                 key={index}
-                href={item.path}
-                className="flex flex-col items-center group relative z-10 hover:z-20"
-                style={{ textDecoration: 'none', flex: '1 1 0', maxWidth: '220px', minWidth: '160px' }}
+                href={item.path || "/services"}
+                className="flex flex-col items-center group relative z-10 hover:z-20 w-full lg:flex-1 lg:max-w-[220px]"
+                style={{ textDecoration: 'none' }}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
               >
                 {/* Oval Image Card */}
                 <div
+                  className="w-full h-[200px] sm:h-[240px] lg:h-[var(--desktop-height)]"
                   style={{
-                    width: '100%',
-                    height: cardHeight,
-                    borderRadius: '120px',
+                    '--desktop-height': dHeight,
+                    borderRadius: '100px',
                     overflow: 'hidden',
                     backgroundColor: '#E8DCFA',
                     position: 'relative',
@@ -152,6 +152,8 @@ export default function Industries() {
                   <img
                     src={item.image}
                     alt={item.title}
+                    loading="lazy"
+                    decoding="async"
                     style={{
                       width: '100%',
                       height: '100%',

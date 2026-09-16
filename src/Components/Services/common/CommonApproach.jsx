@@ -12,7 +12,10 @@ export default function CommonApproach({
   description,
   steps = [], 
   imageSrc, 
-  imageAlt = "Process"
+  imageAlt = "Process",
+  imageWrapClassName = "",
+  imageContainerClassName = "",
+  imageClassName = ""
 }) {
   const [openIdx, setOpenIdx] = useState(0);
   const sectionRef = useRef(null);
@@ -22,8 +25,8 @@ export default function CommonApproach({
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(img1Ref.current, { x: -80, opacity: 0, scale: 0.92 }, { x: 0, opacity: 1, scale: 1, duration: 1.1, ease: 'power3.out', scrollTrigger: { trigger: sectionRef.current, start: 'top 75%', toggleActions: 'play none none none' } });
-      gsap.fromTo(rightRef.current, { x: 60, opacity: 0 }, { x: 0, opacity: 1, duration: 1.0, ease: 'power3.out', delay: 0.2, scrollTrigger: { trigger: sectionRef.current, start: 'top 75%', toggleActions: 'play none none none' } });
+      gsap.fromTo(img1Ref.current, { x: -50, opacity: 0, scale: 0.95 }, { x: 0, opacity: 1, scale: 1, duration: 0.4, ease: 'power2.out', scrollTrigger: { trigger: sectionRef.current, start: 'top 78%', toggleActions: 'play none none none' } });
+      gsap.fromTo(rightRef.current, { x: 40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: 'power2.out', delay: 0.1, scrollTrigger: { trigger: sectionRef.current, start: 'top 78%', toggleActions: 'play none none none' } });
       gsap.to(imgWrapRef.current, { y: -30, ease: 'none', scrollTrigger: { trigger: sectionRef.current, start: 'top bottom', end: 'bottom top', scrub: true } });
     }, sectionRef);
     return () => ctx.revert();
@@ -32,11 +35,11 @@ export default function CommonApproach({
   const toggle = (idx) => setOpenIdx(openIdx === idx ? null : idx);
 
   return (
-    <section ref={sectionRef} className="w-full bg-white py-24 px-4 md:px-8 overflow-hidden" style={{ fontFamily: "'Inter', 'Segoe UI', sans-serif" }}>
+    <section ref={sectionRef} className="w-full bg-white py-14 sm:py-20 md:py-24 px-4 md:px-8 overflow-hidden" style={{ fontFamily: "'Inter', 'Segoe UI', sans-serif" }}>
       <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
-        <div ref={imgWrapRef} className="relative flex-shrink-0 w-full lg:w-[44%] flex justify-center lg:justify-start">
-          <div className="relative">
-            <img ref={img1Ref} src={imageSrc} alt={imageAlt} className="w-full max-w-[500px] h-auto object-contain" style={{ opacity: 0 }} />
+        <div ref={imgWrapRef} className={`relative flex-shrink-0 w-full lg:w-[44%] flex justify-center lg:justify-start ${imageWrapClassName}`}>
+          <div className={`relative ${imageContainerClassName}`}>
+            <img ref={img1Ref} src={imageSrc} alt={imageAlt} className={`w-full max-w-[340px] sm:max-w-[420px] md:max-w-[500px] h-auto object-contain ${imageClassName}`} style={{ opacity: 0 }} loading="lazy" decoding="async" width="500" height="400" />
           </div>
         </div>
 

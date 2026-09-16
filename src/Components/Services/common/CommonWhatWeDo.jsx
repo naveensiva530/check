@@ -25,9 +25,9 @@ export default function CommonWhatWeDo({
   const prevSlide = () => setCurrentIdx((prev) => (prev - 1 + services.length) % services.length);
 
   return (
-    <section className="w-full py-24 relative font-primary overflow-hidden" style={{ backgroundColor: 'var(--bg-light-purple)' }}>
+    <section className="w-full py-14 sm:py-20 md:py-24 relative font-primary overflow-hidden" style={{ backgroundColor: 'var(--bg-light-purple)' }}>
       <div className="max-w-[1200px] w-full mx-auto px-4 md:px-8 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+        <div className="flex flex-col lg:flex-row items-center gap-12 sm:gap-16 lg:gap-24">
           
           <div className="flex-1 text-center lg:text-left relative z-10">
             <div className="flex items-center justify-center lg:justify-start gap-2 mb-6">
@@ -45,13 +45,13 @@ export default function CommonWhatWeDo({
               {description}
             </p>
 
-            <ButtonWithIcon>{buttonText}</ButtonWithIcon>
+            <ButtonWithIcon to="/contact">{buttonText}</ButtonWithIcon>
           </div>
 
           <div className="w-full lg:w-[420px] flex justify-center flex-shrink-0 relative z-20">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] rounded-full filter blur-[100px] opacity-30 pointer-events-none" style={{ background: 'var(--brand-red-orange)' }} />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[350px] h-[300px] sm:h-[350px] rounded-full filter blur-[100px] opacity-30 pointer-events-none" style={{ background: 'var(--brand-red-orange)' }} />
 
-            <div className="relative w-[340px] h-[680px] bg-slate-900 rounded-[48px] border-[12px] shadow-2xl overflow-hidden flex flex-col z-10" style={{ borderColor: 'var(--brand-navy)', boxShadow: '0 25px 60px rgba(30,47,87,0.35), inset 0 0 0 2px rgba(255,255,255,0.2)' }} onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
+            <div className="relative w-full max-w-[310px] sm:max-w-[340px] h-[580px] sm:h-[680px] bg-slate-900 rounded-[42px] sm:rounded-[48px] border-[8px] sm:border-[12px] shadow-2xl overflow-hidden flex flex-col z-10 mx-auto" style={{ borderColor: 'var(--brand-navy)', boxShadow: '0 25px 60px rgba(30,47,87,0.35), inset 0 0 0 2px rgba(255,255,255,0.2)' }} onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
               
               {/* Phone Notch */}
               <div className="absolute top-2 inset-x-0 flex justify-center z-50 pointer-events-none">
@@ -74,11 +74,9 @@ export default function CommonWhatWeDo({
               <div className="flex h-full w-full transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]" style={{ transform: `translateX(-${currentIdx * 100}%)` }}>
                 {services.map((svc, idx) => (
                   <div key={idx} className="min-w-full h-full relative bg-white">
-                    <div className="absolute top-16 left-5 z-40 bg-white border border-gray-200 text-[var(--brand-navy)] text-[11px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm">
-                      Service {svc.num || (idx + 1).toString().padStart(2, '0')}
-                    </div>
+                    
                     <div className="absolute top-[88px] inset-x-5 bottom-[35%] rounded-2xl overflow-hidden bg-gray-50 border border-gray-100 shadow-sm flex items-center justify-center">
-                      {svc.img && <img src={svc.img} alt={svc.title} className="w-full h-full object-cover object-center" />}
+                      {svc.img && <img src={svc.img} alt={svc.title} className="w-full h-full object-cover object-center" loading="lazy" decoding="async" width="300" height="200" />}
                     </div>
                     <div className="absolute bottom-0 inset-x-0 h-[35%] flex flex-col justify-end p-6 pb-12 z-40 bg-white">
                       

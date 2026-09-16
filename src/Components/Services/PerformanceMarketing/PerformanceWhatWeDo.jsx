@@ -75,18 +75,23 @@ const services = [
 export default function PerformanceWhatWeDo() {
   const [currentIdx, setCurrentIdx] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [imgErrors, setImgErrors] = useState({});
 
-  // Auto-play the slider every 2 seconds
+  // Auto-play the slider - FASTER (3 seconds)
   useEffect(() => {
     if (isPaused) return;
     const timer = setInterval(() => {
       setCurrentIdx((prev) => (prev + 1) % services.length);
-    }, 5000);
+    }, 3000);
     return () => clearInterval(timer);
   }, [isPaused]);
 
   const nextSlide = () => setCurrentIdx((prev) => (prev + 1) % services.length);
   const prevSlide = () => setCurrentIdx((prev) => (prev - 1 + services.length) % services.length);
+  
+  const handleImgError = (index) => {
+    setImgErrors(prev => ({ ...prev, [index]: true }));
+  };
 
   return (
     <section className="w-full py-24 relative font-primary overflow-hidden" style={{ backgroundColor: 'var(--bg-light-purple)' }}>
@@ -192,12 +197,21 @@ export default function PerformanceWhatWeDo() {
                     </div>
 
                     {/* Image Container (Vertical poster format) */}
-                    <div className="absolute top-[88px] inset-x-5 bottom-[35%] rounded-2xl overflow-hidden bg-gray-50 border border-gray-100 shadow-sm flex items-center justify-center">
-                      <img 
-                        src={svc.img} 
-                        alt={svc.title}
-                        className="w-full h-full object-cover object-center"
-                      />
+                    <div className="absolute top-[88px] inset-x-5 bottom-[34%] rounded-2xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 shadow-md flex items-center justify-center p-4">
+                      {imgErrors[i] ? (
+                        <div className="w-full h-full flex flex-col items-center justify-center text-gray-400">
+                          <Target size={48} strokeWidth={1.5} className="mb-2 text-[var(--accent-orange)]" />
+                          <span className="text-sm font-medium">{svc.title}</span>
+                        </div>
+                      ) : (
+                        <img 
+                          src={svc.img} 
+                          alt={svc.title}
+                          className="w-full h-full object-contain object-center drop-shadow-sm"
+                          loading="lazy"
+                          onError={() => handleImgError(i)}
+                        />
+                      )}
                     </div>
                     
                     {/* Bottom Content (No Gradient) */}

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import ScrollRevealHeading from './ScrollRevealHeading';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import bgImage from '../../../assets/SocailMedia/Educate.webp';
+import bgImage from '../../../assets/Our_Approch (2).webp';
 import '../../../Components/HomePage/common.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -33,7 +33,7 @@ export default function ContentProcess() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="w-full py-24 px-4 md:px-8 overflow-hidden relative font-primary" style={{ backgroundColor: 'var(--bg-light-purple)' }}>
+    <section ref={sectionRef} className="w-full py-24 px-4 md:px-8 overflow-hidden relative font-primary" style={{ backgroundColor: '#ffffff' }}>
       <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
         <div ref={imgWrapRef} className="relative flex-shrink-0 w-full lg:w-[44%] flex justify-center lg:justify-start">
           <img ref={img1Ref} src={bgImage} alt="Content process" className="w-full max-w-[500px] h-auto object-contain" style={{ opacity: 0 }} />

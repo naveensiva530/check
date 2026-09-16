@@ -6,11 +6,11 @@ import '../../../Components/HomePage/common.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-import imgNano from '../../../assets/SocailMedia/Connect.webp';
-import imgMicro from '../../../assets/SocailMedia/Educate.webp';
-import imgMid from '../../../assets/SocailMedia/Entertain.webp';
-import imgMacro from '../../../assets/SocailMedia/Build Trust.webp';
-import imgNiche from '../../../assets/SocailMedia/Convert.webp';
+import imgNano from '../../../assets/SocialMedia_Icons/Connect.webp';
+import imgMicro from '../../../assets/SocialMedia_Icons/Educate.webp';
+import imgMid from '../../../assets/SocialMedia_Icons/Entertain.webp';
+import imgMacro from '../../../assets/SocialMedia_Icons/Build Trust.webp';
+import imgNiche from '../../../assets/SocialMedia_Icons/Convert.webp';
 
 const creatorTypes = [
   {

@@ -1,42 +1,114 @@
-import { Monitor, PenTool, Share2, Megaphone, Palette } from 'lucide-react';
-import bgImage from '../../assets/Services/SEO.webp';
-import imgWeb from '../../assets/SocailMedia/Laptop.webp';
-import imgContent from '../../assets/SocailMedia/Educate.webp';
-import imgSocial from '../../assets/SocailMedia/Connect.webp';
-import imgPerf from '../../assets/SocailMedia/Convert.webp';
-import imgBrand from '../../assets/SocailMedia/Build Trust.webp';
+import { Monitor, PenTool, Share2, Megaphone, Palette, Sparkles, TrendingUp, Target } from 'lucide-react';
+import bgImage from '../../assets/All the Hero Section bg/SEO.webp';
+import approachImg from '../../assets/Our_Approch (2).webp';
+
+import imgWeb from '../../assets/Servicess/RelatedServices/Website_Development-removebg-preview.webp';
+import imgContent from '../../assets/Servicess/RelatedServices/Content_Writing-removebg-preview.webp';
+import imgSocial from '../../assets/Servicess/RelatedServices/Social_Media_Marketing-removebg-preview.webp';
+import imgPerf from '../../assets/Servicess/RelatedServices/Performance_marketing-removebg-preview.webp';
+import imgBrand from '../../assets/Servicess/RelatedServices/Branding_Solution-removebg-preview.webp';
+
+import imgStartups from '../../assets/Servicess/WhoThisIsFor/Startups.webp';
+import imgGrowing from '../../assets/Servicess/WhoThisIsFor/Growing Businesses.webp';
+import imgLocal from '../../assets/Servicess/WhoThisIsFor/Local Businesses.webp';
+import imgSaaS from '../../assets/Servicess/WhoThisIsFor/SaaS & Technology.webp';
+import imgEstablished from '../../assets/Servicess/WhoThisIsFor/Established Brands.webp';
+
+import imgWwd1 from '../../assets/Servicess/SEO/WhatWeDo/Technical SEO.webp';
+import imgWwd2 from '../../assets/Servicess/SEO/WhatWeDo/On-Page SEO.webp';
+import imgWwd3 from '../../assets/Servicess/SEO/WhatWeDo/Keyword Research.webp';
+import imgWwd4 from '../../assets/Servicess/SEO/WhatWeDo/Content SEO.webp';
+import imgWwd5 from '../../assets/Servicess/SEO/WhatWeDo/Local SEO.webp';
+import imgWwd6 from '../../assets/Servicess/SEO/WhatWeDo/E-commerce SEO.webp';
+import imgWwd7 from '../../assets/Servicess/SEO/WhatWeDo/Off-Page SEO.webp';
+import imgWwd8 from '../../assets/Servicess/SEO/WhatWeDo/AEO & GEO.webp';
+import imgWwd9 from '../../assets/Servicess/SEO/WhatWeDo/SEO Audits.webp';
 
 export const heroData = {
   bgImage,
   title: "SEO Services",
+  breadcrumbText: "SEO Services",
   tagText: "SEO SERVICES",
   headingWords: [
     { text: "SEO" }, { text: "That" }, { text: "Helps" }, { text: "the" },
     { text: "Right", italic: true }, { text: "People" }, { text: "Find" }, { text: "You" }
   ],
   description1: "Getting traffic is not the whole point. The real goal is to become visible when someone is actively searching for what your business offers — and then give them a reason to choose you.",
-  description2: "ADSSERV builds SEO strategies around technical foundations, search intent, content, authority, local visibility, and continuous improvement. No shortcuts. No keyword stuffing. No promises of overnight rankings. Just search strategy built around how people actually discover businesses.",
+  description2: "ADSSERV builds SEO strategies around technical foundations, search intent, content, authority, local visibility, and continuous improvement.",
+  description3: "No shortcuts. No keyword stuffing. No promises of overnight rankings. Just search strategy built around how people actually discover businesses.",
   button1Text: "Grow My Organic Visibility",
-  button2Text: "Talk to ADSSERV"
+  button2Text: "View Our Services",
+  button2Link: "/#services"
 };
 
 export const problemData = {
-  tagText: "THE REAL PROBLEM",
+  tagText: "SEO IS MORE THAN KEYWORDS",
   headingWords: [
-    { text: "Most" }, { text: "SEO" }, { text: "problems" }, { text: "aren't" },
-    { text: "really", italic: true }, { text: "about" }, { text: "rankings." }
+    { text: "Ranking" }, { text: "for" }, { text: "the" }, { text: "wrong", italic: true },
+    { text: "searches" }, { text: "won't" }, { text: "grow" }, { text: "the" },
+    { text: "right" }, { text: "business." }
   ],
   paragraphs: [
-    "Many businesses chase rankings without considering whether those rankings will actually reach relevant people.",
-    "A page that ranks for the wrong search term brings the wrong audience. Traffic that doesn't convert serves no business purpose."
+    "A website can have hundreds of keywords and still attract very little meaningful business.",
+    "Why? Because visibility without intent is often just noise.",
+    "Effective SEO connects what people search for with what your business actually sells.",
+    "That means understanding:"
   ],
   items: [
-    "Ranking for high-volume keywords that don't match your actual offer.",
-    "Technical issues that prevent search engines from properly crawling and indexing your content.",
-    "Content that exists but doesn't satisfy the intent behind the searches it appears in."
+    "Audience",
+    "Search behaviour",
+    "Competitors",
+    "Website structure",
+    "Content",
+    "Technical health",
+    "Authority",
+    "The actions visitors should take once they arrive"
   ],
-  bottomText1: "Search visibility is only valuable if it connects the right people with the right offer.",
-  bottomText2: "We focus on that connection."
+  bottomText1: "That's where the real work begins.",
+  bottomText2: ""
+};
+
+export const approachData = {
+  tagText: "SEARCH WITH PURPOSE",
+  headingWords: [
+    { text: "We" }, { text: "optimise" }, { text: "the" }, { text: "whole" },
+    { text: "search", italic: true }, { text: "journey" }, { text: "—" },
+    { text: "not" }, { text: "just" }, { text: "the" }, { text: "keyword." }
+  ],
+  description: "SEO is not a single task. It is a coordinated effort across technical health, search intent, content strategy, authority building, and continuous measurement. We treat each as a connected system.",
+  imageSrc: approachImg,
+  imageAlt: "Our SEO Approach",
+  steps: [
+    { num: '01', title: 'Discover', desc: 'Understand the business, audience, products, services, competitors, market, existing visibility, and commercial goals.' },
+    { num: '02', title: 'Research', desc: 'Identify relevant search demand, intent, keyword opportunities, competitor gaps, topics, questions, and SERP patterns.' },
+    { num: '03', title: 'Fix', desc: 'Address technical and on-page issues that make it harder for search engines and users to understand the website.' },
+    { num: '04', title: 'Build', desc: 'Create or improve useful content, landing pages, internal links, topical coverage, and authority signals.' },
+    { num: '05', title: 'Expand', desc: 'Develop new opportunities across organic search, local search, content, answer engines, and relevant search experiences.' },
+    { num: '06', title: 'Measure', desc: 'Monitor visibility, traffic, rankings, engagement, conversions, and other meaningful business indicators.' },
+    { num: '07', title: 'Improve', desc: 'SEO is iterative. We use the data to identify what should be strengthened, changed, expanded, or removed next.' }
+  ]
+};
+
+export const whatWeDoData = {
+  tagText: "SEO SERVICES",
+  headingWords: [
+    { text: "Every" }, { text: "part" }, { text: "of" }, { text: "search" },
+    { text: "covered", italic: true }, { text: "and" }, { text: "connected." }
+  ],
+  description: "We work across the technical, content, and authority dimensions of SEO to build a search presence that grows over time.",
+  buttonText: "View More",
+  icons: [Sparkles, TrendingUp, Target],
+  services: [
+    { num: "01", title: "Technical SEO", desc: "Improve the technical foundations that help search engines crawl, understand, and access important pages.", img: imgWwd1 },
+    { num: "02", title: "On-Page SEO", desc: "Optimise page structure, headings, content, metadata, internal links, images, and search intent.", img: imgWwd2 },
+    { num: "03", title: "Keyword Research", desc: "Find commercially relevant search opportunities based on intent, competition, audience needs, and business value.", img: imgWwd3 },
+    { num: "04", title: "Content SEO", desc: "Build content around real questions, topics, problems, comparisons, and search journeys rather than publishing for volume alone.", img: imgWwd4 },
+    { num: "05", title: "Local SEO", desc: "Improve visibility for relevant local searches through location-focused optimisation and local search signals.", img: imgWwd5 },
+    { num: "06", title: "E-commerce SEO", desc: "Optimise product, category, collection, and supporting pages where e-commerce SEO is part of the project.", img: imgWwd6 },
+    { num: "07", title: "Off-Page SEO", desc: "Strengthen relevant authority signals through ethical outreach, digital PR, citations, partnerships, and other appropriate activities.", img: imgWwd7 },
+    { num: "08", title: "AEO & GEO", desc: "Structure useful information so brands can become easier for answer engines and generative search experiences to understand and reference.", img: imgWwd8 },
+    { num: "09", title: "SEO Audits", desc: "Identify technical, content, on-page, authority, UX, indexing, and opportunity gaps with prioritised recommendations.", img: imgWwd9 }
+  ]
 };
 
 export const whyAdsservSEOData = {
@@ -61,11 +133,11 @@ export const whoThisIsForData = {
     { text: "visibility", italic: true }, { text: "to" }, { text: "become" }, { text: "an" }, { text: "asset." }
   ],
   stages: [
-    { title: "Startups", desc: "Build search foundations before competitors occupy the space around your category.", image: "https://images.unsplash.com/photo-1559136555-e4616d9d15e2?auto=format&fit=crop&q=80&w=800" },
-    { title: "Growing Businesses", desc: "Expand visibility around services, products, locations, and high-intent searches.", image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800" },
-    { title: "Local Businesses", desc: "Capture relevant searches from people looking for businesses and services in specific areas.", image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800" },
-    { title: "SaaS & Technology", desc: "Build discoverability across product, use-case, problem, comparison, and educational searches.", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" },
-    { title: "Established Brands", desc: "Strengthen existing organic visibility while identifying technical, content, and competitive gaps.", image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800" }
+    { title: "Startups", desc: "Build search foundations before competitors occupy the space around your category.", img: imgStartups },
+    { title: "Growing Businesses", desc: "Expand visibility around services, products, locations, and high-intent searches.", img: imgGrowing },
+    { title: "Local Businesses", desc: "Capture relevant searches from people looking for businesses and services in specific areas.", img: imgLocal },
+    { title: "SaaS & Technology", desc: "Build discoverability across product, use-case, problem, comparison, and educational searches.", img: imgSaaS },
+    { title: "Established Brands", desc: "Strengthen existing organic visibility while identifying technical, content, and competitive gaps.", img: imgEstablished }
   ]
 };
 

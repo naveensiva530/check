@@ -1,54 +1,115 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../HomePage/Footer/Footer';
-import Projects from '../HomePage/Projects/Projectsection';
 import '../HomePage/common.css';
 
+// Exact Projects Components
+import ProjectsHero from '../Projects/ProjectsHero';
+import ProjectsIntro from '../Projects/ProjectsIntro';
+import ProjectCaseStudy from '../Projects/ProjectCaseStudy';
+import PortfolioDisciplines from '../Projects/PortfolioDisciplines';
+import ProjectsDemonstrate from '../Projects/ProjectsDemonstrate';
+import MarketingApproach from '../Projects/MarketingApproach';
+import ProjectsSummaryCards from '../Projects/ProjectsSummaryCards';
+import ProjectsFinalCTA from '../Projects/ProjectsFinalCTA';
+
+// Data
+import { projectsData } from '../Projects/projectsData';
+
 export default function ProjectsPage() {
+  const [activeFilter, setActiveFilter] = useState('All');
+
+  useEffect(() => {
+    if (window.location.hash) {
+      const hashId = window.location.hash.replace('#', '');
+      setTimeout(() => {
+        const el = document.getElementById(hashId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 200);
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, []);
+
+  const filteredProjects = activeFilter === 'All'
+    ? projectsData
+    : projectsData.filter(p => p.service === activeFilter);
+
+  const projectCounts = {
+    all: projectsData.length,
+    performance: projectsData.filter(p => p.service === 'Performance Marketing').length,
+    social: projectsData.filter(p => p.service === 'Social Media').length,
+  };
+
+  const handleExploreClick = () => {
+    const el = document.getElementById('selected-projects');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <div className="font-sans bg-white min-h-screen flex flex-col">
+    <div className="font-sans bg-white min-h-screen flex flex-col selection:bg-orange-500 selection:text-white">
+      {/* Navigation */}
       <Navbar />
 
-      {/* Hero Header Banner */}
-      <div className="relative w-full h-[350px] md:h-[450px] flex items-center justify-center mt-[90px]">
-        {/* Background Image with Dark Overlay */}
-        <div 
-          className="absolute inset-0 bg-[#111827]/85 z-0"
-          style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundBlendMode: 'overlay'
-          }}
-        ></div>
-        
-        <div className="relative z-10 flex flex-col items-center justify-center text-center px-4">
-          <h1 className="text-5xl md:text-6xl font-extrabold text-white mb-6 tracking-tight">
-            Our Projects
-          </h1>
-          
-          {/* Breadcrumbs */}
-          <div className="flex items-center gap-3 text-lg font-medium">
-            <Link to="/" className="text-[#ff6b35] cursor-pointer hover:underline">Home</Link>
-            <span className="text-white">&gt;</span>
-            <span className="text-white">Projects</span>
-          </div>
-        </div>
-      
-        {/* Curved bottom overlay */}
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20">
-          <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="block w-full h-[60px] md:h-[100px]" style={{ transform: "translateY(1px)" }}>
-            <path d="M0,120 C300,0 900,0 1200,120 Z" fill="#ffffff" />
-          </svg>
-        </div>
+      {/* 1. HERO */}
+      <ProjectsHero onExploreClick={handleExploreClick} />
+
+      {/* 2. INTRO */}
+      <ProjectsIntro
+        activeFilter={activeFilter}
+        onFilterChange={setActiveFilter}
+        projectCounts={projectCounts}
+      />
+
+      {/* 3. CASE STUDIES (PROJECT 01: No Qu TAM, PROJECT 02: Nu-Tech Associates, PROJECT 03: Dr. Raman's Nature Cure Foundation) */}
+      <div id="projects-list" className="relative min-h-[400px]">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeFilter}
+            initial={{ opacity: 0, y: 16, filter: 'blur(3px)' }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              filter: 'blur(0px)',
+              transition: { duration: 0.22, ease: [0.22, 1, 0.36, 1] }
+            }}
+            exit={{
+              opacity: 0,
+              y: -8,
+              filter: 'blur(2px)',
+              transition: { duration: 0.14, ease: 'easeIn' }
+            }}
+          >
+            {filteredProjects.map((project, index) => (
+              <ProjectCaseStudy
+                key={project.id}
+                project={project}
+                isLast={index === filteredProjects.length - 1}
+              />
+            ))}
+          </motion.div>
+        </AnimatePresence>
       </div>
 
-      {/* Main Content Area */}
-      <div className="flex-1 w-full pb-10">
-        <Projects />
-      </div>
+      {/* 4. ADSSERV CLIENT PORTFOLIO (Three Projects. Two Core Marketing Disciplines.) */}
+      <PortfolioDisciplines />
 
+      {/* 5. WHAT THESE PROJECTS DEMONSTRATE (Different Businesses Need Different Marketing Approaches) */}
+      <ProjectsDemonstrate />
+
+      {/* 6. MY MARKETING APPROACH (Start With the Objective) */}
+      <MarketingApproach />
+
+      {/* 7. PERFORMANCE MARKETING PROJECTS & SOCIAL MEDIA PROJECT DIRECTORY */}
+      <ProjectsSummaryCards />
+
+      {/* 8. FINAL CTA (Have a Business That Needs Better Digital Marketing?) */}
+      <ProjectsFinalCTA />
+
+      {/* Footer */}
       <Footer />
     </div>
   );

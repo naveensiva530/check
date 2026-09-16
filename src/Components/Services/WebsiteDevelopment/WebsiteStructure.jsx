@@ -4,22 +4,22 @@ import ScrollRevealHeading from '../SocialMedia/ScrollRevealHeading';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import imgDiscover from '../../../assets/Servicess/PerformanceStructure/Discovery.webp';
-import imgStrategy from '../../../assets/Servicess/PerformanceStructure/Strategy.webp';
-import imgBuild from '../../../assets/Servicess/PerformanceStructure/Build.webp';
-import imgLaunch from '../../../assets/Servicess/PerformanceStructure/Launch.webp';
-import imgOptimise from '../../../assets/Servicess/PerformanceStructure/Optimise.webp';
-import imgAudit from '../../../assets/Servicess/PerformanceStructure/Audit.webp';
+import imgDiscover   from '../../../assets/Servicess/WebsiteDevelopment/WebsiteStructure/Discover.webp';
+import imgUnderstand from '../../../assets/Servicess/WebsiteDevelopment/WebsiteStructure/Understand.webp';
+import imgTrust      from '../../../assets/Servicess/WebsiteDevelopment/WebsiteStructure/Trust.webp';
+import imgEvaluate   from '../../../assets/Servicess/WebsiteDevelopment/WebsiteStructure/Evaluate.webp';
+import imgAct        from '../../../assets/Servicess/WebsiteDevelopment/WebsiteStructure/Act.webp';
+import imgContinue   from '../../../assets/Servicess/WebsiteDevelopment/WebsiteStructure/Continue.webp';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const stages = [
-  { num: "01", title: "Discover", desc: "Who are you and what do you do?", img: imgDiscover },
-  { num: "02", title: "Understand", desc: "Why does your product or service matter to me?", img: imgStrategy },
-  { num: "03", title: "Trust", desc: "Why should I believe you?", img: imgAudit },
-  { num: "04", title: "Evaluate", desc: "Is this the right solution for my situation?", img: imgBuild },
-  { num: "05", title: "Act", desc: "What should I do next?", img: imgOptimise },
-  { num: "06", title: "Continue", desc: "What happens after I enquire, book, buy, or contact you?", img: imgLaunch },
+  { num: "01", title: "Discover",    desc: "Who are you and what do you do?",                                   img: imgDiscover   },
+  { num: "02", title: "Understand",  desc: "Why does your product or service matter to me?",                   img: imgUnderstand },
+  { num: "03", title: "Trust",       desc: "Why should I believe you?",                                         img: imgTrust      },
+  { num: "04", title: "Evaluate",    desc: "Is this the right solution for my situation?",                      img: imgEvaluate   },
+  { num: "05", title: "Act",         desc: "What should I do next?",                                            img: imgAct        },
+  { num: "06", title: "Continue",    desc: "What happens after I enquire, book, buy, or contact you?",          img: imgContinue   },
 ];
 
 export default function WebsiteStructure() {
@@ -87,19 +87,14 @@ export default function WebsiteStructure() {
               ref={el => cardRefs.current[idx] = el}
               className="relative flex bg-white rounded-[28px] p-6 gap-5 shadow-[0_10px_35px_rgba(139,92,246,0.07)] border border-white/80 hover:shadow-[0_16px_45px_rgba(139,92,246,0.12)] hover:-translate-y-1 transition-all duration-400 group overflow-hidden"
             >
-              <div className="absolute top-4 left-5 w-9 h-9 rounded-full flex items-center justify-center text-white text-[13px] font-extrabold shadow-md z-10 flex-shrink-0"
-                style={{ backgroundColor: 'var(--brand-purple, #8b5cf6)' }}>
-                {stage.num}
-              </div>
+              
 
-              <div className="absolute top-3 right-4 w-[200px] h-[200px] flex-shrink-0 transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-1">
+              <div className="absolute top-3 right-4 w-[200px] h-[170px] flex-shrink-0 transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-1">
                 <img src={stage.img} alt={stage.title} className="w-full h-full object-contain drop-shadow-lg" />
               </div>
 
               <div className="flex flex-col justify-end pt-[90px] w-full pr-[90px]">
-                <span className="text-[10px] font-extrabold uppercase tracking-widest mb-2" style={{ color: 'var(--accent-orange)' }}>
-                  Stage {stage.num}
-                </span>
+                
                 <h3 className="text-[22px] font-extrabold mb-2 leading-tight" style={{ color: 'var(--brand-navy)' }}>
                   {stage.title}
                 </h3>

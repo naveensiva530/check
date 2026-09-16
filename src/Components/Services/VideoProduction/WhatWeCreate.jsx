@@ -4,26 +4,26 @@ import ButtonWithIcon from '../../../Components/ui/button-with-icon';
 import ScrollRevealHeading from './ScrollRevealHeading';
 import '../../../Components/HomePage/common.css';
 
-import img1 from '../../../assets/Services/Video Production.webp';
-import img2 from '../../../assets/SocailMedia/Entertain.webp';
-import img3 from '../../../assets/SocailMedia/Connect.webp';
-import img4 from '../../../assets/SocailMedia/Convert.webp';
-import img5 from '../../../assets/SocailMedia/Educate.webp';
-import img6 from '../../../assets/SocailMedia/Build Trust.webp';
-import img7 from '../../../assets/SocailMedia/Laptop.webp';
-import img8 from '../../../assets/Services/Influncer Marketing.webp';
-import img9 from '../../../assets/Services/SEO.webp';
+import img1 from '../../../assets/Servicess/Videoproduction/WhatWeDo/Short-form social videos.webp';
+import img2 from '../../../assets/Servicess/Videoproduction/WhatWeDo/Brand videos.webp';
+import img3 from '../../../assets/Servicess/Videoproduction/WhatWeDo/Product videos.webp';
+import img4 from '../../../assets/Servicess/Videoproduction/WhatWeDo/Campaign videos.webp';
+import img5 from '../../../assets/Servicess/Videoproduction/WhatWeDo/Explainer videos.webp';
+import img6 from '../../../assets/Servicess/Videoproduction/WhatWeDo/UGC-style content.webp';
+import img7 from '../../../assets/Servicess/Videoproduction/WhatWeDo/Corporate & business videos.webp';
+import img8 from '../../../assets/Servicess/Videoproduction/WhatWeDo/Video ads.webp';
+import img9 from '../../../assets/Servicess/Videoproduction/WhatWeDo/Event & behind-the-scenes content.webp';
 
 const services = [
-  { num: "01", title: "Short-form Social Videos", desc: "Fast, platform-native content built for attention on channels such as Instagram, TikTok, and YouTube Shorts.", img: img1 },
-  { num: "02", title: "Brand Videos", desc: "Communicate who you are, what you stand for, and why your brand deserves attention.", img: img2 },
-  { num: "03", title: "Product Videos", desc: "Show products through demonstrations, features, use cases, visual storytelling, or creative concepts.", img: img3 },
-  { num: "04", title: "Campaign Videos", desc: "Create campaign-led content designed around a specific launch, promotion, message, or audience.", img: img4 },
-  { num: "05", title: "Explainer Videos", desc: "Make products, services, processes, or ideas easier to understand.", img: img5 },
-  { num: "06", title: "UGC-style Content", desc: "Create authentic-feeling content designed around the way people naturally consume social video.", img: img6 },
-  { num: "07", title: "Corporate & Business Videos", desc: "Turn important business messages into clear, professional visual communication.", img: img7 },
-  { num: "08", title: "Video Ads", desc: "Develop creative assets for paid campaigns across relevant digital platforms.", img: img8 },
-  { num: "09", title: "Event & BTS Content", desc: "Capture moments, people, atmosphere, and activity that can extend the value of an event beyond the day itself.", img: img9 },
+  { num: "01", title: "Short-form social videos", desc: "Fast, platform-native content built for attention on channels such as Instagram, TikTok, and YouTube Shorts.", img: img1 },
+  { num: "02", title: "Brand videos", desc: "Communicate who you are, what you stand for, and why your brand deserves attention.", img: img2 },
+  { num: "03", title: "Product videos", desc: "Show products through demonstrations, features, use cases, visual storytelling, or creative concepts.", img: img3 },
+  { num: "04", title: "Campaign videos", desc: "Create campaign-led content designed around a specific launch, promotion, message, or audience.", img: img4 },
+  { num: "05", title: "Explainer videos", desc: "Make products, services, processes, or ideas easier to understand.", img: img5 },
+  { num: "06", title: "UGC-style content", desc: "Create authentic-feeling content designed around the way people naturally consume social video.", img: img6 },
+  { num: "07", title: "Corporate & business videos", desc: "Turn important business messages into clear, professional visual communication.", img: img7 },
+  { num: "08", title: "Video ads", desc: "Develop creative assets for paid campaigns across relevant digital platforms.", img: img8 },
+  { num: "09", title: "Event & behind-the-scenes content", desc: "Capture moments, people, atmosphere, and activity that can extend the value of an event beyond the day itself.", img: img9 },
 ];
 
 export default function WhatWeCreate() {
@@ -36,9 +36,6 @@ export default function WhatWeCreate() {
     return () => clearInterval(timer);
   }, [isPaused]);
 
-  const nextSlide = () => setCurrentIdx((prev) => (prev + 1) % services.length);
-  const prevSlide = () => setCurrentIdx((prev) => (prev - 1 + services.length) % services.length);
-
   return (
     <section className="w-full py-24 relative font-primary overflow-hidden" style={{ backgroundColor: 'var(--bg-light-purple)' }}>
       <div className="max-w-[1200px] w-full mx-auto px-4 md:px-8 relative z-10">
@@ -50,13 +47,10 @@ export default function WhatWeCreate() {
               </span>
               <span className="italic font-semibold uppercase tracking-widest" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '13px', color: 'var(--accent-orange)' }}>VIDEO PRODUCTION SERVICES</span>
             </div>
-            <ScrollRevealHeading className="mb-8" words={[
+            <ScrollRevealHeading className="mb-10" words={[
               { text: "Different" }, { text: "messages" }, { text: "need" },
               { text: "different", italic: true }, { text: "formats." }
             ]} />
-            <p className="text-[16px] md:text-[18px] leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0 font-medium" style={{ color: 'var(--brand-navy)', opacity: 0.85 }}>
-              From short-form social content to brand films, explainers, and video ads — every format is built around the message and the platform.
-            </p>
             <ButtonWithIcon>Start a Video Project</ButtonWithIcon>
           </div>
 
@@ -69,7 +63,9 @@ export default function WhatWeCreate() {
                   <div className="w-2 h-2 rounded-full bg-[#1a1a1a]"></div>
                 </div>
               </div>
-              <div className="absolute top-0 inset-x-0 flex justify-between items-center px-6 pt-4 pb-2 text-[12px] font-semibold text-[var(--brand-navy)] z-50 pointer-events-none"><span>9:41</span></div>
+              <div className="absolute top-0 inset-x-0 flex justify-between items-center px-6 pt-4 pb-2 text-[12px] font-semibold text-[var(--brand-navy)] z-50 pointer-events-none">
+                <span>9:41</span>
+              </div>
               <div className="flex h-full w-full transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]" style={{ transform: `translateX(-${currentIdx * 100}%)` }}>
                 {services.map((svc, idx) => (
                   <div key={idx} className="min-w-full h-full relative bg-white">
@@ -83,14 +79,14 @@ export default function WhatWeCreate() {
                         <div className="w-7 h-7 rounded-full border border-gray-200 bg-gray-50 flex items-center justify-center text-[var(--brand-navy)]"><TrendingUp size={12} strokeWidth={2.5} /></div>
                         <div className="w-7 h-7 rounded-full border border-gray-200 bg-gray-50 flex items-center justify-center text-red-500"><Target size={12} strokeWidth={2.5} /></div>
                       </div>
-                      <h3 className="text-[var(--brand-navy)] text-[26px] font-extrabold mb-2 tracking-tight leading-tight">{svc.title}</h3>
+                      <h3 className="text-[var(--brand-navy)] text-[22px] font-extrabold mb-2 tracking-tight leading-tight">{svc.title}</h3>
                       <p className="text-gray-600 text-[14px] font-medium leading-relaxed">{svc.desc}</p>
                     </div>
                   </div>
                 ))}
               </div>
-              <button onClick={prevSlide} className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/20 backdrop-blur-md border border-white/10 flex items-center justify-center text-white/80 hover:bg-black/40 z-50"><ChevronLeft className="w-6 h-6" /></button>
-              <button onClick={nextSlide} className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/20 backdrop-blur-md border border-white/10 flex items-center justify-center text-white/80 hover:bg-black/40 z-50"><ChevronRight className="w-6 h-6" /></button>
+              <button onClick={() => setCurrentIdx((prev) => (prev - 1 + services.length) % services.length)} className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/20 backdrop-blur-md border border-white/10 flex items-center justify-center text-white/80 hover:bg-black/40 z-50"><ChevronLeft className="w-6 h-6" /></button>
+              <button onClick={() => setCurrentIdx((prev) => (prev + 1) % services.length)} className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/20 backdrop-blur-md border border-white/10 flex items-center justify-center text-white/80 hover:bg-black/40 z-50"><ChevronRight className="w-6 h-6" /></button>
               <div className="absolute bottom-2 inset-x-0 flex justify-center z-50 pointer-events-none"><div className="w-32 h-[5px] bg-white/70 rounded-full"></div></div>
             </div>
           </div>

@@ -83,26 +83,29 @@ export default function ContentFAQ() {
               >
                 <button
                   onClick={() => toggleFAQ(idx)}
-                  className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left group"
+                  className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left group cursor-pointer"
                 >
                   <h3 className="text-[17px] md:text-[18px] font-bold leading-snug" style={{ color: 'var(--brand-navy)' }}>
                     {faq.q}
                   </h3>
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-white transition-all duration-300"
+                  <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-white transition-all duration-200 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
                     style={{ backgroundColor: isOpen ? 'var(--brand-purple, #8b5cf6)' : 'var(--accent-orange)' }}>
                     {isOpen ? <Minus size={18} strokeWidth={2.5} /> : <Plus size={18} strokeWidth={2.5} />}
                   </div>
                 </button>
 
                 <div
-                  className="overflow-hidden transition-all duration-500 ease-in-out"
+                  className="grid transition-all duration-200 ease-out"
                   style={{
-                    maxHeight: isOpen ? '500px' : '0',
-                    opacity: isOpen ? 1 : 0
+                    gridTemplateRows: isOpen ? '1fr' : '0fr',
+                    opacity: isOpen ? 1 : 0,
+                    transition: 'grid-template-rows 220ms cubic-bezier(0.16, 1, 0.3, 1), opacity 200ms ease-out'
                   }}
                 >
-                  <div className="px-6 pb-5 text-[15.5px] font-medium leading-relaxed" style={{ color: '#334155' }}>
-                    {faq.a}
+                  <div className="overflow-hidden">
+                    <div className="px-6 pb-5 text-[15.5px] font-medium leading-relaxed" style={{ color: '#334155' }}>
+                      {faq.a}
+                    </div>
                   </div>
                 </div>
               </div>

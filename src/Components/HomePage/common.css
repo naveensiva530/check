@@ -58,54 +58,650 @@
   transform: scale(0.9);
 }
 
+@media (max-width: 767px) {
+  .know-more-btn {
+    font-size: 15px;
+    height: 2.7em;
+    padding-left: 1.1em;
+    padding-right: 3em;
+    max-width: 100%;
+  }
+
+  .know-more-btn .know-more-icon {
+    height: 2.1em;
+    width: 2.1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .know-more-btn {
+    font-size: 13.5px;
+    height: 2.6em;
+    padding-left: 1em;
+    padding-right: 2.8em;
+    letter-spacing: 0.03em;
+  }
+
+  .know-more-btn .know-more-icon {
+    height: 2em;
+    width: 2em;
+    right: 0.25em;
+  }
+}
+
+/* ─── Secondary Page Hero Banner & Responsive Styles ─── */
+.page-hero-banner {
+  height: 420px;
+  margin-top: 90px;
+}
+
+/* ─── Outline Variant for Know More Button ─── */
+.know-more-btn.btn-outline {
+  background-image: none !important;
+  background-color: transparent !important;
+  color: var(--brand-navy) !important;
+  border: 2px solid rgba(30, 47, 87, 0.25) !important;
+}
+
+.know-more-btn.btn-outline:hover {
+  border-color: var(--brand-navy) !important;
+  background-color: rgba(30, 47, 87, 0.05) !important;
+}
+
+.know-more-btn.btn-outline .know-more-icon {
+  background: var(--brand-navy) !important;
+}
+
+.know-more-btn.btn-outline .know-more-icon svg {
+  color: #ffffff !important;
+}
+
+@media (max-width: 767px) {
+
+  .page-hero-banner,
+  .about-hero-banner {
+    height: 290px !important;
+    margin-top: 68px !important;
+  }
+
+  .about-hero-title {
+    font-size: clamp(1.8rem, 6vw, 2.5rem) !important;
+  }
+
+  .about-hero-content {
+    padding: 0 16px !important;
+  }
+
+  .about-hero-breadcrumb {
+    padding: 8px 16px !important;
+    gap: 8px !important;
+  }
+
+  .about-intro-section {
+    padding: 40px 16px !important;
+  }
+
+  .about-intro-columns {
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+
+  .about-intro-column p {
+    font-size: 14px !important;
+  }
+
+  .about-intro-ctas {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  .about-intro-ctas a,
+  .about-intro-ctas button {
+    width: 100% !important;
+    text-align: center !important;
+    padding: 12px 20px !important;
+    font-size: 14px !important;
+  }
+
+  /* ── Services Common Hero Editorial Section ── */
+  .service-hero-section {
+    padding: 32px 16px 40px !important;
+  }
+
+  .service-hero-cols {
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+
+  .service-hero-left p {
+    font-size: 15px !important;
+  }
+
+  .service-hero-right p {
+    font-size: 13px !important;
+  }
+
+  .service-hero-btns {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  .service-hero-btns a,
+  .service-hero-btns button {
+    width: 100% !important;
+    font-size: 14px !important;
+  }
+
+  /* ── Projects Hero Editorial Section ── */
+  .projects-hero-section {
+    padding: 32px 16px 40px !important;
+  }
+
+  .projects-hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .projects-hero-card {
+    padding: 20px !important;
+    border-radius: 20px !important;
+  }
+
+  .projects-hero-copy {
+    font-size: 15px !important;
+  }
+
+  /* ── Blog Hero Editorial Section ── */
+  .blog-hero-section {
+    padding: 24px 16px 32px !important;
+  }
+
+  .blog-hero-heading {
+    font-size: clamp(1.5rem, 6vw, 2rem) !important;
+  }
+
+  .blog-hero-copy {
+    font-size: 14px !important;
+  }
+
+  .blog-search-bar {
+    padding: 2px !important;
+  }
+
+  /* ── FAQ Hero Editorial Section ── */
+  .faq-hero-section {
+    padding: 32px 16px 40px !important;
+  }
+
+  .faq-hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  .faq-hero-heading {
+    font-size: clamp(1.6rem, 6vw, 2.2rem) !important;
+  }
+
+  .faq-metrics-desktop {
+    display: none !important;
+  }
+
+  .faq-metrics-mobile {
+    display: grid !important;
+  }
+
+  .faq-hero-copy {
+    font-size: 14px !important;
+  }
+
+  .faq-hero-btns {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  .faq-hero-btns a,
+  .faq-hero-btns button {
+    width: 100% !important;
+    font-size: 14px !important;
+    justify-content: center !important;
+  }
+
+  /* ── Contact Hero Editorial Section ── */
+  .contact-hero-section {
+    padding: 32px 16px 40px !important;
+  }
+
+  .contact-hero-cols {
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+
+  .contact-hero-heading {
+    font-size: clamp(1.6rem, 6vw, 2.2rem) !important;
+  }
+
+  .contact-hero-copy {
+    font-size: 14px !important;
+  }
+
+  .contact-hero-btns {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  .contact-hero-btns a,
+  .contact-hero-btns button {
+    width: 100% !important;
+    font-size: 14px !important;
+    justify-content: center !important;
+  }
+
+  .common-problem-section {
+    padding: 40px 16px !important;
+  }
+
+  .common-problem-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  .common-problem-card {
+    padding: 20px !important;
+  }
+
+  .common-approach-section {
+    padding: 40px 16px !important;
+  }
+
+  .common-approach-container {
+    flex-direction: column !important;
+    gap: 24px !important;
+  }
+
+  .common-approach-image {
+    width: 100% !important;
+    max-width: 350px !important;
+  }
+
+  .common-approach-step-title {
+    font-size: 15px !important;
+  }
+
+  .common-approach-step-desc {
+    font-size: 13px !important;
+  }
+
+  .strengths-section {
+    padding: 40px 16px !important;
+  }
+
+  .strengths-top {
+    flex-direction: column !important;
+    gap: 24px !important;
+  }
+
+  .strengths-image {
+    width: 100% !important;
+    height: 200px !important;
+  }
+
+  .strengths-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  .strengths-card {
+    padding: 16px !important;
+    border-right: none !important;
+  }
+
+  .strengths-card-image {
+    width: 80px !important;
+    height: 80px !important;
+  }
+
+  .strengths-card-title {
+    font-size: 17px !important;
+  }
+
+  .strengths-card-desc {
+    font-size: 13px !important;
+  }
+
+  .common-why-section {
+    padding: 40px 16px !important;
+  }
+
+  .common-why-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .common-why-card {
+    padding: 20px !important;
+  }
+
+  .how-we-think-section {
+    padding: 40px 16px !important;
+  }
+
+  .how-we-think-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  .how-we-think-glass {
+    padding: 24px !important;
+    border-radius: 24px !important;
+  }
+
+  .trust-section {
+    padding: 40px 16px !important;
+  }
+
+  .trust-marquee-item {
+    width: 100px !important;
+    height: 50px !important;
+  }
+
+  .collaboration-section {
+    padding: 40px 16px !important;
+  }
+
+  .collaboration-header {
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+
+  .collaboration-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  .industries-section {
+    padding: 40px 16px !important;
+  }
+
+  .industries-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    max-width: 290px !important;
+    margin: 0 auto !important;
+  }
+
+  .industries-card {
+    height: 160px !important;
+    border-radius: 80px !important;
+  }
+
+  .common-stages-section {
+    padding: 40px 16px !important;
+  }
+
+  .common-stages-row {
+    flex-direction: column !important;
+    padding: 24px 0 !important;
+  }
+
+  .common-stages-content {
+    width: 100% !important;
+    order: 1 !important;
+  }
+
+  .common-stages-image {
+    width: 100% !important;
+    order: 2 !important;
+  }
+
+  .common-stages-title {
+    font-size: 20px !important;
+  }
+
+  .common-stages-desc {
+    font-size: 14px !important;
+  }
+
+  .why-adsserv-section {
+    padding: 40px 16px !important;
+  }
+
+  .why-adsserv-header {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .why-adsserv-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  .why-adsserv-card {
+    padding: 16px !important;
+    border-radius: 20px !important;
+  }
+
+  .why-adsserv-card-icon {
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  .why-adsserv-card-title {
+    font-size: 15px !important;
+  }
+
+  .why-adsserv-card-desc {
+    font-size: 12px !important;
+  }
+
+  .our-work-section {
+    padding: 40px 16px !important;
+  }
+
+  .our-work-desc {
+    font-size: 14px !important;
+  }
+
+  .our-work-cta {
+    padding: 14px 24px !important;
+    font-size: 14px !important;
+  }
+
+  .about-final-cta-section {
+    padding: 40px 16px !important;
+  }
+
+  .about-final-cta-heading {
+    font-size: clamp(28px, 8vw, 40px) !important;
+  }
+
+  .about-final-cta-para {
+    font-size: 14px !important;
+  }
+
+  .about-final-cta-buttons {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  .about-final-cta-buttons a,
+  .about-final-cta-buttons button {
+    width: 100% !important;
+    padding: 12px 20px !important;
+    font-size: 14px !important;
+  }
+
+  .common-faq-section {
+    padding: 40px 16px !important;
+  }
+
+  .common-faq-question {
+    padding: 16px !important;
+  }
+
+  .common-faq-question h3 {
+    font-size: 15px !important;
+  }
+
+  .common-faq-icon {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  .common-faq-answer {
+    padding: 0 16px 16px !important;
+    font-size: 14px !important;
+  }
+
+  .capabilities-section {
+    padding: 40px 16px !important;
+  }
+
+  .capabilities-card {
+    border-radius: 20px !important;
+    padding: 16px !important;
+  }
+
+  .capabilities-card-title {
+    font-size: 17px !important;
+  }
+
+  .capabilities-card-desc {
+    font-size: 12px !important;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .page-hero-banner,
+  .about-hero-banner {
+    height: 250px !important;
+    margin-top: 64px !important;
+  }
+
+  .about-hero-title {
+    font-size: 1.6rem !important;
+  }
+
+  .industries-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .industries-card {
+    height: 180px !important;
+  }
+
+  .why-adsserv-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .strengths-card-image {
+    width: 70px !important;
+    height: 70px !important;
+  }
+
+  .service-hero-section {
+    padding: 24px 12px 32px !important;
+  }
+
+  .projects-hero-section {
+    padding: 24px 12px 32px !important;
+  }
+
+  .blog-hero-section {
+    padding: 20px 12px 28px !important;
+  }
+
+  .faq-hero-section {
+    padding: 24px 12px 32px !important;
+  }
+
+  .contact-hero-section {
+    padding: 24px 12px 32px !important;
+  }
+}
+
 :root {
   /* ─── Primary Colors ─── */
-  --primary-dark:        #1e2f57;   /* dark navy  */
-  --primary-white:       #ffffff;
+  --primary-dark: #1e2f57;
+  /* dark navy  */
+  --primary-white: #ffffff;
 
   /* ─── Brand Blues ─── */
-  --brand-navy:          #1e2f57;   /* #1e2f57 – darkest navy        */
-  --brand-blue:          #406b9e;   /* #406b9e – medium blue         */
-  --brand-steel:         #3f6a93;   /* #3f6a93 – steel / slate blue  */
+  --brand-navy: #1e2f57;
+  /* #1e2f57 – darkest navy        */
+  --brand-blue: #406b9e;
+  /* #406b9e – medium blue         */
+  --brand-steel: #3f6a93;
+  /* #3f6a93 – steel / slate blue  */
 
   /* ─── Brand Yellows / Oranges ─── */
-  --brand-yellow:        #f1d511;   /* #f1d511 – bright yellow       */
-  --brand-amber:         #e4aa24;   /* #e4aa24 – golden amber        */
-  --brand-orange:        #e08326;   /* #e08326 – warm orange         */
-  --brand-red-orange:    #ef582e;   /* #ef582e – red-orange          */
+  --brand-yellow: #f1d511;
+  /* #f1d511 – bright yellow       */
+  --brand-amber: #e4aa24;
+  /* #e4aa24 – golden amber        */
+  --brand-orange: #e08326;
+  /* #e08326 – warm orange         */
+  --brand-red-orange: #ef582e;
+  /* #ef582e – red-orange          */
 
   /* ─── Background Colors ─── */
-  --bg-light-purple:     #ddd0f5;
-  --bg-dark-navy:        #1e2f57;
-  --bg-blue:             #406b9e;
+  --bg-light-purple: #ddd0f5;
+  --bg-dark-navy: #1e2f57;
+  --bg-blue: #406b9e;
 
   /* ─── Accent Colors (mapped to brand palette) ─── */
-  --accent-yellow:       #f1d511;
-  --accent-yellow-bright:#f1d511;
-  --accent-orange:       #e08326;
-  --accent-amber:        #e4aa24;
-  --accent-red-orange:   #ef582e;
-  --accent-green:        #059669;   /* kept for status indicators    */
-  --accent-pink:         #ef582e;   /* replaced with brand red-orange*/
+  --accent-yellow: #f1d511;
+  --accent-yellow-bright: #f1d511;
+  --accent-orange: #e08326;
+  --accent-amber: #e4aa24;
+  --accent-red-orange: #ef582e;
+  --accent-green: #059669;
+  /* kept for status indicators    */
+  --accent-pink: #ef582e;
+  /* replaced with brand red-orange*/
 
   /* ─── Text Colors ─── */
-  --text-dark:           #1e2f57;   /* navy  */
-  --text-dark-blue:      #1e2f57;
-  --text-secondary:      #3f6a93;   /* steel blue */
-  --text-gray:           #6b7fa3;   /* muted blue-gray  */
-  --text-light-gray:     #9aaac0;
-  --text-orange:         #e08326;
+  --text-dark: #1e2f57;
+  /* navy  */
+  --text-dark-blue: #1e2f57;
+  --text-secondary: #3f6a93;
+  /* steel blue */
+  --text-gray: #6b7fa3;
+  /* muted blue-gray  */
+  --text-light-gray: #9aaac0;
+  --text-orange: #e08326;
 
   /* ─── Border Colors ─── */
-  --border-gray:         rgba(30, 47, 87, 0.10);
-  --border-gray-light:   rgba(30, 47, 87, 0.06);
-  --border-blue:         rgba(64, 107, 158, 0.20);
+  --border-gray: rgba(30, 47, 87, 0.10);
+  --border-gray-light: rgba(30, 47, 87, 0.06);
+  --border-blue: rgba(64, 107, 158, 0.20);
 
   /* ─── Shadows ─── */
-  --shadow-light:        rgba(30, 47, 87, 0.12);
-  --shadow-medium:       rgba(30, 47, 87, 0.22);
-  --shadow-orange:       rgba(224, 131, 38, 0.30);
+  --shadow-light: rgba(30, 47, 87, 0.12);
+  --shadow-medium: rgba(30, 47, 87, 0.22);
+  --shadow-orange: rgba(224, 131, 38, 0.30);
 
   /* ─── Font Family ─── */
   --font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ─── Hide Scrollbar Utility ─── */
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
+/* ─── Contact Form Input Clean Focus (removes dual color ring / outline) ─── */
+#enquiry-form-section input:focus,
+#enquiry-form-section select:focus,
+#enquiry-form-section textarea:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: #e08326 !important;
 }

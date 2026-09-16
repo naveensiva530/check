@@ -43,7 +43,7 @@ export default function CommonSpecialty({
   }, [items.length]);
 
   return (
-    <section ref={sectionRef} className="w-full py-24 relative font-primary" style={{ backgroundColor: bgColor === 'purple' ? 'var(--bg-light-purple)' : 'white' }}>
+    <section ref={sectionRef} className="w-full py-14 sm:py-20 md:py-24 relative font-primary" style={{ backgroundColor: bgColor === 'purple' ? 'var(--bg-light-purple)' : 'white' }}>
       <div className="max-w-[1200px] w-full mx-auto px-4 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           

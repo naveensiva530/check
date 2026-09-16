@@ -3,7 +3,7 @@ import { Send, ArrowRight } from 'lucide-react';
 
 export default function FAQFinalCTA({ onOpenModal }) {
   return (
-    <section className="w-full py-32 relative font-primary overflow-hidden bg-white border-t border-gray-100">
+    <section className="w-full py-16 md:py-24 relative font-primary overflow-hidden bg-white border-t border-gray-100">
       {/* Subtle bg decoration */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[-20%] right-[-10%] w-[50%] h-[80%] rounded-full opacity-[0.04] blur-[100px]" style={{ background: 'var(--brand-navy)' }}></div>
@@ -29,12 +29,12 @@ export default function FAQFinalCTA({ onOpenModal }) {
         </div>
 
         {/* H2 Heading */}
-        <h2 className="text-[44px] md:text-[64px] font-extrabold leading-[1.05] tracking-tight mb-8 max-w-[900px]" style={{ color: 'var(--brand-navy, #1e2f57)' }}>
-          Let’s find the right answer for your business.
+        <h2 className="font-extrabold leading-[1.1] tracking-tight mb-6 max-w-[900px]" style={{ fontSize: 'clamp(1.9rem, 5vw, 4rem)', color: 'var(--brand-navy, #1e2f57)' }}>
+          Let's find the right answer for your business.
         </h2>
 
         {/* Body Copy */}
-        <p className="text-[18px] font-medium leading-relaxed text-slate-600 max-w-[650px] mx-auto mb-12">
+        <p className="text-[15px] md:text-[18px] font-medium leading-relaxed text-slate-600 max-w-[650px] mx-auto mb-10">
           Every business has a different starting point. If your question is not covered here, send it to us and let’s discuss what you are trying to achieve.
         </p>
 
@@ -42,7 +42,7 @@ export default function FAQFinalCTA({ onOpenModal }) {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
           <button
             onClick={onOpenModal}
-            className="px-8 py-4 bg-[var(--accent-orange)] hover:bg-orange-500 text-white font-bold text-[15px] rounded-full shadow-md transition-all flex items-center gap-2 group"
+            className="w-full sm:w-auto px-8 py-4 bg-[var(--accent-orange)] hover:bg-orange-500 text-white font-bold text-[15px] rounded-full shadow-md transition-all flex items-center justify-center gap-2 group"
           >
             <span>Ask Our Team</span>
             <Send className="w-4 h-4 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />

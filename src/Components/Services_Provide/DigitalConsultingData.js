@@ -1,59 +1,60 @@
-import { Search, Share2, Megaphone, Monitor, Palette } from 'lucide-react';
+import { Search, Share2, Megaphone, Monitor, Palette, FileText } from 'lucide-react';
 import { Target, BarChart2, Zap, ArrowRight, CheckCircle2 } from 'lucide-react';
-import bgImage from '../../assets/Services/Digital Consulting.webp';
-import imgSocial from '../../assets/SocailMedia/Connect.webp';
-import imgWeb from '../../assets/SocailMedia/Laptop.webp';
-import imgVideo from '../../assets/SocailMedia/Educate.webp';
-import imgContent from '../../assets/SocailMedia/Entertain.webp';
-import imgPaid from '../../assets/SocailMedia/Convert.webp';
-import imgCampaign from '../../assets/SocailMedia/Build Trust.webp';
-import approachImg from '../../assets/SocailMedia/Connect.webp';
-import imgSEO from '../../assets/SocailMedia/Educate.webp';
-import imgBrand from '../../assets/SocailMedia/Build Trust.webp';
+import bgImage from '../../assets/All the Hero Section bg/DIGITAL CONSULTING.webp';
+import approachImg from '../../assets/Our_Approch (2).webp';
+
+// Digital Consulting What We Do Images
+import imgDigitalStrategy from '../../assets/Servicess/DigitalConsulting/WhatWeDo/Digital Strategy.webp';
+import imgDigitalAudits from '../../assets/Servicess/DigitalConsulting/WhatWeDo/Digital Audits.webp';
+import imgMarketingStrategy from '../../assets/Servicess/DigitalConsulting/WhatWeDo/Marketing Strategy.webp';
+import imgCompetitorAnalysis from '../../assets/Servicess/DigitalConsulting/WhatWeDo/Competitor Analysis.webp';
+import imgCustomerJourney from '../../assets/Servicess/DigitalConsulting/WhatWeDo/Customer Journey Analysis.webp';
+import imgChannelStrategy from '../../assets/Servicess/DigitalConsulting/WhatWeDo/Channel Strategy.webp';
+import imgConversionOpps from '../../assets/Servicess/DigitalConsulting/WhatWeDo/Conversion Opportunities.webp';
+import imgMeasurementKPIs from '../../assets/Servicess/DigitalConsulting/WhatWeDo/Measurement & KPIs.webp';
+import imgDigitalRoadmaps from '../../assets/Servicess/DigitalConsulting/WhatWeDo/Digital Roadmaps.webp';
+
+// Related Services Images
+import imgRelBrand from '../../assets/Servicess/RelatedServices/Branding_Solution-removebg-preview.webp';
+import imgRelWeb from '../../assets/Servicess/RelatedServices/Website_Development-removebg-preview.webp';
+import imgRelSEO from '../../assets/Servicess/RelatedServices/SEO-removebg-preview.webp';
+import imgRelSocial from '../../assets/Servicess/RelatedServices/Social_Media_Marketing-removebg-preview.webp';
+import imgRelPerf from '../../assets/Servicess/RelatedServices/Performance_marketing-removebg-preview.webp';
+
+import imgStartups from '../../assets/Servicess/WhoThisIsFor/Startups.webp';
+import imgGrowing from '../../assets/Servicess/WhoThisIsFor/Growing Businesses.webp';
+import imgEstablished from '../../assets/Servicess/WhoThisIsFor/Established Brands.webp';
+import imgMarketingTeams from '../../assets/Servicess/WhoThisIsFor/Creators & Personal Brands.webp';
 
 export const heroData = {
   bgImage,
   title: "Digital Consulting",
+  breadcrumbText: "Digital Consulting",
   tagText: "DIGITAL CONSULTING",
   headingWords: [
-    { text: "Strategy" }, { text: "That" }, { text: "Connects" }, { text: "Business" },
-    { text: "Goals", italic: true }, { text: "With" }, { text: "Digital" }, { text: "Action." }
+    { text: "Stop" }, { text: "Guessing." }, { text: "Know" }, { text: "What" },
+    { text: "Your" }, { text: "Digital" }, { text: "Strategy" }, { text: "Should" },
+    { text: "Do", italic: true }, { text: "Next." }
   ],
-  description1: "A good digital strategy shouldn't just be a theoretical presentation. It needs to provide a clear direction for what happens next.",
-  description2: "ADSSERV bridges the gap between high-level business objectives and practical digital execution, helping you make better decisions about where to invest, what to fix, and how to grow.",
-  button1Text: "Discuss Your Strategy",
-  button2Text: "Explore Services"
-};
-
-export const problemData = {
-  tagText: "THE GAP BETWEEN GOALS AND EXECUTION",
-  headingWords: [
-    { text: "Looking" }, { text: "professional" }, { text: "isn't" }, { text: "the" },
-    { text: "same", italic: true }, { text: "as" }, { text: "being" }, { text: "effective." }
-  ],
-  paragraphs: ["Many businesses know where they want to go, but struggle to connect that destination with their daily digital activity."],
-  items: [
-    "Resources spread too thin across too many channels.",
-    "Marketing activity that isn't measured against business outcomes.",
-    "A disconnect between the brand promise and the digital experience."
-  ],
-  bottomText1: "The result is activity without progress.",
-  bottomText2: "We help fix that."
+  description1: "Your business doesn't need more random digital activity. It needs a clearer direction.",
+  description2: "ADSSERV helps you identify what's working, what's getting in the way, where the real opportunities are, and what to prioritise next.",
+  button1Text: "Talk to a Digital Strategist",
+  button2Text: "View Our Services",
+  button2Link: "/#services"
 };
 
 export const whatWeHelpSolveData = {
-  tagText: "WHAT WE HELP SOLVE",
+  tagText: "WHAT WE HELP YOU SOLVE",
   headingWords: [
-    { text: "Clarity" }, { text: "before" }, { text: "execution", italic: true }, { text: "." }
+    { text: "Where" }, { text: "is" }, { text: "your" }, { text: "digital" },
+    { text: "growth" }, { text: "getting", italic: true }, { text: "stuck?" }
   ],
-  description: "Consulting provides the foundation for better decisions across your entire digital presence.",
-  buttonText: "Solve These Problems",
-  icons: [Target, BarChart2, Zap],
-  services: [
-    { num: "01", title: "Unclear Priorities", desc: "Stop guessing which channels deserve investment and focus on the activities that actually move the needle.", img: imgCampaign },
-    { num: "02", title: "Fragmented Presence", desc: "Connect your website, social media, content and paid campaigns into a single, cohesive system.", img: imgSocial },
-    { num: "03", title: "Poor Measurement", desc: "Move beyond vanity metrics and understand how digital activity is actually contributing to business growth.", img: imgWeb },
-    { num: "04", title: "Stalled Growth", desc: "Identify the bottlenecks in your digital customer journey that are preventing conversion and retention.", img: imgVideo }
+  description: "Sometimes the problem isn't a lack of effort. It's knowing where that effort should go.",
+  objectives: [
+    { num: "01", label: "Unclear Direction", title: "No Clear Digital Strategy", desc: "You are active across multiple channels, but there is no clear connection between what you're doing and what the business needs to achieve.", icon: Target },
+    { num: "02", label: "Scattered Marketing", title: "Too Many Channels, Too Little Focus", desc: "SEO, social, paid ads, content and other channels are competing for attention without a clear priority.", icon: BarChart2 },
+    { num: "03", label: "Weak Conversion", title: "Traffic Isn't Turning Into Action", desc: "People may be finding your brand, but the journey from first interaction to enquiry, signup or purchase isn't working as well as it should.", icon: Zap },
+    { num: "04", label: "Performance Gaps", title: "You Don't Know What's Working", desc: "Without the right data and measurement, it becomes difficult to decide what deserves more investment and what needs to change.", icon: CheckCircle2 }
   ]
 };
 
@@ -74,21 +75,104 @@ export const approachData = {
   ]
 };
 
-export const consultingServicesData = {
-  tagText: "CONSULTING FOCUS AREAS",
+export const problemData = {
+  tagText: "STRATEGIC INTRODUCTION",
   headingWords: [
-    { text: "Expertise" }, { text: "where" }, { text: "you" }, { text: "need" }, { text: "it", italic: true }, { text: "most." }
+    { text: "You" }, { text: "don't" }, { text: "need" }, { text: "more" },
+    { text: "marketing.", italic: true }, { text: "You" }, { text: "need" },
+    { text: "better" }, { text: "decisions." }
   ],
-  description: "Our consulting engagements can cover the entire digital ecosystem or focus on specific areas of improvement.",
-  buttonText: "Discuss Your Needs",
+  paragraphs: [
+    "SEO, social media, paid advertising, content, websites and creators can all play a role in growth. The problem starts when they're treated as separate activities with no clear connection to the business goal.",
+    "Our digital consulting approach looks at the bigger picture first. We examine your current digital presence, audience, channels, customer journey and opportunities, then turn what we find into practical priorities your team can actually act on."
+  ],
+  bottomText1: "Find Your Next Move"
+};
+
+export const consultingServicesData = {
+  tagText: "CONSULTING SERVICES",
+  headingWords: [
+    { text: "What" }, { text: "we" }, { text: "can" }, { text: "help" },
+    { text: "you", italic: true }, { text: "figure" }, { text: "out" }
+  ],
+  description: "The exact scope depends on your business, but digital consulting can cover the areas that influence your online growth.",
+  buttonText: "Find Your Next Move",
   icons: [Target, BarChart2, Zap],
   services: [
-    { num: "01", title: "Digital Strategy", desc: "Develop a comprehensive plan that aligns your digital presence with your overarching business objectives.", img: imgCampaign },
-    { num: "02", title: "Brand Positioning", desc: "Clarify your market position, define your differentiation and ensure your digital presence communicates it effectively.", img: imgSocial },
-    { num: "03", title: "Go-to-Market", desc: "Plan the digital launch strategy for new products, services or businesses entering the market.", img: imgWeb },
-    { num: "04", title: "Audience & Journey", desc: "Map how your customers discover, evaluate and choose your business, and identify where you are losing them.", img: imgVideo },
-    { num: "05", title: "Channel Strategy", desc: "Determine the specific roles your website, social media, SEO and paid advertising should play in your growth.", img: imgPaid },
-    { num: "06", title: "Performance Audit", desc: "Review your current digital marketing activity to uncover inefficiencies and opportunities for improvement.", img: imgContent }
+    { num: "01", title: "Digital Strategy", desc: "Clarify your digital objectives, priorities, channels and overall direction.", img: imgDigitalStrategy },
+    { num: "02", title: "Digital Audits", desc: "Review your existing digital presence to uncover technical, strategic, content and conversion gaps.", img: imgDigitalAudits },
+    { num: "03", title: "Marketing Strategy", desc: "Connect your marketing activity with your audience, positioning, business goals and acquisition priorities.", img: imgMarketingStrategy },
+    { num: "04", title: "Competitor Analysis", desc: "Understand how competitors position themselves, attract attention and use digital channels so you can identify opportunities to differentiate.", img: imgCompetitorAnalysis },
+    { num: "05", title: "Customer Journey Analysis", desc: "Map the journey from awareness to consideration, enquiry, purchase or another desired action.", img: imgCustomerJourney },
+    { num: "06", title: "Channel Strategy", desc: "Determine where your audience is most relevant and which channels deserve attention based on your objectives.", img: imgChannelStrategy },
+    { num: "07", title: "Conversion Opportunities", desc: "Identify friction and missed opportunities across landing pages, websites, forms, calls to action and customer journeys.", img: imgConversionOpps },
+    { num: "08", title: "Measurement & KPIs", desc: "Define what should be measured so your team can understand performance and make better decisions.", img: imgMeasurementKPIs },
+    { num: "09", title: "Digital Roadmaps", desc: "Turn strategic recommendations into an organised sequence of actions rather than an overwhelming list of tasks.", img: imgDigitalRoadmaps }
+  ]
+};
+
+export const strategySectionData = {
+  tagText: "THE DIGITAL STRATEGY",
+  headingWords: [
+    { text: "Your" }, { text: "strategy" }, { text: "should" }, { text: "connect" },
+    { text: "business" }, { text: "goals" }, { text: "to", italic: true }, { text: "actual" }, { text: "channels." }
+  ],
+  paragraphs: [
+    "A digital strategy shouldn't begin with \"Should we post more?\" or \"Should we run ads?\"",
+    "It should begin with the business.",
+    "What are you trying to achieve? Who needs to take action? What makes them choose you? Which channels can reach them? What happens after they click? And how will you know whether the investment is working?",
+    "Those questions shape the strategy before individual tactics are chosen."
+  ]
+};
+
+export const roadmapSectionData = {
+  tagText: "THE EXECUTION PLAN",
+  headingWords: [
+    { text: "A" }, { text: "roadmap" }, { text: "is" }, { text: "useful" },
+    { text: "only" }, { text: "when" }, { text: "someone" }, { text: "can" },
+    { text: "actually", italic: true }, { text: "follow" }, { text: "it." }
+  ],
+  paragraphs: [
+    "Recommendations are easy to collect and difficult to execute. We turn strategic findings into a clearer sequence of priorities so your team knows what needs attention first, what can wait, and what should be measured.",
+    "The result is not another presentation full of complicated terminology. It is a practical direction for what happens next."
+  ],
+  bottomText: "Build My Digital Roadmap"
+};
+
+export const serviceConnectionData = {
+  tagText: "STRATEGY DOESN'T WORK IN ISOLATION",
+  headingWords: [
+    { text: "Strategy" }, { text: "doesn't" }, { text: "work" }, { text: "in", italic: true }, { text: "isolation." }
+  ],
+  paragraphs: [
+    "The right strategy may involve one channel, several channels, or a complete rethink of the digital journey.",
+    "Depending on your priorities, your strategy may connect with:"
+  ],
+  services: [
+    { title: "SEO Services", desc: "Build sustainable organic visibility around the searches that matter to your audience.", icon: Search, href: "/services/seo-services" },
+    { title: "Performance Marketing", desc: "Use paid campaigns when they make commercial and audience sense.", icon: Megaphone, href: "/services/performance-marketing" },
+    { title: "Social Media Marketing", desc: "Build attention, engagement and community around the right platforms.", icon: Share2, href: "/services/social-media-marketing" },
+    { title: "Website Development", desc: "Create a digital experience that supports the customer journey and conversion.", icon: Monitor, href: "/services/website-development" },
+    { title: "Content Writing", desc: "Turn strategic topics and customer needs into useful, discoverable content.", icon: FileText, href: "/services/content-writing" },
+    { title: "Branding Solutions", desc: "Make sure positioning, messaging and visual identity support the direction of the business.", icon: Palette, href: "/services/branding-solutions" }
+  ]
+};
+
+export const trustData = {
+  tagText: "STRATEGY SHOULD BE BACKED BY EVIDENCE",
+  headingWords: [
+    { text: "Strategy" }, { text: "should" }, { text: "be" }, { text: "backed" },
+    { text: "by" }, { text: "evidence,", italic: true }, { text: "not" }, { text: "assumptions." }
+  ],
+  paragraphs: [
+    "Where the data exists, we use it. Where the gaps exist, we identify them. And where a recommendation is based on an assumption, we make that clear.",
+    "Our approach is built around understanding the current situation before deciding what should change."
+  ],
+  proofCards: [
+    { title: "Business Goals", desc: "Start with what the business needs to achieve." },
+    { title: "Audience", desc: "Understand who the strategy needs to reach and influence." },
+    { title: "Digital Performance", desc: "Use available data to identify opportunities and problems." },
+    { title: "Priorities", desc: "Focus resources on actions that matter most." }
   ]
 };
 
@@ -99,10 +183,26 @@ export const whoItsForData = {
     { text: "stages", italic: true }, { text: "of" }, { text: "growth" }
   ],
   stages: [
-    { title: 'New Ventures', desc: 'Establish a strong digital foundation and go-to-market strategy before scaling investment.', image: 'https://images.unsplash.com/photo-1559136555-e4616d9d15e2?auto=format&fit=crop&q=80&w=800' },
-    { title: 'Growing Businesses', desc: 'Identify what is working, where growth is being limited and which opportunities deserve more attention.', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800' },
-    { title: 'Established Brands', desc: 'Review existing digital activity, uncover gaps and create a clearer direction for the next stage.', image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=800' },
-    { title: 'Marketing Teams', desc: 'Bring an external strategic perspective when your team needs help with priorities, channels, measurement or execution planning.', image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800' }
+    {
+      title: 'Startups',
+      desc: 'Build a practical digital foundation before spending heavily across disconnected channels.',
+      image: imgStartups
+    },
+    {
+      title: 'Growing Businesses',
+      desc: 'Identify what is working, where growth is being limited and which opportunities deserve more attention.',
+      image: imgGrowing
+    },
+    {
+      title: 'Established Brands',
+      desc: 'Review existing digital activity, uncover gaps and create a clearer direction for the next stage.',
+      image: imgEstablished
+    },
+    {
+      title: 'Marketing Teams',
+      desc: 'Bring an external strategic perspective when your team needs help with priorities, channels, measurement or execution planning.',
+      image: imgMarketingTeams
+    }
   ]
 };
 
@@ -120,18 +220,20 @@ export const whyAdsservConsultingData = {
 };
 
 export const faqData = {
-  tagText: "FAQ",
+  tagText: "FREQUENTLY ASKED QUESTIONS",
   headingWords: [
     { text: "Questions" }, { text: "businesses" }, { text: "ask" }, { text: "about" },
     { text: "digital", italic: true }, { text: "consulting" }
   ],
   faqs: [
-    { q: "What is digital consulting?", a: "Digital consulting involves analysing your business goals and current digital presence to develop a strategic plan that improves performance, efficiency and growth." },
-    { q: "How is consulting different from an agency service?", a: "Consulting focuses on the 'what' and 'why'—strategy, auditing, planning and direction. Agency services focus on the 'how'—the actual execution of the work (like running ads or building a website)." },
-    { q: "Do you also execute the strategy?", a: "Yes. ADSSERV is a full-service digital agency. We can develop the strategy and then execute it through our branding, website, SEO, social media, content and performance marketing teams." },
-    { q: "Can you consult for an existing in-house team?", a: "Yes. We often work alongside internal marketing teams to provide strategic direction, external perspective, specialised knowledge or an objective audit of their current activity." },
-    { q: "What deliverables do I get from a consulting project?", a: "Deliverables depend on the project but typically include audit reports, strategic recommendations, digital roadmaps, channel plans, audience insights or specific go-to-market strategies." },
-    { q: "How long does a consulting engagement last?", a: "It varies. Some projects are short, focused audits (e.g., 2-4 weeks), while others involve ongoing strategic guidance over several months to support execution." }
+    { q: "What is digital consulting?", a: "Digital consulting helps businesses make better decisions about their digital strategy, channels, customer journey, technology and growth priorities. It can include audits, analysis, recommendations and an actionable roadmap." },
+    { q: "What does a digital consultant do?", a: "A digital consultant evaluates a business's digital presence and identifies opportunities to improve strategy, performance and customer experience. The work can cover areas such as SEO, paid advertising, social media, websites, content, analytics and conversion." },
+    { q: "What is included in a digital consulting service?", a: "The scope depends on the business, but it can include digital audits, competitor analysis, customer journey analysis, channel strategy, conversion opportunities, measurement and a practical digital roadmap." },
+    { q: "Can digital consulting help improve marketing performance?", a: "Yes. Consulting can identify gaps in strategy, targeting, channel selection, customer journeys and measurement that may be limiting marketing performance. The recommendations should then be tested and evaluated against relevant business KPIs." },
+    { q: "Does ADSSERV provide digital consulting?", a: "Yes. ADSSERV provides digital consulting focused on helping businesses understand their current digital position, identify opportunities and prioritise practical next steps." },
+    { q: "Can startups use digital consulting?", a: "Yes. Startups can use digital consulting to establish clearer digital priorities, identify the right channels and avoid spending resources across disconnected marketing activities." },
+    { q: "How long does digital consulting take?", a: "The timeframe depends on the scope, number of channels, business complexity and depth of analysis required. A focused consultation can be much shorter than a full digital audit and strategy engagement." },
+    { q: "How much does digital consulting cost?", a: "The cost depends on the scope of the consulting engagement, the level of analysis required and the services involved. ADSSERV can determine the appropriate scope after understanding the business and its objectives." }
   ]
 };
 
@@ -142,11 +244,11 @@ export const relatedServicesData = {
     { text: 'right', italic: true }, { text: 'execution' }, { text: 'to' }, { text: 'succeed.' }
   ],
   services: [
-    { title: 'Branding Solutions', desc: 'Build an identity that supports the strategic direction.', cta: 'Explore Branding', href: '/services/branding-solutions', icon: Palette, img: imgBrand },
-    { title: 'Website Development', desc: 'Create a digital home built for the customer journey.', cta: 'Explore Websites', href: '/services/website-development', icon: Monitor, img: imgWeb },
-    { title: 'SEO Services', desc: 'Align your website structure with search intent.', cta: 'Explore SEO', href: '/services/seo-services', icon: Search, img: imgSEO },
-    { title: 'Social Media Marketing', desc: 'Execute the content and channel strategy.', cta: 'Explore Social', href: '/services/social-media-marketing', icon: Share2, img: imgSocial },
-    { title: 'Performance Marketing', desc: 'Deploy paid campaigns against specific business goals.', cta: 'Explore Performance', href: '/services/performance-marketing', icon: Megaphone, img: imgPaid }
+    { title: 'Branding Solutions', desc: 'Build an identity that supports the strategic direction.', cta: 'Explore Branding', href: '/services/branding-solutions', icon: Palette, img: imgRelBrand },
+    { title: 'Website Development', desc: 'Create a digital home built for the customer journey.', cta: 'Explore Websites', href: '/services/website-development', icon: Monitor, img: imgRelWeb },
+    { title: 'SEO Services', desc: 'Align your website structure with search intent.', cta: 'Explore SEO', href: '/services/seo-services', icon: Search, img: imgRelSEO },
+    { title: 'Social Media Marketing', desc: 'Execute the content and channel strategy.', cta: 'Explore Social', href: '/services/social-media-marketing', icon: Share2, img: imgRelSocial },
+    { title: 'Performance Marketing', desc: 'Deploy paid campaigns against specific business goals.', cta: 'Explore Performance', href: '/services/performance-marketing', icon: Megaphone, img: imgRelPerf }
   ]
 };
 

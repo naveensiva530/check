@@ -4,15 +4,15 @@ import ButtonWithIcon from '../../../Components/ui/button-with-icon';
 import ScrollRevealHeading from './ScrollRevealHeading';
 import '../../../Components/HomePage/common.css';
 
-import img1 from '../../../assets/Services/SEO.webp';
-import img2 from '../../../assets/SocailMedia/Laptop.webp';
-import img3 from '../../../assets/SocailMedia/Educate.webp';
-import img4 from '../../../assets/SocailMedia/Connect.webp';
-import img5 from '../../../assets/SocailMedia/Build Trust.webp';
-import img6 from '../../../assets/SocailMedia/Convert.webp';
-import img7 from '../../../assets/SocailMedia/Entertain.webp';
-import img8 from '../../../assets/Services/Influncer Marketing.webp';
-import img9 from '../../../assets/SocailMedia/Laptop.webp';
+import img1 from '../../../assets/Servicess/SEO/WhatWeDo/Technical SEO.webp';
+import img2 from '../../../assets/Servicess/SEO/WhatWeDo/On-Page SEO.webp';
+import img3 from '../../../assets/Servicess/SEO/WhatWeDo/Keyword Research.webp';
+import img4 from '../../../assets/Servicess/SEO/WhatWeDo/Content SEO.webp';
+import img5 from '../../../assets/Servicess/SEO/WhatWeDo/Local SEO.webp';
+import img6 from '../../../assets/Servicess/SEO/WhatWeDo/E-commerce SEO.webp';
+import img7 from '../../../assets/Servicess/SEO/WhatWeDo/Off-Page SEO.webp';
+import img8 from '../../../assets/Servicess/SEO/WhatWeDo/AEO & GEO.webp';
+import img9 from '../../../assets/Servicess/SEO/WhatWeDo/SEO Audits.webp';
 
 const services = [
   { num: "01", title: "Technical SEO", desc: "Improve the technical foundations that help search engines crawl, understand, and access important pages.", img: img1 },
@@ -47,13 +47,10 @@ export default function WhatWeDo() {
               </span>
               <span className="italic font-semibold uppercase tracking-widest" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '13px', color: 'var(--accent-orange)' }}>SEO SERVICES</span>
             </div>
-            <ScrollRevealHeading className="mb-8" words={[
+            <ScrollRevealHeading className="mb-10" words={[
               { text: "Every" }, { text: "part" }, { text: "of" }, { text: "SEO" },
               { text: "should", italic: true }, { text: "have" }, { text: "a" }, { text: "reason." }
             ]} />
-            <p className="text-[16px] md:text-[18px] leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0 font-medium" style={{ color: 'var(--brand-navy)', opacity: 0.85 }}>
-              From technical foundations to content, local visibility, and answer-engine optimisation — every service is built around search intent and business value.
-            </p>
             <ButtonWithIcon>Grow My Organic Visibility</ButtonWithIcon>
           </div>
 

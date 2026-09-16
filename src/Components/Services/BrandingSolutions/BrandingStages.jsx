@@ -3,26 +3,31 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import '../../../Components/HomePage/common.css';
 import ScrollRevealHeading from './ScrollRevealHeading';
 
+import imgStartups from '../../../assets/Servicess/WhoThisIsFor/Startups.webp';
+import imgGrowing from '../../../assets/Servicess/WhoThisIsFor/Growing Businesses.webp';
+import imgEstablished from '../../../assets/Servicess/WhoThisIsFor/Established Brands.webp';
+import imgLaunches from '../../../assets/Servicess/WhoThisIsFor/Campaign & Product Launches.webp';
+
 const stages = [
   {
     title: "Startups",
     desc: "Build a clear identity from the beginning without creating unnecessary complexity.",
-    image: "https://images.unsplash.com/photo-1559136555-e4616d9d15e2?auto=format&fit=crop&q=80&w=800",
+    image: imgStartups,
   },
   {
     title: "Growing Businesses",
     desc: "Bring consistency to an expanding digital presence, team, product range, or customer base.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+    image: imgGrowing,
   },
   {
     title: "Established Brands",
     desc: "Refine, modernise, or reposition an identity while protecting the recognition you've already built.",
-    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=800",
+    image: imgEstablished,
   },
   {
     title: "New Products",
     desc: "Create a visual and messaging system that gives a new product its own presence while remaining connected to the parent brand.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
+    image: imgLaunches,
   },
 ];
 

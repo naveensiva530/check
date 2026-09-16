@@ -6,9 +6,9 @@ import ScrollRevealHeading from './ScrollRevealHeading';
 const StepRow = ({ step, index }) => {
   const isReversed = index % 2 !== 0;
   const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 85%", "center center"] });
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 88%", "center center"] });
   const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
-  const y = useTransform(scrollYProgress, [0, 1], [40, 0]);
+  const y = useTransform(scrollYProgress, [0, 1], [20, 0]);
 
   return (
     <div ref={ref} className="relative w-full flex flex-col md:flex-row gap-8 md:gap-0 items-center py-6 md:py-10 group">
@@ -17,8 +17,8 @@ const StepRow = ({ step, index }) => {
         <motion.p className="text-[15px] md:text-[16px] leading-[1.7] font-medium" style={{ color: 'var(--text-gray, #475569)', opacity, y }}>{step.desc}</motion.p>
       </div>
       <div className={`relative w-full md:w-1/2 flex ${isReversed ? 'md:order-1 justify-end md:pr-12' : 'md:order-2 justify-start md:pl-12'}`}>
-        <motion.div className="w-full md:w-[95%] lg:w-full aspect-[21/9] rounded-[24px] overflow-hidden bg-white shadow-xl ring-1 ring-black/5" style={{ opacity, y }}>
-          <img src={step.image || step.img} alt={step.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+        <motion.div className="w-full md:w-[95%] lg:w-full aspect-[16/10] sm:aspect-[16/9] md:aspect-[21/9] rounded-[24px] overflow-hidden bg-white shadow-xl ring-1 ring-black/5" style={{ opacity, y }}>
+          <img src={step.image || step.img} alt={step.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" loading="lazy" decoding="async" width="600" height="300" />
         </motion.div>
         <div className={`hidden md:block absolute top-1/2 -translate-y-1/2 h-[2px] bg-slate-200 ${isReversed ? 'right-0 w-12' : 'left-0 w-12'}`}>
           <motion.div className={`w-full h-full bg-[var(--accent-orange)] ${isReversed ? 'origin-right' : 'origin-left'}`} style={{ scaleX: scrollYProgress }} />
@@ -28,12 +28,12 @@ const StepRow = ({ step, index }) => {
   );
 };
 
-export default function CommonStages({ tagText, headingWords, stages }) {
+export default function CommonStages({ tagText = "WHO THIS IS FOR", headingWords = [], stages = [], paragraphs = [] }) {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start center", "end center"] });
 
   return (
-    <section className="w-full pt-20 pb-20 md:pt-24 md:pb-24 relative overflow-hidden bg-white font-primary">
+    <section className="w-full pt-14 pb-14 sm:pt-20 sm:pb-20 md:pt-24 md:pb-24 relative overflow-hidden bg-white font-primary">
       <div className="max-w-[1200px] w-full mx-auto px-4 md:px-8 relative z-10" ref={containerRef}>
         <div className="flex flex-col items-center text-center mb-20 md:mb-28">
           <div className="flex items-center gap-2 mb-6">
@@ -45,6 +45,13 @@ export default function CommonStages({ tagText, headingWords, stages }) {
             </span>
           </div>
           <ScrollRevealHeading maxW="900px" words={headingWords} />
+          {paragraphs && paragraphs.length > 0 && (
+            <div className="mt-6 max-w-[800px] mx-auto flex flex-col gap-3 text-[15px] md:text-[17px] font-medium leading-relaxed" style={{ color: 'var(--text-gray, #475569)' }}>
+              {paragraphs.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="relative w-full">

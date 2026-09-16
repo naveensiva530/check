@@ -24,18 +24,18 @@ export default function Collaboration() {
     const ctx = gsap.context(() => {
       // Heading section scales in
       gsap.fromTo(headingRef.current,
-        { opacity: 0, scale: 0.94, y: 30 },
-        { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: 'power3.out',
-          scrollTrigger: { trigger: sectionRef.current, start: 'top 78%', toggleActions: 'play none none none' }
+        { opacity: 0, scale: 0.96, y: 20 },
+        { opacity: 1, scale: 1, y: 0, duration: 0.3, ease: 'power2.out',
+          scrollTrigger: { trigger: sectionRef.current, start: 'top 80%', toggleActions: 'play none none none' }
         }
       );
 
       // Step cards stagger in from bottom alternating left/right
       cardRefs.current.forEach((card, i) => {
-        const xDir = i % 2 === 0 ? -50 : 50;
+        const xDir = i % 2 === 0 ? -30 : 30;
         gsap.fromTo(card,
-          { opacity: 0, x: xDir, y: 20 },
-          { opacity: 1, x: 0, y: 0, duration: 0.4, ease: 'power3.out', delay: i * 0.05,
+          { opacity: 0, x: xDir, y: 15 },
+          { opacity: 1, x: 0, y: 0, duration: 0.25, ease: 'power2.out', delay: i * 0.03,
             scrollTrigger: { trigger: card, start: 'top 88%', toggleActions: 'play none none none' }
           }
         );
@@ -71,7 +71,7 @@ export default function Collaboration() {
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 sm:gap-x-6 md:gap-x-8 gap-y-6 sm:gap-y-8 md:gap-y-12">
           {steps.map((step, idx) => (
             <div key={idx} ref={el => cardRefs.current[idx] = el} className="flex gap-4">
               <div className="text-[20px] font-extrabold mt-1" style={{ color: 'var(--accent-orange)' }}>

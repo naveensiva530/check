@@ -35,6 +35,8 @@ const DifferenceCard = ({ title, desc, color, Icon, img }) => {
               src={img}
               alt={title}
               className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
             />
           </div>
         ) : (
@@ -68,29 +70,29 @@ const DifferenceCard = ({ title, desc, color, Icon, img }) => {
 
 export default function WhyAdsserv() {
   return (
-    <section className="w-full py-32 relative bg-white" style={{ fontFamily: 'var(--font-primary)' }}>
-      <div className="max-w-[1200px] w-full mx-auto px-4 md:px-8 relative z-10">
+    <section className="w-full py-16 sm:py-24 md:py-32 relative bg-white" style={{ fontFamily: 'var(--font-primary)' }}>
+      <div className="max-w-[1200px] w-full mx-auto px-4 sm:px-6 md:px-8 relative z-10">
         
         {/* Intro */}
-        <div className="flex flex-col items-start justify-start text-left mb-16 max-w-[800px]">
+        <div className="flex flex-col items-start justify-start text-left mb-10 sm:mb-16 max-w-[800px]">
           {/* Eyebrow — ⊕ icon + italic Playfair serif */}
           <div className="flex items-center gap-2 mb-4">
             <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white border border-gray-200 shadow-sm flex-shrink-0">
               <span style={{ color: '#f97316', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
             </span>
             <span
-              className="text-[14px] md:text-[16px] italic font-medium uppercase tracking-wider"
+              className="text-[13px] sm:text-[15px] italic font-medium uppercase tracking-wider"
               style={{ fontFamily: "'Playfair Display', Georgia, serif", color: 'var(--text-dark-blue)' }}
             >
               THE DIFFERENCE
             </span>
           </div>
 
-          <h2 className="text-[40px] md:text-[54px] font-extrabold leading-[1.1] tracking-tight mb-6" style={{ color: 'var(--text-dark-blue)' }}>
+          <h2 className="text-[28px] sm:text-[38px] md:text-[52px] font-extrabold leading-[1.1] tracking-tight mb-6" style={{ color: 'var(--text-dark-blue)' }}>
             We'd rather be useful than sound impressive.
           </h2>
 
-          <div className="text-[16px] md:text-[18px] font-medium leading-relaxed" style={{ color: '#546b8d' }}>
+          <div className="text-[15px] sm:text-[17px] font-medium leading-relaxed" style={{ color: '#546b8d' }}>
             <p className="mb-2">
               There are enough agencies that promise everything, use the same words, and make every business sound like a "market leader." That's not particularly interesting.
             </p>

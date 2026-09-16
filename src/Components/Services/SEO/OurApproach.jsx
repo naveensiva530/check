@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import ScrollRevealHeading from './ScrollRevealHeading';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import bgImage from '../../../assets/SocailMedia/Laptop.webp';
+import bgImage from '../../../assets/Our_Approch (2).webp';
 import '../../../Components/HomePage/common.css';
 
 gsap.registerPlugin(ScrollTrigger);

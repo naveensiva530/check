@@ -4,15 +4,15 @@ import ButtonWithIcon from '../../../Components/ui/button-with-icon';
 import ScrollRevealHeading from '../SocialMedia/ScrollRevealHeading';
 import '../../../Components/HomePage/common.css';
 
-// Import images for the slider (reusing available service images)
-import imgBusiness    from '../../../assets/SocailMedia/Educate.webp';
-import imgLanding     from '../../../assets/SocailMedia/Entertain.webp';
-import imgCorporate   from '../../../assets/SocailMedia/Build Trust.webp';
-import imgStartup     from '../../../assets/SocailMedia/Connect.webp';
-import imgSaaS        from '../../../assets/SocailMedia/Convert.webp';
-import imgService     from '../../../assets/SocailMedia/Laptop.webp';
-import imgRedesign    from '../../../assets/SocailMedia/Educate.webp';
-import imgConversion  from '../../../assets/SocailMedia/Entertain.webp';
+// Import images for the slider (Website Development specific images)
+import imgBusiness    from '../../../assets/Servicess/WebsiteDevelopment/WhatWeDo/Business Websites.webp';
+import imgLanding     from '../../../assets/Servicess/WebsiteDevelopment/WhatWeDo/Landing Pages.webp';
+import imgCorporate   from '../../../assets/Servicess/WebsiteDevelopment/WhatWeDo/Corporate Websites.webp';
+import imgStartup     from '../../../assets/Servicess/WebsiteDevelopment/WhatWeDo/Startup Websites.webp';
+import imgSaaS        from '../../../assets/Servicess/WebsiteDevelopment/WhatWeDo/SaaS & Technology Websites.webp';
+import imgService     from '../../../assets/Servicess/WebsiteDevelopment/WhatWeDo/Service Websites.webp';
+import imgRedesign    from '../../../assets/Servicess/WebsiteDevelopment/WhatWeDo/Website Redesigns.webp';
+import imgConversion  from '../../../assets/Servicess/WebsiteDevelopment/WhatWeDo/Conversion-Focused Pages.webp';
 
 const services = [
   {
@@ -181,11 +181,12 @@ export default function WebsiteWhatWeDo() {
                     </div>
 
                     {/* Image Container (Vertical poster format) */}
-                    <div className="absolute top-[88px] inset-x-5 bottom-[35%] rounded-2xl overflow-hidden bg-gray-50 border border-gray-100 shadow-sm flex items-center justify-center">
+                    <div className="absolute top-[88px] inset-x-5 bottom-[34%] rounded-2xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 shadow-md flex items-center justify-center p-4">
                       <img
                         src={svc.img}
                         alt={svc.title}
-                        className="w-full h-full object-cover object-center"
+                        className="w-full h-full object-contain object-center drop-shadow-sm"
+                        loading="lazy"
                       />
                     </div>
 

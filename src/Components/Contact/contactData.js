@@ -42,10 +42,9 @@ export const contactOptions = [
 export const contactDetails = {
   eyebrow: "GET IN TOUCH",
   title: "We’re ready to hear from you.",
-  email: "hello@adsserv.com",
-  phone: "+1 (555) 019-2834",
-  location: "ADSSERV Global Headquarters, 450 Lexington Ave, New York, NY 10017",
-  workingHours: "Mon - Fri: 9:00 AM - 6:00 PM (EST)"
+  email: "connect@adsserv.in",
+  phone: "+91 7603912438",
+
 };
 
 export const enquiryFormData = {
@@ -192,3 +191,65 @@ export const footerPromptData = {
   supportingCopy: "Smart strategy, creative thinking and digital execution — connected around what your business actually needs.",
   cta: "Contact ADSSERV"
 };
+
+export const contactRelatedServicesData = {
+  tagText: "NOT SURE WHERE TO START?",
+  headingWords: [
+    { text: "Explore" },
+    { text: "what" },
+    { text: "we" },
+    { text: "can" },
+    { text: "help", italic: true },
+    { text: "you" },
+    { text: "with." }
+  ],
+  services: [
+    {
+      title: "SEO Services",
+      desc: "Build stronger organic visibility and create a search strategy around your business goals.",
+      cta: "Explore SEO",
+      href: "/services/seo-services"
+    },
+    {
+      title: "Social Media Marketing",
+      desc: "Build a more consistent social presence through strategy, content and audience-focused campaigns.",
+      cta: "Explore Social Media",
+      href: "/services/social-media-marketing"
+    },
+    {
+      title: "Performance Marketing",
+      desc: "Reach relevant audiences through measurable paid campaigns designed around business objectives.",
+      cta: "Explore Performance Marketing",
+      href: "/services/performance-marketing"
+    },
+    {
+      title: "Website Development",
+      desc: "Create a clearer digital experience that supports your brand, audience and conversion goals.",
+      cta: "Explore Website Development",
+      href: "/services/website-development"
+    },
+    {
+      title: "Branding Solutions",
+      desc: "Create a stronger and more consistent identity across your digital presence.",
+      cta: "Explore Branding Solutions",
+      href: "/services/branding-solutions"
+    },
+    {
+      title: "Content Writing",
+      desc: "Turn ideas, expertise and business information into useful content designed for people and digital channels.",
+      cta: "Explore Content Writing",
+      href: "/services/content-writing"
+    }
+  ]
+};
+
+export const contactCTAData = {
+  tagText: "READY WHEN YOU ARE",
+  headingText: "Have a goal in mind? Let’s start there.",
+  description: "Whether you are looking to grow, improve, launch or simply figure out what should come next, the first step is a conversation. Tell us what you’re working on.",
+  button1Text: "Start a Conversation",
+  button2Text: "Explore All Services",
+  button1Link: "/contact",
+  button2Link: "/services"
+};
+

@@ -25,7 +25,8 @@ const defaultItems = [
 
 export const ConnoisseurStackInteractor = ({
   items = defaultItems,
-  className
+  className,
+  onItemClick,
 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const containerRef = useRef(null);
@@ -90,7 +91,7 @@ export const ConnoisseurStackInteractor = ({
     <div
       ref={containerRef}
       className={cn(
-        "flex flex-col md:flex-row items-center justify-between min-h-screen w-full p-8 md:p-24 overflow-hidden transition-colors duration-500",
+        "flex flex-col md:flex-row items-center justify-between min-h-[420px] md:min-h-screen w-full p-2 sm:p-6 md:p-16 lg:p-20 overflow-hidden transition-colors duration-500",
         "bg-white dark:bg-[#050505]",
         className
       )}
@@ -99,17 +100,23 @@ export const ConnoisseurStackInteractor = ({
       {/* LEFT SIDE: HIGH CONTRAST MENU */}
       <div className="z-20 w-full md:w-1/2">
         <nav>
-          <ul className="flex flex-col gap-14">
+          <ul className="flex flex-col gap-6 sm:gap-8 md:gap-12">
             {items.map((item, index) => (
               <li
                 key={item.num}
                 onMouseEnter={() => handleItemHover(index)}
-                className="group cursor-pointer"
+                onClick={() => {
+                  handleItemHover(index);
+                  if (onItemClick) {
+                    onItemClick(item, index);
+                  }
+                }}
+                className="group cursor-pointer select-none"
               >
-                <div className="flex items-start gap-6">
+                <div className="flex items-start gap-4 sm:gap-6">
                   {/* Numbers: Increased visibility for non-hover state */}
                   <span className={cn(
-                    "text-3xl font-bold transition-all duration-500 mt-2",
+                    "text-xl sm:text-2xl md:text-3xl font-bold transition-all duration-500 mt-1 sm:mt-2",
                     activeIndex === index
                       ? "text-orange-500 scale-110"
                       : "text-zinc-400 dark:text-zinc-600"
@@ -119,15 +126,14 @@ export const ConnoisseurStackInteractor = ({
 
                   {/* Main Text: Enhanced visibility logic */}
                   <h2 className={cn(
-                    "text-5xl md:text-6xl font-black uppercase tracking-tighter leading-[0.85] transition-all duration-700",
+                    "text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-[0.95] sm:leading-[0.85] transition-all duration-700",
                     activeIndex === index
-                      ? "text-zinc-950 dark:text-white opacity-100 translate-x-4"
+                      ? "text-zinc-950 dark:text-white opacity-100 translate-x-2 sm:translate-x-4"
                       : "opacity-40 translate-x-0 " +
                       "text-zinc-500 dark:text-transparent " +
                       "dark:[text-stroke:1.5px_#52525b] dark:[-webkit-text-stroke:1.5px_#52525b]"
                   )}>
-                    {item.name.split(' ')[0]}<br />
-                    {item.name.split(' ')[1]}
+                    {item.name}
                   </h2>
                 </div>
               </li>
@@ -137,7 +143,15 @@ export const ConnoisseurStackInteractor = ({
       </div>
 
       {/* RIGHT SIDE: SQUARE GRID (Sharp Squares) */}
-      <div className="relative w-full md:w-1/2 flex justify-center items-center mt-16 md:mt-0">
+      <div
+        onClick={() => {
+          if (onItemClick && items[activeIndex]) {
+            onItemClick(items[activeIndex], activeIndex);
+          }
+        }}
+        className="relative w-full md:w-1/2 flex justify-center items-center mt-8 sm:mt-12 md:mt-0 cursor-pointer group"
+        title={`Click to view ${items[activeIndex]?.name} case study`}
+      >
         <div className="absolute w-[120%] h-[120%] blur-[120px] rounded-full transition-opacity duration-1000" />
 
         <svg viewBox="0 0 500 500" className="w-[100%] max-w-[500px] h-auto z-10 ">

@@ -1,17 +1,18 @@
 import React, { useEffect, useRef } from 'react';
 import '../../../Components/HomePage/common.css';
-import ScrollRevealHeading from '../SocialMedia/ScrollRevealHeading';
+import ScrollRevealHeading from '../common/ScrollRevealHeading';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const steps = [
-  { num: "01", title: "Strategy & Architecture", desc: "Understanding the audience, defining the content hierarchy, and mapping the user journey before a single page is designed." },
-  { num: "02", title: "Design & Prototype", desc: "Creating the visual system and testing the interface structure before development begins." },
-  { num: "03", title: "Development & Setup", desc: "Building the responsive pages, implementing functionality, and structuring for search engines." },
-  { num: "04", title: "Review & Launch", desc: "Testing across devices, reviewing performance, and managing a clean transition to live." },
-  { num: "05", title: "Ongoing Support", desc: "Monitoring analytics, improving conversion paths, and adding new capabilities as the business grows." },
+  { num: "01", title: "Discovery", desc: "Goals, audience, business requirements, existing assets, competitors, and technical needs." },
+  { num: "02", title: "Planning", desc: "Sitemap, page requirements, user journeys, content structure, functionality, and project priorities." },
+  { num: "03", title: "Design", desc: "Wireframes and visual direction followed by the interface design." },
+  { num: "04", title: "Development", desc: "Responsive implementation, functionality, integrations, forms, and content structure." },
+  { num: "05", title: "Quality Check", desc: "Responsive testing, navigation, forms, links, performance, accessibility, SEO fundamentals, and browser checks." },
+  { num: "06", title: "Launch", desc: "Final checks, deployment, analytics, tracking, and handover." }
 ];
 
 export default function WebsiteHowWeWork() {
@@ -56,18 +57,20 @@ export default function WebsiteHowWeWork() {
               className="italic font-semibold uppercase tracking-widest"
               style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '13px', color: 'var(--accent-orange)' }}
             >
-              HOW WE WORK
+              FROM IDEA TO LAUNCH
             </span>
           </div>
 
           <ScrollRevealHeading
             maxW="900px"
             words={[
-              { text: "Build," },
-              { text: "launch," },
-              { text: "and" },
-              { text: "keep" },
-              { text: "improving.", italic: true }
+              { text: "A" },
+              { text: "clear" },
+              { text: "process" },
+              { text: "keeps" },
+              { text: "the" },
+              { text: "project", italic: true },
+              { text: "moving." }
             ]}
           />
         </div>

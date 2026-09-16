@@ -14,20 +14,20 @@ export default function CreativeShowcase() {
   const [openIndex, setOpenIndex] = useState(0); // First item open by default
 
   return (
-    <section className="w-full pt-20 bg-white relative font-primary">
-      <div className="max-w-[1200px] w-full mx-auto px-4 md:px-8 relative z-10">
+    <section className="w-full pt-14 sm:pt-20 bg-white relative font-primary overflow-hidden">
+      <div className="max-w-[1200px] w-full mx-auto px-4 sm:px-6 md:px-8 relative z-10">
         
-        <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-10 lg:gap-12 lg:items-start pt-10">
+        <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-8 lg:gap-12 lg:items-start pt-6 sm:pt-10">
           
           {/* Left Column: Content & Accordion */}
-          <div className="flex flex-col pb-20 lg:pb-32">
+          <div className="flex flex-col pb-12 sm:pb-20 lg:pb-32">
             {/* Eyebrow */}
             <div className="flex items-center gap-2 mb-4">
               <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white border border-gray-200 shadow-sm flex-shrink-0">
                 <span style={{ color: '#f97316', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
               </span>
               <span
-                className="text-[13px] md:text-[14px] italic font-medium uppercase tracking-wider"
+                className="text-[13px] sm:text-[14px] italic font-medium uppercase tracking-wider"
                 style={{ fontFamily: "'Playfair Display', Georgia, serif", color: 'var(--text-dark-blue)' }}
               >
                 THE CREATIVE SIDE
@@ -35,12 +35,12 @@ export default function CreativeShowcase() {
             </div>
 
             {/* H2 */}
-            <h2 className="text-[32px] md:text-[42px] font-extrabold leading-[1.1] tracking-tight mb-4" style={{ color: 'var(--text-dark-blue)' }}>
+            <h2 className="text-[26px] sm:text-[34px] md:text-[42px] font-extrabold leading-[1.1] tracking-tight mb-4" style={{ color: 'var(--text-dark-blue)' }}>
               Make people stop scrolling.
             </h2>
 
             {/* Copy */}
-            <p className="text-[14.5px] font-medium leading-relaxed mb-8" style={{ color: 'var(--text-gray)' }}>
+            <p className="text-[14px] sm:text-[14.5px] font-medium leading-relaxed mb-6 sm:mb-8" style={{ color: 'var(--text-gray)' }}>
               From social content and short-form video to campaign creative and brand systems, we build digital work designed to earn attention without begging for it.
             </p>
 
@@ -89,7 +89,10 @@ export default function CreativeShowcase() {
 
             {/* CTA Button */}
             <div className="mt-8">
-              <button className="group relative flex items-center gap-2 px-6 py-3 bg-[#1e2f57] text-white text-[14px] font-bold rounded-full shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+              <button
+                className="group relative flex items-center gap-2 px-6 py-3 bg-[#1e2f57] text-white text-[14px] font-bold rounded-full shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                onClick={() => window.location.href = '/projects'}
+              >
                 <span>See Our Creative Work</span>
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
@@ -101,6 +104,8 @@ export default function CreativeShowcase() {
             <img 
               src={creativeImg} 
               alt="Creative Digital Work" 
+              loading="lazy"
+              decoding="async"
               className="w-full max-w-[600px] lg:max-w-none lg:w-[145%] h-auto object-contain transform lg:scale-[1.15] lg:translate-x-[15%] lg:translate-y-[-5%]"
             />
           </div>

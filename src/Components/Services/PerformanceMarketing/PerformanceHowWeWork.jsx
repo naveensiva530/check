@@ -29,23 +29,23 @@ export default function PerformanceHowWeWork() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Heading fades + scales in
+      // Heading fades + scales in - FASTER
       gsap.fromTo(headingRef.current,
         { opacity: 0, y: 40, scale: 0.96 },
         {
-          opacity: 1, y: 0, scale: 1, duration: 0.5, ease: 'power3.out',
-          scrollTrigger: { trigger: sectionRef.current, start: 'top 78%', toggleActions: 'play none none none' }
+          opacity: 1, y: 0, scale: 1, duration: 0.3, ease: 'power2.out',
+          scrollTrigger: { trigger: sectionRef.current, start: 'top 82%', toggleActions: 'play none none none' }
         }
       );
 
-      // Cards: odd from left, even from right — zigzag stagger
+      // Cards: odd from left, even from right — zigzag stagger - FASTER
       cardRefs.current.forEach((card, i) => {
         const xDir = i % 2 === 0 ? -60 : 60;
         gsap.fromTo(card,
           { opacity: 0, x: xDir, y: 40, scale: 0.92 },
           {
-            opacity: 1, x: 0, y: 0, scale: 1, duration: 0.45, ease: 'power3.out', delay: i * 0.05,
-            scrollTrigger: { trigger: card, start: 'top 88%', toggleActions: 'play none none none' }
+            opacity: 1, x: 0, y: 0, scale: 1, duration: 0.3, ease: 'power2.out', delay: i * 0.025,
+            scrollTrigger: { trigger: card, start: 'top 90%', toggleActions: 'play none none none' }
           }
         );
       });
@@ -83,39 +83,29 @@ export default function PerformanceHowWeWork() {
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {steps.map((step, idx) => {
             return (
               <div
                 key={idx}
                 ref={el => cardRefs.current[idx] = el}
-                className="relative flex bg-white rounded-[28px] p-5 gap-5 shadow-[0_10px_35px_rgba(139,92,246,0.07)] border border-white/80 hover:shadow-[0_16px_45px_rgba(139,92,246,0.12)] hover:-translate-y-1 transition-all duration-400 group overflow-hidden"
+                className="relative flex bg-white rounded-[24px] sm:rounded-[28px] p-4 sm:p-6 gap-3 sm:gap-5 shadow-[0_10px_35px_rgba(139,92,246,0.07)] border border-white/80 hover:shadow-[0_16px_45px_rgba(139,92,246,0.12)] hover:-translate-y-1 transition-all duration-400 group overflow-hidden"
               >
                 {/* Numbered purple circle */}
-                <div
-                  className="w-9 h-9 rounded-full flex items-center justify-center text-white text-[13px] font-extrabold shadow-md z-10 flex-shrink-0 absolute top-4 left-5"
-                  style={{ backgroundColor: 'var(--brand-purple, #8b5cf6)' }}
-                >
-                  {step.num}
-                </div>
+
 
                 {/* Image */}
-                <div className="flex-shrink-0 transition-transform duration-500 absolute top-3 right-4 w-[230px] h-[230px] group-hover:scale-105 group-hover:-translate-y-1">
-                  <img src={step.img} alt={step.title} className="w-full h-full object-contain drop-shadow-lg" />
+                <div className="absolute top-2 sm:top-3 right-2 sm:right-4 w-[120px] h-[120px] sm:w-[160px] sm:h-[160px] md:w-[200px] md:h-[200px] flex-shrink-0 transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-1">
+                  <img src={step.img} alt={step.title} className="w-full h-full object-contain drop-shadow-lg" loading="lazy" decoding="async" width="200" height="200" />
                 </div>
 
                 {/* Content */}
-                <div className="flex flex-col w-full justify-start mt-[135px] pr-[90px]">
-                  <span
-                    className="text-[10px] font-extrabold uppercase tracking-widest mb-2"
-                    style={{ color: 'var(--accent-orange)' }}
-                  >
-                    Step {step.num}
-                  </span>
-                  <h3 className="text-[24px] font-extrabold mb-2 leading-tight" style={{ color: 'var(--brand-navy)' }}>
+                <div className="flex flex-col justify-end pt-[70px] sm:pt-[90px] md:pt-[110px] w-full pr-[70px] sm:pr-[90px] md:pr-[110px]">
+
+                  <h3 className="text-[20px] sm:text-[24px] font-extrabold mb-2 leading-tight" style={{ color: 'var(--brand-navy)' }}>
                     {step.title}
                   </h3>
-                  <p className="text-[13.5px] font-medium leading-relaxed text-slate-500">
+                  <p className="text-[12px] sm:text-[13.5px] font-medium leading-relaxed text-slate-500">
                     {step.desc}
                   </p>
                 </div>

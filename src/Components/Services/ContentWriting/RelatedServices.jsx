@@ -7,11 +7,11 @@ import '../../../Components/HomePage/common.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-import imgSEO from '../../../assets/SocailMedia/Educate.webp';
-import imgSocial from '../../../assets/SocailMedia/Connect.webp';
-import imgPerf from '../../../assets/SocailMedia/Convert.webp';
-import imgWeb from '../../../assets/SocailMedia/Laptop.webp';
-import imgBrand from '../../../assets/SocailMedia/Build Trust.webp';
+import imgSEO from '../../../assets/Servicess/RelatedServices/SEO-removebg-preview.webp';
+import imgSocial from '../../../assets/Servicess/RelatedServices/Social_Media_Marketing-removebg-preview.webp';
+import imgPerf from '../../../assets/Servicess/RelatedServices/Performance_marketing-removebg-preview.webp';
+import imgWeb from '../../../assets/Servicess/RelatedServices/Website_Development-removebg-preview.webp';
+import imgBrand from '../../../assets/Servicess/RelatedServices/Branding_Solution-removebg-preview.webp';
 
 const relatedServices = [
   { title: 'SEO Services', desc: 'Build visibility around the searches that matter.', cta: 'Explore SEO Services', href: '/services/seo-services', icon: Search, img: imgSEO },

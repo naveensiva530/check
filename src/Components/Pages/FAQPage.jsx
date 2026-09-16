@@ -3,12 +3,14 @@ import Navbar from '../Navbar/Navbar';
 import Footer from '../HomePage/Footer/Footer';
 import FAQModal from '../FAQ/FAQModal';
 import { faqCategories } from '../FAQ/faqData';
+import ButtonWithIcon from '../ui/button-with-icon';
+import ScrollRevealHeading from '../Services/common/ScrollRevealHeading';
 import '../HomePage/common.css';
 import {
-  Search, ChevronRight, Home, Plus, Minus,
+  Search, ChevronRight, Home, Plus, Minus, ArrowUpRight
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import bgImage from '../../assets/Services_Provide/Social media marketing.webp';
+import bgImage from '../../assets/All the Hero Section bg/FAQ(1).webp';
 
 /* ─────────────────────────────────────────
    HELPER: highlight search matches
@@ -30,36 +32,39 @@ function FAQItem({ faq, isOpen, onToggle, searchQuery }) {
   return (
     <div
       id={faq.id}
-      className={`rounded-2xl border transition-all duration-300 hover:shadow-md overflow-hidden ${
-        isOpen
-          ? 'bg-[#eadefa] border-white shadow-sm'
-          : 'bg-[#eadefa] border-white shadow-sm'
-      }`}
+      className="rounded-2xl border border-purple-200/80 transition-all duration-300 hover:shadow-md overflow-hidden shadow-sm"
+      style={{ backgroundColor: 'var(--bg-light-purple)' }}
     >
       <button
         onClick={onToggle}
-        className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left group"
+        className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left group cursor-pointer"
       >
         <h3 className="text-[17px] md:text-[18px] font-bold leading-snug" style={{ color: 'var(--brand-navy, #1e2f57)' }}>
           {highlightText(faq.question, searchQuery)}
         </h3>
-        <div className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-white transition-all duration-300"
-          style={{ backgroundColor: isOpen ? 'var(--brand-purple, #8b5cf6)' : 'var(--accent-orange, #e08326)' }}>
+        <div
+          className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-white transition-all duration-200 shadow-sm ${isOpen ? 'rotate-180' : 'rotate-0'}`}
+          style={{ backgroundColor: isOpen ? 'var(--brand-navy, #1e2f57)' : 'var(--accent-orange, #e08326)' }}
+        >
           {isOpen ? <Minus size={18} strokeWidth={2.5} /> : <Plus size={18} strokeWidth={2.5} />}
         </div>
       </button>
 
-      {/* Answer Area - ensuring it's always fully visible when open without clipping */}
+      {/* Answer Area - smooth, fast expand without delay */}
       <div
-        className="transition-all duration-500 ease-in-out"
+        className="grid transition-all duration-200 ease-out"
         style={{
-          display: isOpen ? 'block' : 'none'
+          gridTemplateRows: isOpen ? '1fr' : '0fr',
+          opacity: isOpen ? 1 : 0,
+          transition: 'grid-template-rows 220ms cubic-bezier(0.16, 1, 0.3, 1), opacity 200ms ease-out'
         }}
       >
-        <div className="px-6 pb-6 text-[15.5px] font-medium leading-relaxed text-[#1e2f57]">
-          {faq.answer.split('\n\n').map((para, i) => (
-            <p key={i} className={i > 0 ? "mt-4" : ""}>{highlightText(para, searchQuery)}</p>
-          ))}
+        <div className="overflow-hidden">
+          <div className="px-6 pb-6 text-[15.5px] font-medium leading-relaxed text-[#1e2f57]">
+            {faq.answer.split('\n\n').map((para, i) => (
+              <p key={i} className={i > 0 ? "mt-4" : ""}>{highlightText(para, searchQuery)}</p>
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -106,52 +111,49 @@ export default function FAQPage() {
 
       <main className="flex-1">
 
-        {/* ── BANNER HERO (With White Curve at Bottom) ────────────────────────── */}
+        {/* ── BANNER HERO (Above Curve) ────────────────────────── */}
         <div
           className="relative w-full flex items-center justify-center overflow-hidden"
-          style={{ minHeight: '420px', marginTop: '90px' }}
+          style={{ height: 'clamp(220px, 35vw, 420px)', marginTop: 'clamp(60px, 10vw, 90px)' }}
         >
-          {/* Background Image & Gradient */}
           <div
-            className="absolute inset-0 bg-[#111827]/45 z-0"
+            className="absolute inset-0 z-0"
             style={{
-              backgroundImage: `url(${bgImage})`,
+              backgroundImage: `url("${bgImage}")`,
               backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundBlendMode: 'overlay',
+              backgroundPosition: 'center'
             }}
           />
-          <div
-            className="absolute inset-0 z-[1]"
-            style={{
-              background: 'linear-gradient(135deg, rgba(109,40,217,0.85) 0%, rgba(139,92,246,0.80) 50%, rgba(167,139,250,0.75) 100%)',
-            }}
-          />
+          <div className="absolute inset-0 z-[1] bg-[#0f172a]/45" />
+
+          {/* Decorative blobs */}
+          <div className="absolute z-[2]" style={{ top: '-40px', left: '-40px', width: '220px', height: '220px', borderRadius: '50%', background: 'rgba(196,181,253,0.18)', filter: 'blur(40px)', animation: 'floatBlob 6s ease-in-out infinite' }} />
+          <div className="absolute z-[2]" style={{ bottom: '-30px', right: '-30px', width: '180px', height: '180px', borderRadius: '50%', background: 'rgba(167,139,250,0.20)', filter: 'blur(35px)', animation: 'floatBlob 8s ease-in-out infinite reverse' }} />
 
           <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 w-full max-w-4xl mx-auto mb-10">
             {/* Heading */}
             <h1
-              className="font-extrabold text-white mb-5 tracking-tight leading-tight"
-              style={{ fontSize: 'clamp(2.2rem, 5vw, 3.6rem)', textShadow: '0 4px 24px rgba(80,0,180,0.25)' }}
+              className="font-extrabold text-white mb-4 tracking-tight leading-tight"
+              style={{ fontSize: 'clamp(1.8rem, 5vw, 3.6rem)', textShadow: '0 4px 24px rgba(80,0,180,0.25)' }}
             >
-              FAQ
+              FAQ'S
             </h1>
 
-            {/* Breadcrumb (Contact Us Style) */}
+            {/* Breadcrumb */}
             <div
-              className="flex items-center gap-3 px-6 py-3 rounded-full mt-1"
+              className="flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 rounded-full mt-1"
               style={{ background: '#ffffff', boxShadow: '0 4px 20px rgba(80,0,180,0.12)' }}
             >
               <Link
                 to="/"
-                className="flex items-center gap-1.5 transition-opacity hover:opacity-70"
-                style={{ color: '#fb923c', fontWeight: 700, fontSize: '16px' }}
+                className="flex items-center gap-1 sm:gap-1.5 transition-opacity hover:opacity-70"
+                style={{ color: '#fb923c', fontWeight: 700, fontSize: '14px' }}
               >
-                <Home className="w-3.5 h-3.5" strokeWidth={2.5} />
+                <Home className="w-3 h-3 sm:w-3.5 sm:h-3.5" strokeWidth={2.5} />
                 <span>Home</span>
               </Link>
-              <ChevronRight className="w-3.5 h-3.5" style={{ color: '#9ca3af' }} strokeWidth={2} />
-              <span className="text-[16px] font-semibold" style={{ color: '#1e2f57' }}>
+              <ChevronRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-gray-400" strokeWidth={2} />
+              <span className="text-[13px] sm:text-[16px] font-semibold" style={{ color: '#1e2f57' }}>
                 FAQ
               </span>
             </div>
@@ -163,24 +165,104 @@ export default function FAQPage() {
               <path d="M0,100 C300,0 900,0 1200,100 L1200,100 L0,100 Z" fill="#ffffff" />
             </svg>
           </div>
+
+          <style>{`
+            @keyframes floatBlob {
+              0%, 100% { transform: scale(1) translate(0, 0); }
+              50% { transform: scale(1.08) translate(10px, -10px); }
+            }
+          `}</style>
         </div>
 
-        {/* ── CONTENT AREA (Below Curve, White Background) ─────────────────────── */}
-        <div className="w-full bg-white pb-24">
-          <div className="max-w-[1000px] mx-auto px-4 md:px-8">
-            
-            {/* ── SEARCH & CATEGORY FILTERS (Mimicking Image 5 layout) ── */}
-            <div className="flex flex-col items-center text-center pt-8 pb-14 border-b border-gray-100 mb-14">
-              
+        {/* ── EDITORIAL HERO SECTION (Below Curve) ── */}
+        <section className="w-full bg-white pt-8 sm:pt-16 pb-10 sm:pb-12 px-4 md:px-8 font-primary">
+          <div className="max-w-[1200px] mx-auto">
+            {/* Eyebrow */}
+            <div className="flex items-center gap-2 mb-6">
+              <span
+                className="flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0"
+                style={{ background: 'var(--accent-orange, #e08326)', boxShadow: '0 2px 8px rgba(224,131,38,0.30)' }}
+              >
+                <span style={{ color: '#fff', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
+              </span>
+              <span
+                className="italic font-semibold uppercase tracking-widest text-[13px]"
+                style={{
+                  fontFamily: "'Playfair Display', Georgia, serif",
+                  color: 'var(--accent-orange, #e08326)',
+                }}
+              >
+                FREQUENTLY ASKED QUESTIONS
+              </span>
+            </div>
+
+            {/* H1 */}
+            <h1 className="sr-only">Questions About Digital Marketing? Start Here.</h1>
+            <ScrollRevealHeading
+              className="mb-10"
+              words={[
+                { text: "Questions" },
+                { text: "About" },
+                { text: "Digital" },
+                { text: "Marketing?", italic: true },
+                { text: "Start" },
+                { text: "Here." },
+              ]}
+            />
+
+            {/* Two-Column Supporting Copy + CTAs (Matching Services/SocialMedia CommonHero) */}
+            <div className="flex flex-col md:flex-row gap-8 lg:gap-20 mb-14">
+              <div className="flex-1">
+                <p className="leading-relaxed font-medium" style={{ fontSize: 'clamp(1rem, 2vw, 1.25rem)', color: '#334155' }}>
+                  From SEO and social media to paid advertising, websites, branding and content, here are answers to the questions businesses commonly ask before choosing a digital marketing partner.
+                </p>
+              </div>
+              <div className="flex-1">
+                <p className="leading-relaxed mb-8" style={{ fontSize: 'clamp(0.95rem, 1.6vw, 1.1rem)', color: '#475569' }}>
+                  If you cannot find what you are looking for, talk to our team and tell us what you are trying to achieve.
+                </p>
+                {/* CTAs — full width on mobile, matching ContactHero */}
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full">
+                  <div className="w-full sm:w-auto">
+                    <Link to="/contact" className="w-full sm:w-auto">
+                      <button
+                        className="w-full flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-4 rounded-full font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 text-[14px] sm:text-[15px]"
+                        style={{ background: 'var(--brand-orange, #e08326)' }}
+                      >
+                        <span>Ask Our Team</span>
+                      </button>
+                    </Link>
+                  </div>
+                  <Link to="/#services" className="w-full sm:w-auto">
+                    <button
+                      className="group w-full flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-4 font-bold rounded-full border-2 transition-all duration-300 text-[14px] sm:text-[15px]"
+                      style={{
+                        color: 'var(--brand-navy, #1e2f57)',
+                        borderColor: 'rgba(30,47,87,0.20)',
+                        background: 'transparent',
+                      }}
+                      onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--brand-navy, #1e2f57)'; }}
+                      onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(30,47,87,0.20)'; }}
+                    >
+                      <span>Explore Our Services</span>
+                      <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* ── SEARCH & CATEGORY FILTERS ── */}
+            <div className="flex flex-col items-center text-center pt-8 border-t border-gray-100 mb-14">
               <div className="flex items-center gap-2 mb-4">
                 <span className="flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0" style={{ background: 'var(--accent-orange, #e08326)' }}>
                   <span style={{ color: '#fff', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
                 </span>
-                <span className="italic font-semibold uppercase tracking-widest text-orange-500" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '13px' }}>
+                <span className="italic font-semibold uppercase tracking-widest text-[13px] text-[var(--brand-orange)]" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
                   Find Your Answer
                 </span>
               </div>
-              
+
               <h2 className="text-3xl md:text-4xl font-extrabold mb-8" style={{ color: 'var(--brand-navy, #1e2f57)' }}>
                 What would you like to know?
               </h2>
@@ -215,11 +297,10 @@ export default function FAQPage() {
               <div className="flex flex-wrap items-center justify-center gap-3">
                 <button
                   onClick={() => setActiveCategory('all')}
-                  className={`px-5 py-2.5 rounded-full text-[14px] font-bold transition-all ${
-                    activeCategory === 'all'
+                  className={`px-5 py-2.5 rounded-full text-[14px] font-bold transition-all ${activeCategory === 'all'
                       ? 'bg-orange-500 text-white shadow-md'
                       : 'bg-white border border-gray-200 text-slate-600 hover:bg-gray-50 hover:border-gray-300'
-                  }`}
+                    }`}
                 >
                   All Categories ({allFaqCount})
                 </button>
@@ -227,17 +308,15 @@ export default function FAQPage() {
                   <button
                     key={cat.id}
                     onClick={() => setActiveCategory(cat.id)}
-                    className={`px-5 py-2.5 rounded-full text-[14px] font-bold transition-all flex items-center gap-2 ${
-                      activeCategory === cat.id
+                    className={`px-5 py-2.5 rounded-full text-[14px] font-bold transition-all flex items-center gap-2 ${activeCategory === cat.id
                         ? 'bg-orange-500 text-white shadow-md'
                         : 'bg-white border border-gray-200 text-slate-600 hover:bg-gray-50 hover:border-gray-300'
-                    }`}
+                      }`}
                   >
                     <span className={`w-1.5 h-1.5 rounded-full ${activeCategory === cat.id ? 'bg-white' : 'bg-gray-400'}`} />
                     {cat.navLabel}
-                    <span className={`ml-1 text-[11px] px-1.5 py-0.5 rounded-full font-extrabold ${
-                      activeCategory === cat.id ? 'bg-white/20 text-white' : 'bg-gray-100 text-slate-500'
-                    }`}>
+                    <span className={`ml-1 text-[11px] px-1.5 py-0.5 rounded-full font-extrabold ${activeCategory === cat.id ? 'bg-white/20 text-white' : 'bg-gray-100 text-slate-500'
+                      }`}>
                       {cat.faqs.length}
                     </span>
                   </button>
@@ -305,7 +384,7 @@ export default function FAQPage() {
               </button>
             </div>
           </div>
-        </div>
+        </section>
 
       </main>
 

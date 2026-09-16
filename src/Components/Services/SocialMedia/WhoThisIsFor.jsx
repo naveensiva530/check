@@ -4,12 +4,12 @@ import { ArrowUpRight } from 'lucide-react';
 import '../../../Components/HomePage/common.css';
 import ScrollRevealHeading from './ScrollRevealHeading';
 
-import imgStartups from '../../../assets/Servicess/WhoThisIsFor/Startups.webp';
-import imgGrowing from '../../../assets/Servicess/WhoThisIsFor/Growing Businesses.webp';
-import imgEstablished from '../../../assets/Servicess/WhoThisIsFor/Established Brands.webp';
-import imgSaaS from '../../../assets/Servicess/WhoThisIsFor/SaaS & Technology.webp';
-import imgLocal from '../../../assets/Servicess/WhoThisIsFor/Local Businesses.webp';
-import imgCreators from '../../../assets/Servicess/WhoThisIsFor/Creators & Personal Brands.webp';
+import imgStartups from '../../../assets/SocialMedia/WhoThisIsFor/Startups.webp';
+import imgGrowing from '../../../assets/SocialMedia/WhoThisIsFor/Growing Businesses.webp';
+import imgEstablished from '../../../assets/SocialMedia/WhoThisIsFor/Established Brands.webp';
+import imgSaaS from '../../../assets/SocialMedia/WhoThisIsFor/SaaS & Technology.webp';
+import imgLocal from '../../../assets/SocialMedia/WhoThisIsFor/Local Businesses.webp';
+import imgCreators from '../../../assets/SocialMedia/WhoThisIsFor/Creators & Personal Brands.webp';
 
 const audiences = [
   {

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import ButtonWithIcon from '../../Components/ui/button-with-icon';
+import ScrollRevealHeading from './ScrollRevealHeading';
 import '../../Components/HomePage/common.css';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -49,7 +50,7 @@ export default function BlogFinalCTA() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="w-full py-32 relative font-primary overflow-hidden bg-white border-t border-gray-100">
+    <section ref={sectionRef} className="w-full py-16 md:py-28 relative font-primary overflow-hidden bg-white border-t border-gray-100">
       {/* Subtle bg decoration */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[-20%] right-[-10%] w-[50%] h-[80%] rounded-full opacity-[0.04] blur-[100px]" style={{ background: 'var(--brand-navy)' }}></div>
@@ -59,27 +60,34 @@ export default function BlogFinalCTA() {
       <div className="max-w-[1000px] w-full mx-auto px-4 md:px-8 relative z-10 text-center flex flex-col items-center">
 
         <div ref={eyebrowRef} className="flex items-center gap-2 mb-6">
-          <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white border border-gray-200 shadow-sm flex-shrink-0">
-            <span style={{ color: '#f97316', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
+          <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white border border-slate-200 flex-shrink-0">
+            <span style={{ color: 'var(--brand-orange)', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
           </span>
           <span
-            className="text-[14px] md:text-[15px] italic font-medium uppercase tracking-wider"
+            className="text-[13px] md:text-[14px] italic font-semibold uppercase tracking-widest"
             style={{ fontFamily: "'Playfair Display', Georgia, serif", color: 'var(--brand-navy)' }}
           >
             READY TO TAKE THE NEXT STEP?
           </span>
         </div>
 
-        <h2 ref={headingRef} className="text-[44px] md:text-[64px] font-extrabold leading-[1.05] tracking-tight mb-8 max-w-[900px]" style={{ color: 'var(--accent-orange)' }}>
-          Have a Digital Marketing Challenge?
-        </h2>
+        <ScrollRevealHeading
+          justify="center"
+          maxW="850px"
+          className="mb-6"
+          style={{ fontSize: 'clamp(2.1rem, 4vw, 3.4rem)', textAlign: 'center' }}
+          words={[
+            { text: "Have" },
+            { text: "a" },
+            { text: "Digital" },
+            { text: "Marketing", italic: true },
+            { text: "Challenge?" }
+          ]}
+        />
 
-        <div ref={paraRef} className="flex flex-col gap-3 mb-12">
-          <p className="text-[18px] font-medium leading-relaxed text-slate-600 max-w-[650px] mx-auto">
+        <div ref={paraRef} className="flex flex-col gap-3 mb-10">
+          <p className="text-[16px] md:text-[18px] font-medium leading-relaxed text-slate-600 max-w-[700px] mx-auto">
             Whether you need better search visibility, stronger social media, more effective campaigns or a clearer digital strategy, tell us what you are trying to achieve.
-          </p>
-          <p className="text-[18px] font-medium leading-relaxed text-slate-600 max-w-[650px] mx-auto">
-            We'll help you figure out what should happen next.
           </p>
         </div>
 

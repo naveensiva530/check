@@ -1,23 +1,44 @@
-import { Share2, Users, Megaphone, Palette, Monitor } from 'lucide-react';
-import bgImage from '../../assets/Services/Video Production.webp';
-import imgSocial from '../../assets/SocailMedia/Connect.webp';
-import imgInfluencer from '../../assets/SocailMedia/Entertain.webp';
-import imgPerf from '../../assets/SocailMedia/Convert.webp';
-import imgBrand from '../../assets/SocailMedia/Build Trust.webp';
-import imgWeb from '../../assets/SocailMedia/Laptop.webp';
+import { Share2, Users, Megaphone, Palette, Monitor, Sparkles, TrendingUp, Target } from 'lucide-react';
+import bgImage from '../../assets/All the Hero Section bg/Video Production.webp';
+import approachImg from '../../assets/Our_Approch (2).webp';
+
+import imgSocial from '../../assets/Servicess/RelatedServices/Social_Media_Marketing-removebg-preview.webp';
+import imgInfluencer from '../../assets/Servicess/RelatedServices/Influncer_Marketing-removebg-preview.webp';
+import imgPerf from '../../assets/Servicess/RelatedServices/Performance_marketing-removebg-preview.webp';
+import imgBrand from '../../assets/Servicess/RelatedServices/Branding_Solution-removebg-preview.webp';
+import imgWeb from '../../assets/Servicess/RelatedServices/Website_Development-removebg-preview.webp';
+
+import imgStartups from '../../assets/Servicess/WhoThisIsFor/Startups.webp';
+import imgGrowing from '../../assets/Servicess/WhoThisIsFor/Growing Businesses.webp';
+import imgSaaS from '../../assets/Servicess/WhoThisIsFor/SaaS & Technology.webp';
+import imgConsumer from '../../assets/Servicess/WhoThisIsFor/Consumer Brands.webp';
+import imgLocal from '../../assets/Servicess/WhoThisIsFor/Local Businesses.webp';
+
+import imgShortForm from '../../assets/Servicess/Videoproduction/WhatWeDo/Short-form social videos.webp';
+import imgBrandVideos from '../../assets/Servicess/Videoproduction/WhatWeDo/Brand videos.webp';
+import imgProductVideos from '../../assets/Servicess/Videoproduction/WhatWeDo/Product videos.webp';
+import imgCampaignVideos from '../../assets/Servicess/Videoproduction/WhatWeDo/Campaign videos.webp';
+import imgExplainerVideos from '../../assets/Servicess/Videoproduction/WhatWeDo/Explainer videos.webp';
+import imgUgcStyle from '../../assets/Servicess/Videoproduction/WhatWeDo/UGC-style content.webp';
+import imgCorporateVideos from '../../assets/Servicess/Videoproduction/WhatWeDo/Brand videos.webp';
+import imgVideoAds from '../../assets/Servicess/Videoproduction/WhatWeDo/Video ads.webp';
+import imgEventContent from '../../assets/Servicess/Videoproduction/WhatWeDo/Campaign videos.webp';
 
 export const heroData = {
   bgImage,
   title: "Video Production",
+  breadcrumbText: "Video Production",
   tagText: "VIDEO PRODUCTION",
   headingWords: [
-    { text: "Video" }, { text: "That" }, { text: "Does" }, { text: "Something" },
-    { text: "More", italic: true }, { text: "Than" }, { text: "Play." }
+    { text: "Make" }, { text: "Your" }, { text: "Brand" },
+    { text: "Impossible", italic: true }, { text: "to" }, { text: "Scroll" }, { text: "Past" }
   ],
-  description1: "Most video gets watched once, forgotten immediately, and never connected to a business outcome.",
-  description2: "ADSSERV creates video content built around what you actually want it to do — whether that's building awareness, explaining an offer, driving a campaign, or telling a brand story that sticks.",
+  description1: "People don't wait around for brands to explain themselves. A strong video has to earn attention quickly, communicate something worth remembering, and fit the platform where it will be watched.",
+  description2: "ADSSERV creates brand, social, campaign, and short-form video content designed around the audience, the message, and the job the video needs to do.",
+  description3: "From the first idea to the final edit, we build content made to be watched — not just uploaded.",
   button1Text: "Start a Video Project",
-  button2Text: "Talk to ADSSERV"
+  button2Text: "View Our Services",
+  button2Link: "/#services"
 };
 
 export const problemData = {
@@ -28,7 +49,8 @@ export const problemData = {
   ],
   paragraphs: [
     "A beautifully produced video can still fail if nobody understands it, watches it, or remembers it.",
-    "The right production starts with the purpose. Different goals need different creative decisions:"
+    "The right production starts with the purpose.",
+    "Different goals need different creative decisions."
   ],
   items: [
     "Is the video introducing a brand?",
@@ -40,6 +62,82 @@ export const problemData = {
   ],
   bottomText1: "We start there.",
   bottomText2: ""
+};
+
+export const approachData = {
+  tagText: "HOW WE APPROACH VIDEO",
+  headingWords: [
+    { text: "The" }, { text: "idea" }, { text: "comes" }, { text: "before" },
+    { text: "the", italic: true }, { text: "camera." }
+  ],
+  description: "Before anything is filmed, we look at what the video needs to accomplish, who it is for, where it will be published, and what it should make the audience think, feel, or do. That clarity shapes everything from the concept to the final edit.",
+  imageSrc: approachImg,
+  imageAlt: "Our Video Production Approach",
+  steps: [
+    { num: '01', title: 'Understand', desc: 'Define the objective, audience, platform, message, budget, and constraints before the project begins.' },
+    { num: '02', title: 'Develop', desc: 'Create the concept, script, shot list, visual direction, and production plan.' },
+    { num: '03', title: 'Produce', desc: 'Film, direct, and capture the required footage and assets.' },
+    { num: '04', title: 'Edit', desc: 'Assemble the footage, add sound design, motion graphics, captions, colour treatment, and platform adaptations.' },
+    { num: '05', title: 'Review', desc: 'Share the edit for feedback and refine until the content achieves the agreed creative direction.' },
+    { num: '06', title: 'Deliver', desc: 'Export in the right formats, aspect ratios, and specifications for each platform.' }
+  ]
+};
+
+export const whatWeDoData = {
+  tagText: "VIDEO PRODUCTION SERVICES",
+  headingWords: [
+    { text: "Content" }, { text: "that" }, { text: "earns" }, { text: "attention" },
+    { text: "across", italic: true }, { text: "every" }, { text: "platform." }
+  ],
+  description: "From brand storytelling to short-form social content and campaign video, we create video built to be watched, shared, and remembered.",
+  buttonText: "View More",
+  icons: [Sparkles, TrendingUp, Target],
+  services: [
+    { num: "01", title: "Short-form social videos", desc: "Fast, platform-native content built for attention on channels such as Instagram, TikTok, and YouTube Shorts.", img: imgShortForm },
+    { num: "02", title: "Brand videos", desc: "Communicate who you are, what you stand for, and why your brand deserves attention.", img: imgBrandVideos },
+    { num: "03", title: "Product videos", desc: "Show products through demonstrations, features, use cases, visual storytelling, or creative concepts.", img: imgProductVideos },
+    { num: "04", title: "Campaign videos", desc: "Create campaign-led content designed around a specific launch, promotion, message, or audience.", img: imgCampaignVideos },
+    { num: "05", title: "Explainer videos", desc: "Make products, services, processes, or ideas easier to understand.", img: imgExplainerVideos },
+    { num: "06", title: "UGC-style content", desc: "Create authentic-feeling content designed around the way people naturally consume social video.", img: imgUgcStyle },
+    { num: "07", title: "Corporate & business videos", desc: "Turn important business messages into clear, professional visual communication.", img: imgCorporateVideos },
+    { num: "08", title: "Video ads", desc: "Develop creative assets for paid campaigns across relevant digital platforms.", img: imgVideoAds },
+    { num: "09", title: "Event & behind-the-scenes content", desc: "Capture moments, people, atmosphere, and activity that can extend the value of an event beyond the day itself.", img: imgEventContent }
+  ]
+};
+
+export const whoThisIsForData = {
+  tagText: "VIDEO FOR",
+  headingWords: [
+    { text: "For" }, { text: "brands" }, { text: "that" }, { text: "have" },
+    { text: "something", italic: true }, { text: "worth" }, { text: "showing." }
+  ],
+  stages: [
+    {
+      title: 'Startups',
+      desc: "Introduce the idea, product, people, or problem you're solving without making the brand feel bigger or smaller than it really is.",
+      img: imgStartups
+    },
+    {
+      title: 'Growing Businesses',
+      desc: 'Turn products, services, expertise, and customer stories into content that can travel across digital channels.',
+      img: imgGrowing
+    },
+    {
+      title: 'SaaS & Technology',
+      desc: 'Make complex products easier to understand through demonstrations, explainers, product stories, and educational content.',
+      img: imgSaaS
+    },
+    {
+      title: 'Consumer Brands',
+      desc: 'Create visual content that gives products a stronger presence across social, campaigns, websites, and launches.',
+      img: imgConsumer
+    },
+    {
+      title: 'Local Businesses',
+      desc: 'Show the people, place, experience, and personality behind the business.',
+      img: imgLocal
+    }
+  ]
 };
 
 export const whyAdsservVideoData = {
@@ -59,8 +157,8 @@ export const whyAdsservVideoData = {
 export const faqData = {
   tagText: "VIDEO PRODUCTION FAQ",
   headingWords: [
-    { text: "Questions" }, { text: "before" }, { text: "you" }, { text: "start" },
-    { text: "your", italic: true }, { text: "video" }, { text: "project." }
+    { text: "Questions" }, { text: "brands" }, { text: "ask" }, { text: "before" },
+    { text: "starting", italic: true }, { text: "a" }, { text: "video" }, { text: "project." }
   ],
   faqs: [
     { q: "What does video production include?", a: "Video production can include concept development, scripting, planning, filming, editing, sound, graphics, captions, colour treatment, platform adaptations, and final delivery. The exact scope depends on the project's objectives and required deliverables." },
@@ -92,7 +190,7 @@ export const relatedServicesData = {
 };
 
 export const ctaData = {
-  tagText: "READY TO START?",
+  tagText: "HAVE AN IDEA?",
   headingText: "Let's turn it into something people want to watch.",
   description: "Tell us what you're trying to communicate, who needs to see it, and where the content will live. We'll help shape the creative and production around the job the video needs to do.",
   button1Text: "Start a Video Project",

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import ScrollRevealHeading from './ScrollRevealHeading';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import bgImage from '../../../assets/SocailMedia/Entertain.webp';
+import bgImage from '../../../assets/Our_Approch (2).webp';
 import '../../../Components/HomePage/common.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -38,7 +38,7 @@ export default function OurApproach() {
     <section ref={sectionRef} className="w-full bg-white py-24 px-4 md:px-8 overflow-hidden" style={{ fontFamily: "'Inter', 'Segoe UI', sans-serif" }}>
       <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
         <div ref={imgWrapRef} className="relative flex-shrink-0 w-full lg:w-[44%] flex justify-center lg:justify-start">
-          <img ref={img1Ref} src={bgImage} alt="Our Video Production Approach" className="w-full max-w-[500px] h-auto object-contain" style={{ opacity: 0 }} />
+          <img ref={img1Ref} src={bgImage} alt="Our video approach" className="w-full max-w-[500px] h-auto object-contain" style={{ opacity: 0 }} />
         </div>
 
         <div ref={rightRef} className="flex-1" style={{ opacity: 0 }}>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ButtonWithIcon from '../../../Components/ui/button-with-icon';
 import { ArrowUpRight, Home, ChevronRight } from 'lucide-react';
-import bgImage from '../../../assets/Services/Content Writing.webp';
+import bgImage from '../../../assets/All the Hero Section bg/CONTENT WRITING.webp';
 import ScrollRevealHeading from './ScrollRevealHeading';
 
 function EditorialVisual() {
@@ -48,8 +48,10 @@ export default function ContentHero() {
   return (
     <>
       <div className="relative w-full flex items-center justify-center overflow-hidden" style={{ height: '420px', marginTop: '90px' }}>
-        <div className="absolute inset-0 bg-[#111827]/45 z-0" style={{ backgroundImage: `url(${bgImage})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundBlendMode: 'overlay' }} />
-        <div className="absolute inset-0 z-[1]" style={{ background: 'linear-gradient(135deg, rgba(109,40,217,0.55) 0%, rgba(139,92,246,0.50) 50%, rgba(167,139,250,0.45) 100%)' }} />
+        {/* Background image */}
+        <div className="absolute inset-0 z-0" style={{ backgroundImage: `url(${bgImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
+        {/* Dark overlay */}
+        <div className="absolute inset-0 z-[1] bg-[#0f172a]/45" />
         <div className="relative z-10 flex flex-col items-center justify-center text-center px-4">
           <h1 className="font-extrabold text-white mb-5 tracking-tight leading-tight" style={{ fontSize: 'clamp(2.2rem, 5vw, 3.6rem)', textShadow: '0 4px 24px rgba(80,0,180,0.25)' }}>Content Writing</h1>
           <div className="flex items-center gap-3 px-6 py-3 rounded-full mt-1" style={{ background: '#ffffff', boxShadow: '0 4px 20px rgba(80,0,180,0.12)' }}>

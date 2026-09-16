@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import Navbar from "../../Navbar/Navbar";
 import personImg from "../../../assets/HomePage/Hero_section/Hero_Banner-removebg-preview.webp";
+import heroBg from "../../../assets/All the Hero Section bg/Hero_Section_bg.webp";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FlowButton } from "../../../Components/ui/FlowButton";
@@ -288,12 +289,12 @@ const Hero_section = () => {
           font-family: var(--font-primary);
           color: var(--text-dark);
           background: var(--bg-light-purple);
-          min-height: 640px;
+          min-height: 620px;
           display: flex;
           flex-direction: column;
           justify-content: center;
-          align-items: center;
-          padding: 110px 20px 0px;
+          align-items: flex-start;
+          padding: 130px 20px 80px;
           position: relative;
           overflow: hidden;
           box-sizing: border-box;
@@ -313,10 +314,13 @@ const Hero_section = () => {
         .hero-content {
           text-align: left;
           z-index: 10;
-          max-width: 1-00px;
-          margin-left: 80px;
+          max-width: 1200px;
+          width: 100%;
+          margin-left: auto;
           margin-right: auto;
+          padding: 0 16px;
           position: relative;
+          box-sizing: border-box;
         }
 
         .headline-container {
@@ -467,30 +471,163 @@ const Hero_section = () => {
           to   { transform: rotate(360deg); }
         }
 
-        @media (max-width: 900px) {
-          .main-title { font-size: 45px; }
-          .hero-content { margin-left: 40px; margin-right: 0; }
-          .hero-image { height: 65%; opacity: 0.9; }
+        @media (min-width: 1024px) {
+          .hero-section {
+            padding: 130px 40px 90px;
+            min-height: 680px;
+          }
+          .hero-content {
+            padding-left: 40px;
+          }
+          .main-title {
+            font-size: 52px;
+          }
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 1023px) and (min-width: 768px) {
           .hero-section {
-            margin: 15px;
-            border-radius: 30px;
-            min-height: 850px;
-            padding: 100px 20px 0px;
+            padding: 110px 30px 70px;
+            min-height: 600px;
           }
-          .hero-content { margin-left: 0; margin-right: 0; margin-top: 20px; padding: 0 16px; }
-          .main-title { font-size: 38px; }
-          .subtitle { font-size: 16px; }
-          .doodle-burst, .doodle-sparkle, .dashed-line { display: none; }
-          .hero-image { height: 45%; right: -20px; bottom: -10px; }
+          .main-title {
+            font-size: 40px;
+          }
+          .hero-image {
+            height: 60%;
+            right: -20px;
+            bottom: 0;
+            opacity: 0.75;
+          }
+        }
+
+        @media (max-width: 767px) {
+          .hero-section {
+            padding: 90px 20px 40px !important;
+            min-height: auto !important;
+            overflow: hidden !important;
+            align-items: center !important;
+            text-align: center !important;
+          }
+          .hero-content {
+            padding-left: 0 !important;
+            max-width: 100% !important;
+            text-align: center !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+          }
+          .headline-container {
+            text-align: center !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+          }
+          .main-title {
+            font-size: clamp(24px, 8vw, 34px) !important;
+            line-height: 1.2 !important;
+            max-width: 100% !important;
+            text-align: center !important;
+          }
+          .subtitle {
+            font-size: 14px !important;
+            line-height: 1.6 !important;
+            max-width: 100% !important;
+            margin-top: 12px !important;
+            margin-bottom: 12px !important;
+            text-align: center !important;
+          }
+          .eyebrow {
+            margin-bottom: 12px !important;
+            justify-content: center !important;
+          }
+          .eyebrow-text {
+            font-size: 10px !important;
+            letter-spacing: 0.3px !important;
+          }
+          .eyebrow-icon {
+            width: 18px !important;
+            height: 18px !important;
+          }
+          .hero-image {
+            position: relative !important;
+            height: auto !important;
+            width: 90% !important;
+            max-width: 340px !important;
+            right: auto !important;
+            bottom: auto !important;
+            opacity: 1 !important;
+            margin-top: 20px !important;
+            order: 10 !important;
+          }
+          .doodle-burst, .doodle-sparkle, .dashed-line {
+            display: none !important;
+          }
+          .button-container {
+            flex-direction: row !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 12px !important;
+            margin-top: 20px !important;
+            width: 100% !important;
+            flex-wrap: wrap !important;
+            order: 5 !important;
+          }
+          .primary-cta-wrap {
+            width: auto !important;
+            text-align: center;
+          }
+          .primary-cta-wrap button {
+            padding: 10px 24px !important;
+            font-size: 14px !important;
+          }
+          .secondary-cta {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            padding: 10px 24px !important;
+            font-size: 14px !important;
+            width: auto !important;
+          }
+          .background-doodle-svg {
+            opacity: 0.4 !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .hero-section {
+            padding: 80px 16px 30px !important;
+          }
+          .main-title {
+            font-size: clamp(22px, 7vw, 28px) !important;
+          }
+          .subtitle {
+            font-size: 13px !important;
+          }
+          .eyebrow-text {
+            font-size: 9px !important;
+          }
+          .hero-image {
+            width: 85% !important;
+            max-width: 280px !important;
+            margin-top: 16px !important;
+          }
+          .primary-cta-wrap button {
+            padding: 8px 20px !important;
+            font-size: 13px !important;
+          }
+          .secondary-cta {
+            padding: 8px 20px !important;
+            font-size: 13px !important;
+          }
+          .button-container {
+            gap: 10px !important;
+          }
         }
       `}</style>
 
       <Navbar />
 
-      <section className="hero-section" ref={heroRef}>
+      <section className="hero-section" ref={heroRef} style={{ backgroundImage: `url(${heroBg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <svg
           className="background-doodle-svg"
           viewBox="0 0 1000 600"
@@ -513,7 +650,14 @@ const Hero_section = () => {
           />
         </svg>
 
-        <img src={personImg} alt="person" className="hero-image" ref={imageRef} />
+        <img
+          src={personImg}
+          alt="person"
+          className="hero-image"
+          ref={imageRef}
+          fetchPriority="high"
+          decoding="async"
+        />
 
         <div className="hero-content">
           <div className="headline-container" ref={titleRef}>

@@ -6,13 +6,13 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-import imgStrategy from '../../../assets/SocailMedia/Educate.webp';
-import imgWireframe from '../../../assets/SocailMedia/Connect.webp';
-import imgDesign from '../../../assets/SocailMedia/Entertain.webp';
-import imgDevelop from '../../../assets/SocailMedia/Build Trust.webp';
-import imgSEO from '../../../assets/SocailMedia/Convert.webp';
-import imgConvert from '../../../assets/SocailMedia/Connect.webp';
-import imgLaunch from '../../../assets/SocailMedia/Educate.webp';
+import imgStrategy from '../../../assets/SocialMedia_Icons/Educate.webp';
+import imgWireframe from '../../../assets/SocialMedia_Icons/Connect.webp';
+import imgDesign from '../../../assets/SocialMedia_Icons/Entertain.webp';
+import imgDevelop from '../../../assets/SocialMedia_Icons/Build Trust.webp';
+import imgSEO from '../../../assets/SocialMedia_Icons/Convert.webp';
+import imgConvert from '../../../assets/SocialMedia_Icons/Connect.webp';
+import imgLaunch from '../../../assets/SocialMedia_Icons/Educate.webp';
 
 const stages = [
   { num: '01', title: 'Strategy', goal: 'GOAL: ALIGNMENT', desc: 'Define the purpose of the website, the audience, the offer, and the actions the site should drive.', img: imgStrategy },

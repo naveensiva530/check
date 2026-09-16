@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import ButtonWithIcon from '../../../Components/ui/button-with-icon';
 import '../../../Components/HomePage/common.css';
 import { gsap } from 'gsap';
@@ -13,8 +13,10 @@ export default function CommonCTA({
   description = "Tell us where the brand is today, where you want it to go, and what isn't working. We'll help turn that into a clearer brand direction and a system your team can actually use.", 
   button1Text = "Build My Brand", 
   button2Text = "Talk to ADSSERV",
-  button1Action = () => {},
-  button2Action = () => {}
+  button1Link = "/contact",
+  button2Link = "/contact",
+  button1Action,
+  button2Action
 }) {
   const sectionRef = useRef(null);
   const eyebrowRef = useRef(null);
@@ -53,7 +55,7 @@ export default function CommonCTA({
   }, []);
 
   return (
-    <section ref={sectionRef} className="w-full py-32 relative font-primary overflow-hidden bg-white border-t border-gray-100">
+    <section ref={sectionRef} className="w-full py-16 sm:py-24 md:py-32 relative font-primary overflow-hidden bg-white border-t border-gray-100">
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[-20%] right-[-10%] w-[50%] h-[80%] rounded-full opacity-[0.04] blur-[100px]" style={{ background: 'var(--brand-navy)' }}></div>
         <div className="absolute bottom-[-20%] left-[-10%] w-[40%] h-[60%] rounded-full opacity-[0.05] blur-[80px]" style={{ background: 'var(--accent-orange)' }}></div>
@@ -73,19 +75,28 @@ export default function CommonCTA({
           </span>
         </div>
 
-        <h2 ref={headingRef} className="text-[44px] md:text-[64px] font-extrabold leading-[1.05] tracking-tight mb-8 max-w-[900px]" style={{ color: 'var(--accent-orange)' }}>
+        <h2 ref={headingRef} className="text-[28px] sm:text-[42px] md:text-[64px] font-extrabold leading-[1.08] tracking-tight mb-8 max-w-[900px]" style={{ color: 'var(--accent-orange)' }}>
           {headingText}
         </h2>
 
         <div ref={paraRef} className="flex flex-col gap-3 mb-12">
-          <p className="text-[18px] font-medium leading-relaxed text-slate-600 max-w-[650px] mx-auto">
+          <p className="text-[16px] sm:text-[18px] font-medium leading-relaxed text-slate-600 max-w-[650px] mx-auto">
             {description}
           </p>
         </div>
 
         <div ref={buttonsRef} className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 w-full">
-          <div onClick={button1Action}><ButtonWithIcon>{button1Text}</ButtonWithIcon></div>
-          <div onClick={button2Action}><ButtonWithIcon outline={true}>{button2Text}</ButtonWithIcon></div>
+          {button1Action ? (
+            <ButtonWithIcon onClick={button1Action}>{button1Text}</ButtonWithIcon>
+          ) : (
+            <ButtonWithIcon to={button1Link || "/contact"}>{button1Text}</ButtonWithIcon>
+          )}
+          
+          {button2Action ? (
+            <ButtonWithIcon onClick={button2Action} outline={true}>{button2Text}</ButtonWithIcon>
+          ) : (
+            <ButtonWithIcon to={button2Link || "/contact"} outline={true}>{button2Text}</ButtonWithIcon>
+          )}
         </div>
 
       </div>

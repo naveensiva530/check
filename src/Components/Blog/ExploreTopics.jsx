@@ -1,59 +1,52 @@
-import React, { useEffect, useRef } from 'react';
-import ScrollRevealHeading from './ScrollRevealHeading';
+import React from 'react';
+import CommonRelatedServices from '../Services/common/CommonRelatedServices';
 import { topics } from './blogData';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import '../../Components/HomePage/common.css';
+import { Search, PenLine, Share2, Megaphone, Monitor, Palette, BarChart2, Lightbulb } from 'lucide-react';
 
-gsap.registerPlugin(ScrollTrigger);
+import seoImg from '../../assets/Servicess/RelatedServices/SEO-removebg-preview.webp';
+import contentImg from '../../assets/Servicess/RelatedServices/Content_Writing-removebg-preview.webp';
+import socialImg from '../../assets/Servicess/RelatedServices/Social_Media_Marketing-removebg-preview.webp';
+import perfImg from '../../assets/Servicess/RelatedServices/Performance_marketing-removebg-preview.webp';
+import webImg from '../../assets/Servicess/RelatedServices/Website_Development-removebg-preview.webp';
+import brandImg from '../../assets/Servicess/RelatedServices/Branding_Solution-removebg-preview.webp';
+import strategyImg from '../../assets/Servicess/RelatedServices/Digital_consulting-removebg-preview.webp';
+
+// Map blog topics to use the CommonRelatedServices card format (images and icons)
+const topicServices = topics.map(topic => {
+  let icon = Lightbulb;
+  let img = null;
+  let href = '#';
+  let cta = 'Explore Topic';
+
+  const t = topic.title.toLowerCase();
+  
+  if (t.includes('seo')) { icon = Search; img = seoImg; }
+  else if (t.includes('aeo') || t.includes('ai search')) { icon = Search; img = seoImg; }
+  else if (t.includes('social')) { icon = Share2; img = socialImg; }
+  else if (t.includes('performance')) { icon = Megaphone; img = perfImg; }
+  else if (t.includes('content') || t.includes('copywriting')) { icon = PenLine; img = contentImg; }
+  else if (t.includes('website') || t.includes('ux')) { icon = Monitor; img = webImg; }
+  else if (t.includes('brand')) { icon = Palette; img = brandImg; }
+  else if (t.includes('strategy')) { icon = BarChart2; img = strategyImg; }
+
+  return {
+    ...topic,
+    icon,
+    img,
+    href,
+    cta
+  };
+});
 
 export default function ExploreTopics() {
-  const sectionRef = useRef(null);
-  const cardRefs = useRef([]);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      cardRefs.current.forEach((card, i) => {
-        if (!card) return;
-        gsap.fromTo(card, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.45, ease: 'power3.out', delay: (i % 4) * 0.08, scrollTrigger: { trigger: card, start: 'top 90%', toggleActions: 'play none none none' } });
-      });
-    }, sectionRef);
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section ref={sectionRef} className="w-full py-24 relative font-primary" style={{ backgroundColor: 'var(--bg-light-purple)' }}>
-      <div className="max-w-[1200px] w-full mx-auto px-4 md:px-8">
-        <div className="flex flex-col items-center text-center mb-16">
-          <div className="flex items-center gap-2 mb-6">
-            <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white border border-gray-200 shadow-sm flex-shrink-0">
-              <span style={{ color: '#f97316', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
-            </span>
-            <span className="italic font-semibold uppercase tracking-widest" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '13px', color: 'var(--accent-orange)' }}>
-              EXPLORE OUR TOPICS
-            </span>
-          </div>
-          <ScrollRevealHeading justify="center" maxW="650px" words={[
-            { text: "What" }, { text: "Are" }, { text: "You" }, { text: "Looking", italic: true },
-            { text: "to" }, { text: "Learn?" }
-          ]} />
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {topics.map((topic, idx) => (
-            <div
-              key={topic.title}
-              ref={el => cardRefs.current[idx] = el}
-              className="group p-6 bg-white rounded-[20px] border border-gray-100 shadow-[0_8px_25px_rgba(30,47,87,0.05)] hover:shadow-[0_12px_35px_rgba(30,47,87,0.09)] hover:-translate-y-1 transition-all duration-300 cursor-pointer"
-            >
-              <h3 className="text-[16px] font-extrabold mb-2 group-hover:text-[var(--accent-orange)] transition-colors duration-300" style={{ color: 'var(--brand-navy)' }}>
-                {topic.title}
-              </h3>
-              <p className="text-[13px] font-medium leading-relaxed text-slate-600">{topic.desc}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+    <CommonRelatedServices
+      tagText="EXPLORE OUR TOPICS"
+      headingWords={[
+        { text: "What" }, { text: "Are" }, { text: "You" }, { text: "Looking", italic: true },
+        { text: "to" }, { text: "Learn?" }
+      ]}
+      services={topicServices}
+    />
   );
 }

@@ -7,48 +7,73 @@ import { motion, LayoutGroup } from 'framer-motion';
 import { TextRotate } from '../../../Components/ui/text-rotate';
 import '../common.css';
 
+// Import real client logos
+import clientTam from '../../../assets/HomePage/clients/client7.webp';
+import clientNuTech from '../../../assets/HomePage/clients/client13.webp';
+import clientRamans from '../../../assets/HomePage/clients/client6.webp';
+import clientAayushmaan from '../../../assets/HomePage/clients/client1.webp';
+import clientJkHomes from '../../../assets/HomePage/clients/client2.webp';
+import clientBlueNest from '../../../assets/HomePage/clients/client4.webp';
+import clientRightAngle from '../../../assets/HomePage/clients/client5.webp';
+
 gsap.registerPlugin(ScrollTrigger);
 
 const testimonials = [
   {
     id: 1,
-    name: "Darrell Steward",
-    role: "Designer at Themexriver",
-    quote: "Their expert team provided exceptional digital solutions, making our brand more competitive and successful in today's market.",
+    name: "No Qu TAM",
+    role: "Workforce Technology / SaaS",
+    quote: "AdsServ gave our TAM workforce solution sharp positioning and high-intent performance marketing. Their B2B campaign messaging connected our software directly with relevant enterprise decision-makers and boosted demo enquiries.",
     rating: "5.0",
-    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80"
+    avatar: clientTam
   },
   {
     id: 2,
-    name: "Guy Hawkins",
-    role: "Designer at Themexriver",
-    quote: "Their expert team provided exceptional digital solutions, making our brand more competitive and successful in today's market.",
+    name: "Nu-Tech Associates",
+    role: "Professional / Business Services",
+    quote: "Nu-Tech needed a consistent, professional digital presence. AdsServ structured our entire social media communication across educating, engaging, and building trust, making our brand easily recognized and respected.",
     rating: "5.0",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80"
+    avatar: clientNuTech
   },
   {
     id: 3,
-    name: "Esther Howard",
-    role: "Designer at Themexriver",
-    quote: "Their expert team provided exceptional digital solutions, making our brand more competitive and successful in today's market.",
+    name: "Dr. Raman's Nature Cure",
+    role: "Nature Cure & Wellness Foundation",
+    quote: "Marketing in healthcare requires clarity and deep audience trust. AdsServ's performance marketing approach guided patients smoothly from initial awareness to confident consultation enquiries.",
     rating: "5.0",
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80"
+    avatar: clientRamans
   },
   {
     id: 4,
-    name: "Ralph Edwards",
-    role: "Designer at Themexriver",
-    quote: "Their expert team provided exceptional digital solutions, making our brand more competitive and successful in today's market.",
+    name: "Sterling Aayushmaan",
+    role: "Natural Healthcare & Wellness",
+    quote: "AdsServ's creative direction and targeted digital campaigns helped us reach health-conscious audiences effectively. Their team understands how to communicate genuine health benefits while driving measurable results.",
     rating: "5.0",
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=300&q=80"
+    avatar: clientAayushmaan
   },
   {
     id: 5,
-    name: "Sarah Jenkins",
-    role: "Designer at Themexriver",
-    quote: "Their expert team provided exceptional digital solutions, making our brand more competitive and successful in today's market.",
+    name: "JK Homes",
+    role: "Real Estate & Construction",
+    quote: "Generating qualified real estate buyer leads requires high-converting ad funnels and trustworthy presentation. AdsServ delivered exceptional performance campaigns that lowered our acquisition costs significantly.",
     rating: "5.0",
-    avatar: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=300&q=80"
+    avatar: clientJkHomes
+  },
+  {
+    id: 6,
+    name: "BlueNest Homes",
+    role: "Residential Developments",
+    quote: "From project launches to social media engagement, AdsServ brought our properties into the spotlight. Their data-driven marketing execution consistently brought high-intent homebuyers to our projects.",
+    rating: "5.0",
+    avatar: clientBlueNest
+  },
+  {
+    id: 7,
+    name: "Right Angle Design Institute",
+    role: "Design Education & Training",
+    quote: "Our student enrollments increased significantly thanks to AdsServ's focused digital advertising and Instagram marketing. Their campaigns captured our creative curriculum with great impact.",
+    rating: "5.0",
+    avatar: clientRightAngle
   }
 ];
 
@@ -58,9 +83,12 @@ const extendedTestimonials = [...testimonials, ...testimonials, ...testimonials]
 export default function Testimonial() {
   const [currentIndex, setCurrentIndex] = useState(testimonials.length);
   const [isTransitioning, setIsTransitioning] = useState(true);
+  const [cardStep, setCardStep] = useState(380);
+  const [touchStartX, setTouchStartX] = useState(0);
   const autoPlayRef = useRef(null);
   const sectionRef = useRef(null);
   const cardBoxRef = useRef(null);
+  const firstCardRef = useRef(null);
 
   const handleNext = () => {
     setIsTransitioning(true);
@@ -70,6 +98,31 @@ export default function Testimonial() {
   const handlePrev = () => {
     setIsTransitioning(true);
     setCurrentIndex((prev) => prev - 1);
+  };
+
+  useEffect(() => {
+    const updateCardStep = () => {
+      if (firstCardRef.current) {
+        const gap = window.innerWidth >= 768 ? 20 : 16;
+        setCardStep(firstCardRef.current.offsetWidth + gap);
+      }
+    };
+    updateCardStep();
+    window.addEventListener('resize', updateCardStep);
+    return () => window.removeEventListener('resize', updateCardStep);
+  }, []);
+
+  const handleTouchStart = (e) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e) => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (diff > 45) {
+      handleNext();
+    } else if (diff < -45) {
+      handlePrev();
+    }
   };
 
   // Seamless infinite loop reset logic
@@ -134,14 +187,14 @@ export default function Testimonial() {
     <section ref={sectionRef} className="w-full py-12 md:py-20 relative overflow-hidden bg-white font-sans">
 
       {/* ── Heading ── */}
-      <div className="flex flex-col items-center justify-center gap-3 mb-20 text-center px-4 relative z-20">
+      <div className="flex flex-col items-center justify-center gap-3 mb-12 sm:mb-20 text-center px-4 relative z-20">
         {/* Eyebrow */}
         <div className="flex items-center gap-2 mb-4">
           <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white border border-gray-200 shadow-sm flex-shrink-0">
             <span style={{ color: '#f97316', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
           </span>
           <span
-            className="text-[16px] italic font-medium uppercase tracking-wider"
+            className="text-[13px] sm:text-[16px] italic font-medium uppercase tracking-wider"
             style={{ fontFamily: "'Playfair Display', Georgia, serif", color: 'var(--text-dark-blue)' }}
           >
             WHAT CLIENTS THINK
@@ -151,15 +204,15 @@ export default function Testimonial() {
         <LayoutGroup>
           <motion.div
             layout
-            className="flex flex-col xl:flex-row items-center justify-center gap-x-3 gap-y-2 text-[36px] md:text-[50px] font-extrabold leading-[1.1] tracking-tight text-center flex-wrap"
+            className="flex flex-col items-center justify-center gap-x-3 gap-y-2 text-[22px] sm:text-[36px] md:text-[50px] font-extrabold leading-[1.1] tracking-tight text-center flex-wrap"
             style={{ color: 'var(--text-dark-blue)' }}
           >
-            <motion.span layout transition={{ type: 'spring', damping: 30, stiffness: 400 }} className="whitespace-nowrap">
+            <motion.span layout transition={{ type: 'spring', damping: 30, stiffness: 400 }}>
               The work should speak for itself.
             </motion.span>
             <TextRotate
               texts={['Our clients can add context.', 'Their success speaks volumes.', 'They can tell you more.']}
-              mainClassName="text-white px-4 py-1 overflow-hidden rounded-xl justify-center shadow-md"
+              mainClassName="text-white px-3 sm:px-4 py-1 overflow-hidden rounded-xl justify-center shadow-md"
               style={{ background: 'var(--text-dark-blue)' }}
               staggerFrom="last"
               initial={{ y: '100%' }}
@@ -173,7 +226,7 @@ export default function Testimonial() {
           </motion.div>
         </LayoutGroup>
 
-        <p className="text-[15px] font-medium mt-4 max-w-[680px] leading-relaxed" style={{ color: 'var(--text-gray)' }}>
+        <p className="text-[14px] sm:text-[15px] font-medium mt-4 max-w-[680px] leading-relaxed" style={{ color: 'var(--text-gray)' }}>
           Good partnerships are measured by more than a finished deliverable. They are built through communication, thinking, execution, and the ability to keep improving.
         </p>
       </div>
@@ -182,26 +235,30 @@ export default function Testimonial() {
         {/* Main Outer Container with background: var(--bg-light-purple) and borderRadius: 40px */}
         <div
           ref={cardBoxRef}
-          className="p-4 sm:p-6 md:p-8 shadow-[0_15px_40px_rgba(30,47,87,0.08)] relative z-10"
+          className="p-4 sm:p-6 md:p-8 shadow-[0_15px_40px_rgba(30,47,87,0.08)] relative z-10 rounded-[24px] sm:rounded-[32px] md:rounded-[40px]"
           style={{
             background: 'var(--bg-light-purple)',
-            borderRadius: '40px',
             opacity: 0,
           }}
         >
           {/* Continuous Smooth Slider Track */}
-          <div className="overflow-hidden py-1 w-full">
+          <div 
+            className="overflow-hidden py-1 w-full touch-pan-y"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
             <div
               className={`flex gap-4 md:gap-5 ${isTransitioning ? 'transition-transform duration-700 ease-in-out' : ''
                 }`}
               style={{
-                transform: `translateX(calc(-${currentIndex} * (360px + 1.25rem)))`,
+                transform: `translateX(-${currentIndex * cardStep}px)`,
               }}
             >
               {extendedTestimonials.map((item, idx) => (
                 <div
+                  ref={idx === 0 ? firstCardRef : null}
                   key={`${item.id}-${idx}`}
-                  className="flex-shrink-0 w-[290px] sm:w-[330px] md:w-[360px] bg-white rounded-2xl p-4 md:p-5 flex flex-col justify-between shadow-sm transition-all duration-300 hover:shadow-md hover:scale-[1.01]"
+                  className="flex-shrink-0 w-[min(calc(100vw-48px),340px)] sm:w-[330px] md:w-[360px] bg-white rounded-2xl p-4 md:p-5 flex flex-col justify-between shadow-sm transition-all duration-300 hover:shadow-md hover:scale-[1.01]"
                   style={{
                     border: '1px solid rgba(30, 47, 87, 0.08)',
                   }}
@@ -232,12 +289,16 @@ export default function Testimonial() {
                         </div>
                       </div>
 
-                      {/* Compact Avatar Image */}
-                      <img
-                        src={item.avatar}
-                        alt={item.name}
-                        className="w-14 h-14 md:w-16 md:h-16 rounded-xl object-cover shadow-2xs border-2 border-white flex-shrink-0"
-                      />
+                      {/* Client Logo in Place of Avatar */}
+                      <div className="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-white border border-slate-200/90 shadow-2xs flex items-center justify-center p-2 flex-shrink-0 overflow-hidden">
+                        <img
+                          src={item.avatar}
+                          alt={item.name}
+                          className="w-full h-full object-contain"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </div>
                     </div>
 
                     {/* Name & Role */}

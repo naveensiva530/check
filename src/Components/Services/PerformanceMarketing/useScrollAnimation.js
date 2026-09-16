@@ -36,23 +36,23 @@ export function useScrollAnimation(animateFn) {
 }
 
 /**
- * Fade up animation helper
+ * Fade up animation helper - OPTIMIZED FOR SPEED
  */
 export function fadeUp(targets, options = {}) {
   return gsap.fromTo(
     targets,
-    { opacity: 0, y: options.y ?? 60, scale: options.scale ?? 1 },
+    { opacity: 0, y: options.y ?? 50, scale: options.scale ?? 1 },
     {
       opacity: 1,
       y: 0,
       scale: 1,
-      duration: options.duration ?? 0.8,
-      ease: options.ease ?? 'power3.out',
+      duration: options.duration ?? 0.5,
+      ease: options.ease ?? 'power2.out',
       stagger: options.stagger ?? 0,
       delay: options.delay ?? 0,
       scrollTrigger: {
         trigger: options.trigger,
-        start: options.start ?? 'top 80%',
+        start: options.start ?? 'top 85%',
         toggleActions: 'play none none none',
         ...options.scrollTrigger,
       },
@@ -61,10 +61,10 @@ export function fadeUp(targets, options = {}) {
 }
 
 /**
- * Slide from side animation helper
+ * Slide from side animation helper - OPTIMIZED FOR SPEED
  */
 export function slideFrom(targets, direction = 'left', options = {}) {
-  const xFrom = direction === 'left' ? -80 : 80;
+  const xFrom = direction === 'left' ? -60 : 60;
   return gsap.fromTo(
     targets,
     { opacity: 0, x: xFrom, scale: options.scale ?? 1 },
@@ -72,13 +72,13 @@ export function slideFrom(targets, direction = 'left', options = {}) {
       opacity: 1,
       x: 0,
       scale: 1,
-      duration: options.duration ?? 0.9,
-      ease: options.ease ?? 'power3.out',
+      duration: options.duration ?? 0.5,
+      ease: options.ease ?? 'power2.out',
       stagger: options.stagger ?? 0,
       delay: options.delay ?? 0,
       scrollTrigger: {
         trigger: options.trigger,
-        start: options.start ?? 'top 80%',
+        start: options.start ?? 'top 85%',
         toggleActions: 'play none none none',
         ...options.scrollTrigger,
       },
@@ -87,22 +87,22 @@ export function slideFrom(targets, direction = 'left', options = {}) {
 }
 
 /**
- * Scale in animation helper
+ * Scale in animation helper - OPTIMIZED FOR SPEED
  */
 export function scaleIn(targets, options = {}) {
   return gsap.fromTo(
     targets,
-    { opacity: 0, scale: options.from ?? 0.85 },
+    { opacity: 0, scale: options.from ?? 0.9 },
     {
       opacity: 1,
       scale: 1,
-      duration: options.duration ?? 0.9,
-      ease: options.ease ?? 'back.out(1.4)',
+      duration: options.duration ?? 0.5,
+      ease: options.ease ?? 'back.out(1.2)',
       stagger: options.stagger ?? 0,
       delay: options.delay ?? 0,
       scrollTrigger: {
         trigger: options.trigger,
-        start: options.start ?? 'top 80%',
+        start: options.start ?? 'top 85%',
         toggleActions: 'play none none none',
         ...options.scrollTrigger,
       },

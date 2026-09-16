@@ -2,7 +2,7 @@ import React from 'react';
 
 import ScrollRevealHeading from './ScrollRevealHeading';
 import '../../../Components/HomePage/common.css';
-
+import reportVisual from '../../../assets/Servicess/PerformanceMarketing/PerformanceWhatWeDo/Conversion Tracking.webp';
 
 export default function SEOReporting() {
   return (
@@ -17,6 +17,7 @@ export default function SEOReporting() {
               <span className="italic font-semibold uppercase tracking-widest" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '13px', color: 'var(--accent-orange)' }}>KNOW WHAT IS MOVING</span>
             </div>
             <ScrollRevealHeading words={[{ text: "Reports" }, { text: "should" }, { text: "help" }, { text: "you" }, { text: "decide", italic: true }, { text: "what" }, { text: "to" }, { text: "do" }, { text: "next." }]} />
+
           </div>
           <div className="flex flex-col justify-center gap-5">
             <p className="text-[16px] md:text-[18px] font-medium leading-relaxed" style={{ color: 'var(--text-gray)' }}>

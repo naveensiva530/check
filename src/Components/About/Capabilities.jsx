@@ -1,10 +1,9 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ArrowUpRight, ArrowLeft, ArrowRight, Megaphone, UserCog, PersonStanding, Globe } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../../Components/HomePage/common.css';
-import ScrollRevealHeading from '../Services/SocialMedia/ScrollRevealHeading';
 
 import socialMediaImg from '../../assets/Services/Social Media Marketing.webp';
 import performanceImg from '../../assets/Services/Performance marketing.webp';
@@ -32,18 +31,37 @@ const capabilities = [
   { num: "10", tag: "SOCIAL", title: "Instagram\nMarketing", icon: Globe, image: instagramImg, desc: "Platform-specific strategy and content designed around how people actually use Instagram.", path: "/services/instagram-marketing" }
 ];
 
-const CARDS_PER_VIEW = 4;
-const CLONE_COUNT = CARDS_PER_VIEW;
 const TOTAL = capabilities.length;
-const EXT_LEN = TOTAL + CLONE_COUNT * 2;
-
-const extendedCards = [
-  ...capabilities.slice(-CLONE_COUNT).map((s, i) => ({ ...s, _key: `cs${i}` })),
-  ...capabilities.map((s) => ({ ...s, _key: s.num })),
-  ...capabilities.slice(0, CLONE_COUNT).map((s, i) => ({ ...s, _key: `ce${i}` })),
-];
 
 export default function Capabilities() {
+  const navigate = useNavigate();
+  const [cardsPerView, setCardsPerView] = useState(() => {
+    if (typeof window !== 'undefined') {
+      if (window.innerWidth < 640) return 1;
+      if (window.innerWidth < 1024) return 2;
+    }
+    return 4;
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) setCardsPerView(1);
+      else if (window.innerWidth < 1024) setCardsPerView(2);
+      else setCardsPerView(4);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const CLONE_COUNT = cardsPerView;
+  const EXT_LEN = TOTAL + CLONE_COUNT * 2;
+
+  const extendedCards = [
+    ...capabilities.slice(-CLONE_COUNT).map((s, i) => ({ ...s, _key: `cs${i}` })),
+    ...capabilities.map((s) => ({ ...s, _key: s.num })),
+    ...capabilities.slice(0, CLONE_COUNT).map((s, i) => ({ ...s, _key: `ce${i}` })),
+  ];
+
   const [idx, setIdx] = useState(CLONE_COUNT);
   const [animated, setAnimated] = useState(true);
   const [hoveredKey, setHoveredKey] = useState(null);
@@ -51,6 +69,29 @@ export default function Capabilities() {
   const sectionRef = useRef(null);
   const headingRef = useRef(null);
   const carouselRef = useRef(null);
+
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+  const isSwiping = useRef(false);
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+    touchEndX.current = e.targetTouches[0].clientX;
+    isSwiping.current = false;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+    if (Math.abs(touchStartX.current - touchEndX.current) > 10) {
+      isSwiping.current = true;
+    }
+  };
+
+  const handleTouchEnd = () => {
+    const diff = touchStartX.current - touchEndX.current;
+    if (diff > 45) next();
+    else if (diff < -45) prev();
+  };
 
   const handleTransitionEnd = useCallback((e) => {
     if (e.target !== trackRef.current) return;
@@ -61,7 +102,7 @@ export default function Capabilities() {
       if (prev < CLONE_COUNT) return prev + TOTAL;
       return prev;
     });
-  }, []);
+  }, [CLONE_COUNT]);
 
   useEffect(() => {
     if (!animated) {
@@ -103,77 +144,81 @@ export default function Capabilities() {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden pb-32 lg:pb-48 px-4 pt-24"
+      className="relative overflow-hidden pb-40 lg:pb-64 px-4 pt-32 md:pt-40"
       style={{ background: 'var(--bg-light-purple)', fontFamily: 'var(--font-primary)' }}
     >
       <div className="relative mx-auto max-w-7xl z-20">
 
         {/* ── TOP BAR: eyebrow + heading + paragraph + arrows ── */}
-        <div ref={headingRef} className="relative mb-14 flex flex-col items-start justify-start text-left">
-          {/* ARROWS */}
-          <div className="absolute right-0 top-0 flex items-center gap-4">
-            <button
-              onClick={prev}
-              className="flex h-14 w-14 items-center justify-center rounded-full shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl active:scale-95"
-              style={{ border: '1px solid var(--border-gray)', background: 'var(--primary-white)', color: 'var(--text-dark-blue)' }}
-            >
-              <ArrowLeft className="h-5 w-5" />
-            </button>
-            <button
-              onClick={next}
-              className="flex h-14 w-14 items-center justify-center rounded-full shadow-xl transition-all duration-300 hover:scale-110 hover:shadow-2xl active:scale-95"
-              style={{ background: 'var(--accent-orange)', color: '#fff' }}
-            >
-              <ArrowRight className="h-5 w-5" />
-            </button>
+        {/* ── TOP BAR: heading + responsive arrows ── */}
+        <div ref={headingRef} className="relative mb-10 sm:mb-14 flex flex-col items-start justify-start text-left">
+          <div className="w-full flex items-center justify-between gap-4 mb-3">
+            {/* Eyebrow — ⊕ icon + italic Playfair serif */}
+            <div className="flex items-center gap-2">
+              <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white border border-gray-200 shadow-sm flex-shrink-0">
+                <span style={{ color: '#f97316', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
+              </span>
+              <span
+                className="text-[13px] sm:text-[16px] italic font-medium text-[#1a233a]"
+                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              >
+                OUR CAPABILITIES
+              </span>
+            </div>
+
+            {/* ARROWS — responsive size and tap targets */}
+            <div className="flex items-center gap-2.5 sm:gap-4">
+              <button
+                onClick={prev}
+                aria-label="Previous service"
+                className="flex h-11 w-11 sm:h-14 sm:w-14 items-center justify-center rounded-full shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl active:scale-95 cursor-pointer"
+                style={{ border: "1px solid var(--border-gray)", background: "var(--primary-white)", color: "var(--text-dark-blue)" }}
+              >
+                <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5" />
+              </button>
+              <button
+                onClick={next}
+                aria-label="Next service"
+                className="flex h-11 w-11 sm:h-14 sm:w-14 items-center justify-center rounded-full shadow-xl transition-all duration-300 hover:scale-110 hover:shadow-2xl active:scale-95 cursor-pointer"
+                style={{ background: "var(--accent-orange)", color: "#fff" }}
+              >
+                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+              </button>
+            </div>
           </div>
 
-          {/* Eyebrow */}
-          <div className="flex items-center gap-2 mb-6">
-            <span
-              className="flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0"
-              style={{ background: 'var(--accent-orange, #e08326)', boxShadow: '0 2px 8px rgba(224,131,38,0.30)' }}
-            >
-              <span style={{ color: '#fff', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
-            </span>
-            <span
-              className="italic font-semibold uppercase tracking-widest"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '13px', color: 'var(--accent-orange, #e08326)' }}
-            >
-              OUR CAPABILITIES
-            </span>
-          </div>
-
-          <ScrollRevealHeading
-            className="mb-6"
-            words={[
-              { text: "From" },
-              { text: "first", italic: true },
-              { text: "impression" },
-              { text: "to" },
-              { text: "next" },
-              { text: "action." }
-            ]}
-          />
-
-          <p
-            className="text-[16px] md:text-[18px] font-medium leading-relaxed max-w-[680px]"
-            style={{ color: '#334155' }}
+          {/* title */}
+          <h2
+            className="text-[26px] sm:text-[38px] md:text-[46px] font-extrabold leading-[1.15] tracking-tight max-w-[700px]"
+            style={{ color: "var(--text-dark-blue)" }}
           >
-            ADSSERV brings multiple digital capabilities together so brands can solve connected
-            problems without having to treat every part of their digital presence as a separate project.
+            From first impression to next action.
+          </h2>
+
+          {/* subtitle */}
+          <p
+            className="text-[13px] sm:text-[15px] font-medium mt-3 max-w-[560px] leading-relaxed"
+            style={{ color: "var(--text-gray)" }}
+          >
+            ADSSERV brings multiple digital capabilities together so brands can solve connected problems without having to treat every part of their digital presence as a separate project.
           </p>
         </div>
 
-        {/* ── CAROUSEL VIEWPORT ── */}
-        <div ref={carouselRef} style={{ overflow: 'hidden', paddingTop: '2.5rem', marginTop: '-2.5rem' }}>
+        {/* ── CAROUSEL VIEWPORT ────────────────── */}
+        <div
+          ref={carouselRef}
+          style={{ overflow: 'hidden', paddingTop: '2.5rem', marginTop: '-2.5rem', touchAction: 'pan-y' }}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
           <div
             ref={trackRef}
             onTransitionEnd={handleTransitionEnd}
             style={{
               display: 'flex',
               alignItems: 'stretch',
-              width: `calc(${EXT_LEN} / ${CARDS_PER_VIEW} * 100%)`,
+              width: `calc(${EXT_LEN} / ${cardsPerView} * 100%)`,
               transform: `translateX(${translateX})`,
               transition: animated ? 'transform 0.55s cubic-bezier(0.4, 0, 0.2, 1)' : 'none',
               willChange: 'transform',
@@ -186,7 +231,7 @@ export default function Capabilities() {
               return (
                 <div
                   key={s._key}
-                  className="services-card-item group relative flex-shrink-0 px-4 flex flex-col"
+                  className="services-card-item group relative flex-shrink-0 px-4 flex flex-col cursor-pointer"
                   style={{
                     width: `calc(100% / ${EXT_LEN})`,
                     transform: isHovered ? 'translateY(-12px)' : 'translateY(0)',
@@ -194,6 +239,11 @@ export default function Capabilities() {
                   }}
                   onMouseEnter={() => setHoveredKey(s._key)}
                   onMouseLeave={() => setHoveredKey(null)}
+                  onClick={() => {
+                    if (isSwiping.current) return;
+                    navigate(s.path);
+                    window.scrollTo(0, 0);
+                  }}
                 >
                   {/* FLOATING ICON */}
                   <div
@@ -285,13 +335,12 @@ export default function Capabilities() {
                             transition: 'background 0.4s ease',
                           }}
                         />
-                        <Link
-                          to={s.path}
-                          className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center shadow-lg rounded-[20px] transition-all duration-300 hover:rotate-45 hover:scale-110"
+                        <div
+                          className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center shadow-lg rounded-[20px] transition-all duration-300 group-hover:rotate-45 group-hover:scale-110"
                           style={{ background: 'var(--accent-orange)', color: '#fff' }}
                         >
                           <ArrowUpRight className="h-5 w-5" />
-                        </Link>
+                        </div>
                       </div>
                     </div>
 
@@ -311,13 +360,15 @@ export default function Capabilities() {
         </div>
 
         {/* Explore All Services */}
-        <div className="flex justify-center mt-12">
-          <Link to="/#services" className="know-more-btn">
-            <span>Explore All Services</span>
-            <div className="know-more-icon">
-              <ArrowUpRight className="w-5 h-5" strokeWidth={2.5} />
-            </div>
-          </Link>
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center mt-12 w-full">
+          <div className="w-full sm:w-auto">
+            <Link to="/services" className="know-more-btn w-full sm:w-auto justify-center">
+              <span>Explore All Services</span>
+              <div className="know-more-icon">
+                <ArrowUpRight className="w-5 h-5" strokeWidth={2.5} />
+              </div>
+            </Link>
+          </div>
         </div>
 
       </div>

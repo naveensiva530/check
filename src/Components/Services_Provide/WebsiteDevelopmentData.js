@@ -1,17 +1,36 @@
-import { Palette, PenLine, Search, Share2, Megaphone, Users, Briefcase, Camera } from 'lucide-react';
-import bgImage from '../../assets/Services/Website Development.webp';
-import imgBrand from '../../assets/SocailMedia/Build Trust.webp';
-import imgContent from '../../assets/SocailMedia/Educate.webp';
-import imgSEO from '../../assets/SocailMedia/Laptop.webp';
-import imgSocial from '../../assets/SocailMedia/Connect.webp';
-import imgPerf from '../../assets/SocailMedia/Convert.webp';
-import imgInfluencer from '../../assets/SocailMedia/Entertain.webp';
-import imgConsult from '../../assets/SocailMedia/Build Trust.webp';
-import imgInsta from '../../assets/SocailMedia/Connect.webp';
+import { Palette, PenLine, Search, Share2, Megaphone, Monitor, Sparkles, TrendingUp, Target, Layers, Smartphone, Gauge, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import bgImage from '../../assets/All the Hero Section bg/Website Development.webp';
+import approachImg from '../../assets/Our_Approch (2).webp';
+
+// Images for Who This Is For
+import imgStartups from '../../assets/Servicess/WhoThisIsFor/Startups.webp';
+import imgGrowing from '../../assets/Servicess/WhoThisIsFor/Growing Businesses.webp';
+import imgEstablished from '../../assets/Servicess/WhoThisIsFor/Established Brands.webp';
+import imgSaaS from '../../assets/Servicess/WhoThisIsFor/SaaS & Technology.webp';
+import imgLocal from '../../assets/Servicess/WhoThisIsFor/Local Businesses.webp';
+import imgCreators from '../../assets/Servicess/WhoThisIsFor/Creators & Personal Brands.webp';
+
+// Images for Related Services
+import imgBrand from '../../assets/Servicess/RelatedServices/Branding_Solution-removebg-preview.webp';
+import imgContent from '../../assets/Servicess/RelatedServices/Content_Writing-removebg-preview.webp';
+import imgSEO from '../../assets/Servicess/RelatedServices/SEO-removebg-preview.webp';
+import imgSocial from '../../assets/Servicess/RelatedServices/Social_Media_Marketing-removebg-preview.webp';
+import imgPerf from '../../assets/Servicess/RelatedServices/Performance_marketing-removebg-preview.webp';
+
+// Images for What We Build slider
+import imgWwd1 from '../../assets/Servicess/WebsiteDevelopment/WhatWeDo/Business Websites.webp';
+import imgWwd2 from '../../assets/Servicess/WebsiteDevelopment/WhatWeDo/Landing Pages.webp';
+import imgWwd3 from '../../assets/Servicess/WebsiteDevelopment/WhatWeDo/Corporate Websites.webp';
+import imgWwd4 from '../../assets/Servicess/WebsiteDevelopment/WhatWeDo/Startup Websites.webp';
+import imgWwd5 from '../../assets/Servicess/WebsiteDevelopment/WhatWeDo/SaaS & Technology Websites.webp';
+import imgWwd6 from '../../assets/Servicess/WebsiteDevelopment/WhatWeDo/Service Websites.webp';
+import imgWwd7 from '../../assets/Servicess/WebsiteDevelopment/WhatWeDo/Website Redesigns.webp';
+import imgWwd8 from '../../assets/Servicess/WebsiteDevelopment/WhatWeDo/Conversion-Focused Pages.webp';
 
 export const heroData = {
   bgImage,
   title: "Website Development",
+  breadcrumbText: "Website Development",
   tagText: "WEBSITE DEVELOPMENT",
   headingWords: [
     { text: "Websites" }, { text: "Built" }, { text: "to" }, { text: "Be" },
@@ -20,7 +39,8 @@ export const heroData = {
   description1: "Your website is not just the place people go to find your business. It is where they decide whether to trust you, understand what you offer, and take the next step.",
   description2: "ADSSERV creates modern websites that bring together thoughtful design, clear content, responsive development, SEO foundations, and conversion-focused user experiences — so the site looks right and works for the business behind it.",
   button1Text: "Start My Website",
-  button2Text: "View Our Services"
+  button2Text: "View Our Services",
+  button2Link: "/#services"
 };
 
 export const problemData = {
@@ -44,26 +64,159 @@ export const problemData = {
   bottomText2: ""
 };
 
-export const whyAdsservWebsiteData = {
-  tagText: "WHY WEBSITE DEVELOPMENT WITH ADSSERV",
+export const approachData = {
+  tagText: "STRATEGY BEFORE SCREENS",
   headingWords: [
-    { text: "We" }, { text: "build" }, { text: "websites" }, { text: "around" },
-    { text: "what" }, { text: "matters.", italic: true }
+    { text: "We" }, { text: "build" }, { text: "around" }, { text: "the" },
+    { text: "experience,", italic: true }, { text: "not" }, { text: "just" },
+    { text: "the" }, { text: "layout." }
+  ],
+  description: "Before thinking about colours, animations, or visual effects, we look at the purpose of the website. Who is visiting? What are they looking for? What needs to convince them? What should they do next? What needs to happen after they submit an enquiry? Those answers shape the structure, content, design, development, and conversion journey.",
+  imageSrc: approachImg,
+  imageAlt: "Website Development Approach",
+  steps: [
+    { num: '01', title: 'Discover', desc: 'Understand the business, audience, objectives, existing website, competitors, and priorities.' },
+    { num: '02', title: 'Plan', desc: 'Create the sitemap, page hierarchy, content direction, user journeys, and functional requirements.' },
+    { num: '03', title: 'Design', desc: 'Develop a visual system and interface that reflects the brand while keeping usability at the centre.' },
+    { num: '04', title: 'Build', desc: 'Develop responsive pages with clean structure, appropriate functionality, and a strong technical foundation.' },
+    { num: '05', title: 'Optimise', desc: 'Review performance, mobile usability, accessibility, SEO fundamentals, forms, navigation, and conversion paths.' },
+    { num: '06', title: 'Launch', desc: 'Test the website across key devices and browsers before taking it live.' }
+  ]
+};
+
+export const whatWeBuildData = {
+  tagText: "WEBSITE DEVELOPMENT SERVICES",
+  headingWords: [
+    { text: "From" }, { text: "first" }, { text: "click" }, { text: "to" },
+    { text: "final", italic: true }, { text: "conversion." }
+  ],
+  description: "Whether building a new website or redesigning an existing one, we build digital experiences aligned with your business goals.",
+  buttonText: "View More",
+  icons: [Sparkles, TrendingUp, Target],
+  services: [
+    { num: "01", title: "Business Websites", desc: "Professional websites designed to communicate what your business does clearly and give visitors a reason to take action.", img: imgWwd1 },
+    { num: "02", title: "Landing Pages", desc: "Focused pages designed around a specific campaign, offer, audience, or conversion objective.", img: imgWwd2 },
+    { num: "03", title: "Corporate Websites", desc: "Structured digital experiences for organisations that need clear information architecture, credibility, and scalable content.", img: imgWwd3 },
+    { num: "04", title: "Startup Websites", desc: "Lean, flexible websites that help emerging businesses explain their proposition and establish a credible digital presence.", img: imgWwd4 },
+    { num: "05", title: "SaaS & Technology Websites", desc: "Product-focused experiences that make complex technology easier to understand, evaluate, and explore.", img: imgWwd5 },
+    { num: "06", title: "Service Websites", desc: "Websites that organise multiple services into clear journeys so visitors can quickly find the solution relevant to them.", img: imgWwd6 },
+    { num: "07", title: "Website Redesigns", desc: "Rework outdated websites around modern UX, clearer content, responsive design, stronger performance, and better conversion paths.", img: imgWwd7 },
+    { num: "08", title: "Conversion-Focused Pages", desc: "Pages structured to reduce confusion, strengthen trust, and make the intended next action obvious.", img: imgWwd8 }
+  ]
+};
+
+export const designUXData = {
+  tagText: "UI / UX",
+  headingWords: [
+    { text: "Good" }, { text: "design" }, { text: "should" }, { text: "make" },
+    { text: "the" }, { text: "next" }, { text: "step", italic: true }, { text: "obvious." }
   ],
   paragraphs: [
-    "A website is one of the few assets that keeps working for the business long after the project is delivered.",
-    "How well it works depends on how it's built — and why.",
-    "A website developed with ADSSERV is shaped by:"
+    "We don't design interfaces simply to fill a screen. Every design decision should have a clear reason behind it."
   ],
   items: [
-    "We start with the business, the audience, and the intended outcome.",
-    "Every recommendation is justified.",
-    "Structure, copy, and design are treated as one conversation.",
-    "Performance, accessibility, and SEO aren't afterthoughts.",
-    "The website is built to be updated — not rebuilt.",
-    "We keep working with you after launch."
+    "Navigation should make sense.",
+    "Content should have hierarchy.",
+    "Buttons should look actionable.",
+    "Important information should be easy to find.",
+    "Forms should not create unnecessary friction.",
+    "And the experience should remain intuitive when the screen becomes smaller."
   ],
-  boldParagraph: "The result is a website that doesn't just look the part — it does its part."
+  bottomText: "Every design decision should have a reason."
+};
+
+export const builtIntoExperienceData = {
+  tagText: "MORE THAN VISUALS",
+  headingWords: [
+    { text: "The" }, { text: "details" }, { text: "users" }, { text: "notice" },
+    { text: "—" }, { text: "and" }, { text: "the" }, { text: "ones", italic: true },
+    { text: "they" }, { text: "don't." }
+  ],
+  description: "Behind every seamless website is a suite of foundational capabilities built into the experience:",
+  bottomText: "We engineer websites that perform reliably across every modern browser and device.",
+  metrics: [
+    { num: '01', title: 'Responsive Design', desc: 'A consistent experience across desktop, tablet, and mobile devices.', pinColor: 'var(--accent-orange)', bg: 'rgba(224,131,38,0.08)', border: 'rgba(224,131,38,0.22)', text: 'var(--accent-orange)', rotate: 'rotate-[6deg]' },
+    { num: '02', title: 'Clear Information Architecture', desc: 'Pages and navigation organised around how visitors actually find information.', pinColor: 'var(--brand-navy)', bg: 'rgba(30,47,87,0.06)', border: 'rgba(30,47,87,0.16)', text: 'var(--brand-navy)', rotate: '-rotate-[7deg]' },
+    { num: '03', title: 'Conversion Paths', desc: 'Clear calls to action that guide users towards enquiries, bookings, purchases, registrations, or other intended actions.', pinColor: 'var(--brand-red-orange)', bg: 'rgba(239,88,46,0.08)', border: 'rgba(239,88,46,0.22)', text: 'var(--brand-red-orange)', rotate: 'rotate-[5deg]' },
+    { num: '04', title: 'SEO Foundations', desc: 'Page structure, headings, metadata, URLs, internal linking, and other foundational elements considered during development.', pinColor: 'var(--brand-blue)', bg: 'rgba(64,107,158,0.08)', border: 'rgba(64,107,158,0.22)', text: 'var(--brand-blue)', rotate: '-rotate-[6deg]' },
+    { num: '05', title: 'Performance', desc: 'Attention to page weight, image delivery, scripts, layout stability, and loading experience.', pinColor: 'var(--accent-orange)', bg: 'rgba(224,131,38,0.08)', border: 'rgba(224,131,38,0.22)', text: 'var(--accent-orange)', rotate: 'rotate-[8deg]' },
+    { num: '06', title: 'Accessible Interfaces', desc: 'Interfaces designed with readable structure, keyboard usability, contrast, labels, and other accessibility considerations in mind.', pinColor: 'var(--brand-navy)', bg: 'rgba(30,47,87,0.06)', border: 'rgba(30,47,87,0.16)', text: 'var(--brand-navy)', rotate: '-rotate-[5deg]' },
+    { num: '07', title: 'Content-Ready Structure', desc: 'A flexible page architecture that allows the business to expand its content and services without rebuilding everything from scratch.', pinColor: 'var(--brand-red-orange)', bg: 'rgba(239,88,46,0.08)', border: 'rgba(239,88,46,0.22)', text: 'var(--brand-red-orange)', rotate: 'rotate-[7deg]' },
+    { num: '08', title: 'Analytics & Tracking', desc: 'Support for the measurement tools required to understand website behaviour and conversions.', pinColor: 'var(--brand-blue)', bg: 'rgba(64,107,158,0.08)', border: 'rgba(64,107,158,0.22)', text: 'var(--brand-blue)', rotate: '-rotate-[4deg]' }
+  ]
+};
+
+export const seoReadyData = {
+  tagText: "BUILT WITH SEARCH IN MIND",
+  headingWords: [
+    { text: "SEO" }, { text: "shouldn't" }, { text: "be" }, { text: "something" },
+    { text: "added", italic: true }, { text: "after" }, { text: "launch." }
+  ],
+  paragraphs: [
+    "A website's visual design and search visibility should not have to fight each other.",
+    "We consider SEO fundamentals during the planning and development process — including logical page architecture, crawlable content, heading structure, URLs, internal linking, metadata, image optimisation, mobile experience, and technical performance."
+  ],
+  bottomText: "The goal is not to make a website look 'optimised'. The goal is to build a useful website that search engines and people can understand."
+};
+
+export const conversionData = {
+  tagText: "FROM TRAFFIC TO ACTION",
+  headingWords: [
+    { text: "Getting" }, { text: "visitors" }, { text: "is" }, { text: "only" },
+    { text: "half", italic: true }, { text: "the" }, { text: "job." }
+  ],
+  paragraphs: [
+    "Your website may receive visitors from Google, social media, paid advertising, referrals, email, or direct traffic. The experience after that visit matters.",
+    "We structure key pages around clear actions such as:"
+  ],
+  items: [
+    "Enquire", "Book a consultation", "Request a quote", "Call / WhatsApp",
+    "Submit a form", "Purchase / Checkout", "Register", "Start a conversation"
+  ],
+  bottomText: "The right conversion depends on the business and the visitor's stage in the journey."
+};
+
+export const whoThisIsForData = {
+  tagText: "WE BUILD FOR DIFFERENT BUSINESS STAGES",
+  headingWords: [
+    { text: "A" }, { text: "website" }, { text: "should" }, { text: "fit" },
+    { text: "the" }, { text: "business,", italic: true }, { text: "not" },
+    { text: "the" }, { text: "other" }, { text: "way" }, { text: "around." }
+  ],
+  stages: [
+    { title: "Startups", desc: "For businesses establishing their proposition, brand, audience, and digital presence.", img: imgStartups },
+    { title: "Growing Businesses", desc: "For companies whose existing website no longer reflects their services, positioning, or growth.", img: imgGrowing },
+    { title: "Established Brands", desc: "For organisations looking to modernise, restructure, or improve an existing digital experience.", img: imgEstablished },
+    { title: "SaaS & Technology", desc: "For technology companies that need to make products, features, and value propositions easier to understand.", img: imgSaaS },
+    { title: "Local Businesses", desc: "For businesses that need a clear, trustworthy website that supports local discovery and enquiries.", img: imgLocal },
+    { title: "Service Businesses", desc: "For businesses where the website needs to explain expertise, services, proof, and the next step clearly.", img: imgCreators }
+  ]
+};
+
+export const redesignData = {
+  tagText: "ALREADY HAVE A WEBSITE?",
+  headingWords: [
+    { text: "You" }, { text: "may" }, { text: "not" }, { text: "need" },
+    { text: "to" }, { text: "start" }, { text: "from", italic: true }, { text: "zero." }
+  ],
+  paragraphs: [
+    "If your current website receives traffic but fails to communicate clearly, feels outdated, performs poorly on mobile, or makes conversion difficult, a redesign may be the better move.",
+    "We can review the existing structure, content, user experience, technical foundation, and conversion paths to identify what should stay, what should change, and what should be rebuilt."
+  ],
+  bottomText: "Keep what works. Rebuild what holds you back."
+};
+
+export const whyAdsservWebsiteData = {
+  tagText: "WHY BUILD WITH ADSSERV",
+  headingWords: [
+    { text: "We" }, { text: "think" }, { text: "about" }, { text: "the" },
+    { text: "website" }, { text: "after", italic: true }, { text: "launch," }, { text: "too." }
+  ],
+  paragraphs: [
+    "A website should not become a digital brochure that nobody updates.",
+    "ADSSERV approaches web development with the wider digital ecosystem in mind: The website needs to work with your SEO, campaigns need somewhere useful to send traffic, social content needs somewhere to direct interested people, and analytics need to tell you what visitors actually do."
+  ],
+  boldParagraph: "That is why we connect design, development, content, search, and conversion thinking instead of treating them as isolated tasks."
 };
 
 export const faqData = {
@@ -107,20 +260,4 @@ export const ctaData = {
   description: "Tell us what you're building, what isn't working today, and what you want the new website to achieve. We'll help turn that into a clearer digital experience.",
   button1Text: "Start My Website",
   button2Text: "Talk to ADSSERV"
-};
-
-export const structureData = {
-  tagText: "BUILT AROUND THE USER JOURNEY",
-  headingWords: [
-    { text: "Every" }, { text: "page" }, { text: "should" }, { text: "answer" },
-    { text: "the", italic: true }, { text: "next" }, { text: "question." }
-  ],
-  stages: [
-    { title: 'Discover', desc: 'Who are you and what do you do?', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800' },
-    { title: 'Understand', desc: 'Why does your product or service matter to me?', image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800' },
-    { title: 'Trust', desc: 'Why should I believe you?', image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=800' },
-    { title: 'Evaluate', desc: 'Is this the right solution for my situation?', image: 'https://images.unsplash.com/photo-1559136555-e4616d9d15e2?auto=format&fit=crop&q=80&w=800' },
-    { title: 'Act', desc: 'What should I do next?', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800' },
-    { title: 'Continue', desc: 'What happens after I enquire, book, buy, or contact you?', image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800' }
-  ]
 };

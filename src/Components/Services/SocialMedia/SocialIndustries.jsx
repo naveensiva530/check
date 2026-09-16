@@ -7,11 +7,11 @@ import '../../../Components/HomePage/common.css';
 gsap.registerPlugin(ScrollTrigger);
 
 // Import the specific 3D illustration assets
-import imgHealth from '../../../assets/Servicess/Industries/Health Care.webp';
-import imgRealEstate from '../../../assets/Servicess/Industries/Real Estate.webp';
-import imgEducation from '../../../assets/Servicess/Industries/Education care.webp';
-import imgTech from '../../../assets/Services/IT-SAAS.webp';
-import imgBeauty from '../../../assets/Servicess/Industries/Beauty & Salon.webp';
+import imgHealth from '../../../assets/SocialMedia/SocialIndustries/Health Care.webp';
+import imgRealEstate from '../../../assets/SocialMedia/SocialIndustries/Real Estate.webp';
+import imgEducation from '../../../assets/SocialMedia/SocialIndustries/Education care.webp';
+import imgTech from '../../../assets/SocialMedia/SocialIndustries/Beauty & Salon.webp';
+import imgBeauty from '../../../assets/SocialMedia/SocialIndustries/Beauty & Salon.webp';
 
 const industries = [
   {
@@ -56,19 +56,19 @@ export default function SocialIndustries() {
         cardsRef.current,
         {
           opacity: 0,
-          x: 1000,
-          scale: 0.9,
+          x: 80,
+          scale: 0.95,
         },
         {
           opacity: 1,
           x: 0,
           scale: 1,
-          duration: 0.3,
-          ease: 'power4.out',
-          stagger: 0.04,
+          duration: 0.2,
+          ease: 'power3.out',
+          stagger: 0.03,
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top 75%',
+            start: 'top 78%',
             toggleActions: 'play none none none',
           },
         }
@@ -79,7 +79,7 @@ export default function SocialIndustries() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="w-full py-24 bg-white relative font-primary overflow-hidden">
+    <section ref={sectionRef} className="w-full py-14 sm:py-20 md:py-24 bg-white relative font-primary overflow-hidden">
       <div className="max-w-[1400px] w-full mx-auto px-4 md:px-6 relative z-10">
         
         {/* Header Section */}
@@ -115,18 +115,17 @@ export default function SocialIndustries() {
         </div>
 
         {/* Cards Row */}
-        <div className="flex flex-col lg:flex-row items-end justify-center gap-4 lg:gap-3 xl:gap-5 mb-8 overflow-x-auto" style={{ scrollbarWidth: 'none', paddingTop: '20px' }}>
+        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-4 lg:gap-3 xl:gap-5 mb-8 max-w-[280px] sm:max-w-none mx-auto" style={{ paddingTop: '20px' }}>
           {industries.map((ind, idx) => {
             // Middle card (index 2) is tallest, cards taper outward
-            const heights = ['260px', '300px', '340px', '300px', '260px'];
-            const cardHeight = heights[idx] || '280px';
+            const heights = ['200px', '240px', '280px', '240px', '200px'];
+            const cardHeight = heights[idx] || '220px';
 
             return (
               <div
                 key={idx}
                 ref={el => cardsRef.current[idx] = el}
                 className="flex flex-col items-center group relative z-10 hover:z-20 cursor-pointer"
-                style={{ flex: '1 1 0', maxWidth: '220px', minWidth: '160px' }}
               >
                 {/* Oval Image Card */}
                 <div
@@ -152,6 +151,10 @@ export default function SocialIndustries() {
                   <img
                     src={ind.img}
                     alt={ind.title}
+                    loading="lazy"
+                    decoding="async"
+                    width="220"
+                    height="340"
                     style={{
                       width: '100%',
                       height: '100%',
@@ -176,12 +179,7 @@ export default function SocialIndustries() {
 
                 {/* Text Below */}
                 <div className="flex flex-col items-center text-center mt-6 px-2 w-full">
-                  <span
-                    className="text-[10px] md:text-[11px] font-extrabold uppercase tracking-[0.12em] mb-2"
-                    style={{ color: 'var(--brand-orange)' }}
-                  >
-                    {ind.category}
-                  </span>
+                  
                   <h3
                     className="text-[18px] md:text-[20px] font-extrabold mb-2 leading-tight"
                     style={{ color: 'var(--text-dark-blue)' }}

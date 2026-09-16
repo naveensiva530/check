@@ -1,5 +1,17 @@
-import { ArrowUpRight } from 'lucide-react';
-import bgImage from '../../assets/Services/Performance Marketing.webp';
+import { ArrowUpRight, Sparkles, TrendingUp, Target } from 'lucide-react';
+import bgImage from '../../assets/All the Hero Section bg/PerformanceMarketing.webp';
+import approachImg from '../../assets/Our_Approch (2).webp';
+
+// Images for What We Do
+import imgGoogleAds from '../../assets/Servicess/PerformanceMarketing/PerformanceWhatWeDo/Google Ads.webp';
+import imgPaidSocial from '../../assets/Servicess/PerformanceMarketing/PerformanceWhatWeDo/Paid Social Advertising.webp';
+import imgSearchAdv from '../../assets/Servicess/PerformanceMarketing/PerformanceWhatWeDo/Search Advertising.webp';
+import imgDisplay from '../../assets/Servicess/PerformanceMarketing/PerformanceWhatWeDo/Display & Remarketing.webp';
+import imgCampaignStrategy from '../../assets/Servicess/PerformanceMarketing/PerformanceWhatWeDo/Campaign Strategy.webp';
+import imgAdCreative from '../../assets/Servicess/PerformanceMarketing/PerformanceWhatWeDo/Ad Creative & Copy.webp';
+import imgLandingPage from '../../assets/Servicess/PerformanceMarketing/PerformanceWhatWeDo/Landing Page Optimisation.webp';
+import imgConvTracking from '../../assets/Servicess/PerformanceMarketing/PerformanceWhatWeDo/Conversion Tracking.webp';
+import imgCampaignOpt from '../../assets/Servicess/PerformanceMarketing/PerformanceWhatWeDo/Campaign Optimisation.webp';
 
 // Images for Who This Is For
 import imgStartups from '../../assets/Servicess/WhoThisIsFor/Startups.webp';
@@ -15,9 +27,11 @@ import imgSEO from '../../assets/Servicess/RelatedServices/SEO-removebg-preview.
 import imgWebsite from '../../assets/Servicess/RelatedServices/Website_Development-removebg-preview.webp';
 import imgContent from '../../assets/Servicess/RelatedServices/Content_Writing-removebg-preview.webp';
 import imgVideo from '../../assets/Servicess/RelatedServices/Video_Production-removebg-preview.webp';
+
 export const heroData = {
   bgImage,
   title: "Performance Marketing",
+  breadcrumbText: "Performance Marketing",
   tagText: "PERFORMANCE MARKETING",
   headingWords: [
     { text: "Performance" },
@@ -33,7 +47,8 @@ export const heroData = {
   description1: "Paid advertising should do more than put your brand in front of people.",
   description2: "ADSSERV builds performance marketing campaigns around the audience, offer, creative, landing experience, budget, and conversion goal — then uses campaign data to understand what is working and what needs to change. From Google Ads and paid social to ongoing optimisation, we focus on making every part of the journey more accountable.",
   button1Text: "Plan My Campaign",
-  button2Text: "View Our Services"
+  button2Text: "Talk to ADSSERV",
+  button2Link: "/contact"
 };
 
 export const problemData = {
@@ -63,16 +78,46 @@ export const problemData = {
 };
 
 export const approachData = {
-  tagText: "THE PERFORMANCE MINDSET",
+  tagText: "HOW WE THINK ABOUT PERFORMANCE",
   headingWords: [
-    { text: "There" }, { text: "should" }, { text: "be" }, { text: "a" },
-    { text: "reason", italic: true }, { text: "behind" }, { text: "every" }, { text: "decision." }
+    { text: "Start" }, { text: "with" }, { text: "the" }, { text: "business" },
+    { text: "goal." }, { text: "Work" }, { text: "backwards", italic: true },
+    { text: "to" }, { text: "the" }, { text: "campaign." }
   ],
-  imageSrc: bgImage, // Fallback since it's missing in logs, wait, PerformanceApproach didn't have steps, it had a generic layout? No, PerformanceApproach was loaded but truncated? Actually, I'll map PerformanceApproach to CommonApproach if it fits, but I didn't see the exact data. Let's use the standard structure.
-  steps: []
+  description: "Before deciding where to spend the budget, we want to understand what the campaign needs to accomplish. That means connecting the business objective with the audience, offer, messaging, media channels, landing experience, tracking, and optimisation process.",
+  imageSrc: approachImg,
+  imageAlt: "Our Performance Marketing Approach",
+  steps: [
+    { num: '01', title: 'Define', desc: 'Clarify the business objective, target audience, offer, conversion goal, budget, and campaign priorities.' },
+    { num: '02', title: 'Research', desc: 'Study the audience, market, competitors, search behaviour, creative opportunities, and available campaign data.' },
+    { num: '03', title: 'Build', desc: 'Develop campaign structure, targeting, creative direction, messaging, landing-page requirements, and measurement.' },
+    { num: '04', title: 'Launch', desc: 'Set up and activate campaigns with the appropriate targeting, budgets, bidding, creative, and conversion signals.' },
+    { num: '05', title: 'Learn', desc: 'Monitor campaign behaviour and identify patterns across audiences, keywords, placements, creatives, and conversion actions.' },
+    { num: '06', title: 'Optimise', desc: 'Adjust campaigns based on evidence — improving what works and reducing wasted spend where possible.' }
+  ]
 };
 
-// ... Wait, PerformanceApproach and PerformanceWhatWeDo were fetched in task-388 but wait, I see PerformanceWhatWeDo in the log: `services.map...`. What about PerformanceApproach? It had a phone mockup? No, PerformanceWhatWeDo had the phone mockup. PerformanceApproach was the one that was loaded before it and had "There should be a reason behind every decision." but it didn't have an image, it was a left/right text section with a generic CTA. I'll just skip PerformanceApproach or map it to CommonSpecialty.
+export const whatWeDoData = {
+  tagText: "PERFORMANCE MARKETING SERVICES",
+  headingWords: [
+    { text: "Paid" }, { text: "campaigns" }, { text: "with" }, { text: "a" },
+    { text: "reason", italic: true }, { text: "behind" }, { text: "every" }, { text: "decision." }
+  ],
+  description: "We connect paid acquisition with creative testing, funnel architecture, and conversion measurement to maximize every dollar of ad spend.",
+  buttonText: "View More",
+  icons: [Sparkles, TrendingUp, Target],
+  services: [
+    { num: "01", title: "Google Ads", desc: "Search and other relevant Google advertising campaigns built around intent, targeting, messaging, and measurable actions.", img: imgGoogleAds },
+    { num: "02", title: "Paid Social Advertising", desc: "Paid campaigns across relevant social platforms designed around audience, creative, offer, and campaign objective.", img: imgPaidSocial },
+    { num: "03", title: "Search Advertising", desc: "Reach people actively searching for relevant products, services, solutions, or information.", img: imgSearchAdv },
+    { num: "04", title: "Display & Remarketing", desc: "Reconnect with relevant audiences through carefully planned display or remarketing activity where appropriate.", img: imgDisplay },
+    { num: "05", title: "Campaign Strategy", desc: "Plan the audience, offer, channels, budget, creative direction, landing experience, and measurement before launch.", img: imgCampaignStrategy },
+    { num: "06", title: "Ad Creative & Copy", desc: "Develop campaign messaging and creative concepts designed to communicate the value of the offer clearly.", img: imgAdCreative },
+    { num: "07", title: "Landing Page Optimisation", desc: "Identify friction and opportunities across the page users reach after clicking an advertisement.", img: imgLandingPage },
+    { num: "08", title: "Conversion Tracking", desc: "Connect campaign activity with meaningful actions so performance can be evaluated beyond clicks and impressions.", img: imgConvTracking },
+    { num: "09", title: "Campaign Optimisation", desc: "Continuously review campaign data and make informed changes to targeting, budgets, creative, bidding, keywords, and other relevant variables.", img: imgCampaignOpt }
+  ]
+};
 
 export const whoThisIsForData = {
   tagText: "BUILT AROUND DIFFERENT GROWTH STAGES",
@@ -81,12 +126,12 @@ export const whoThisIsForData = {
     { text: "with", italic: true }, { text: "something" }, { text: "to" }, { text: "achieve." }
   ],
   stages: [
-    { title: 'Startups', desc: 'Test offers, audiences, messaging, and acquisition opportunities with controlled campaigns and clear measurement.', image: imgStartups },
-    { title: 'Growing Businesses', desc: 'Create a more structured paid acquisition system and identify opportunities for scaling.', image: imgGrowing },
-    { title: 'Established Brands', desc: 'Support launches, demand generation, product promotion, remarketing, or specific commercial objectives.', image: imgEstablished },
-    { title: 'SaaS & Technology', desc: 'Reach relevant decision-makers and users through intent-led and audience-based campaigns.', image: imgSaaS },
-    { title: 'Local Businesses', desc: 'Generate relevant enquiries, calls, bookings, visits, or other location-driven actions.', image: imgLocal },
-    { title: 'Ecommerce & Product Brands', desc: 'Support product discovery, consideration, remarketing, and purchase-focused campaigns where appropriate.', image: imgCreators }
+    { title: 'Startups', desc: 'Test offers, audiences, messaging, and acquisition opportunities with controlled campaigns and clear measurement.', img: imgStartups },
+    { title: 'Growing Businesses', desc: 'Create a more structured paid acquisition system and identify opportunities for scaling.', img: imgGrowing },
+    { title: 'Established Brands', desc: 'Support launches, demand generation, product promotion, remarketing, or specific commercial objectives.', img: imgEstablished },
+    { title: 'SaaS & Technology', desc: 'Reach relevant decision-makers and users through intent-led and audience-based campaigns.', img: imgSaaS },
+    { title: 'Local Businesses', desc: 'Generate relevant enquiries, calls, bookings, visits, or other location-driven actions.', img: imgLocal },
+    { title: 'Ecommerce & Product Brands', desc: 'Support product discovery, consideration, remarketing, and purchase-focused campaigns where appropriate.', img: imgCreators }
   ]
 };
 
@@ -97,6 +142,7 @@ export const metricsData = {
     { text: "lead", italic: true }, { text: "to" }, { text: "decisions." }
   ],
   description: "Different campaigns require different metrics. Depending on the objective, we may evaluate:",
+  bottomText: "A low cost per click is not automatically a win. A high click-through rate is not automatically a win either. The useful question is whether the campaign is contributing to the outcome the business actually cares about.",
   metrics: [
     { num: '01', title: 'Impressions & Reach', desc: 'How much relevant exposure is the campaign generating?', pinColor: 'var(--brand-navy)', bg: 'rgba(30,47,87,0.06)', border: 'rgba(30,47,87,0.16)', text: 'var(--brand-navy)', rotate: '-rotate-[4deg]' },
     { num: '02', title: 'CTR', desc: 'Are the audience and creative creating enough interest to earn the click?', pinColor: 'var(--brand-red-orange)', bg: 'rgba(239,88,46,0.08)', border: 'rgba(239,88,46,0.22)', text: 'var(--brand-red-orange)', rotate: 'rotate-[3deg]' },
@@ -105,8 +151,22 @@ export const metricsData = {
     { num: '05', title: 'CPA / CPL', desc: 'What is the cost of acquiring a customer or lead?', pinColor: 'var(--brand-navy)', bg: 'rgba(30,47,87,0.06)', border: 'rgba(30,47,87,0.16)', text: 'var(--brand-navy)', rotate: 'rotate-[4deg]' },
     { num: '06', title: 'ROAS', desc: 'Where applicable, what revenue is being generated relative to advertising spend?', pinColor: 'var(--brand-navy)', bg: 'rgba(30,47,87,0.06)', border: 'rgba(30,47,87,0.16)', text: 'var(--brand-navy)', rotate: '-rotate-[5deg]' },
     { num: '07', title: 'Lead Quality', desc: 'Are the leads actually relevant to the business?', pinColor: 'var(--brand-red-orange)', bg: 'rgba(239,88,46,0.08)', border: 'rgba(239,88,46,0.22)', text: 'var(--brand-red-orange)', rotate: 'rotate-[4deg]' }
+  ]
+};
+
+export const whyAdsservPerformanceData = {
+  tagText: "WHY PERFORMANCE MARKETING WITH ADSSERV",
+  headingWords: [
+    { text: "Less" }, { text: "obsession" }, { text: "with" }, { text: "vanity" },
+    { text: "metrics.", italic: true }, { text: "More" }, { text: "attention" },
+    { text: "to" }, { text: "the" }, { text: "actual" }, { text: "journey." }
   ],
-  bottomText: "A low cost per click is not automatically a win. A high click-through rate is not automatically a win either. The useful question is whether the campaign is contributing to the outcome the business actually cares about."
+  paragraphs: [
+    "ADSSERV approaches paid marketing as a connected system.",
+    "The advertisement matters. The audience matters. The offer matters. The landing page matters. The tracking matters.",
+    "Our Gen Z perspective also influences how we think about creative: modern audiences move quickly, ignore repetitive advertising, and expect brands to communicate clearly."
+  ],
+  boldParagraph: "And the business outcome matters most. We make the message relevant enough to deserve attention."
 };
 
 export const faqData = {
@@ -135,11 +195,11 @@ export const relatedServicesData = {
     { text: "when" }, { text: "the" }, { text: "destination" }, { text: "is", italic: true }, { text: "ready." }
   ],
   services: [
-    { title: 'Social Media Marketing', desc: 'Build the organic social presence and content system around your audience.', cta: 'Explore Social Media Marketing', href: '/services/social-media-marketing', icon: ArrowUpRight, img: imgSocial },
-    { title: 'SEO Services', desc: 'Build long-term organic visibility alongside paid acquisition.', cta: 'Explore SEO Services', href: '/services/seo-services', icon: ArrowUpRight, img: imgSEO },
-    { title: 'Website Development', desc: 'Create a stronger destination for campaign traffic.', cta: 'Explore Website Development', href: '/services/website-development', icon: ArrowUpRight, img: imgWebsite },
-    { title: 'Content Writing', desc: 'Sharpen the messaging across ads, landing pages, and digital touchpoints.', cta: 'Explore Content Writing', href: '/services/content-writing', icon: ArrowUpRight, img: imgContent },
-    { title: 'Video Production', desc: 'Create video assets designed for campaigns, social platforms, and digital storytelling.', cta: 'Explore Video Production', href: '/services/video-production', icon: ArrowUpRight, img: imgVideo }
+    { title: 'Social Media Marketing', desc: 'Build the organic social presence and content system around your audience.', cta: 'Explore Social Media Marketing', href: '/services/social-media-marketing', img: imgSocial },
+    { title: 'SEO Services', desc: 'Build long-term organic visibility alongside paid acquisition.', cta: 'Explore SEO Services', href: '/services/seo-services', img: imgSEO },
+    { title: 'Website Development', desc: 'Create a stronger destination for campaign traffic.', cta: 'Explore Website Development', href: '/services/website-development', img: imgWebsite },
+    { title: 'Content Writing', desc: 'Sharpen the messaging across ads, landing pages, and digital touchpoints.', cta: 'Explore Content Writing', href: '/services/content-writing', img: imgContent },
+    { title: 'Video Production', desc: 'Create video assets designed for campaigns, social platforms, and digital storytelling.', cta: 'Explore Video Production', href: '/services/video-production', img: imgVideo }
   ]
 };
 

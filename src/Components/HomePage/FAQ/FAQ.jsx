@@ -114,28 +114,37 @@ export default function FAQ() {
                 return (
                   <div
                     key={faq.id}
-                    className={`w-full bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden transition-all duration-300 border border-transparent ${isOpen ? 'py-6 rounded-[32px] shadow-[0_15px_40px_rgb(0,0,0,0.06)]' : 'py-4 rounded-full'} px-6 cursor-pointer`}
+                    className={`w-full bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden transition-all duration-200 border border-transparent ${isOpen ? 'py-6 rounded-[28px] shadow-[0_15px_40px_rgb(0,0,0,0.06)]' : 'py-4 rounded-full'} px-6 cursor-pointer`}
                     onClick={() => setOpenId(isOpen ? null : faq.id)}
                   >
                     <div className="flex items-center gap-5">
                       {/* Icon Circle */}
-                      <div className={`w-[34px] h-[34px] flex-shrink-0 rounded-full flex items-center justify-center text-white font-medium text-[22px] transition-colors duration-300 ${isOpen ? 'bg-[#ff5b2e]' : 'bg-[#111827]'}`}>
+                      <div className={`w-[34px] h-[34px] flex-shrink-0 rounded-full flex items-center justify-center text-white font-medium text-[22px] transition-all duration-200 ${isOpen ? 'bg-[#ff5b2e] rotate-180' : 'bg-[#111827] rotate-0'}`}>
                         <span className="leading-none mt-[-2px]">{isOpen ? '-' : '+'}</span>
                       </div>
                       {/* Question Text */}
-                      <h3 className={`font-bold text-[16px] transition-colors duration-300 ${isOpen ? 'text-[#ff5b2e]' : 'text-[#111827]'}`}>
+                      <h3 className={`font-bold text-[16px] transition-colors duration-200 ${isOpen ? 'text-[#ff5b2e]' : 'text-[#111827]'}`}>
                         {faq.question}
                       </h3>
                     </div>
 
                     {/* Answer Text */}
-                    {isOpen && (
-                      <div className="mt-4 pl-[54px] pr-2 animate-fade-in">
-                        <p className="text-gray-500 text-[13px] leading-[1.8] font-medium">
-                          {faq.answer}
-                        </p>
+                    <div
+                      className="grid transition-all duration-200 ease-out"
+                      style={{
+                        gridTemplateRows: isOpen ? '1fr' : '0fr',
+                        opacity: isOpen ? 1 : 0,
+                        transition: 'grid-template-rows 220ms cubic-bezier(0.16, 1, 0.3, 1), opacity 200ms ease-out'
+                      }}
+                    >
+                      <div className="overflow-hidden">
+                        <div className="mt-4 pl-[54px] pr-2">
+                          <p className="text-gray-500 text-[13px] leading-[1.8] font-medium">
+                            {faq.answer}
+                          </p>
+                        </div>
                       </div>
-                    )}
+                    </div>
                   </div>
                 )
               })}

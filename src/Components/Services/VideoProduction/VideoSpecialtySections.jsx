@@ -4,9 +4,14 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../../../Components/HomePage/common.css';
 
+import imgShort from '../../../assets/SocialMedia/WhatWeDo/Reels & Short-Form Content.webp';
+import imgBrand from '../../../assets/Servicess/RelatedServices/Branding_Solution-removebg-preview.webp';
+import imgPaid from '../../../assets/Servicess/RelatedServices/Performance_marketing-removebg-preview.webp';
+import imgPlan from '../../../assets/Servicess/PerformanceStructure/Discovery.webp';
+
 gsap.registerPlugin(ScrollTrigger);
 
-function VideoInfoSection({ eyebrow, words, intro, closing, bg = 'white' }) {
+function VideoInfoSection({ eyebrow, words, intro, closing, bg = 'white', image, chips }) {
   const sectionRef = useRef(null);
   const leftRef = useRef(null);
   const rightRef = useRef(null);
@@ -31,11 +36,21 @@ function VideoInfoSection({ eyebrow, words, intro, closing, bg = 'white' }) {
               <span className="italic font-semibold uppercase tracking-widest" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '13px', color: 'var(--accent-orange)' }}>{eyebrow}</span>
             </div>
             <ScrollRevealHeading words={words} />
+            {image && <img src={image} alt="" className="w-full max-w-[360px] mt-10 object-contain drop-shadow-xl hidden lg:block" />}
           </div>
           <div ref={rightRef} className="flex flex-col gap-4">
             {intro.map((p, i) => (
               <p key={i} className="text-[16px] md:text-[17px] font-medium leading-relaxed text-slate-700">{p}</p>
             ))}
+            {chips && chips.length > 0 && (
+              <div className="flex flex-wrap gap-2 mt-2">
+                {chips.map((chip) => (
+                  <span key={chip} className="text-[13px] font-semibold px-4 py-2 rounded-full bg-white border border-gray-100 shadow-sm" style={{ color: 'var(--brand-navy)' }}>
+                    {chip}
+                  </span>
+                ))}
+              </div>
+            )}
             {closing && <p className="font-bold text-[17px] mt-2" style={{ color: 'var(--brand-navy)' }}>{closing}</p>}
           </div>
         </div>
@@ -53,8 +68,10 @@ export function ShortFormContent() {
         "Short-form video gives brands very little time to earn attention.",
         "We think about the hook, pacing, framing, captions, sound, visual movement, message, and payoff — while keeping the content natural to the platform.",
       ]}
+      chips={['Hook', 'Pacing', 'Framing', 'Captions', 'Sound', 'Visual movement', 'Message', 'Payoff']}
       closing={'The goal isn\'t to make every video look like an advertisement. Sometimes the strongest creative looks like something people actually want to watch.'}
       bg="white"
+
     />
   );
 }
@@ -70,6 +87,7 @@ export function BrandStorytelling() {
       ]}
       closing="The result should feel recognisably yours — not like a recycled agency template."
       bg="purple"
+
     />
   );
 }
@@ -80,11 +98,13 @@ export function VideoForPaidCampaigns() {
       eyebrow="CREATIVE + PERFORMANCE"
       words={[{ text: "A" }, { text: "video" }, { text: "can" }, { text: "look" }, { text: "great", italic: true }, { text: "and" }, { text: "still" }, { text: "be" }, { text: "a" }, { text: "bad" }, { text: "ad." }]}
       intro={[
-        "Paid media changes how creative needs to work. The opening seconds, message hierarchy, format, CTA, audience, placement, and testing strategy all matter.",
+        "Paid media changes how creative needs to work.",
+        "The opening seconds, message hierarchy, format, CTA, audience, placement, and testing strategy all matter.",
         "That's why video created for advertising should be considered alongside the campaign itself.",
       ]}
       closing="When appropriate, we can create multiple creative variations so performance teams have more than one idea to test."
       bg="white"
+
     />
   );
 }
@@ -98,8 +118,10 @@ export function BeforeFilming() {
         "We clarify the audience, objective, message, creative direction, location, talent, props, production requirements, format, and delivery needs before the shoot.",
         "That planning helps reduce unnecessary production problems and gives everyone a clearer idea of what success looks like.",
       ]}
+      chips={['Audience', 'Objective', 'Message', 'Creative direction', 'Location', 'Talent', 'Props', 'Format', 'Delivery']}
       closing={'Because "we\'ll figure it out on the day" isn\'t much of a strategy.'}
       bg="purple"
+
     />
   );
 }

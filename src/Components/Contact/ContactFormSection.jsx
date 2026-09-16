@@ -1,6 +1,29 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Clock, Send, CheckCircle2, AlertCircle, ShieldCheck, Sparkles } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Send, CheckCircle2, AlertCircle, ShieldCheck } from 'lucide-react';
+import ScrollRevealHeading from '../Services/common/ScrollRevealHeading';
 import { contactDetails, enquiryFormData } from './contactData';
+
+const detailsHeadingWords = [
+  { text: "We’re" },
+  { text: "ready" },
+  { text: "to" },
+  { text: "hear" },
+  { text: "from", italic: true },
+  { text: "you.", italic: true }
+];
+
+const formHeadingWords = [
+  { text: "Tell" },
+  { text: "us" },
+  { text: "what" },
+  { text: "you’re" },
+  { text: "working", italic: true },
+  { text: "on.", italic: true }
+];
+
+// Shared Tailwind class strings (no template literals with backticks inside JSX)
+const inputBase = "w-full px-4 py-3.5 bg-white border border-slate-200 rounded-xl text-[15px] font-medium placeholder:text-slate-400 text-[#1e2f57] outline-none focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 focus:border-[#e08326] transition-all";
+const labelClass = "block text-[11px] font-black uppercase tracking-widest mb-2";
 
 export default function ContactFormSection({ preselectedService }) {
   const [formData, setFormData] = useState({
@@ -23,7 +46,7 @@ export default function ContactFormSection({ preselectedService }) {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState(null); // 'success' | 'error' | null
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.consent) {
       alert("Please agree to the privacy consent to submit your enquiry.");
@@ -32,21 +55,56 @@ export default function ContactFormSection({ preselectedService }) {
     setLoading(true);
     setStatus(null);
 
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      const targetEmail = contactDetails.email || 'connect@adsserv.in';
+      const response = await fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          _subject: `New ADSSERV Enquiry: ${formData.fullName} (${formData.serviceInterest})`,
+          "Full Name": formData.fullName,
+          "Work Email": formData.workEmail,
+          "Company": formData.company || "Not provided",
+          "Website": formData.website || "Not provided",
+          "Service Interest": formData.serviceInterest,
+          "Project Details": formData.projectDetails,
+          _template: "table",
+          _captcha: "false"
+        })
+      });
+
+      const data = await response.json();
+
+      if (response.ok && (data.success === "true" || data.success === true)) {
+        setStatus('success');
+      } else if (data.message && data.message.toLowerCase().includes('activation')) {
+        setStatus('activation');
+      } else {
+        throw new Error(data.message || 'Submission failed');
+      }
+    } catch (err) {
+      console.error('Email submission error:', err);
+      if (err.message && err.message.toLowerCase().includes('activation')) {
+        setStatus('activation');
+      } else {
+        setStatus('error');
+      }
+    } finally {
       setLoading(false);
-      setStatus('success');
-    }, 1000);
+    }
   };
 
   return (
-    <section id="enquiry-form-section" className="w-full py-24 bg-white font-sans scroll-mt-28">
+    <section id="enquiry-form-section" className="w-full py-14 md:py-24 scroll-mt-28" style={{ backgroundColor: 'var(--bg-light-purple)' }}>
       <div className="max-w-[1200px] mx-auto px-4 md:px-8">
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-          
+
           {/* LEFT COLUMN: Contact Details Card (Span 5) */}
-          <div className="lg:col-span-5 space-y-8">
+          <div className="lg:col-span-5 flex flex-col gap-8">
             <div>
               {/* Standard Eyebrow */}
               <div className="flex items-center gap-2 mb-6">
@@ -64,83 +122,53 @@ export default function ContactFormSection({ preselectedService }) {
                 </span>
               </div>
 
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight mb-4" style={{ color: 'var(--brand-navy, #1e2f57)' }}>
-                {contactDetails.title}
-              </h2>
-              <p className="text-slate-600 text-base leading-relaxed">
+              <ScrollRevealHeading
+                words={detailsHeadingWords}
+                className="mb-4"
+                style={{ fontSize: 'clamp(1.75rem, 3.2vw, 2.5rem)', lineHeight: 1.15 }}
+              />
+              <p className="text-[15px] font-medium leading-relaxed" style={{ color: '#3f6a93' }}>
                 Connect directly with our team to discuss your goals, request a consultation, or ask any preliminary questions.
               </p>
             </div>
 
             {/* Info Cards */}
-            <div className="space-y-4">
-              
+            <div className="flex flex-col gap-4">
+
               {/* Email */}
-              <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 flex items-start gap-4 hover:border-orange-300 transition-colors">
-                <div className="w-12 h-12 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-6 h-6" />
+              <div className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-purple-200/70 hover:border-purple-400/60 transition-all duration-300" style={{ boxShadow: '0 2px 12px -4px rgba(110,60,170,0.10)' }}>
+                <div className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 text-white" style={{ backgroundColor: 'var(--brand-orange)' }}>
+                  <Mail className="w-5 h-5" />
                 </div>
-                <div>
-                  <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Direct Email</div>
-                  <a 
-                    href={`mailto:${contactDetails.email}`} 
-                    className="text-lg font-extrabold text-slate-900 hover:text-orange-600 transition-colors"
-                  >
-                    {contactDetails.email}
-                  </a>
-                  <div className="text-xs text-slate-500 mt-1">Typical reply within 2 - 4 business hours.</div>
+                <div className="flex flex-col gap-0.5">
+                  <span className="text-[10px] font-black uppercase tracking-widest" style={{ color: '#9aaac0' }}>Direct Email</span>
+                  <a href={`mailto:${contactDetails.email}`} className="text-[15px] font-extrabold transition-colors hover:underline" style={{ color: 'var(--brand-navy)' }}>{contactDetails.email}</a>
+                  <span className="text-[12px] font-medium" style={{ color: '#6b7fa3' }}>Typical reply within 2–4 business hours.</span>
                 </div>
               </div>
 
               {/* Phone */}
-              <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 flex items-start gap-4 hover:border-orange-300 transition-colors">
-                <div className="w-12 h-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center flex-shrink-0">
-                  <Phone className="w-6 h-6" />
+              <div className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-purple-200/70 hover:border-purple-400/60 transition-all duration-300" style={{ boxShadow: '0 2px 12px -4px rgba(110,60,170,0.10)' }}>
+                <div className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 text-white" style={{ backgroundColor: 'var(--brand-navy)' }}>
+                  <Phone className="w-5 h-5" />
                 </div>
-                <div>
-                  <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Business Line</div>
-                  <a 
-                    href={`tel:${contactDetails.phone}`} 
-                    className="text-lg font-extrabold text-slate-900 hover:text-orange-600 transition-colors"
-                  >
-                    {contactDetails.phone}
-                  </a>
-                  <div className="text-xs text-slate-500 mt-1">Available for project inquiries and client support.</div>
+                <div className="flex flex-col gap-0.5">
+                  <span className="text-[10px] font-black uppercase tracking-widest" style={{ color: '#9aaac0' }}>Business Line</span>
+                  <a href={`tel:${contactDetails.phone}`} className="text-[15px] font-extrabold transition-colors hover:underline" style={{ color: 'var(--brand-navy)' }}>{contactDetails.phone}</a>
+                  <span className="text-[12px] font-medium" style={{ color: '#6b7fa3' }}>Available for project enquiries and client support.</span>
                 </div>
               </div>
 
-              {/* Location */}
-              <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 flex items-start gap-4 hover:border-orange-300 transition-colors">
-                <div className="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-6 h-6" />
-                </div>
-                <div>
-                  <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Global Studio Location</div>
-                  <div className="text-base font-bold text-slate-900 leading-snug">
-                    {contactDetails.location}
-                  </div>
-                </div>
-              </div>
 
-              {/* Working Hours */}
-              <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 flex items-start gap-4 hover:border-orange-300 transition-colors">
-                <div className="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center flex-shrink-0">
-                  <Clock className="w-6 h-6" />
-                </div>
-                <div>
-                  <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Working Hours</div>
-                  <div className="text-base font-bold text-slate-900">
-                    {contactDetails.workingHours}
-                  </div>
-                </div>
-              </div>
+
+
 
             </div>
 
-            {/* Security Assurance Badge */}
-            <div className="p-5 rounded-2xl text-white flex items-center gap-3 shadow-md" style={{ backgroundColor: 'var(--brand-navy, #1e2f57)' }}>
-              <ShieldCheck className="w-6 h-6 text-emerald-400 flex-shrink-0" />
-              <p className="text-xs text-white/90 leading-relaxed font-medium">
+            {/* Privacy Badge */}
+            <div className="p-5 rounded-2xl flex items-center gap-3" style={{ backgroundColor: 'var(--brand-navy)', boxShadow: '0 8px 24px -8px rgba(30,47,87,0.40)' }}>
+              <ShieldCheck className="w-6 h-6 flex-shrink-0" style={{ color: '#34d399' }} />
+              <p className="text-[13px] leading-relaxed font-medium" style={{ color: 'rgba(255,255,255,0.85)' }}>
                 {enquiryFormData.microcopy}
               </p>
             </div>
@@ -148,9 +176,11 @@ export default function ContactFormSection({ preselectedService }) {
 
           {/* RIGHT COLUMN: Interactive Enquiry Form (Span 7) */}
           <div className="lg:col-span-7">
-            <div className="bg-slate-50/80 border border-slate-200 rounded-3xl p-8 sm:p-10 md:p-12 shadow-xl relative">
-              
-              <div className="mb-8">
+            <div className="rounded-[32px] p-8 sm:p-10 md:p-12 relative overflow-hidden border border-purple-200/60" style={{ backgroundColor: '#ffffff', boxShadow: '0 20px 56px -16px rgba(110,60,170,0.22)' }}>
+              {/* Ambient glow */}
+              <div className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl pointer-events-none opacity-40" style={{ background: 'var(--bg-light-purple)' }} />
+
+              <div className="mb-8 relative z-10">
                 {/* Standard Eyebrow */}
                 <div className="flex items-center gap-2 mb-6">
                   <span
@@ -167,73 +197,64 @@ export default function ContactFormSection({ preselectedService }) {
                   </span>
                 </div>
 
-                <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3" style={{ color: 'var(--brand-navy, #1e2f57)' }}>
-                  {enquiryFormData.title}
-                </h2>
-                <p className="text-slate-600 text-base leading-relaxed">
+                <ScrollRevealHeading
+                  words={formHeadingWords}
+                  className="mb-3"
+                  style={{ fontSize: 'clamp(1.75rem, 3.2vw, 2.5rem)', lineHeight: 1.15 }}
+                />
+                <p className="text-[15px] font-medium leading-relaxed" style={{ color: '#3f6a93' }}>
                   {enquiryFormData.supportingCopy}
                 </p>
               </div>
 
               {status === 'success' ? (
-                <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-8 text-center space-y-4">
-                  <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto animate-bounce">
-                    <CheckCircle2 className="w-10 h-10" />
+                <div className="rounded-2xl p-8 text-center space-y-5 border relative z-10" style={{ backgroundColor: 'var(--bg-light-purple)', borderColor: 'rgba(110,60,170,0.20)' }}>
+                  <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto animate-bounce" style={{ backgroundColor: 'var(--brand-orange)', color: '#fff' }}>
+                    <CheckCircle2 className="w-9 h-9" />
                   </div>
-                  <h3 className="text-2xl font-extrabold text-slate-900">
+                  <h3 className="text-2xl font-extrabold" style={{ color: 'var(--brand-navy)' }}>
                     Enquiry Received!
                   </h3>
-                  <p className="text-slate-700 text-base leading-relaxed max-w-md mx-auto">
+                  <p className="text-[15px] font-medium leading-relaxed max-w-md mx-auto" style={{ color: '#334155' }}>
                     {enquiryFormData.successMessage}
                   </p>
                   <button
                     onClick={() => {
                       setStatus(null);
-                      setFormData({
-                        fullName: '',
-                        workEmail: '',
-                        company: '',
-                        website: '',
-                        serviceInterest: 'SEO Services',
-                        projectDetails: '',
-                        consent: true,
-                      });
+                      setFormData({ fullName: '', workEmail: '', company: '', website: '', serviceInterest: 'SEO Services', projectDetails: '', consent: true });
                     }}
-                    className="px-6 py-3 bg-slate-900 text-white font-bold text-sm rounded-full hover:bg-orange-600 transition-colors"
+                    className="px-7 py-3 rounded-full font-bold text-[14px] text-white transition-all hover:opacity-90"
+                    style={{ backgroundColor: 'var(--brand-navy)' }}
                   >
                     Send Another Enquiry
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  
+                <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+
                   {/* Field 01 & 02 */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-800 mb-2">
-                        Full Name *
-                      </label>
+                      <label className={labelClass} style={{ color: 'var(--brand-navy)' }}>Full Name *</label>
                       <input
                         type="text"
                         required
                         value={formData.fullName}
                         onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                         placeholder="Your full name"
-                        className="w-full px-4 py-3.5 bg-white border border-slate-300 rounded-xl text-slate-900 text-sm placeholder:text-slate-400 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all"
+                        className={inputBase}
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-800 mb-2">
-                        Work Email *
-                      </label>
+                      <label className={labelClass} style={{ color: 'var(--brand-navy)' }}>Work Email *</label>
                       <input
                         type="email"
                         required
                         value={formData.workEmail}
                         onChange={(e) => setFormData({ ...formData, workEmail: e.target.value })}
                         placeholder="Your business email"
-                        className="w-full px-4 py-3.5 bg-white border border-slate-300 rounded-xl text-slate-900 text-sm placeholder:text-slate-400 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all"
+                        className={inputBase}
                       />
                     </div>
                   </div>
@@ -241,41 +262,35 @@ export default function ContactFormSection({ preselectedService }) {
                   {/* Field 03 & 04 */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-800 mb-2">
-                        Company / Business
-                      </label>
+                      <label className={labelClass} style={{ color: 'var(--brand-navy)' }}>Company / Business</label>
                       <input
                         type="text"
                         value={formData.company}
                         onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                         placeholder="Your company or business name"
-                        className="w-full px-4 py-3.5 bg-white border border-slate-300 rounded-xl text-slate-900 text-sm placeholder:text-slate-400 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all"
+                        className={inputBase}
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-800 mb-2">
-                        Website
-                      </label>
+                      <label className={labelClass} style={{ color: 'var(--brand-navy)' }}>Website</label>
                       <input
                         type="url"
                         value={formData.website}
                         onChange={(e) => setFormData({ ...formData, website: e.target.value })}
                         placeholder="https://yourwebsite.com"
-                        className="w-full px-4 py-3.5 bg-white border border-slate-300 rounded-xl text-slate-900 text-sm placeholder:text-slate-400 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all"
+                        className={inputBase}
                       />
                     </div>
                   </div>
 
                   {/* Field 05: What can we help with? */}
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-800 mb-2">
-                      What can we help with? *
-                    </label>
+                    <label className={labelClass} style={{ color: 'var(--brand-navy)' }}>What can we help with? *</label>
                     <select
                       value={formData.serviceInterest}
                       onChange={(e) => setFormData({ ...formData, serviceInterest: e.target.value })}
-                      className="w-full px-4 py-3.5 bg-white border border-slate-300 rounded-xl text-slate-900 text-sm font-semibold focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all"
+                      className={inputBase}
                     >
                       {enquiryFormData.servicesOptions.map((opt, i) => (
                         <option key={i} value={opt}>
@@ -291,11 +306,12 @@ export default function ContactFormSection({ preselectedService }) {
                           key={chip}
                           type="button"
                           onClick={() => setFormData({ ...formData, serviceInterest: chip })}
-                          className={`px-3 py-1 rounded-full text-xs font-semibold transition-all ${
+                          className="px-3 py-1.5 rounded-full text-[12px] font-bold transition-all border"
+                          style={
                             formData.serviceInterest === chip
-                              ? 'bg-orange-600 text-white font-bold'
-                              : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'
-                          }`}
+                              ? { backgroundColor: 'var(--brand-orange)', color: '#fff', borderColor: 'var(--brand-orange)' }
+                              : { backgroundColor: 'var(--bg-light-purple)', color: 'var(--brand-navy)', borderColor: 'rgba(110,60,170,0.25)' }
+                          }
                         >
                           + {chip}
                         </button>
@@ -305,16 +321,14 @@ export default function ContactFormSection({ preselectedService }) {
 
                   {/* Field 06: Tell us about your project */}
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-800 mb-2">
-                      Tell us about your project *
-                    </label>
+                    <label className={labelClass} style={{ color: 'var(--brand-navy)' }}>Tell us about your project *</label>
                     <textarea
                       required
                       rows={5}
                       value={formData.projectDetails}
                       onChange={(e) => setFormData({ ...formData, projectDetails: e.target.value })}
                       placeholder="What are you trying to achieve, and what would you like help with?"
-                      className="w-full px-4 py-3.5 bg-white border border-slate-300 rounded-xl text-slate-900 text-sm placeholder:text-slate-400 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all resize-none"
+                      className={inputBase + ' resize-none'}
                     />
                   </div>
 
@@ -325,12 +339,22 @@ export default function ContactFormSection({ preselectedService }) {
                       id="consent-checkbox"
                       checked={formData.consent}
                       onChange={(e) => setFormData({ ...formData, consent: e.target.checked })}
-                      className="mt-1 w-4 h-4 text-orange-600 rounded border-slate-300 focus:ring-orange-500"
+                      className="mt-1 w-4 h-4 rounded cursor-pointer accent-[#e08326]"
                     />
-                    <label htmlFor="consent-checkbox" className="text-xs text-slate-600 leading-relaxed cursor-pointer select-none">
+                    <label htmlFor="consent-checkbox" className="text-[13px] font-medium leading-relaxed cursor-pointer select-none" style={{ color: '#3f6a93' }}>
                       {enquiryFormData.consent}
                     </label>
                   </div>
+
+                  {status === 'activation' && (
+                    <div className="p-4 rounded-xl bg-amber-50 border border-amber-300 text-amber-900 text-xs leading-relaxed font-semibold flex items-start gap-2.5">
+                      <AlertCircle className="w-4 h-4 flex-shrink-0 text-amber-600 mt-0.5" />
+                      <div>
+                        <p className="font-bold text-[13px] mb-1 text-amber-950">Almost Done! One-Time Activation Required</p>
+                        <p>An activation email was sent to <strong>{contactDetails.email || 'connect@adsserv.in'}</strong>. Open your email inbox, click the <strong>"Activate Form"</strong> link once, and then re-submit to start receiving enquiries!</p>
+                      </div>
+                    </div>
+                  )}
 
                   {status === 'error' && (
                     <div className="p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-bold flex items-center gap-2">
@@ -340,22 +364,23 @@ export default function ContactFormSection({ preselectedService }) {
                   )}
 
                   {/* Form CTA Button */}
-                  <div>
-                    <button
-                      type="submit"
-                      disabled={loading}
-                      className="w-full py-4 bg-orange-600 hover:bg-orange-500 text-white font-extrabold text-base rounded-xl shadow-lg shadow-orange-600/30 flex items-center justify-center gap-3 transition-all transform hover:-translate-y-0.5 disabled:opacity-50 cursor-pointer"
-                    >
-                      {loading ? (
-                        <span>Sending Enquiry...</span>
-                      ) : (
-                        <>
-                          <span>{enquiryFormData.cta}</span>
-                          <Send className="w-4 h-4" />
-                        </>
-                      )}
-                    </button>
-                  </div>
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="w-full py-4 rounded-2xl font-extrabold text-[16px] text-white flex items-center justify-center gap-3 transition-all hover:-translate-y-0.5 disabled:opacity-50 cursor-pointer"
+                    style={{ backgroundColor: 'var(--brand-navy)', boxShadow: '0 12px 28px -8px rgba(30,47,87,0.40)' }}
+                  >
+                    {loading ? (
+                      <span>Sending Enquiry...</span>
+                    ) : (
+                      <>
+                        <span>{enquiryFormData.cta}</span>
+                        <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ backgroundColor: 'var(--brand-orange)' }}>
+                          <Send className="w-4 h-4 text-white" />
+                        </div>
+                      </>
+                    )}
+                  </button>
 
                 </form>
               )}

@@ -18,7 +18,7 @@ import '../../../Components/HomePage/common.css';
 const platforms = [
   {
     name: 'Instagram',
-    handle: '@yourbrand',
+    handle: '@Adsserv',
     desc: 'Visual storytelling, Reels, carousels, community, discovery, and brand presence.',
     Icon: FaInstagram,
     color: '#E1306C',
@@ -27,7 +27,7 @@ const platforms = [
   },
   {
     name: 'Facebook',
-    handle: 'yourbrand',
+    handle: 'Adsserv',
     desc: 'Community, content distribution, local audiences, campaigns, and business communication.',
     Icon: FaFacebookF,
     color: '#1877F2',
@@ -36,7 +36,7 @@ const platforms = [
   },
   {
     name: 'LinkedIn',
-    handle: 'yourbrand',
+    handle: 'Adsserv',
     desc: 'Professional content, thought leadership, employer branding, and B2B visibility.',
     Icon: FaLinkedinIn,
     color: '#0A66C2',
@@ -45,7 +45,7 @@ const platforms = [
   },
   {
     name: 'TikTok',
-    handle: '@yourbrand',
+    handle: '@Adsserv',
     desc: 'Short-form storytelling, cultural relevance, discovery, and creator-led content.',
     Icon: FaTiktok,
     color: '#010101',
@@ -54,7 +54,7 @@ const platforms = [
   },
   {
     name: 'YouTube',
-    handle: 'YourBrand',
+    handle: 'Adsserv',
     desc: 'Long-form and short-form video, education, storytelling, search visibility.',
     Icon: FaYoutube,
     color: '#FF0000',
@@ -63,7 +63,7 @@ const platforms = [
   },
   {
     name: 'X (Twitter)',
-    handle: '@yourbrand',
+    handle: '@Adsserv',
     desc: 'Real-time engagement, brand voice, trending conversations, and audience building.',
     Icon: FaXTwitter,
     color: '#000000',
@@ -72,7 +72,7 @@ const platforms = [
   },
   {
     name: 'Pinterest',
-    handle: '@yourbrand',
+    handle: '@Adsserv',
     desc: 'Visual discovery, inspiration boards, product pins, and purchase-driven audiences.',
     Icon: FaPinterestP,
     color: '#E60023',
@@ -81,7 +81,7 @@ const platforms = [
   },
   {
     name: 'Snapchat',
-    handle: '@yourbrand',
+    handle: '@Adsserv',
     desc: 'Ephemeral content, AR experiences, younger audiences, and daily engagement.',
     Icon: FaSnapchat,
     color: '#FFFC00',
@@ -90,7 +90,7 @@ const platforms = [
   },
   {
     name: 'WhatsApp',
-    handle: '+91 XXXXX',
+    handle: '+1 7603912438',
     desc: 'Direct customer communication, broadcast lists, and community group management.',
     Icon: FaWhatsapp,
     color: '#25D366',
@@ -99,7 +99,7 @@ const platforms = [
   },
   {
     name: 'Threads',
-    handle: '@yourbrand',
+    handle: '@Adsserv',
     desc: 'Text-based engagement, community conversations, and brand personality.',
     Icon: FaAt,
     color: '#000000',
@@ -117,25 +117,25 @@ function PlatformCard({ platform }) {
   const { name, handle, desc, Icon, color, bg, stat } = platform;
   return (
     <div
-      className="relative flex-shrink-0 w-[300px] rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden"
+      className="relative flex-shrink-0 w-[240px] sm:w-[270px] md:w-[300px] rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden"
       style={{ boxShadow: '0 4px 20px rgba(30,47,87,0.06)' }}
     >
       {/* Top section with icon */}
       <div
-        className="relative p-6 flex items-start justify-between"
+        className="relative p-4 sm:p-5 md:p-6 flex items-start justify-between"
         style={{ background: bg }}
       >
         {/* Platform icon */}
         <div
-          className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-md"
+          className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center shadow-md"
           style={{ background: color }}
         >
-          <Icon size={26} color="#fff" />
+          <Icon size={18} color="#fff" />
         </div>
 
         {/* Stat badge */}
         <span
-          className="text-[12px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider border"
+          className="text-[10px] sm:text-[11px] md:text-[12px] font-extrabold px-2 sm:px-3 py-0.5 sm:py-1 rounded-full uppercase tracking-wider border"
           style={{
             color: 'var(--brand-navy)',
             borderColor: 'rgba(30,47,87,0.12)',
@@ -156,9 +156,9 @@ function PlatformCard({ platform }) {
       </div>
 
       {/* Bottom content */}
-      <div className="p-6 pt-5">
+      <div className="p-4 pt-3 sm:p-5 sm:pt-4 md:p-6 md:pt-5">
         <div className="flex items-center gap-2 mb-1">
-          <h3 className="text-[18px] font-extrabold" style={{ color: 'var(--brand-navy)' }}>
+          <h3 className="text-[14px] sm:text-[16px] md:text-[18px] font-extrabold" style={{ color: 'var(--brand-navy)' }}>
             {name}
           </h3>
           {/* Verified dot */}
@@ -169,10 +169,10 @@ function PlatformCard({ platform }) {
             ✓
           </span>
         </div>
-        <p className="text-[12px] font-semibold mb-3" style={{ color }}>
+        <p className="text-[10px] sm:text-[11px] md:text-[12px] font-semibold mb-2 sm:mb-3" style={{ color }}>
           {handle}
         </p>
-        <p className="text-[13.5px] leading-relaxed" style={{ color: 'var(--text-gray)' }}>
+        <p className="text-[11px] sm:text-[12px] md:text-[13.5px] leading-relaxed" style={{ color: 'var(--text-gray)' }}>
           {desc}
         </p>
 
@@ -253,7 +253,7 @@ export default function Platforms() {
           className="flex gap-4"
           style={{
             width: 'max-content',
-            animation: 'marqueeLeft 40s linear infinite',
+            animation: 'marqueeLeft 25s linear infinite',
           }}
         >
           {rowA.map((p, i) => (
@@ -274,7 +274,7 @@ export default function Platforms() {
           className="flex gap-4"
           style={{
             width: 'max-content',
-            animation: 'marqueeRight 40s linear infinite',
+            animation: 'marqueeRight 30s linear infinite',
           }}
         >
           {rowB.map((p, i) => (

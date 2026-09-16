@@ -1,3 +1,7 @@
+import imgSeoAi from '../../assets/Blog/SEO & AI Search.webp';
+import imgSocialMarketing from '../../assets/Blog/Social Media marketing.webp';
+import imgDigitalMarketing from '../../assets/Blog/Digital_Marketing.webp';
+
 export const blogPosts = [
   {
     id: '01',
@@ -6,10 +10,17 @@ export const blogPosts = [
     categoryLabel: 'SEO & AI Search',
     title: 'SEO in the Age of AI Search: What Businesses Need to Do Now',
     excerpt: 'Search is changing beyond traditional blue links. AI-powered search experiences are changing how people discover information, compare businesses and decide what to trust. Businesses need to think beyond rankings and create content that is useful, clear and easy for both people and search systems to understand.',
+    bullets: [
+      'AI search optimization beyond traditional blue links',
+      'Direct-answer architecture tailored for generative search engines',
+      'Building authoritative conversational signals and brand trust'
+    ],
     meta: 'SEO & AI Search · 9 Aug 2026 · 7 min read',
     published: '9 August 2026',
     readTime: '7 min read',
-    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200',
+    image: imgSeoAi,
+    cardBg: '#FFF9F5',
+    circleBg: '#FCE6D2',
     featured: true,
   },
   {
@@ -19,10 +30,17 @@ export const blogPosts = [
     categoryLabel: 'Social Media Marketing',
     title: 'Why Your Business Needs a Social Media Strategy, Not Just More Posts',
     excerpt: 'Posting consistently is only one part of social media marketing. A stronger approach connects your content with your audience, brand, business objectives and measurable outcomes.',
+    bullets: [
+      'Aligning social content with commercial business objectives',
+      'Platform-native creative tailored to modern attention spans',
+      'Focusing on engagement that drives real retention and pipeline'
+    ],
     meta: 'Social Media Marketing · 9 Aug 2026 · 6 min read',
     published: '9 August 2026',
     readTime: '6 min read',
-    image: 'https://images.unsplash.com/photo-1611162616305-c69b3fa7f9d0?auto=format&fit=crop&q=80&w=1200',
+    image: imgSocialMarketing,
+    cardBg: '#F8FAFC',
+    circleBg: '#E4EDF7',
   },
   {
     id: '03',
@@ -31,10 +49,17 @@ export const blogPosts = [
     categoryLabel: 'Digital Marketing Strategy',
     title: 'How to Build a Digital Marketing Strategy That Connects Every Channel',
     excerpt: 'SEO, social media, paid advertising, content and your website should not operate as disconnected activities. A connected digital marketing strategy helps each channel support the customer journey and the larger business objective.',
+    bullets: [
+      'Connecting SEO, paid ads, and social into a unified flywheel',
+      'Eliminating siloed marketing channels and conflicting messaging',
+      'End-to-end customer journey tracking with clear commercial KPIs'
+    ],
     meta: 'Digital Marketing Strategy · 9 Aug 2026 · 8 min read',
     published: '9 August 2026',
     readTime: '8 min read',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200',
+    image: imgDigitalMarketing,
+    cardBg: '#FFF9F5',
+    circleBg: '#FCE6D2',
   },
 ];
 

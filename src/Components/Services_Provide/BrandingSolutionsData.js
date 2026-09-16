@@ -1,17 +1,39 @@
-import { Share2, Monitor, Video, PenLine, Megaphone } from 'lucide-react';
-import bgImage from '../../assets/Services/Branding Solution.webp';
-import imgSocial from '../../assets/SocailMedia/Connect.webp';
-import imgWeb from '../../assets/SocailMedia/Laptop.webp';
-import imgVideo from '../../assets/SocailMedia/Educate.webp';
-import imgContent from '../../assets/SocailMedia/Entertain.webp';
-import imgPaid from '../../assets/SocailMedia/Convert.webp';
-import imgCampaign from '../../assets/SocailMedia/Build Trust.webp';
-import approachImg from '../../assets/SocailMedia/Build Trust.webp';
-import { Sparkles, Palette, Layers } from 'lucide-react';
+import { Share2, Monitor, Video, PenLine, Megaphone, Globe, RefreshCw, Sparkles, Palette, Layers } from 'lucide-react';
+import bgImage from '../../assets/All the Hero Section bg/DIGITAL CONSULTING.webp';
+import approachImg from '../../assets/Our_Approch (2).webp';
+
+// Branding What We Do Images
+import imgStrategy from '../../assets/Servicess/BrandingSolution/WhatWeDo/Brand strategy.webp';
+import imgLogo from '../../assets/Servicess/BrandingSolution/WhatWeDo/Logo design.webp';
+import imgVisual from '../../assets/Servicess/BrandingSolution/WhatWeDo/Visual identity.webp';
+import imgGuidelines from '../../assets/Servicess/BrandingSolution/WhatWeDo/Brand guidelines.webp';
+import imgMessaging from '../../assets/Servicess/BrandingSolution/WhatWeDo/Brand messaging.webp';
+import imgSocialMedia from '../../assets/Servicess/BrandingSolution/WhatWeDo/Social media branding.webp';
+import imgCampaignIdentity from '../../assets/Servicess/BrandingSolution/WhatWeDo/Campaign identity.webp';
+import imgCollateral from '../../assets/Servicess/BrandingSolution/WhatWeDo/Brand collateral.webp';
+
+// Related Services Images
+import imgRelSocial from '../../assets/Servicess/RelatedServices/Social_Media_Marketing-removebg-preview.webp';
+import imgRelWeb from '../../assets/Servicess/RelatedServices/Website_Development-removebg-preview.webp';
+import imgRelVideo from '../../assets/Servicess/RelatedServices/Video_Production-removebg-preview.webp';
+import imgRelContent from '../../assets/Servicess/RelatedServices/Content_Writing-removebg-preview.webp';
+import imgRelPerf from '../../assets/Servicess/RelatedServices/Performance_marketing-removebg-preview.webp';
+
+export {
+  imgStrategy,
+  imgLogo,
+  imgVisual,
+  imgGuidelines,
+  imgMessaging,
+  imgSocialMedia,
+  imgCampaignIdentity,
+  imgCollateral
+};
 
 export const heroData = {
   bgImage,
   title: "Branding Solutions",
+  breadcrumbText: "Branding Solutions",
   tagText: "BRANDING SOLUTIONS",
   headingWords: [
     { text: "Build" }, { text: "a" }, { text: "Brand" }, { text: "People" },
@@ -22,7 +44,8 @@ export const heroData = {
   description2: "It is the visual and verbal system people experience every time they see, hear, visit, click, or interact with your business.",
   description3: "ADSSERV builds branding systems that give businesses a clearer identity, a stronger presence, and a consistent way to show up across digital and real-world touchpoints.",
   button1Text: "Build My Brand",
-  button2Text: "Talk to ADSSERV"
+  button2Text: "View Our Services",
+  button2Link: "/#services"
 };
 
 export const problemData = {
@@ -69,14 +92,14 @@ export const whatWeBuildData = {
   buttonText: "Build My Brand",
   icons: [Sparkles, Palette, Layers],
   services: [
-    { num: "01", title: "Brand Strategy", desc: "Define the foundation behind the identity, including audience, positioning, personality, differentiation, and communication direction.", img: bgImage },
-    { num: "02", title: "Logo Design", desc: "Create a distinctive visual mark designed to work across the formats and sizes your business actually needs.", img: imgCampaign },
-    { num: "03", title: "Visual Identity", desc: "Develop the colours, typography, imagery, graphic elements, layout direction, and visual language that make the brand recognisable.", img: imgSocial },
-    { num: "04", title: "Brand Guidelines", desc: "Document the key identity rules so the brand remains consistent when different people create different materials.", img: imgContent },
-    { num: "05", title: "Brand Messaging", desc: "Shape the language, positioning statements, messaging direction, and communication principles that help the business sound like itself.", img: imgVideo },
-    { num: "06", title: "Social Media Branding", desc: "Translate the identity into social profiles, templates, content formats, and visual systems that make the feed feel connected.", img: imgPaid },
-    { num: "07", title: "Campaign Identity", desc: "Develop visual directions for launches, promotions, events, campaigns, or specific marketing initiatives.", img: imgWeb },
-    { num: "08", title: "Brand Collateral", desc: "Create practical brand assets such as presentations, business materials, digital templates, marketing assets, and other required touchpoints.", img: imgSocial }
+    { num: "01", title: "Brand Strategy", desc: "Define the foundation behind the identity, including audience, positioning, personality, differentiation, and communication direction.", img: imgStrategy },
+    { num: "02", title: "Logo Design", desc: "Create a distinctive visual mark designed to work across the formats and sizes your business actually needs.", img: imgLogo },
+    { num: "03", title: "Visual Identity", desc: "Develop the colours, typography, imagery, graphic elements, layout direction, and visual language that make the brand recognisable.", img: imgVisual },
+    { num: "04", title: "Brand Guidelines", desc: "Document the key identity rules so the brand remains consistent when different people create different materials.", img: imgGuidelines },
+    { num: "05", title: "Brand Messaging", desc: "Shape the language, positioning statements, messaging direction, and communication principles that help the business sound like itself.", img: imgMessaging },
+    { num: "06", title: "Social Media Branding", desc: "Translate the identity into social profiles, templates, content formats, and visual systems that make the feed feel connected.", img: imgSocialMedia },
+    { num: "07", title: "Campaign Identity", desc: "Develop visual directions for launches, promotions, events, campaigns, or specific marketing initiatives.", img: imgCampaignIdentity },
+    { num: "08", title: "Brand Collateral", desc: "Create practical brand assets such as presentations, business materials, digital templates, marketing assets, and other required touchpoints.", img: imgCollateral }
   ]
 };
 
@@ -86,15 +109,51 @@ export const marketingData = {
     { text: "Good" }, { text: "branding" }, { text: "makes" }, { text: "every" },
     { text: "future", italic: true }, { text: "campaign" }, { text: "easier" }, { text: "to" }, { text: "recognise." }
   ],
-  description1: "Your brand shouldn't live inside a brand guideline PDF. It should show up in the social content, website, advertisements, videos, campaigns, landing pages, and experiences your audience actually sees.",
-  description2: "A stronger identity gives future creative more consistency — without forcing every campaign to look exactly the same.",
-  points: [
-    { num: "01", title: "Social Content", desc: "Show up in the social content your audience actually sees.", img: imgSocial },
-    { num: "02", title: "Website", desc: "Give the brand a digital home that reflects the identity.", img: imgWeb },
-    { num: "03", title: "Video", desc: "Carry the visual language into video and campaign content.", img: imgVideo },
-    { num: "04", title: "Content", desc: "Give the brand a consistent voice across pages and campaigns.", img: imgContent },
-    { num: "05", title: "Paid Campaigns", desc: "Put the brand in front of the right audiences through advertising.", img: imgPaid },
-    { num: "06", title: "Launch Activity", desc: "Extend the identity into launches, landing pages, and experiences.", img: imgCampaign }
+  paragraphs: [
+    "Your brand shouldn't live inside a brand guideline PDF.",
+    "It should show up in the social content, website, advertisements, videos, campaigns, landing pages, and experiences your audience actually sees.",
+    "That is why branding works best when it connects with the rest of your marketing system.",
+    "A stronger identity gives future creative more consistency — without forcing every campaign to look exactly the same."
+  ]
+};
+
+export const digitalBrandingData = {
+  tagText: "BUILT FOR WHERE PEOPLE ACTUALLY SEE YOU",
+  headingWords: [
+    { text: "Your" }, { text: "digital" }, { text: "presence" }, { text: "is" },
+    { text: "part", italic: true }, { text: "of" }, { text: "the" }, { text: "brand." }
+  ],
+  paragraphs: [
+    "A brand identity has to work on screens.",
+    "That means considering how it appears across:"
+  ],
+  items: [
+    "Websites",
+    "Instagram",
+    "Social media",
+    "Digital advertising",
+    "Email",
+    "Landing pages",
+    "Presentations",
+    "Video",
+    "Content",
+    "Mobile experiences"
+  ],
+  bottomText: "We build the identity with those environments in mind rather than treating digital as an afterthought."
+};
+
+export const rebrandingData = {
+  tagText: "WHEN THE OLD VERSION NO LONGER FITS",
+  headingWords: [
+    { text: "Sometimes" }, { text: "the" }, { text: "brand" }, { text: "doesn't" },
+    { text: "need" }, { text: "a" }, { text: "new" }, { text: "logo.", italic: true },
+    { text: "It" }, { text: "needs" }, { text: "a" }, { text: "new" }, { text: "direction." }
+  ],
+  paragraphs: [
+    "A rebrand can mean different things.",
+    "For some businesses, the existing identity simply needs refinement.",
+    "For others, the market, audience, product, or ambition has changed enough that the brand needs a more fundamental reset.",
+    "We identify what should stay, what needs to change, and what the new identity needs to accomplish before rebuilding everything from scratch."
   ]
 };
 
@@ -139,11 +198,11 @@ export const relatedServicesData = {
     { text: 'the', italic: true }, { text: 'rest' }, { text: 'of' }, { text: 'your' }, { text: 'digital' }, { text: 'presence.' }
   ],
   services: [
-    { title: 'Social Media Marketing', desc: 'Turn your visual identity into a consistent social presence.', cta: 'Explore Social Media Marketing', href: '/services/social-media-marketing', icon: Share2, img: imgSocial },
-    { title: 'Website Development', desc: 'Build a website that reflects the new brand rather than fighting against it.', cta: 'Explore Website Development', href: '/services/website-development', icon: Monitor, img: imgWeb },
-    { title: 'Video Production', desc: "Carry the brand's visual language into video and campaign content.", cta: 'Explore Video Production', href: '/services/video-production', icon: Video, img: imgVideo },
-    { title: 'Content Writing', desc: 'Give the brand a consistent voice across pages, campaigns, and content.', cta: 'Explore Content Writing', href: '/services/content-writing', icon: PenLine, img: imgContent },
-    { title: 'Performance Marketing', desc: 'Put the brand in front of the right audiences through paid campaigns.', cta: 'Explore Performance Marketing', href: '/services/performance-marketing', icon: Megaphone, img: imgPaid }
+    { title: 'Social Media Marketing', desc: 'Turn your visual identity into a consistent social presence.', cta: 'Explore Social Media Marketing', href: '/services/social-media-marketing', icon: Share2, img: imgRelSocial },
+    { title: 'Website Development', desc: 'Build a website that reflects the new brand rather than fighting against it.', cta: 'Explore Website Development', href: '/services/website-development', icon: Monitor, img: imgRelWeb },
+    { title: 'Video Production', desc: "Carry the brand's visual language into video and campaign content.", cta: 'Explore Video Production', href: '/services/video-production', icon: Video, img: imgRelVideo },
+    { title: 'Content Writing', desc: 'Give the brand a consistent voice across pages, campaigns, and content.', cta: 'Explore Content Writing', href: '/services/content-writing', icon: PenLine, img: imgRelContent },
+    { title: 'Performance Marketing', desc: 'Put the brand in front of the right audiences through paid campaigns.', cta: 'Explore Performance Marketing', href: '/services/performance-marketing', icon: Megaphone, img: imgRelPerf }
   ]
 };
 

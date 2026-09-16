@@ -16,15 +16,15 @@ export default function CommonFAQ({ faqs = [], tagText, headingWords }) {
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(headingRef.current,
-        { opacity: 0, y: 40, scale: 0.96 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: 'power3.out',
-          scrollTrigger: { trigger: sectionRef.current, start: 'top 78%', toggleActions: 'play none none none' }
+        { opacity: 0, y: 25, scale: 0.97 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.3, ease: 'power2.out',
+          scrollTrigger: { trigger: sectionRef.current, start: 'top 80%', toggleActions: 'play none none none' }
         }
       );
       gsap.fromTo(faqRefs.current,
-        { opacity: 0, y: 25 },
-        { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out', stagger: 0.06, delay: 0.25,
-          scrollTrigger: { trigger: sectionRef.current, start: 'top 78%', toggleActions: 'play none none none' }
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0, duration: 0.25, ease: 'power2.out', stagger: 0.04, delay: 0.15,
+          scrollTrigger: { trigger: sectionRef.current, start: 'top 80%', toggleActions: 'play none none none' }
         }
       );
     }, sectionRef);
@@ -36,7 +36,7 @@ export default function CommonFAQ({ faqs = [], tagText, headingWords }) {
   };
 
   return (
-    <section ref={sectionRef} className="w-full py-24 bg-white relative font-primary">
+    <section ref={sectionRef} className="w-full py-14 sm:py-20 md:py-24 bg-white relative font-primary">
       <div className="max-w-[1000px] w-full mx-auto px-4 md:px-8 relative z-10">
         <div ref={headingRef} className="flex flex-col items-center text-center mb-16">
           <div className="flex items-center gap-2 mb-6">
@@ -64,26 +64,29 @@ export default function CommonFAQ({ faqs = [], tagText, headingWords }) {
               >
                 <button
                   onClick={() => toggleFAQ(idx)}
-                  className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left group"
+                  className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left group cursor-pointer"
                 >
                   <h3 className="text-[17px] md:text-[18px] font-bold leading-snug" style={{ color: 'var(--brand-navy)' }}>
                     {faq.q}
                   </h3>
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-white transition-all duration-300"
+                  <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-white transition-all duration-200 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
                     style={{ backgroundColor: isOpen ? 'var(--brand-purple, #8b5cf6)' : 'var(--accent-orange)' }}>
                     {isOpen ? <Minus size={18} strokeWidth={2.5} /> : <Plus size={18} strokeWidth={2.5} />}
                   </div>
                 </button>
 
                 <div
-                  className="overflow-hidden transition-all duration-500 ease-in-out"
+                  className="grid transition-all duration-200 ease-out"
                   style={{
-                    maxHeight: isOpen ? '500px' : '0',
-                    opacity: isOpen ? 1 : 0
+                    gridTemplateRows: isOpen ? '1fr' : '0fr',
+                    opacity: isOpen ? 1 : 0,
+                    transition: 'grid-template-rows 220ms cubic-bezier(0.16, 1, 0.3, 1), opacity 200ms ease-out'
                   }}
                 >
-                  <div className="px-6 pb-5 text-[15.5px] font-medium leading-relaxed" style={{ color: '#334155' }}>
-                    {faq.a}
+                  <div className="overflow-hidden">
+                    <div className="px-6 pb-5 text-[15.5px] font-medium leading-relaxed" style={{ color: '#334155' }}>
+                      {faq.a}
+                    </div>
                   </div>
                 </div>
               </div>

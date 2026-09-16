@@ -6,26 +6,26 @@ import '../HomePage/common.css';
 // Common Components
 import CommonHero from '../Services/common/CommonHero';
 import CommonProblem from '../Services/common/CommonProblem';
+import CommonApproach from '../Services/common/CommonApproach';
+import CommonWhatWeDo from '../Services/common/CommonWhatWeDo';
+import CommonSpecialty from '../Services/common/CommonSpecialty';
+import CommonMetrics from '../Services/common/CommonMetrics';
+import CommonStages from '../Services/common/CommonStages';
+import CommonWhyAdsserv from '../Services/common/CommonWhyAdsserv';
 import CommonFAQ from '../Services/common/CommonFAQ';
 import CommonRelatedServices from '../Services/common/CommonRelatedServices';
 import CommonCTA from '../Services/common/CommonCTA';
 
-// Custom sections kept (highly unique layouts)
-import WebsiteApproach from '../Services/WebsiteDevelopment/WebsiteApproach';
-import WebsiteWhatWeDo from '../Services/WebsiteDevelopment/WebsiteWhatWeDo';
-import WebsiteDesign from '../Services/WebsiteDevelopment/WebsiteDesign';
-import WebsiteFeatures from '../Services/WebsiteDevelopment/WebsiteFeatures';
+// Custom Specialty Sections
 import WebsiteStructure from '../Services/WebsiteDevelopment/WebsiteStructure';
-import WebsiteSEO from '../Services/WebsiteDevelopment/WebsiteSEO';
-import WebsiteConversion from '../Services/WebsiteDevelopment/WebsiteConversion';
-import WebsiteWhoThisIsFor from '../Services/WebsiteDevelopment/WebsiteWhoThisIsFor';
-import WebsiteRedesign from '../Services/WebsiteDevelopment/WebsiteRedesign';
 import WebsiteHowWeWork from '../Services/WebsiteDevelopment/WebsiteHowWeWork';
-import WebsiteWhyAdsserv from '../Services/WebsiteDevelopment/WebsiteWhyAdsserv';
 
 // Data
 import {
-  heroData, problemData, faqData, relatedServicesData, ctaData
+  heroData, problemData, approachData, whatWeBuildData,
+  designUXData, builtIntoExperienceData, seoReadyData, conversionData,
+  whoThisIsForData, redesignData, whyAdsservWebsiteData,
+  faqData, relatedServicesData, ctaData
 } from './WebsiteDevelopmentData';
 
 export default function WebsiteDevelopment() {
@@ -37,36 +37,52 @@ export default function WebsiteDevelopment() {
     <div className="font-sans bg-white min-h-screen flex flex-col">
       <Navbar />
 
+      {/* 1. HERO */}
       <CommonHero {...heroData} />
 
+      {/* 2. THE PROBLEM */}
       <CommonProblem {...problemData} variant="fragments" />
 
-      <WebsiteApproach />
+      {/* 3. OUR APPROACH */}
+      <CommonApproach {...approachData} />
 
-      <WebsiteWhatWeDo />
+      {/* 4. WHAT WE BUILD */}
+      <CommonWhatWeDo {...whatWeBuildData} />
 
-      <WebsiteDesign />
+      {/* 5. DESIGN & EXPERIENCE */}
+      <CommonSpecialty {...designUXData} bgColor="white" />
 
-      <WebsiteFeatures />
+      {/* 6. WHAT'S BUILT INTO THE EXPERIENCE */}
+      <CommonMetrics {...builtIntoExperienceData} />
 
+      {/* 7. WEBSITE STRUCTURE */}
       <WebsiteStructure />
 
-      <WebsiteSEO />
+      {/* 8. SEO-READY DEVELOPMENT */}
+      <CommonSpecialty {...seoReadyData} bgColor="purple" />
 
-      <WebsiteConversion />
+      {/* 9. CONVERSION EXPERIENCE */}
+      <CommonSpecialty {...conversionData} bgColor="white" />
 
-      <WebsiteWhoThisIsFor />
+      {/* 10. WHO THIS IS FOR */}
+      <CommonStages {...whoThisIsForData} />
 
-      <WebsiteRedesign />
+      {/* 11. WEBSITE REDESIGN */}
+      <CommonSpecialty {...redesignData} bgColor="purple" />
 
+      {/* 12. HOW WE WORK */}
       <WebsiteHowWeWork />
 
-      <WebsiteWhyAdsserv />
+      {/* 13. WHY ADSSERV */}
+      <CommonWhyAdsserv {...whyAdsservWebsiteData} variant="list" />
 
+      {/* 14. FAQ */}
       <CommonFAQ {...faqData} />
 
+      {/* 15. RELATED SERVICES */}
       <CommonRelatedServices {...relatedServicesData} />
 
+      {/* 16. FINAL CTA */}
       <CommonCTA {...ctaData} />
 
       <Footer />

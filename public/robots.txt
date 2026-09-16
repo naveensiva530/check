@@ -1,0 +1,11 @@
+# Robots.txt for ADS SERV - Digital Marketing & Growth Agency
+# https://adsserv.in
+
+User-agent: *
+Allow: /
+
+# Disallow internal or non-public paths if any
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://adsserv.in/sitemap.xml

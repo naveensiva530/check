@@ -130,11 +130,15 @@ export default function FAQCategorySection({
 
               {/* Answer Content Body */}
               <div
-                className={`transition-all duration-500 ease-in-out ${
-                  isOpen ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
-                }`}
+                className="grid transition-all duration-200 ease-out"
+                style={{
+                  gridTemplateRows: isOpen ? '1fr' : '0fr',
+                  opacity: isOpen ? 1 : 0,
+                  transition: 'grid-template-rows 220ms cubic-bezier(0.16, 1, 0.3, 1), opacity 200ms ease-out'
+                }}
               >
-                <div className="px-6 pb-8 sm:px-8 sm:pb-8 pt-0 border-t border-slate-100 mt-2">
+                <div className="overflow-hidden">
+                  <div className="px-6 pb-8 sm:px-8 sm:pb-8 pt-0 border-t border-slate-100 mt-2">
                   
                   {/* Answer Text */}
                   <div className="text-slate-700 text-base sm:text-lg leading-relaxed space-y-4 pt-6 font-normal">
@@ -221,6 +225,7 @@ export default function FAQCategorySection({
                 </div>
               </div>
             </div>
+          </div>
           );
         })}
       </div>

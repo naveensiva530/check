@@ -1,5 +1,5 @@
 import '../../Components/HomePage/common.css';
-import ScrollRevealHeading from '../Services/SocialMedia/ScrollRevealHeading';
+import ScrollRevealHeading from '../Services/common/ScrollRevealHeading';
 import { useScrollAnimation, fadeUp, scaleIn } from '../Services/SocialMedia/useScrollAnimation';
 
 const questions = [

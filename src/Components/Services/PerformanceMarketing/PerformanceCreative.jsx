@@ -13,19 +13,19 @@ export default function PerformanceCreative() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Left heading slides in from left
+      // Left heading slides in from left - FASTER
       gsap.fromTo(leftRef.current,
         { opacity: 0, x: -80 },
-        { opacity: 1, x: 0, duration: 0.5, ease: 'power3.out',
-          scrollTrigger: { trigger: sectionRef.current, start: 'top 78%', toggleActions: 'play none none none' }
+        { opacity: 1, x: 0, duration: 0.3, ease: 'power2.out',
+          scrollTrigger: { trigger: sectionRef.current, start: 'top 82%', toggleActions: 'play none none none' }
         }
       );
 
-      // Right paragraphs stagger up
+      // Right paragraphs stagger up - FASTER
       gsap.fromTo(paraRefs.current,
         { opacity: 0, y: 40 },
-        { opacity: 1, y: 0, duration: 0.38, ease: 'power3.out', stagger: 0.06, delay: 0.2,
-          scrollTrigger: { trigger: sectionRef.current, start: 'top 78%', toggleActions: 'play none none none' }
+        { opacity: 1, y: 0, duration: 0.25, ease: 'power2.out', stagger: 0.03, delay: 0.05,
+          scrollTrigger: { trigger: sectionRef.current, start: 'top 82%', toggleActions: 'play none none none' }
         }
       );
     }, sectionRef);
@@ -36,7 +36,7 @@ export default function PerformanceCreative() {
     <section ref={sectionRef} className="w-full py-24 bg-white relative font-primary border-b border-gray-100">
       <div className="max-w-[1200px] w-full mx-auto px-4 md:px-8 relative z-10">
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-20 items-center">
           <div ref={leftRef} className="flex flex-col">
             <div className="flex items-center gap-2 mb-6">
               <span className="flex items-center justify-center w-5 h-5 rounded-full border border-gray-200 shadow-sm flex-shrink-0" style={{ background: 'var(--accent-orange)' }}>
@@ -64,7 +64,7 @@ export default function PerformanceCreative() {
             />
           </div>
 
-          <div className="flex flex-col gap-4 text-[16px] md:text-[18px] font-medium leading-relaxed text-slate-700">
+          <div className="flex flex-col gap-4 text-[14px] sm:text-[16px] md:text-[18px] font-medium leading-relaxed text-slate-700">
             <p ref={el => paraRefs.current[0] = el}>
               People don't interact with advertisements simply because the targeting is technically correct.
             </p>

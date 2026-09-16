@@ -16,7 +16,6 @@ import FinalCTA from "./Components/HomePage/FinalCTA/FinalCTA";
 import Email from "./Components/HomePage/Email/Email";
 import Footer from "./Components/HomePage/Footer/Footer";
 
-import Lenis from "lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -24,28 +23,13 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
   useEffect(() => {
-    // Initialize Lenis smooth scroll
-    const lenis = new Lenis({
-      duration: 1.4,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smooth: true,
-      smoothTouch: false,
-    });
-
-    // Connect Lenis to GSAP's ticker so ScrollTrigger stays in sync
-    lenis.on("scroll", ScrollTrigger.update);
-
-    // Store reference so we can remove it properly
-    const rafCallback = (time) => {
-      lenis.raf(time * 1000);
-    };
-
-    gsap.ticker.add(rafCallback);
-    gsap.ticker.lagSmoothing(0);
+    // Refresh ScrollTrigger after initial paint & animations
+    const refreshTimer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 400);
 
     return () => {
-      lenis.destroy();
-      gsap.ticker.remove(rafCallback);
+      clearTimeout(refreshTimer);
     };
   }, []);
 

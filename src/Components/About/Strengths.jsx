@@ -1,37 +1,40 @@
+import React from 'react';
 import '../../Components/HomePage/common.css';
-import ScrollRevealHeading from '../Services/SocialMedia/ScrollRevealHeading';
+import ScrollRevealHeading from '../Services/common/ScrollRevealHeading';
 import { useScrollAnimation, fadeUp, slideFrom } from '../Services/SocialMedia/useScrollAnimation';
 
 import heroAsset from '../../assets/Hero_image-removebg-preview.webp';
-import iconBuildTrust from '../../assets/SocailMedia/Build Trust.webp';
-import iconConnect from '../../assets/SocailMedia/Connect.webp';
-import iconConvert from '../../assets/SocailMedia/Convert.webp';
-import iconLaptop from '../../assets/SocailMedia/Laptop.webp';
+
+// Images from different Servicess folders
+import imgStrategy from '../../assets/Servicess/DigitalConsulting/WhatWeDo/Digital Strategy.webp';
+import imgCreative from '../../assets/Creative.webp';
+import imgDigital from '../../assets/Digital.webp';
+import imgPerformance from '../../assets/Performance.webp';
 
 const strengths = [
   {
     num: "01",
     title: "Strategy",
     desc: "Find the business problem, audience opportunity, and direction before rushing into execution.",
-    icon: iconBuildTrust,
+    image: imgStrategy,
   },
   {
     num: "02",
     title: "Creative",
     desc: "Turn strategy into ideas, stories, content, campaigns, visuals, and experiences that people can understand and remember.",
-    icon: iconConnect,
+    image: imgCreative,
   },
   {
     num: "03",
     title: "Digital",
     desc: "Build the websites, social presence, search visibility, campaigns, and digital touchpoints that bring the strategy to life.",
-    icon: iconConvert,
+    image: imgDigital,
   },
   {
     num: "04",
     title: "Performance",
     desc: "Use data, testing, measurement, and optimisation to understand what's working and where the next improvement can come from.",
-    icon: iconLaptop,
+    image: imgPerformance,
   }
 ];
 
@@ -66,7 +69,7 @@ export default function Strengths() {
   });
 
   return (
-    <section ref={sectionRef} className="w-full py-24 bg-white relative font-primary overflow-hidden">
+    <section ref={sectionRef} className="w-full py-14 sm:py-20 md:py-24 bg-white relative font-primary overflow-hidden">
       <div className="max-w-[1300px] w-full mx-auto px-4 md:px-8 relative z-10">
 
         {/* Top Section */}
@@ -107,20 +110,20 @@ export default function Strengths() {
 
             <p
               ref={ref('paragraph')}
-              className="text-[16px] md:text-[18px] font-medium leading-relaxed max-w-[560px]"
-              style={{ color: '#334155' }}
+              className="text-[16px] md:text-[18px] text-slate-600 font-medium leading-relaxed max-w-[580px]"
             >
-              We bring together the disciplines that modern marketing actually needs — under one
-              team, one way of thinking, and one shared standard for the work.
+              We connect creative, digital, and performance capabilities to deliver unified marketing that works as a whole.
             </p>
           </div>
 
           {/* Right: Main Graphic */}
-          <div ref={ref('heroImg')} className="w-full lg:w-[500px] xl:w-[600px] h-[250px] lg:h-[350px] relative z-10 flex justify-center lg:justify-end">
+          <div ref={ref('heroImg')} className="w-full lg:w-[500px] xl:w-[600px] h-[220px] sm:h-[280px] lg:h-[350px] relative z-10 flex justify-center lg:justify-end">
             <img
               src={heroAsset}
               alt="Connected way of working"
-              className="w-full h-full object-contain object-center lg:object-right drop-shadow-[0_20px_40px_rgba(11,31,82,0.18)]"
+              loading="lazy"
+              decoding="async"
+              className="w-full h-full object-contain object-center lg:object-right"
             />
           </div>
 
@@ -130,12 +133,12 @@ export default function Strengths() {
         <div className="w-full h-px bg-slate-200 mb-12"></div>
 
         {/* Bottom Section: 4 Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-4">
           {strengths.map((s, idx) => (
             <div
               key={idx}
               ref={refArray('cards')}
-              className={`flex flex-col px-2 sm:px-6
+              className={`flex flex-col px-2 sm:px-5 group cursor-pointer
                 ${idx !== strengths.length - 1 ? 'lg:border-r lg:border-slate-200' : ''}
                 ${idx % 2 === 0 ? 'md:border-r md:border-slate-200 lg:border-r' : ''}`}
             >
@@ -144,24 +147,29 @@ export default function Strengths() {
                 Strength {s.num}
               </div>
 
-              {/* Content row (Icon + Text) */}
+              {/* Content row (Image + Text) */}
               <div className="flex flex-col xl:flex-row items-start gap-5">
-                {/* Icon */}
+                {/* 3D Illustration Frame */}
                 <div
-                  className="w-[100px] h-[100px] rounded-full flex items-center justify-center flex-shrink-0"
-                  style={{ backgroundColor: '#ffffff', border: '1px solid rgba(11,31,82,0.08)', boxShadow: '0 6px 24px rgba(11,31,82,0.08)' }}
+                  className="w-[100px] h-[100px] rounded-[22px] overflow-hidden flex-shrink-0 transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_12px_28px_rgba(110,60,170,0.18)] shadow-[0_6px_20px_rgba(11,31,82,0.08)] border border-purple-100 bg-[#F4ECFC]"
                 >
                   <img
-                    src={s.icon}
+                    src={s.image}
                     alt={s.title}
-                    className="w-14 h-14 object-contain"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
 
                 {/* Text */}
-                <div className="flex flex-col">
-                  <h3 className="text-[20px] font-extrabold mb-3" style={{ color: 'var(--brand-navy, #0b1f52)' }}>{s.title}</h3>
-                  <p className="text-[14px] leading-relaxed text-slate-600 font-medium">{s.desc}</p>
+                <div className="flex flex-col flex-grow">
+                  <h3 className="text-[20px] font-extrabold mb-2 text-[var(--brand-navy,#0b1f52)] group-hover:text-[var(--accent-orange)] transition-colors">
+                    {s.title}
+                  </h3>
+                  <p className="text-[14px] leading-relaxed text-slate-600 font-medium">
+                    {s.desc}
+                  </p>
                 </div>
               </div>
             </div>

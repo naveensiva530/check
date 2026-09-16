@@ -4,7 +4,7 @@ import ScrollRevealHeading from '../SocialMedia/ScrollRevealHeading';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import imgLaptop from '../../../assets/SocailMedia/Laptop.webp';
+import imgLaptop from '../../../assets/SocialMedia_Icons/Laptop.webp';
 
 gsap.registerPlugin(ScrollTrigger);
 

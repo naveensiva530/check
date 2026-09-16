@@ -57,13 +57,13 @@ const StepRow = ({ step, index }) => {
   const y = useTransform(scrollYProgress, [0, 1], [40, 0]);
 
   return (
-    <div ref={ref} className="relative w-full flex flex-col md:flex-row gap-8 md:gap-0 items-center py-6 md:py-10 group">
+    <div ref={ref} className="relative w-full flex flex-col md:flex-row gap-5 md:gap-0 items-center py-5 md:py-10 group">
       
       {/* Content Side */}
       <div className={`w-full md:w-1/2 flex flex-col justify-center ${isReversed ? 'md:order-2 md:pl-16 lg:pl-20' : 'md:order-1 md:pr-16 lg:pr-20'}`}>
          {/* Title */}
          <motion.h3 
-           className="text-[26px] md:text-[32px] font-bold leading-[1.2] mb-4 tracking-tight"
+           className="text-[22px] sm:text-[26px] md:text-[32px] font-bold leading-[1.2] mb-3 md:mb-4 tracking-tight"
            style={{ color: 'var(--text-dark-blue)', opacity, y }}
          >
            {step.title}
@@ -71,7 +71,7 @@ const StepRow = ({ step, index }) => {
          
          {/* Text */}
          <motion.p 
-           className="text-[15px] md:text-[16px] leading-[1.7] font-medium"
+           className="text-[14px] sm:text-[15px] md:text-[16px] leading-[1.6] md:leading-[1.7] font-medium mb-3 md:mb-0"
            style={{ color: 'var(--text-gray)', opacity, y }}
          >
            {step.desc}
@@ -83,13 +83,15 @@ const StepRow = ({ step, index }) => {
          
          {/* Reduced image container width and height */}
          <motion.div 
-           className="w-full md:w-[95%] lg:w-full aspect-[21/9] rounded-[24px] overflow-hidden bg-[var(--primary-white)] shadow-xl ring-1 ring-[var(--border-gray)]"
+           className="w-full md:w-[95%] lg:w-full aspect-[16/9] md:aspect-[21/9] rounded-[18px] sm:rounded-[24px] overflow-hidden bg-[var(--primary-white)] shadow-lg md:shadow-xl ring-1 ring-[var(--border-gray)]"
            style={{ opacity, y }}
          >
             <img 
               src={step.image} 
               alt={step.title} 
               className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
+              loading="lazy"
+              decoding="async"
             />
          </motion.div>
          
@@ -116,19 +118,19 @@ export default function WhoWeWorkWith() {
 
   return (
     <section 
-      className="w-full pt-20 pb-20 md:pt-24 md:pb-24 relative overflow-hidden"
+      className="w-full pt-14 pb-14 md:pt-24 md:pb-24 relative overflow-hidden"
       style={{ background: "var(--primary-white)", fontFamily: "var(--font-primary)" }}
     >
-      <div className="max-w-[1200px] w-full mx-auto px-4 md:px-8 relative z-10" ref={containerRef}>
+      <div className="max-w-[1200px] w-full mx-auto px-4 sm:px-6 md:px-8 relative z-10" ref={containerRef}>
         
         {/* HEADER SECTION */}
-        <div className="flex flex-col items-start justify-start text-left mb-20 md:mb-28">
+        <div className="flex flex-col items-start justify-start text-left mb-12 sm:mb-16 md:mb-24">
           <div className="flex items-center gap-2 mb-4">
             <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white border border-gray-200 shadow-sm flex-shrink-0">
               <span style={{ color: 'var(--brand-orange)', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
             </span>
             <span
-              className="text-[16px] italic font-medium"
+              className="text-[13px] sm:text-[15px] italic font-medium uppercase tracking-wider"
               style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "var(--text-dark-blue)" }}
             >
               BUILT FOR DIFFERENT KINDS OF AMBITION
@@ -136,14 +138,14 @@ export default function WhoWeWorkWith() {
           </div>
           
           <h2 
-            className="text-[36px] md:text-[52px] font-extrabold leading-[1.15] tracking-tight max-w-[900px] mb-6"
+            className="text-[26px] sm:text-[36px] md:text-[52px] font-extrabold leading-[1.15] tracking-tight max-w-[900px] mb-4 sm:mb-6"
             style={{ color: "var(--text-dark-blue)" }}
           >
             Different businesses. Different problems. Same need for better marketing.
           </h2>
           
           <p 
-            className="text-[15px] md:text-[17px] font-medium max-w-[650px] leading-relaxed"
+            className="text-[14px] sm:text-[16px] md:text-[17px] font-medium max-w-[650px] leading-relaxed"
             style={{ color: "var(--text-gray)" }}
           >
             We work with brands and organisations at different stages—from businesses finding their voice to established companies looking for a sharper digital presence.

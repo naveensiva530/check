@@ -1,136 +1,131 @@
+import React, { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import ScrollRevealHeading from '../Services/common/ScrollRevealHeading';
 import '../../Components/HomePage/common.css';
-import ScrollRevealHeading from '../Services/SocialMedia/ScrollRevealHeading';
-import { useScrollAnimation, fadeUp } from '../Services/SocialMedia/useScrollAnimation';
 
-import healthCareImg    from '../../assets/Services/Health Care.webp';
-import realEstateImg    from '../../assets/Services/Real Estate.webp';
-import educationImg     from '../../assets/Services/Education care.webp';
-import itSaasImg        from '../../assets/Services/IT-SAAS.webp';
-import beautyImg        from '../../assets/Services/Beauty & Salon.webp';
+gsap.registerPlugin(ScrollTrigger);
+
+// Import the specific industry assets
+import imgHealth from '../../assets/Services/Health Care.webp';
+import imgRealEstate from '../../assets/Services/Real Estate.webp';
+import imgEducation from '../../assets/Services/Education care.webp';
+import imgTech from '../../assets/Services/IT-SAAS.webp';
+import imgBeauty from '../../assets/Services/Beauty & Salon.webp';
 
 const industries = [
   {
-    label:     "HEALTHCARE MARKETING",
-    labelColor:"#F5A623",
-    title:     "Health Care",
-    desc:      "Build trust through clear, responsible, useful communication.",
-    img:       healthCareImg,
+    title: "Health Care",
+    desc: "Build trust through clear, responsible, useful communication.",
+    img: imgHealth
   },
   {
-    label:     "PROPERTY MARKETING",
-    labelColor:"#F5A623",
-    title:     "Real Estate",
-    desc:      "Turn properties, projects, locations, and expertise into content people can discover and remember.",
-    img:       realEstateImg,
+    title: "Real Estate",
+    desc: "Turn properties, projects, locations, and expertise into content people can discover and remember.",
+    img: imgRealEstate
   },
   {
-    label:     "EDUCATION MARKETING",
-    labelColor:"#F5A623",
-    title:     "Education",
-    desc:      "Create content that informs students, parents, professionals, and decision-makers.",
-    img:       educationImg,
+    title: "Education",
+    desc: "Create content that informs students, parents, professionals, and decision-makers.",
+    img: imgEducation
   },
   {
-    label:     "TECH MARKETING",
-    labelColor:"#F5A623",
-    title:     "IT-Tech / SaaS",
-    desc:      "Make complex products easier to understand through useful, visual, and educational content.",
-    img:       itSaasImg,
+    title: "IT-Tech / SaaS",
+    desc: "Make complex products easier to understand through useful, visual, and educational content.",
+    img: imgTech
   },
   {
-    label:     "LIFESTYLE MARKETING",
-    labelColor:"#F5A623",
-    title:     "Beauty & Salon",
-    desc:      "Use visual storytelling, social proof, community, and short-form content to make the brand more discoverable.",
-    img:       beautyImg,
-  },
+    title: "Beauty & Salon",
+    desc: "Use visual storytelling, social proof, community, and short-form content to make the brand more discoverable.",
+    img: imgBeauty
+  }
 ];
 
 export default function Industries() {
-  const { sectionRef, ref, refArray } = useScrollAnimation((refs, section) => {
-    // Header
-    fadeUp([refs.eyebrow, refs.heading, refs.paragraph], {
-      trigger: section,
-      start: 'top 80%',
-      duration: 0.5,
-      stagger: 0.08,
-    });
-    // Industry cards
-    if (refs.cards && refs.cards[0]) {
-      fadeUp(refs.cards, {
-        trigger: refs.cards[0],
-        start: 'top 82%',
-        duration: 0.5,
-        stagger: 0.07,
-        y: 50,
-        scale: 0.95,
-      });
-    }
-  });
+  const sectionRef = useRef(null);
+  const cardsRef = useRef([]);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        cardsRef.current,
+        {
+          opacity: 0,
+          x: 80,
+          scale: 0.95,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          scale: 1,
+          duration: 0.6,
+          ease: 'power3.out',
+          stagger: 0.08,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 78%',
+            toggleActions: 'play none none none',
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section ref={sectionRef} className="w-full py-20 relative font-primary overflow-hidden" style={{ backgroundColor: 'var(--bg-light-purple, #C8B6E2)' }}>
-      <div className="max-w-[1300px] w-full mx-auto px-4 md:px-8 relative z-10">
-
-        {/* Header */}
-        <div className="flex flex-col items-center text-center mb-14">
-          {/* Eyebrow */}
-          <div ref={ref('eyebrow')} className="flex items-center gap-2 mb-6">
-            <span
-              className="flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0"
-              style={{ background: 'var(--accent-orange, #e08326)', boxShadow: '0 2px 8px rgba(224,131,38,0.30)' }}
-            >
+    <section ref={sectionRef} className="w-full py-14 sm:py-20 md:py-24 bg-white relative font-primary overflow-hidden">
+      <div className="max-w-[1400px] w-full mx-auto px-4 md:px-6 relative z-10">
+        
+        {/* Header Section */}
+        <div className="flex flex-col items-center text-center mb-16 max-w-3xl mx-auto">
+          <div className="flex items-center gap-2 mb-6">
+            <span className="flex items-center justify-center w-5 h-5 rounded-full border border-gray-200 shadow-sm flex-shrink-0" style={{ background: 'var(--accent-orange)' }}>
               <span style={{ color: '#fff', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
             </span>
             <span
               className="italic font-semibold uppercase tracking-widest"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '13px', color: 'var(--accent-orange, #e08326)' }}
+              style={{
+                fontFamily: "'Playfair Display', Georgia, serif",
+                fontSize: '13px',
+                color: 'var(--accent-orange)',
+              }}
             >
-              SOCIAL MEDIA BY INDUSTRY
+              INDUSTRIES WE WORK WITH
             </span>
           </div>
-
-          <div ref={ref('heading')}>
-            <ScrollRevealHeading
-              className="mb-6"
-              maxW="900px"
-              justify="center"
-              words={[
-                { text: "The" },
-                { text: "audience" },
-                { text: "changes.", italic: true },
-                { text: "The" },
-                { text: "strategy" },
-                { text: "should" },
-                { text: "too." }
-              ]}
-            />
-          </div>
+          
+          <ScrollRevealHeading
+            justify="center"
+            words={[
+              { text: "Experience" },
+              { text: "across", italic: true },
+              { text: "different" },
+              { text: "business" },
+              { text: "categories." }
+            ]}
+          />
 
           <p
-            ref={ref('paragraph')}
-            className="text-[16px] md:text-[18px] font-medium leading-relaxed max-w-[680px]"
-            style={{ color: '#334155' }}
+            className="text-[16px] md:text-[18px] text-slate-600 font-medium leading-relaxed max-w-[620px] mt-6"
           >
-            Different industries speak to different audiences, with different expectations. Our
-            social media work adapts to the category, the customer, and the conversation that
-            already exists around the brand.
+            Different industries have different customer journeys, regulatory contexts, and
+            content requirements. We adapt the marketing approach to fit the reality of each category.
           </p>
         </div>
 
         {/* Cards Row */}
-        <div className="flex flex-col lg:flex-row items-end justify-center gap-4 lg:gap-3 xl:gap-5 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-4 lg:gap-3 xl:gap-5 mb-8 max-w-[280px] sm:max-w-none mx-auto" style={{ paddingTop: '20px' }}>
           {industries.map((ind, idx) => {
             // Middle card (index 2) is tallest, cards taper outward
-            const heights = ['260px', '300px', '340px', '300px', '260px'];
-            const cardHeight = heights[idx] || '280px';
+            const heights = ['200px', '240px', '280px', '240px', '200px'];
+            const cardHeight = heights[idx] || '220px';
 
             return (
               <div
                 key={idx}
-                ref={refArray('cards')}
-                className="flex flex-col items-center group"
-                style={{ flex: '1 1 0', maxWidth: '220px', minWidth: '160px' }}
+                ref={el => cardsRef.current[idx] = el}
+                className="flex flex-col items-center group relative z-10 hover:z-20 cursor-pointer"
               >
                 {/* Oval Image Card */}
                 <div
@@ -156,6 +151,10 @@ export default function Industries() {
                   <img
                     src={ind.img}
                     alt={ind.title}
+                    loading="lazy"
+                    decoding="async"
+                    width="220"
+                    height="340"
                     style={{
                       width: '100%',
                       height: '100%',
@@ -179,19 +178,17 @@ export default function Industries() {
                 </div>
 
                 {/* Text Below */}
-                <div className="flex flex-col items-center text-center mt-6 px-2">
-                  <span
-                    className="text-[10px] font-extrabold uppercase tracking-[0.12em] mb-2"
-                    style={{ color: ind.labelColor }}
-                  >
-                    {ind.label}
-                  </span>
+                <div className="flex flex-col items-center text-center mt-6 px-2 w-full">
                   <h3
-                    className="text-[18px] md:text-[20px] font-extrabold mb-2 leading-tight text-white"
+                    className="text-[18px] md:text-[20px] font-extrabold mb-2 leading-tight"
+                    style={{ color: 'var(--brand-navy, #0b1f52)' }}
                   >
                     {ind.title}
                   </h3>
-                  <p className="text-[12.5px] md:text-[13px] text-white/75 font-medium leading-relaxed max-w-[180px]">
+                  <p
+                    className="text-[12.5px] md:text-[13px] font-medium leading-relaxed max-w-[180px]"
+                    style={{ color: 'var(--text-gray, #64748b)' }}
+                  >
                     {ind.desc}
                   </p>
                 </div>
@@ -199,7 +196,7 @@ export default function Industries() {
             );
           })}
         </div>
-
+        
       </div>
     </section>
   );

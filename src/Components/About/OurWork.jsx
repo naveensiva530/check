@@ -72,19 +72,23 @@ export default function OurWork() {
           </p>
         </div>
 
-        <Link
-          ref={ref('cta')}
-          to="/projects"
-          className="group relative flex items-center justify-center gap-4 px-9 py-[18px] bg-[var(--accent-orange)] text-white text-[15px] font-bold rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-        >
-          <span>Explore Projects</span>
-          <div
-            className="w-8 h-8 rounded-full bg-white flex items-center justify-center transition-transform group-hover:scale-110"
-            style={{ color: 'var(--accent-orange)' }}
-          >
-            <ArrowUpRight className="w-4 h-4" strokeWidth={2.5} />
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center w-full">
+          <div className="w-full sm:w-auto">
+            <Link
+              ref={ref('cta')}
+              to="/projects"
+              className="group relative flex items-center justify-center gap-4 px-9 py-[18px] bg-[var(--accent-orange)] text-white text-[15px] font-bold rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto"
+            >
+              <span>Explore Projects</span>
+              <div
+                className="w-8 h-8 rounded-full bg-white flex items-center justify-center transition-transform group-hover:scale-110"
+                style={{ color: 'var(--accent-orange)' }}
+              >
+                <ArrowUpRight className="w-4 h-4" strokeWidth={2.5} />
+              </div>
+            </Link>
           </div>
-        </Link>
+        </div>
 
       </div>
     </section>

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import ScrollRevealHeading from './ScrollRevealHeading';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import bgImage from '../../../assets/Servicess/PerformanceMarketing/PerformanceApproach/Performance_marketing.webp';
+import bgImage from '../../../assets/Our_Approch (2).webp';
 import '../../../Components/HomePage/common.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -49,7 +49,7 @@ export default function PerformanceApproach() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Image slides in from left
+      // Image slides in from left - FASTER
       gsap.fromTo(
         img1Ref.current,
         { x: -80, opacity: 0, scale: 0.92 },
@@ -57,43 +57,43 @@ export default function PerformanceApproach() {
           x: 0,
           opacity: 1,
           scale: 1,
-          duration: 1.1,
-          ease: 'power3.out',
+          duration: 0.5,
+          ease: 'power2.out',
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top 75%',
+            start: 'top 80%',
             toggleActions: 'play none none none',
           },
         }
       );
 
-      // Right content slides in from right
+      // Right content slides in from right - FASTER
       gsap.fromTo(
         rightRef.current,
         { x: 60, opacity: 0 },
         {
           x: 0,
           opacity: 1,
-          duration: 1.0,
-          ease: 'power3.out',
-          delay: 0.2,
+          duration: 0.5,
+          ease: 'power2.out',
+          delay: 0.05,
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top 75%',
+            start: 'top 80%',
             toggleActions: 'play none none none',
           },
         }
       );
 
-      // Floating parallax on image wrapper while scrolling
+      // Floating parallax on image wrapper while scrolling - FASTER (more movement)
       gsap.to(imgWrapRef.current, {
-        y: -30,
+        y: -50,
         ease: 'none',
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top bottom',
           end: 'bottom top',
-          scrub: true,
+          scrub: 0.5,
         },
       });
     }, sectionRef);

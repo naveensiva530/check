@@ -4,64 +4,64 @@ import ButtonWithIcon from '../../../Components/ui/button-with-icon';
 import ScrollRevealHeading from '../SocialMedia/ScrollRevealHeading';
 import '../../../Components/HomePage/common.css';
 
-// Import images for the slider (reusing available social media assets)
-import imgBusiness    from '../../../assets/SocailMedia/Educate.webp';
-import imgLanding     from '../../../assets/SocailMedia/Entertain.webp';
-import imgCorporate   from '../../../assets/SocailMedia/Build Trust.webp';
-import imgStartup     from '../../../assets/SocailMedia/Connect.webp';
-import imgSaaS        from '../../../assets/SocailMedia/Convert.webp';
-import imgService     from '../../../assets/SocailMedia/Laptop.webp';
-import imgRedesign    from '../../../assets/SocailMedia/Educate.webp';
-import imgConversion  from '../../../assets/SocailMedia/Entertain.webp';
+// Import images for the slider
+import imgStrategy      from '../../../assets/Servicess/InfluencerMarketing/WhatWeDo/Influencer Strategy.webp';
+import imgDiscovery     from '../../../assets/Servicess/InfluencerMarketing/WhatWeDo/Creator Discovery.webp';
+import imgShortlisting  from '../../../assets/Servicess/InfluencerMarketing/WhatWeDo/Influencer Shortlisting.webp';
+import imgManagement    from '../../../assets/Servicess/InfluencerMarketing/WhatWeDo/Campaign Management.webp';
+import imgCollaboration from '../../../assets/Servicess/InfluencerMarketing/WhatWeDo/Content Collaboration.webp';
+import imgProduct       from '../../../assets/Servicess/InfluencerMarketing/WhatWeDo/Product & Brand Collaborations.webp';
+import imgUgc           from '../../../assets/Servicess/InfluencerMarketing/WhatWeDo/UGC Campaigns.webp';
+import imgReporting     from '../../../assets/Servicess/InfluencerMarketing/WhatWeDo/Performance & Reporting.webp';
 
 const services = [
   {
     num: "01",
     title: "Influencer Strategy",
     desc: "Define the role creators should play within the wider marketing campaign.",
-    img: imgBusiness
+    img: imgStrategy
   },
   {
     num: "02",
     title: "Creator Discovery",
     desc: "Find creators whose audience, content, platform, location, and niche align with the campaign.",
-    img: imgLanding
+    img: imgDiscovery
   },
   {
     num: "03",
     title: "Influencer Shortlisting",
     desc: "Build a focused creator shortlist based on campaign requirements rather than vanity metrics alone.",
-    img: imgCorporate
+    img: imgShortlisting
   },
   {
     num: "04",
     title: "Campaign Management",
     desc: "Coordinate communication, deliverables, timelines, approvals, publishing, and campaign requirements.",
-    img: imgStartup
+    img: imgManagement
   },
   {
     num: "05",
     title: "Content Collaboration",
     desc: "Develop creative direction that gives creators enough guidance to protect the brand without making the content feel scripted.",
-    img: imgSaaS
+    img: imgCollaboration
   },
   {
     num: "06",
     title: "Product & Brand Collaborations",
     desc: "Create creator partnerships around launches, products, services, campaigns, events, and brand awareness.",
-    img: imgService
+    img: imgProduct
   },
   {
     num: "07",
     title: "UGC Campaigns",
     desc: "Develop creator-led user-generated content that brands can use across organic and paid marketing where appropriate.",
-    img: imgRedesign
+    img: imgUgc
   },
   {
     num: "08",
     title: "Performance & Reporting",
     desc: "Review available campaign data such as reach, views, engagement, clicks, traffic, content performance, and agreed campaign outcomes.",
-    img: imgConversion
+    img: imgReporting
   },
 ];
 

@@ -4,6 +4,12 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../../../Components/HomePage/common.css';
 
+import imgTechnical from '../../../assets/Servicess/RelatedServices/Website_Development-removebg-preview.webp';
+import imgOnPage from '../../../assets/SocialMedia/WhatWeDo/Content Strategy.webp';
+import imgContent from '../../../assets/Servicess/RelatedServices/Content_Writing-removebg-preview.webp';
+import imgLocal from '../../../assets/Servicess/WhoThisIsFor/Local Businesses.webp';
+import imgAeo from '../../../assets/Servicess/Funnel/Explore.webp';
+
 gsap.registerPlugin(ScrollTrigger);
 
 function SEOListSection({ eyebrow, words, intro, items, closing, bg = 'white', image }) {
@@ -65,6 +71,7 @@ export function TechnicalSEO() {
       items={["Crawlability", "Indexability", "Site architecture", "URL structure", "Canonicals", "Redirects", "XML sitemaps", "Robots directives", "Core Web Vitals", "Mobile usability", "Structured data", "Duplicate content", "Internal linking", "JavaScript rendering", "Image optimisation", "Page experience"]}
       closing="The exact technical priorities depend on what the site actually needs."
       bg="white"
+
     />
   );
 }
@@ -78,6 +85,7 @@ export function OnPageSEO() {
       items={["Search intent", "Page titles", "Meta descriptions", "H1-H3 structure", "Content hierarchy", "Internal linking", "Entity relevance", "Image optimisation", "Semantic relationships", "Conversion paths", "Content depth where genuinely useful"]}
       closing={'The objective isn\'t to make a page look "optimised." It\'s to make the page clearer, more useful, and more relevant.'}
       bg="purple"
+
     />
   );
 }
@@ -91,6 +99,7 @@ export function ContentSEO() {
       items={["Service pages", "Industry pages", "Location pages", "Blog articles", "Guides", "FAQs", "Comparison content", "Supporting resources", "Landing pages"]}
       closing="Every piece should have a reason to exist."
       bg="white"
+
     />
   );
 }
@@ -104,6 +113,7 @@ export function LocalSEO() {
       items={["Google Business Profile optimisation", "Local landing pages", "Location signals", "Local content", "Citation consistency", "Review strategy", "Local keyword research", "Internal linking", "Local search measurement"]}
       closing="Local SEO should reflect genuine locations and service areas — not a collection of copied city pages."
       bg="purple"
+
     />
   );
 }
@@ -117,6 +127,7 @@ export function AEOGEO() {
       items={["Direct answers", "Frequently asked questions", "Clear entities", "Useful definitions", "Structured information", "Strong internal relationships", "Supporting evidence", "Search intent", "Context"]}
       closing={'The objective isn\'t to "game AI." It\'s to make your brand, services, expertise, and information easier to understand accurately.'}
       bg="white"
+
     />
   );
 }

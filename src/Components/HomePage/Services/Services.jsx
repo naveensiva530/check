@@ -1,6 +1,7 @@
 // src/components/Services.jsx
 
 import { useState, useEffect, useRef, useCallback } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "../common.css";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -73,42 +74,84 @@ const services = [
 ];
 
 // ─── carousel config ──────────────────────────────────────────
-const CARDS_PER_VIEW = 4;
-const CLONE_COUNT = CARDS_PER_VIEW;   // 4 clones on each side
-const TOTAL = services.length;  // 15
-const EXT_LEN = TOTAL + CLONE_COUNT * 2; // 23
-
-const extendedCards = [
-  ...services.slice(-CLONE_COUNT).map((s, i) => ({ ...s, _key: `cs${i}` })),
-  ...services.map((s) => ({ ...s, _key: s.num })),
-  ...services.slice(0, CLONE_COUNT).map((s, i) => ({ ...s, _key: `ce${i}` })),
-];
+const TOTAL = services.length;
 
 export default function Services() {
-  const [idx, setIdx] = useState(CLONE_COUNT); // start at real card 0
+  const [cardsPerView, setCardsPerView] = useState(() => {
+    if (typeof window !== "undefined") {
+      if (window.innerWidth < 640) return 1;
+      if (window.innerWidth < 1024) return 2;
+    }
+    return 4;
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) setCardsPerView(1);
+      else if (window.innerWidth < 1024) setCardsPerView(2);
+      else setCardsPerView(4);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const CLONE_COUNT = cardsPerView;
+  const EXT_LEN = TOTAL + CLONE_COUNT * 2;
+
+  const extendedCards = [
+    ...services.slice(-CLONE_COUNT).map((s, i) => ({ ...s, _key: `cs${i}` })),
+    ...services.map((s) => ({ ...s, _key: s.num })),
+    ...services.slice(0, CLONE_COUNT).map((s, i) => ({ ...s, _key: `ce${i}` })),
+  ];
+
+  const [idx, setIdx] = useState(CLONE_COUNT);
   const [animated, setAnimated] = useState(true);
   const [hoveredKey, setHoveredKey] = useState(null);
-  const trackRef = useRef(null); // ref to the sliding track div
+  const trackRef = useRef(null);
   const sectionRef = useRef(null);
   const headingRef = useRef(null);
   const carouselRef = useRef(null);
+  const navigate = useNavigate();
+
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const diff = touchStartX.current - touchEndX.current;
+    if (diff > 45) {
+      next();
+    } else if (diff < -45) {
+      prev();
+    }
+  };
+
+  const handleExploreAllServices = () => {
+    window.dispatchEvent(new CustomEvent("open-services-menu"));
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   // ── Bug fix: only react to the track's own "transform" transition end ──
   const handleTransitionEnd = useCallback((e) => {
-    // Ignore events bubbling up from child elements (card hover animations)
     if (e.target !== trackRef.current) return;
-    // Ignore non-transform transitions
     if (e.propertyName !== "transform") return;
 
     setAnimated(false);
     setIdx((prev) => {
-      if (prev >= TOTAL + CLONE_COUNT) return prev - TOTAL; // overshot right
-      if (prev < CLONE_COUNT) return prev + TOTAL; // overshot left
+      if (prev >= TOTAL + CLONE_COUNT) return prev - TOTAL;
+      if (prev < CLONE_COUNT) return prev + TOTAL;
       return prev;
     });
-  }, []);
+  }, [CLONE_COUNT]);
 
-  // Re-enable transition after silent teleport (two rAF ticks = guaranteed paint)
   useEffect(() => {
     if (!animated) {
       let raf1 = requestAnimationFrame(() => {
@@ -175,43 +218,46 @@ export default function Services() {
     >
       <div className="relative mx-auto max-w-7xl z-20">
 
-        {/* ── TOP BAR: heading CENTERED (Process.jsx style), arrows RIGHT ── */}
-        <div ref={headingRef} className="relative mb-14 flex flex-col items-start justify-start text-left">
+        {/* ── TOP BAR: heading + responsive arrows ── */}
+        <div ref={headingRef} className="relative mb-10 sm:mb-14 flex flex-col items-start justify-start text-left">
+          <div className="w-full flex items-center justify-between gap-4 mb-3">
+            {/* Eyebrow — ⊕ icon + italic Playfair serif */}
+            <div className="flex items-center gap-2">
+              <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white border border-gray-200 shadow-sm flex-shrink-0">
+                <span style={{ color: '#f97316', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
+              </span>
+              <span
+                className="text-[13px] sm:text-[16px] italic font-medium text-[#1a233a]"
+                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              >
+                OUR CAPABILITIES
+              </span>
+            </div>
 
-          {/* ARROWS — absolutely right-positioned */}
-          <div className="absolute right-0 top-0 flex items-center gap-4">
-            <button
-              onClick={prev}
-              className="flex h-14 w-14 items-center justify-center rounded-full shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl active:scale-95"
-              style={{ border: "1px solid var(--border-gray)", background: "var(--primary-white)", color: "var(--text-dark-blue)" }}
-            >
-              <ArrowLeft className="h-5 w-5" />
-            </button>
-            <button
-              onClick={next}
-              className="flex h-14 w-14 items-center justify-center rounded-full shadow-xl transition-all duration-300 hover:scale-110 hover:shadow-2xl active:scale-95"
-              style={{ background: "var(--accent-orange)", color: "#fff" }}
-            >
-              <ArrowRight className="h-5 w-5" />
-            </button>
-          </div>
-
-          {/* Eyebrow — ⊕ icon + italic Playfair serif */}
-          <div className="flex items-center gap-2 mb-4">
-            <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white border border-gray-200 shadow-sm flex-shrink-0">
-              <span style={{ color: '#f97316', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
-            </span>
-            <span
-              className="text-[16px] italic font-medium text-[#1a233a]"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-            >
-              OUR CAPABILITIES
-            </span>
+            {/* ARROWS — responsive size and tap targets */}
+            <div className="flex items-center gap-2.5 sm:gap-4">
+              <button
+                onClick={prev}
+                aria-label="Previous service"
+                className="flex h-11 w-11 sm:h-14 sm:w-14 items-center justify-center rounded-full shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl active:scale-95 cursor-pointer"
+                style={{ border: "1px solid var(--border-gray)", background: "var(--primary-white)", color: "var(--text-dark-blue)" }}
+              >
+                <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5" />
+              </button>
+              <button
+                onClick={next}
+                aria-label="Next service"
+                className="flex h-11 w-11 sm:h-14 sm:w-14 items-center justify-center rounded-full shadow-xl transition-all duration-300 hover:scale-110 hover:shadow-2xl active:scale-95 cursor-pointer"
+                style={{ background: "var(--accent-orange)", color: "#fff" }}
+              >
+                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+              </button>
+            </div>
           </div>
 
           {/* title */}
           <h2
-            className="text-[38px] md:text-[46px] font-extrabold leading-[1.15] tracking-tight max-w-[700px]"
+            className="text-[26px] sm:text-[38px] md:text-[46px] font-extrabold leading-[1.15] tracking-tight max-w-[700px]"
             style={{ color: "var(--text-dark-blue)" }}
           >
             Everything your digital presence needs. Nothing it doesn't.
@@ -219,7 +265,7 @@ export default function Services() {
 
           {/* subtitle */}
           <p
-            className="text-[15px] font-medium mt-3 max-w-[560px] leading-relaxed"
+            className="text-[13px] sm:text-[15px] font-medium mt-3 max-w-[560px] leading-relaxed"
             style={{ color: "var(--text-gray)" }}
           >
             Different businesses need different combinations of digital marketing. Start with the problem, then build the right solution around it.
@@ -227,10 +273,15 @@ export default function Services() {
         </div>
 
         {/* ── CAROUSEL VIEWPORT ─────────────────────────── */}
-        <div ref={carouselRef} style={{ overflow: "hidden", paddingTop: "2.5rem", marginTop: "-2.5rem" }}>
+        <div
+          ref={carouselRef}
+          style={{ overflow: "hidden", paddingTop: "2.5rem", marginTop: "-2.5rem", touchAction: "pan-y" }}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
           {/*
-            Track width = EXT_LEN / CARDS_PER_VIEW × 100% of viewport
-            → each card occupies exactly 25% of the viewport
+            Track width = EXT_LEN / cardsPerView × 100% of viewport
           */}
           <div
             ref={trackRef}
@@ -238,7 +289,7 @@ export default function Services() {
             style={{
               display: "flex",
               alignItems: "stretch",
-              width: `calc(${EXT_LEN} / ${CARDS_PER_VIEW} * 100%)`,
+              width: `calc(${EXT_LEN} / ${cardsPerView} * 100%)`,
               transform: `translateX(${translateX})`,
               transition: animated ? "transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)" : "none",
               willChange: "transform",
@@ -251,7 +302,7 @@ export default function Services() {
               return (
                 <div
                   key={s._key}
-                  className="services-card-item group relative flex-shrink-0 px-4 flex flex-col"
+                  className="services-card-item group relative flex-shrink-0 px-4 flex flex-col cursor-pointer"
                   style={{
                     width: `calc(100% / ${EXT_LEN})`,
                     transform: isHovered ? "translateY(-12px)" : "translateY(0)",
@@ -259,6 +310,10 @@ export default function Services() {
                   }}
                   onMouseEnter={() => setHoveredKey(s._key)}
                   onMouseLeave={() => setHoveredKey(null)}
+                  onClick={() => {
+                    navigate(s.path);
+                    window.scrollTo(0, 0);
+                  }}
                 >
                   {/* FLOATING ICON */}
                   <div
@@ -337,6 +392,8 @@ export default function Services() {
                         <img
                           src={s.image}
                           alt={s.title.replace("\n", " ")}
+                          loading="lazy"
+                          decoding="async"
                           style={{
                             height: "100%",
                             width: "100%",
@@ -355,6 +412,11 @@ export default function Services() {
                         <button
                           className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center shadow-lg rounded-[20px] transition-all duration-300 hover:rotate-45 hover:scale-110"
                           style={{ background: "var(--accent-orange)", color: "#fff" }}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            navigate(s.path);
+                            window.scrollTo(0, 0);
+                          }}
                         >
                           <ArrowUpRight className="h-5 w-5" />
                         </button>
@@ -378,7 +440,10 @@ export default function Services() {
 
         {/* Explore All Services — below carousel */}
         <div className="flex justify-center mt-12">
-          <button className="know-more-btn">
+          <button
+            className="know-more-btn"
+            onClick={handleExploreAllServices}
+          >
             <span>Explore All Services</span>
             <div className="know-more-icon">
               <ArrowUpRight className="w-5 h-5" strokeWidth={2.5} />

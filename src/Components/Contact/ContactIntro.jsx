@@ -1,10 +1,23 @@
 import React from 'react';
 import { introData } from './contactData';
+import ScrollRevealHeading from '../Services/common/ScrollRevealHeading';
+import '../../Components/HomePage/common.css';
 
 export default function ContactIntro() {
+  const words = [
+    { text: "A" },
+    { text: "good" },
+    { text: "project" },
+    { text: "starts", italic: true },
+    { text: "with" },
+    { text: "a" },
+    { text: "clear" },
+    { text: "conversation." }
+  ];
+
   return (
-    <section className="w-full py-20 bg-white font-primary border-b border-gray-100">
-      <div className="max-w-[1000px] mx-auto px-4 md:px-8 text-center">
+    <section className="w-full py-16 sm:py-20 bg-white font-primary border-b border-gray-100">
+      <div className="max-w-[1000px] mx-auto px-4 md:px-8 text-center flex flex-col items-center">
         
         {/* Standard Eyebrow */}
         <div className="flex items-center justify-center gap-2 mb-6">
@@ -22,13 +35,22 @@ export default function ContactIntro() {
           </span>
         </div>
 
-        {/* H2 */}
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight mb-8" style={{ color: 'var(--brand-navy, #1e2f57)' }}>
-          {introData.title}
-        </h2>
+        {/* ScrollRevealHeading */}
+        <ScrollRevealHeading
+          words={words}
+          justify="center"
+          maxW="800px"
+          className="mb-8"
+        />
+
+        {/* Accent bar */}
+        <div
+          className="w-12 h-[3px] opacity-70 rounded-full mb-8"
+          style={{ backgroundColor: 'var(--accent-orange, #e08326)' }}
+        />
 
         {/* Body Copy */}
-        <div className="text-[16px] md:text-[18px] font-medium leading-relaxed space-y-4 max-w-3xl mx-auto" style={{ color: '#334155' }}>
+        <div className="text-[16px] md:text-[18px] font-medium leading-relaxed space-y-4 max-w-3xl mx-auto text-slate-600">
           {introData.body.split('\n\n').map((paragraph, idx) => (
             <p key={idx}>{paragraph}</p>
           ))}

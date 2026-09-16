@@ -3,6 +3,7 @@ import ScrollRevealHeading from './ScrollRevealHeading';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../../../Components/HomePage/common.css';
+import postVisual from '../../../assets/Servicess/PerformanceCreative/Experience.webp';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -45,6 +46,7 @@ export default function PostProduction() {
             <p className="text-[16px] md:text-[17px] font-medium leading-relaxed text-slate-700 mt-8">
               Post-production can include:
             </p>
+
           </div>
 
           <div ref={rightRef}>

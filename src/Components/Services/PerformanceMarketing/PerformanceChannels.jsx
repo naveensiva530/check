@@ -1,66 +1,111 @@
 import React from 'react';
 import ScrollRevealHeading from './ScrollRevealHeading';
 import {
-  FaInstagram,
+  FaGoogle,
   FaFacebookF,
   FaLinkedinIn,
-  FaTiktok,
   FaYoutube,
-  FaXTwitter,
-  FaPinterestP,
-  FaSnapchat,
-  FaWhatsapp,
+  FaTwitter,
+  FaMicrosoft,
+  FaApple,
+  FaAmazon,
   FaAt,
 } from 'react-icons/fa6';
+import { SiTiktok } from 'react-icons/si';
 import '../../../Components/HomePage/common.css';
 
 /* ─── Platform data ─────────────────────────────────────── */
 const platforms = [
   {
     name: 'Google Ads',
-    handle: 'Search',
-    desc: 'Capture demand when people actively search for relevant products, services, and solutions.',
-    Icon: FaAt,
+    handle: '@Adsserv',
+    desc: 'Search campaigns built around intent, targeting, messaging, and measurable actions.',
+    Icon: FaGoogle,
     color: '#4285F4',
     bg: '#f0f5ff',
-    stat: 'Search',
+    stat: '4B+ searches',
   },
   {
     name: 'Meta Ads',
-    handle: 'Social',
-    desc: 'Use audience targeting and visual creative to create demand, nurture interest, and support conversions.',
+    handle: 'Adsserv',
+    desc: 'Audience targeting and visual creative to create demand and support conversions.',
     Icon: FaFacebookF,
     color: '#1877F2',
     bg: '#f0f5ff',
-    stat: 'Social',
+    stat: '3.9B users',
   },
   {
     name: 'LinkedIn Ads',
-    handle: 'B2B',
-    desc: 'Reach relevant professional and business audiences where B2B targeting makes sense.',
+    handle: 'Adsserv',
+    desc: 'Professional and business audiences where B2B targeting makes sense.',
     Icon: FaLinkedinIn,
     color: '#0A66C2',
     bg: '#f0f7ff',
-    stat: 'B2B',
+    stat: '1B users',
   },
   {
     name: 'YouTube Ads',
-    handle: 'Video',
-    desc: 'Use video to build awareness, explain an offer, support consideration, or reach relevant audiences.',
+    handle: 'Adsserv',
+    desc: 'Video to build awareness, explain offers, and reach relevant audiences.',
     Icon: FaYoutube,
     color: '#FF0000',
     bg: '#fff5f5',
-    stat: 'Video',
+    stat: '2.7B users',
   },
   {
-    name: 'Other Channels',
-    handle: 'Display',
-    desc: 'Additional advertising platforms can be considered when the audience, objective, budget, and available data justify them.',
-    Icon: FaAt,
+    name: 'Microsoft Ads',
+    handle: 'Adsserv',
+    desc: 'Search and display advertising across Bing, Microsoft Audience Network.',
+    Icon: FaMicrosoft,
+    color: '#00A4EF',
+    bg: '#f0f9ff',
+    stat: '500M users',
+  },
+  {
+    name: 'TikTok Ads',
+    handle: '@Adsserv',
+    desc: 'Short-form video advertising for discovery and creator-led campaigns.',
+    Icon: SiTiktok,
+    color: '#010101',
+    bg: '#f5f5f5',
+    stat: '1.7B users',
+  },
+  {
+    name: 'X Ads',
+    handle: '@Adsserv',
+    desc: 'Real-time engagement, trending conversations, and audience building.',
+    Icon: FaTwitter,
     color: '#000000',
     bg: '#f5f5f5',
-    stat: 'Paid',
-  }
+    stat: '550M users',
+  },
+  {
+    name: 'Apple Search Ads',
+    handle: 'Adsserv',
+    desc: 'App Store advertising for app discovery and mobile user acquisition.',
+    Icon: FaApple,
+    color: '#000000',
+    bg: '#f5f5f5',
+    stat: '1.2B devices',
+  },
+  {
+    name: 'Amazon Ads',
+    handle: 'Adsserv',
+    desc: 'Product advertising for purchase-driven audiences and marketplace sellers.',
+    Icon: FaAmazon,
+    color: '#FF9900',
+    bg: '#fff8f0',
+    stat: '310M users',
+  },
+  {
+    name: 'Programmatic Display',
+    handle: 'Adsserv',
+    desc: 'Display and remarketing across relevant websites and audiences.',
+    Icon: FaAt,
+    color: '#6366F1',
+    bg: '#f5f3ff',
+    stat: 'Wide reach',
+  },
 ];
 
 /* ─── Split into two rows ───────────────────────────────── */
@@ -72,7 +117,7 @@ function PlatformCard({ platform }) {
   const { name, handle, desc, Icon, color, bg, stat } = platform;
   return (
     <div
-      className="relative flex-shrink-0 w-[300px] rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden"
+      className="relative flex-shrink-0 w-[240px] sm:w-[270px] md:w-[300px] rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden"
       style={{ boxShadow: '0 4px 20px rgba(30,47,87,0.06)' }}
     >
       {/* Top section with icon */}
@@ -159,12 +204,12 @@ export default function PerformanceChannels() {
           {/* Left Column */}
           <div className="flex flex-col">
             {/* Eyebrow */}
-            <div className="flex items-center gap-2 mb-4 justify-center md:justify-start">
+            <div className="flex items-center gap-2 mb-6">
               <span
                 className="flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0"
-                style={{ background: 'var(--accent-orange)', boxShadow: '0 2px 8px rgba(224,131,38,0.35)' }}
+                style={{ background: 'var(--accent-orange)', boxShadow: '0 2px 8px rgba(224,131,38,0.30)' }}
               >
-                <span style={{ color: '#fff', fontSize: '12px', fontWeight: 'bold' }}>+</span>
+                <span style={{ color: '#fff', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
               </span>
               <span
                 className="italic font-semibold uppercase tracking-widest"
@@ -174,7 +219,6 @@ export default function PerformanceChannels() {
               </span>
             </div>
 
-            {/* Heading */}
             <ScrollRevealHeading
               words={[
                 { text: "The" },
@@ -193,6 +237,9 @@ export default function PerformanceChannels() {
           <div className="flex flex-col gap-4 text-[16px] md:text-[18px] font-medium leading-relaxed text-slate-700 justify-center">
             <p>Different platforms serve different parts of the customer journey.</p>
             <p>From capturing high-intent searches to creating demand and retargeting engaged users, we select the channels that offer the clearest path to your business outcome.</p>
+            <p className="font-bold" style={{ color: 'var(--brand-navy)' }}>
+              We adapt the channel approach accordingly.
+            </p>
           </div>
         </div>
       </div>
@@ -209,7 +256,7 @@ export default function PerformanceChannels() {
           className="flex gap-4"
           style={{
             width: 'max-content',
-            animation: 'marqueeLeft 40s linear infinite',
+            animation: 'marqueeLeft 25s linear infinite',
           }}
         >
           {rowA.map((p, i) => (
@@ -230,7 +277,7 @@ export default function PerformanceChannels() {
           className="flex gap-4"
           style={{
             width: 'max-content',
-            animation: 'marqueeRight 40s linear infinite',
+            animation: 'marqueeRight 30s linear infinite',
           }}
         >
           {rowB.map((p, i) => (
