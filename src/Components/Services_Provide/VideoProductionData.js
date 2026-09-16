@@ -14,15 +14,15 @@ import imgSaaS from '../../assets/Servicess/WhoThisIsFor/SaaS & Technology.webp'
 import imgConsumer from '../../assets/Servicess/WhoThisIsFor/Consumer Brands.webp';
 import imgLocal from '../../assets/Servicess/WhoThisIsFor/Local Businesses.webp';
 
-import imgShortForm from '../../assets/Servicess/Videoproduction/WhatWeDo/Short-form social videos.webp';
-import imgBrandVideos from '../../assets/Servicess/Videoproduction/WhatWeDo/Brand videos.webp';
-import imgProductVideos from '../../assets/Servicess/Videoproduction/WhatWeDo/Product videos.webp';
-import imgCampaignVideos from '../../assets/Servicess/Videoproduction/WhatWeDo/Campaign videos.webp';
-import imgExplainerVideos from '../../assets/Servicess/Videoproduction/WhatWeDo/Explainer videos.webp';
-import imgUgcStyle from '../../assets/Servicess/Videoproduction/WhatWeDo/UGC-style content.webp';
-import imgCorporateVideos from '../../assets/Servicess/Videoproduction/WhatWeDo/Brand videos.webp';
-import imgVideoAds from '../../assets/Servicess/Videoproduction/WhatWeDo/Video ads.webp';
-import imgEventContent from '../../assets/Servicess/Videoproduction/WhatWeDo/Campaign videos.webp';
+import imgShortForm from '../../assets/Servicess/VideoProduction/WhatWeDo/Short-form social videos.webp';
+import imgBrandVideos from '../../assets/Servicess/VideoProduction/WhatWeDo/Brand videos.webp';
+import imgProductVideos from '../../assets/Servicess/VideoProduction/WhatWeDo/Product videos.webp';
+import imgCampaignVideos from '../../assets/Servicess/VideoProduction/WhatWeDo/Campaign videos.webp';
+import imgExplainerVideos from '../../assets/Servicess/VideoProduction/WhatWeDo/Explainer videos.webp';
+import imgUgcStyle from '../../assets/Servicess/VideoProduction/WhatWeDo/UGC-style content.webp';
+import imgCorporateVideos from '../../assets/Servicess/VideoProduction/WhatWeDo/Brand videos.webp';
+import imgVideoAds from '../../assets/Servicess/VideoProduction/WhatWeDo/Video ads.webp';
+import imgEventContent from '../../assets/Servicess/VideoProduction/WhatWeDo/Campaign videos.webp';
 
 export const heroData = {
   bgImage,
