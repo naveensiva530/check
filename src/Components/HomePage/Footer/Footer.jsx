@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from "react";
 import { ArrowUp, ChevronRight, ArrowUpRight } from "lucide-react";
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Link } from "react-router-dom";
 import "../common.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -9,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 const quickLinks = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
-  { name: "Services", href: "/services/seo-services" },
+  { name: "Services", href: "/services" },
   { name: "Projects", href: "/projects" },
   { name: "Blog", href: "/blog" },
   { name: "FAQ", href: "/faq" },
@@ -17,25 +18,23 @@ const quickLinks = [
 ];
 
 const servicesLinks = [
-  "Social Media Marketing",
-  "Performance Marketing",
-  "Website Development",
-  "Influencer Marketing",
-  "SEO Services",
-  "Video Production",
-  "Branding Solutions",
-  "Digital Consulting",
-  "Content Writing",
-  "Instagram Marketing",
+  { label: "Social Media Marketing", path: "/services/social-media-marketing" },
+  { label: "Performance Marketing", path: "/services/performance-marketing" },
+  { label: "Website Development", path: "/services/website-development" },
+  { label: "Influencer Marketing", path: "/services/influencer-marketing" },
+  { label: "SEO Services", path: "/services/seo-services" },
+  { label: "Video Production", path: "/services/video-production" },
+  { label: "Branding Solutions", path: "/services/branding-solutions" },
+  { label: "Digital Consulting", path: "/services/digital-consulting" },
+  { label: "Content Writing", path: "/services/content-writing" },
+  { label: "Instagram Marketing", path: "/services/instagram-marketing" },
 ];
 
-const industriesLinks = [
-  "Health Care",
-  "Real Estate",
-  "Education",
-  "IT-Tech / SaaS",
-  "Beauty & Salon",
-];
+
+
+const linkStyle = { color: "rgba(255,255,255,0.7)", textDecoration: "none" };
+const linkHoverIn = (e) => (e.currentTarget.style.color = "var(--accent-orange)");
+const linkHoverOut = (e) => (e.currentTarget.style.color = "rgba(255,255,255,0.7)");
 
 export default function Footer() {
   const footerRef = useRef(null);
@@ -87,12 +86,30 @@ export default function Footer() {
             </p>
 
             <div className="mt-2 sm:mt-4">
-              <button className="group relative flex items-center justify-center gap-3 px-6 sm:px-7 py-3 sm:py-3.5 bg-[var(--accent-orange)] text-white text-[14px] sm:text-[14.5px] font-bold rounded-full shadow-[0_10px_30px_rgba(224,131,38,0.2)] hover:shadow-[0_15px_40px_rgba(224,131,38,0.4)] hover:-translate-y-1 transition-all duration-300">
+              <Link
+                to="/contact"
+                onClick={() => window.scrollTo(0, 0)}
+                className="group relative inline-flex items-center justify-center gap-3 px-6 sm:px-7 py-3 sm:py-3.5 bg-[var(--accent-orange)] text-white text-[14px] sm:text-[14.5px] font-bold rounded-full shadow-[0_10px_30px_rgba(224,131,38,0.2)] hover:shadow-[0_15px_40px_rgba(224,131,38,0.4)] hover:-translate-y-1 transition-all duration-300"
+                style={{ textDecoration: "none" }}
+              >
                 <span>Start a Project</span>
                 <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center text-[var(--accent-orange)] group-hover:scale-110 transition-transform">
                   <ArrowUpRight className="w-3.5 h-3.5" strokeWidth={2.5} />
                 </div>
-              </button>
+              </Link>
+            </div>
+
+            {/* Contact info */}
+            <div className="flex flex-col gap-1 mt-1" style={{ color: "rgba(255,255,255,0.6)", fontSize: "13.5px" }}>
+              <a
+                href="mailto:connect@adsserv.in"
+                style={{ color: "rgba(255,255,255,0.6)", textDecoration: "none" }}
+                onMouseEnter={linkHoverIn}
+                onMouseLeave={linkHoverOut}
+              >
+                connect@adsserv.in
+              </a>
+              <span>Tamil Nadu, India</span>
             </div>
           </div>
 
@@ -103,19 +120,20 @@ export default function Footer() {
             <ul className="flex flex-col gap-1">
               {quickLinks.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
+                    onClick={() => window.scrollTo(0, 0)}
                     className="flex items-center gap-2 text-[13.5px] sm:text-[14px] font-medium transition-all duration-200 group min-h-[44px] py-1"
-                    style={{ color: "rgba(255,255,255,0.7)" }}
-                    onMouseEnter={e => e.currentTarget.style.color = "var(--accent-orange)"}
-                    onMouseLeave={e => e.currentTarget.style.color = "rgba(255,255,255,0.7)"}
+                    style={linkStyle}
+                    onMouseEnter={linkHoverIn}
+                    onMouseLeave={linkHoverOut}
                   >
                     <ChevronRight
                       className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 flex-shrink-0"
                       style={{ color: "var(--accent-orange)" }}
                     />
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -127,45 +145,48 @@ export default function Footer() {
             <div className="w-8 h-[3px] mb-5 sm:mb-6 rounded-full" style={{ background: "var(--accent-orange)" }} />
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-1 gap-x-4">
               {servicesLinks.map((service) => (
-                <li key={service}>
-                  <a
-                    href="#"
+                <li key={service.label}>
+                  <Link
+                    to={service.path}
+                    onClick={() => window.scrollTo(0, 0)}
                     className="flex items-center gap-2 text-[13.5px] sm:text-[14px] font-medium transition-all duration-200 group min-h-[44px] py-1"
-                    style={{ color: "rgba(255,255,255,0.7)" }}
-                    onMouseEnter={e => e.currentTarget.style.color = "var(--accent-orange)"}
-                    onMouseLeave={e => e.currentTarget.style.color = "rgba(255,255,255,0.7)"}
+                    style={linkStyle}
+                    onMouseEnter={linkHoverIn}
+                    onMouseLeave={linkHoverOut}
                   >
                     <ChevronRight
                       className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 flex-shrink-0"
                       style={{ color: "var(--accent-orange)" }}
                     />
-                    <span className="transition-transform duration-200 group-hover:translate-x-1">{service}</span>
-                  </a>
+                    <span className="transition-transform duration-200 group-hover:translate-x-1">{service.label}</span>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
-
           {/* ── Col 4: Industries (Span 2) ── */}
           <div className="lg:col-span-2">
             <h3 className="text-[16px] sm:text-[17px] font-bold mb-4 sm:mb-5 text-white">Industries</h3>
             <div className="w-8 h-[3px] mb-5 sm:mb-6 rounded-full" style={{ background: "var(--accent-orange)" }} />
             <ul className="flex flex-col gap-1">
-              {industriesLinks.map((industry) => (
+              {[
+                "Health Care",
+                "Real Estate",
+                "Education",
+                "IT-Tech / SaaS",
+                "Beauty & Salon",
+              ].map((industry) => (
                 <li key={industry}>
-                  <a
-                    href="#"
-                    className="flex items-center gap-2 text-[13.5px] sm:text-[14px] font-medium transition-all duration-200 group min-h-[44px] py-1"
-                    style={{ color: "rgba(255,255,255,0.7)" }}
-                    onMouseEnter={e => e.currentTarget.style.color = "var(--accent-orange)"}
-                    onMouseLeave={e => e.currentTarget.style.color = "rgba(255,255,255,0.7)"}
+                  <div
+                    className="flex items-center gap-2 text-[13.5px] sm:text-[14px] font-medium min-h-[44px] py-1"
+                    style={linkStyle}
                   >
                     <ChevronRight
-                      className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 flex-shrink-0"
+                      className="w-3.5 h-3.5 flex-shrink-0"
                       style={{ color: "var(--accent-orange)" }}
                     />
                     {industry}
-                  </a>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -195,10 +216,10 @@ export default function Footer() {
           className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 pt-8 pb-5 md:py-5 flex flex-col md:flex-row items-center justify-between text-[13px] sm:text-[14.5px] font-medium text-center md:text-left"
           style={{ color: "rgba(255,255,255,0.9)" }}
         >
-          <p>© 2024 <span className="font-bold">Developed by ADSSERV.</span></p>
+          <p>© 2025 <span className="font-bold">ADSSERV.</span> All rights reserved.</p>
           <div className="flex items-center gap-4 sm:gap-6 mt-3 md:mt-0">
-            <a href="#" className="hover:underline transition-all min-h-[44px] flex items-center">Privacy Policy</a>
-            <a href="#" className="hover:underline transition-all min-h-[44px] flex items-center">Terms &amp; Conditions</a>
+            <a href="#" className="hover:underline transition-all min-h-[44px] flex items-center" style={{ color: "rgba(255,255,255,0.9)", textDecoration: "none" }}>Privacy Policy</a>
+            <a href="#" className="hover:underline transition-all min-h-[44px] flex items-center" style={{ color: "rgba(255,255,255,0.9)", textDecoration: "none" }}>Terms &amp; Conditions</a>
           </div>
         </div>
       </div>

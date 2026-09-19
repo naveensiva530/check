@@ -44,11 +44,11 @@ export default function ContactPage() {
     "@type": "ContactPage",
     "name": "Contact ADSSERV - Digital Marketing Agency",
     "description": "Have a new idea, a growth challenge or a digital presence that needs a rethink? Contact ADSSERV today.",
-    "url": "https://adsserv.com/contact",
+    "url": "https://adsserv.in/contact",
     "mainEntity": {
       "@type": "Organization",
       "name": "ADSSERV",
-      "email": "hello@adsserv.com",
+      "email": "connect@adsserv.in",
       "telephone": "+1 (555) 019-2834",
       "address": {
         "@type": "PostalAddress",

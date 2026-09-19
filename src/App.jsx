@@ -5,8 +5,23 @@ import CurtainLoader from "./Components/ui/CurtainLoader";
 import Lenis from "lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { preloadAllImages, preloadAllRoutes } from "./lib/preloadAssets";
 
 gsap.registerPlugin(ScrollTrigger);
+
+// Kick off full preload immediately when module loads (non-blocking)
+if (typeof window !== "undefined") {
+  // Use requestIdleCallback to preload after first paint so it doesn't block UI
+  const kickPreload = () => {
+    preloadAllRoutes();
+    preloadAllImages();
+  };
+  if (typeof requestIdleCallback !== "undefined") {
+    requestIdleCallback(kickPreload, { timeout: 800 });
+  } else {
+    setTimeout(kickPreload, 800);
+  }
+}
 
 // Global Lenis smooth scroll manager across all routes
 function SmoothScrollManager() {
@@ -74,11 +89,6 @@ const BrandingSolutions = lazy(() => import("./Components/Services_Provide/Brand
 const DigitalConsulting = lazy(() => import("./Components/Services_Provide/DigitalConsulting"));
 const ContentWriting = lazy(() => import("./Components/Services_Provide/ContentWriting"));
 const InstagramMarketing = lazy(() => import("./Components/Services_Provide/InstagramMarketing"));
-const HealthCare = lazy(() => import("./Components/Services_Provide/HealthCare"));
-const RealEstate = lazy(() => import("./Components/Services_Provide/RealEstate"));
-const Education = lazy(() => import("./Components/Services_Provide/Education"));
-const ITTechSAAS = lazy(() => import("./Components/Services_Provide/ITTechSAAS"));
-const BeautyAndSalon = lazy(() => import("./Components/Services_Provide/BeautyAndSalon"));
 
 export default function App() {
   const [showLoader, setShowLoader] = useState(() => {
@@ -110,6 +120,12 @@ export default function App() {
       }
     }
   }, [showLoader]);
+
+  // Also preload during the loader phase so everything is ready when it finishes
+  useEffect(() => {
+    preloadAllRoutes();
+    preloadAllImages();
+  }, []);
 
   return (
     <>
@@ -143,11 +159,6 @@ export default function App() {
             <Route path="/services/digital-consulting" element={<DigitalConsulting />} />
             <Route path="/services/content-writing" element={<ContentWriting />} />
             <Route path="/services/instagram-marketing" element={<InstagramMarketing />} />
-            <Route path="/services/health-care" element={<HealthCare />} />
-            <Route path="/services/real-estate" element={<RealEstate />} />
-            <Route path="/services/education" element={<Education />} />
-            <Route path="/services/it-tech-saas" element={<ITTechSAAS />} />
-            <Route path="/services/beauty-and-salon" element={<BeautyAndSalon />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>

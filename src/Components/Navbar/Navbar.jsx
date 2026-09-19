@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Search, ChevronDown, X, Menu } from "lucide-react";
 import logo from "../../assets/logo.png";
+import { preloadRoute } from "../../lib/preloadAssets";
 
 const serviceLinks = [
   { label: "Social Media Marketing", path: "/services/social-media-marketing" },
@@ -14,6 +15,29 @@ const serviceLinks = [
   { label: "Digital Consulting", path: "/services/digital-consulting" },
   { label: "Content Writing", path: "/services/content-writing" },
   { label: "Instagram Marketing", path: "/services/instagram-marketing" },
+];
+
+// Exact 3 columns matching requested layout:
+// Col 1: Social Media, Influencer, Branding, Instagram
+// Col 2: Performance Marketing, SEO Services, Digital Consulting
+// Col 3: Website Development, Video Production, Content Writing
+const serviceColumns = [
+  [
+    { label: "Social Media Marketing", path: "/services/social-media-marketing" },
+    { label: "Influencer Marketing", path: "/services/influencer-marketing" },
+    { label: "Branding Solutions", path: "/services/branding-solutions" },
+    { label: "Instagram Marketing", path: "/services/instagram-marketing" },
+  ],
+  [
+    { label: "Performance Marketing", path: "/services/performance-marketing" },
+    { label: "SEO Services", path: "/services/seo-services" },
+    { label: "Digital Consulting", path: "/services/digital-consulting" },
+  ],
+  [
+    { label: "Website Development", path: "/services/website-development" },
+    { label: "Video Production", path: "/services/video-production" },
+    { label: "Content Writing", path: "/services/content-writing" },
+  ],
 ];
 
 const Navbar = () => {
@@ -90,13 +114,23 @@ const Navbar = () => {
       }
     };
 
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setServicesOpen(false);
+        setScrolledServicesOpen(false);
+        setIsSearchOpen(false);
+      }
+    };
+
     window.addEventListener("open-services-menu", handleOpenServices);
     document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleKeyDown);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("open-services-menu", handleOpenServices);
       document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
 
@@ -105,98 +139,158 @@ const Navbar = () => {
     setServicesOpen(true);
   };
   const handleServicesLeave = () => {
-    leaveTimerRef.current = setTimeout(() => setServicesOpen(false), 180);
+    leaveTimerRef.current = setTimeout(() => setServicesOpen(false), 150);
   };
   const handleScrolledServicesEnter = () => {
     clearTimeout(scrolledLeaveTimerRef.current);
     setScrolledServicesOpen(true);
   };
   const handleScrolledServicesLeave = () => {
-    scrolledLeaveTimerRef.current = setTimeout(() => setScrolledServicesOpen(false), 180);
+    scrolledLeaveTimerRef.current = setTimeout(() => setScrolledServicesOpen(false), 150);
   };
 
-  // Renders a simple clean vertical dropdown below the SERVICES button
-  const renderServicesDropdown = (isOpen, onMouseEnter, onMouseLeave, onClose, positionStyle = {}) => (
-    <div
-      id="navbar-services-dropdown"
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      style={{
-        position: "absolute",
-        top: "calc(100% + 10px)",
-        left: "50%",
-        transform: isOpen ? "translateX(-50%) translateY(0)" : "translateX(-50%) translateY(-8px)",
-        minWidth: "220px",
-        background: "#ffffff",
-        borderRadius: "14px",
-        boxShadow: "0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06)",
-        padding: "8px 0",
-        zIndex: 99999,
-        opacity: isOpen ? 1 : 0,
-        pointerEvents: isOpen ? "auto" : "none",
-        transition: "opacity 0.2s ease, transform 0.2s ease",
-        border: "1px solid rgba(0,0,0,0.06)",
-        boxSizing: "border-box",
-        ...positionStyle,
-      }}
-    >
-      {/* Small arrow tip */}
-      <div style={{
-        position: "absolute",
-        top: "-6px",
-        left: "50%",
-        transform: "translateX(-50%) rotate(45deg)",
-        width: "12px",
-        height: "12px",
-        background: "#ffffff",
-        border: "1px solid rgba(0,0,0,0.06)",
-        borderBottom: "none",
-        borderRight: "none",
-        borderRadius: "2px",
-      }} />
-      {serviceLinks.map((s, i) => (
-        <Link
-          key={i}
-          to={s.path}
-          onClick={() => { onClose(); window.scrollTo(0, 0); }}
-          style={{ textDecoration: "none", display: "block" }}
-          className="group"
-        >
+  // Renders the full-width 3-column "Our Services" mega menu dropdown matching the requested format
+  const renderMegaMenu = () => {
+    const isOpen = servicesOpen || scrolledServicesOpen;
+    return (
+      <div
+        id="navbar-mega-menu"
+        className="hidden lg:block"
+        onMouseEnter={() => {
+          clearTimeout(leaveTimerRef.current);
+          clearTimeout(scrolledLeaveTimerRef.current);
+        }}
+        onMouseLeave={() => {
+          leaveTimerRef.current = setTimeout(() => setServicesOpen(false), 240);
+          scrolledLeaveTimerRef.current = setTimeout(() => setScrolledServicesOpen(false), 240);
+        }}
+        style={{
+          position: "fixed",
+          top: "90px",
+          left: 0,
+          width: "100%",
+          background: "#ffffff",
+          boxShadow: "0 20px 40px -15px rgba(0, 0, 0, 0.08)",
+          padding: "42px 0 52px 0",
+          zIndex: 99998,
+          opacity: isOpen ? 1 : 0,
+          pointerEvents: isOpen ? "auto" : "none",
+          transform: isOpen ? "translateY(0)" : "translateY(-6px)",
+          transition: isOpen ? "opacity 0ms, transform 0ms" : "opacity 120ms ease, transform 120ms ease",
+          borderTop: "1px solid #f1f0f7",
+          boxSizing: "border-box",
+        }}
+      >
+        {/* Invisible bridge between navbar bar and dropdown to prevent accidental mouse leave flicker */}
+        <div
+          style={{
+            position: "absolute",
+            top: "-26px",
+            left: 0,
+            width: "100%",
+            height: "26px",
+            background: "transparent",
+          }}
+        />
+
+        <div style={{ maxWidth: "1240px", margin: "0 auto", padding: "0 48px", boxSizing: "border-box" }}>
+          <h2
+            style={{
+              fontSize: "26px",
+              fontWeight: "800",
+              color: "#111827",
+              marginBottom: "36px",
+              fontFamily: "'Segoe UI', sans-serif",
+              letterSpacing: "-0.4px",
+            }}
+          >
+            Our Services
+          </h2>
+
           <div
             style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "10px",
-              padding: "9px 18px",
-              transition: "background 0.18s ease",
+              display: "grid",
+              gridTemplateColumns: "repeat(3, 1fr)",
+              columnGap: "48px",
+              rowGap: "0px",
             }}
-            onMouseEnter={(e) => e.currentTarget.style.background = "#fff7f0"}
-            onMouseLeave={(e) => e.currentTarget.style.background = "transparent"}
           >
-            <span style={{
-              width: "6px",
-              height: "6px",
-              borderRadius: "50%",
-              background: "#ff6b35",
-              flexShrink: 0,
-              transition: "transform 0.2s",
-            }} className="group-hover:scale-125" />
-            <span style={{
-              fontSize: "14px",
-              fontWeight: "500",
-              color: "#374151",
-              whiteSpace: "nowrap",
-              transition: "color 0.18s ease",
-            }}
-            className="group-hover:!text-[#ff6b35]"
-            >
-              {s.label}
-            </span>
+            {serviceColumns.map((col, colIdx) => (
+              <div key={colIdx} style={{ display: "flex", flexDirection: "column", gap: "26px" }}>
+                {col.map((s, i) => (
+                  <Link
+                    key={i}
+                    to={s.path}
+                    onMouseEnter={() => preloadRoute(s.path)}
+                    onClick={() => {
+                      setServicesOpen(false);
+                      setScrolledServicesOpen(false);
+                      window.scrollTo(0, 0);
+                    }}
+                    style={{ textDecoration: "none", display: "inline-flex", width: "fit-content" }}
+                    className="group"
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "12px",
+                        cursor: "pointer",
+                      }}
+                    >
+                      <span
+                        style={{
+                          width: "7px",
+                          height: "7px",
+                          borderRadius: "50%",
+                          backgroundColor: "#ff6b35",
+                          flexShrink: 0,
+                          transition: "transform 0.25s ease",
+                        }}
+                        className="group-hover:scale-125"
+                      />
+                      <span
+                        style={{
+                          position: "relative",
+                          display: "inline-block",
+                        }}
+                      >
+                        <span
+                          style={{
+                            fontSize: "15.5px",
+                            fontWeight: "600",
+                            color: "#374151",
+                            transition: "color 0.2s ease",
+                            fontFamily: "'Segoe UI', sans-serif",
+                          }}
+                          className="group-hover:!text-[#ff6b35]"
+                        >
+                          {s.label}
+                        </span>
+                        <span
+                          style={{
+                            position: "absolute",
+                            bottom: "-2px",
+                            left: 0,
+                            height: "1.5px",
+                            width: "0%",
+                            background: "#ff6b35",
+                            borderRadius: "2px",
+                            transition: "width 0.25s ease",
+                          }}
+                          className="group-hover:!w-full"
+                        />
+                      </span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            ))}
           </div>
-        </Link>
-      ))}
-    </div>
-  );
+        </div>
+      </div>
+    );
+  };
 
   return (
     <>
@@ -398,7 +492,7 @@ const Navbar = () => {
             Start a Project
           </Link>
           <p className="text-center text-xs text-gray-400 font-medium m-0">
-            hello@adsserv.com • Tamil Nadu, India
+            connect@adsserv.in • Tamil Nadu, India
           </p>
         </div>
       </div>
@@ -425,7 +519,7 @@ const Navbar = () => {
         </div>
 
         {/* Scrolled Menu Items */}
-        <ul style={{ display: "flex", alignItems: "center", gap: "38px", listStyle: "none", margin: 0, padding: 0 }}>
+        <ul style={{ display: "flex", alignItems: "center", gap: "clamp(18px, 2.2vw, 36px)", listStyle: "none", margin: 0, padding: 0 }}>
           {menuItems.map((item, index) => {
             const active = isActive(item);
             return (
@@ -442,36 +536,30 @@ const Navbar = () => {
                 }}
               >
                 {item === "HOME" ? (
-                  <Link to="/" onClick={() => window.scrollTo(0, 0)} style={{ color: "inherit", textDecoration: "none" }}>{item}</Link>
+                  <Link to="/" onMouseEnter={() => preloadRoute("/")} onClick={() => window.scrollTo(0, 0)} style={{ color: "inherit", textDecoration: "none" }}>{item}</Link>
                 ) : item === "ABOUT" ? (
-                  <Link to="/about" onClick={() => window.scrollTo(0, 0)} style={{ color: "inherit", textDecoration: "none" }}>{item}</Link>
+                  <Link to="/about" onMouseEnter={() => preloadRoute("/about")} onClick={() => window.scrollTo(0, 0)} style={{ color: "inherit", textDecoration: "none" }}>{item}</Link>
                 ) : item === "SERVICES" ? (
-                  <>
-                    <button
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setScrolledServicesOpen(!scrolledServicesOpen);
-                      }}
-                      style={{ color: "inherit", display: "flex", alignItems: "center", gap: "4px", background: "transparent", border: "none", padding: 0, font: "inherit", cursor: "pointer" }}
-                    >
-                      {item}
-                      <ChevronDown size={13} style={{ transition: "transform 0.3s", transform: scrolledServicesOpen ? "rotate(180deg)" : "rotate(0deg)" }} />
-                    </button>
-                    {renderServicesDropdown(
-                      scrolledServicesOpen,
-                      () => { clearTimeout(scrolledLeaveTimerRef.current); setScrolledServicesOpen(true); },
-                      () => { scrolledLeaveTimerRef.current = setTimeout(() => setScrolledServicesOpen(false), 180); },
-                      () => setScrolledServicesOpen(false)
-                    )}
-                  </>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      setScrolledServicesOpen((prev) => !prev);
+                    }}
+                    style={{ color: "inherit", display: "flex", alignItems: "center", gap: "5px", background: "transparent", border: "none", padding: 0, font: "inherit", cursor: "pointer" }}
+                  >
+                    <span>{item}</span>
+                    <ChevronDown size={14} style={{ transition: "transform 0.2s ease", transform: scrolledServicesOpen ? "rotate(180deg)" : "rotate(0deg)" }} />
+                  </button>
                 ) : item === "PROJECTS" ? (
-                  <Link to="/projects" onClick={() => window.scrollTo(0, 0)} style={{ color: "inherit", textDecoration: "none" }}>{item}</Link>
+                  <Link to="/projects" onMouseEnter={() => preloadRoute("/projects")} onClick={() => window.scrollTo(0, 0)} style={{ color: "inherit", textDecoration: "none" }}>{item}</Link>
                 ) : item === "BLOG" ? (
-                  <Link to="/blog" onClick={() => window.scrollTo(0, 0)} style={{ color: "inherit", textDecoration: "none" }}>{item}</Link>
+                  <Link to="/blog" onMouseEnter={() => preloadRoute("/blog")} onClick={() => window.scrollTo(0, 0)} style={{ color: "inherit", textDecoration: "none" }}>{item}</Link>
                 ) : item === "FAQ" ? (
-                  <Link to="/faq" onClick={() => window.scrollTo(0, 0)} style={{ color: "inherit", textDecoration: "none" }}>{item}</Link>
+                  <Link to="/faq" onMouseEnter={() => preloadRoute("/faq")} onClick={() => window.scrollTo(0, 0)} style={{ color: "inherit", textDecoration: "none" }}>{item}</Link>
                 ) : item === "CONTACT" ? (
-                  <Link to="/contact" onClick={() => window.scrollTo(0, 0)} style={{ color: "inherit", textDecoration: "none" }}>{item}</Link>
+                  <Link to="/contact" onMouseEnter={() => preloadRoute("/contact")} onClick={() => window.scrollTo(0, 0)} style={{ color: "inherit", textDecoration: "none" }}>{item}</Link>
                 ) : (
                   <>{item}</>
                 )}
@@ -529,13 +617,13 @@ const Navbar = () => {
             position: "absolute", top: "12px", left: "250px", right: "12px", height: "66px",
             background: "#ffffff", borderRadius: "50px",
             display: "flex", alignItems: "center", justifyContent: "space-between",
-            padding: "0 32px 0 70px", boxSizing: "border-box", zIndex: 10000,
+            padding: "0 32px 0 clamp(40px, 4.5vw, 65px)", boxSizing: "border-box", zIndex: 10000,
             boxShadow: "0 2px 10px rgba(0,0,0,0.05)",
             overflow: "visible",
           }}
         >
           {/* Menu Items */}
-          <ul style={{ display: "flex", alignItems: "center", gap: "38px", listStyle: "none", margin: 0, padding: 0 }}>
+          <ul style={{ display: "flex", alignItems: "center", gap: "clamp(18px, 2.2vw, 36px)", listStyle: "none", margin: 0, padding: 0 }}>
             {menuItems.map((item, index) => {
               const active = isActive(item);
               return (
@@ -552,36 +640,30 @@ const Navbar = () => {
                   }}
                 >
                   {item === "HOME" ? (
-                    <Link to="/" onClick={() => window.scrollTo(0, 0)} style={{ color: "inherit", textDecoration: "none" }}>{item}</Link>
+                    <Link to="/" onMouseEnter={() => preloadRoute("/")} onClick={() => window.scrollTo(0, 0)} style={{ color: "inherit", textDecoration: "none" }}>{item}</Link>
                   ) : item === "ABOUT" ? (
-                    <Link to="/about" onClick={() => window.scrollTo(0, 0)} style={{ color: "inherit", textDecoration: "none" }}>{item}</Link>
+                    <Link to="/about" onMouseEnter={() => preloadRoute("/about")} onClick={() => window.scrollTo(0, 0)} style={{ color: "inherit", textDecoration: "none" }}>{item}</Link>
                   ) : item === "SERVICES" ? (
-                    <>
-                      <button
-                        onClick={(e) => {
-                          e.preventDefault();
-                          setServicesOpen(!servicesOpen);
-                        }}
-                        style={{ color: "inherit", display: "flex", alignItems: "center", gap: "4px", background: "transparent", border: "none", padding: 0, font: "inherit", cursor: "pointer" }}
-                      >
-                        {item}
-                        <ChevronDown size={13} style={{ transition: "transform 0.3s", transform: servicesOpen ? "rotate(180deg)" : "rotate(0deg)" }} />
-                      </button>
-                      {renderServicesDropdown(
-                        servicesOpen,
-                        () => { clearTimeout(leaveTimerRef.current); setServicesOpen(true); },
-                        () => { leaveTimerRef.current = setTimeout(() => setServicesOpen(false), 180); },
-                        () => setServicesOpen(false)
-                      )}
-                    </>
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        setServicesOpen((prev) => !prev);
+                      }}
+                      style={{ color: "inherit", display: "flex", alignItems: "center", gap: "5px", background: "transparent", border: "none", padding: 0, font: "inherit", cursor: "pointer" }}
+                    >
+                      <span>{item}</span>
+                      <ChevronDown size={14} style={{ transition: "transform 0.2s ease", transform: servicesOpen ? "rotate(180deg)" : "rotate(0deg)" }} />
+                    </button>
                   ) : item === "PROJECTS" ? (
-                    <Link to="/projects" onClick={() => window.scrollTo(0, 0)} style={{ color: "inherit", textDecoration: "none" }}>{item}</Link>
+                    <Link to="/projects" onMouseEnter={() => preloadRoute("/projects")} onClick={() => window.scrollTo(0, 0)} style={{ color: "inherit", textDecoration: "none" }}>{item}</Link>
                   ) : item === "BLOG" ? (
-                    <Link to="/blog" onClick={() => window.scrollTo(0, 0)} style={{ color: "inherit", textDecoration: "none" }}>{item}</Link>
+                    <Link to="/blog" onMouseEnter={() => preloadRoute("/blog")} onClick={() => window.scrollTo(0, 0)} style={{ color: "inherit", textDecoration: "none" }}>{item}</Link>
                   ) : item === "FAQ" ? (
-                    <Link to="/faq" onClick={() => window.scrollTo(0, 0)} style={{ color: "inherit", textDecoration: "none" }}>{item}</Link>
+                    <Link to="/faq" onMouseEnter={() => preloadRoute("/faq")} onClick={() => window.scrollTo(0, 0)} style={{ color: "inherit", textDecoration: "none" }}>{item}</Link>
                   ) : item === "CONTACT" ? (
-                    <Link to="/contact" onClick={() => window.scrollTo(0, 0)} style={{ color: "inherit", textDecoration: "none" }}>{item}</Link>
+                    <Link to="/contact" onMouseEnter={() => preloadRoute("/contact")} onClick={() => window.scrollTo(0, 0)} style={{ color: "inherit", textDecoration: "none" }}>{item}</Link>
                   ) : (
                     <>{item}</>
                   )}
@@ -607,6 +689,8 @@ const Navbar = () => {
         </div>
       </header>
 
+      {/* ── True Full-Width Mega Menu Dropdown ── */}
+      {renderMegaMenu()}
     </>
   );
 };
