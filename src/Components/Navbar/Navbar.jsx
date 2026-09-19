@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Search, ChevronDown, X, Menu } from "lucide-react";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logo.webp";
 import { preloadRoute } from "../../lib/preloadAssets";
 
 const serviceLinks = [
@@ -329,10 +329,9 @@ const Navbar = () => {
         >
           <div className="w-full px-4 sm:px-8 md:px-12 py-5 sm:py-7 flex justify-between items-center box-border">
             <div className="flex items-center gap-2 sm:gap-3">
-              <div className="w-9 h-9 sm:w-11 sm:h-11 bg-[#ff6b35] rounded-xl flex justify-center items-center p-1.5 flex-shrink-0">
-                <img src={logo} alt="Logo" className="w-full h-full object-contain brightness-0 invert" />
+              <div className="w-[140px] h-11 sm:w-[170px] sm:h-14 bg-transparent rounded-xl flex justify-center items-center p-1.5 flex-shrink-0">
+                <img src={logo} alt="Logo" className="w-full h-full object-contain" />
               </div>
-              <span className="text-lg sm:text-2xl font-extrabold text-gray-900 tracking-tight" style={{ fontFamily: "'Segoe UI', sans-serif" }}>ADSSERV</span>
             </div>
             <button
               onClick={() => setIsSearchOpen(false)}
@@ -362,12 +361,9 @@ const Navbar = () => {
       <div className="lg:hidden fixed top-0 left-0 w-full h-[70px] bg-white/95 backdrop-blur-md z-[9999] border-b border-gray-100 flex items-center justify-between px-4 sm:px-6 shadow-sm box-border">
         {/* Logo */}
         <Link to="/" onClick={() => window.scrollTo(0, 0)} className="flex items-center gap-3" style={{ textDecoration: "none" }}>
-          <div className="w-[42px] h-[42px] rounded-lg bg-white shadow-sm border border-gray-100 p-1 flex items-center justify-center flex-shrink-0">
+          <div className="w-[130px] h-[42px] sm:w-[160px] sm:h-[48px] rounded-lg bg-white shadow-sm border border-gray-100 p-1 sm:p-1.5 flex items-center justify-center flex-shrink-0 transition-all">
             <img src={logo} alt="ADS SERV Logo" className="w-full h-full object-contain" />
           </div>
-          <span className="text-[20px] font-black tracking-tight text-[#111827]" style={{ fontFamily: "'Segoe UI', sans-serif" }}>
-            ADSSERV
-          </span>
         </Link>
 
         {/* Right actions: Search + Hamburger */}
@@ -405,10 +401,9 @@ const Navbar = () => {
         {/* Drawer Header */}
         <div className="p-5 border-b border-gray-100 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-lg bg-[#ff6b35] p-1 flex items-center justify-center flex-shrink-0">
-              <img src={logo} alt="Logo" className="w-full h-full object-contain brightness-0 invert" />
+            <div className="w-[130px] h-10 sm:w-[150px] sm:h-11 rounded-lg bg-transparent p-1 flex items-center justify-center flex-shrink-0 transition-all">
+              <img src={logo} alt="Logo" className="w-full h-full object-contain" />
             </div>
-            <span className="text-lg font-extrabold text-gray-900 tracking-tight" style={{ fontFamily: "'Segoe UI', sans-serif" }}>ADS SERV</span>
           </div>
           <button
             onClick={() => setMobileMenuOpen(false)}
@@ -512,10 +507,7 @@ const Navbar = () => {
       >
         {/* Scrolled Logo */}
         <div style={{ display: "flex", alignItems: "center", gap: "12px", cursor: "pointer" }}>
-          <img src={logo} alt="Logo" style={{ width: "45px", height: "45px", objectFit: "contain" }} />
-          <span style={{ fontSize: "24px", fontWeight: "900", letterSpacing: "1px", background: "linear-gradient(90deg, #7c3aed, #ff6b35)", WebkitBackgroundClip: "text", color: "transparent", fontFamily: "'Segoe UI', sans-serif" }}>
-            ADS SERV
-          </span>
+          <img src={logo} alt="Logo" style={{ width: "180px", height: "65px", objectFit: "contain" }} />
         </div>
 
         {/* Scrolled Menu Items */}
@@ -601,13 +593,9 @@ const Navbar = () => {
         >
           <div style={{ display: "flex", alignItems: "center", gap: "14px", cursor: "pointer" }}>
             <div
-              style={{ width: "62px", height: "62px", borderRadius: "10px", background: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, padding: "4px", boxSizing: "border-box" }}>
+              style={{ width: "210px", height: "72px", borderRadius: "10px", background: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, padding: "8px", boxSizing: "border-box" }}>
               <img src={logo} alt="Logo" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
             </div>
-            <span
-              style={{ fontSize: "18px", fontWeight: "700", color: "#ffffff", letterSpacing: "1px", whiteSpace: "nowrap", fontFamily: "'Segoe UI', sans-serif" }}>
-              ADS SERV
-            </span>
           </div>
         </div>
 

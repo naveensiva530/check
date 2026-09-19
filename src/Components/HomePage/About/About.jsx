@@ -2,6 +2,7 @@ import { useRef, useEffect } from "react";
 import person1 from "../../../assets/HomePage/About/About_First_image.webp";
 import person2 from "../../../assets/HomePage/About/About_Second_image.webp";
 import person3 from "../../../assets/HomePage/About/About_Third_image.webp";
+import logo from "../../../assets/logo.webp";
 import { ArrowUpRight } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -197,9 +198,9 @@ We connect the creative, strategic, technical, and performance sides of digital 
                 }}
               >
                 <img
-                  src={person3}
-                  alt="Photographer at work"
-                  className="w-full h-full object-cover rounded-[20px]"
+                  src={logo}
+                  alt="ADSSERV Logo"
+                  className="w-full h-full object-contain p-2"
                   loading="lazy"
                   decoding="async"
                 />
