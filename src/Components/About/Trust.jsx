@@ -43,7 +43,7 @@ export default function Trust() {
       <div className="max-w-[1200px] w-full mx-auto px-4 md:px-8 relative z-10">
         <div className="flex flex-col items-center text-center mb-14">
           {/* Eyebrow */}
-          <div ref={ref('eyebrow')} className="flex items-center gap-2 mb-6">
+          <div ref={ref('eyebrow')} className="about-eyebrow flex items-center gap-2 mb-6">
             <span
               className="flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0"
               style={{ background: 'var(--accent-orange, #e08326)', boxShadow: '0 2px 8px rgba(224,131,38,0.30)' }}
@@ -94,7 +94,7 @@ export default function Trust() {
                 <img
                   src={logo}
                   alt=""
-                  className="max-w-full max-h-full object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
+                  className="max-w-full max-h-full object-contain"
                 />
               </div>
             ))}

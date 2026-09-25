@@ -38,7 +38,7 @@ export const heroData = {
   description3: "From the first idea to the final edit, we build content made to be watched — not just uploaded.",
   button1Text: "Start a Video Project",
   button2Text: "View Our Services",
-  button2Link: "/#services"
+  button2Link: "/services/video-production#video-production-what-we-do"
 };
 
 export const problemData = {

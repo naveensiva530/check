@@ -38,7 +38,7 @@ export const heroData = {
   description2: "ADSSERV connects brands with creators who fit the audience, platform, message, and campaign objective — then builds the campaign around content people actually want to watch, share, save, and remember. Because influencer marketing works better when the creator feels like a natural fit, not a rented billboard.",
   button1Text: "Plan My Creator Campaign",
   button2Text: "View Our Services",
-  button2Link: "/#services"
+  button2Link: "/services/influencer-marketing#influencer-marketing-what-we-do"
 };
 
 export const problemData = {

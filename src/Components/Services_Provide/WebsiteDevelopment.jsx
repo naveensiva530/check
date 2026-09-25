@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { usePopup } from '../context/PopupContext';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../HomePage/Footer/Footer';
 import '../HomePage/common.css';
@@ -29,6 +30,7 @@ import {
 } from './WebsiteDevelopmentData';
 
 export default function WebsiteDevelopment() {
+  const { openPopup } = usePopup();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -47,7 +49,7 @@ export default function WebsiteDevelopment() {
       <CommonApproach {...approachData} />
 
       {/* 4. WHAT WE BUILD */}
-      <CommonWhatWeDo {...whatWeBuildData} />
+      <CommonWhatWeDo {...whatWeBuildData} sectionId="website-development-what-we-do" buttonAction={openPopup} />
 
       {/* 5. DESIGN & EXPERIENCE */}
       <CommonSpecialty {...designUXData} bgColor="white" />
@@ -83,7 +85,7 @@ export default function WebsiteDevelopment() {
       <CommonRelatedServices {...relatedServicesData} />
 
       {/* 16. FINAL CTA */}
-      <CommonCTA {...ctaData} />
+      <CommonCTA {...ctaData} button1Action={openPopup} />
 
       <Footer />
     </div>

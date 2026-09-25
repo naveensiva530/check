@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, LayoutGroup } from 'framer-motion';
 import { TextRotate } from '../../../Components/ui/text-rotate';
 import '../common.css';
@@ -15,39 +16,40 @@ const industries = [
     title: "Health Care",
     subtitle: "Building trust in a sensitive space.",
     image: healthImg,
-
+    path: "/industries/health-care",
   },
   {
     category: "Property Marketing",
     title: "Real Estate",
     subtitle: "Turning properties into digital stories.",
     image: realEstateImg,
-
+    path: "/industries/real-estate",
   },
   {
     category: "Education Marketing",
     title: "Education",
     subtitle: "Connecting institutions with students.",
     image: educationImg,
-
+    path: "/industries/education",
   },
   {
     category: "Tech Marketing",
     title: "IT-Tech / SaaS",
     subtitle: "Making technology easy to choose.",
     image: saasImg,
-
+    path: "/industries/it-tech-saas",
   },
   {
     category: "Lifestyle Marketing",
     title: "Beauty & Salon",
     subtitle: "Visual brands that command attention.",
     image: beautyImg,
-
+    path: "/industries/beauty-salon",
   },
 ];
 
 export default function Industries() {
+  const navigate = useNavigate();
   return (
     <section
       className="w-full pt-16 sm:pt-20 pb-16 sm:pb-32 relative overflow-hidden"
@@ -121,6 +123,12 @@ export default function Industries() {
               <motion.a
                 key={index}
                 href={item.path || "/services"}
+                onClick={(event) => {
+                  if (event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) {
+                    event.preventDefault();
+                    navigate(item.path || "/services");
+                  }
+                }}
                 className="flex flex-col items-center group relative z-10 hover:z-20 w-full lg:flex-1 lg:max-w-[220px]"
                 style={{ textDecoration: 'none' }}
                 initial={{ opacity: 0, y: 30 }}

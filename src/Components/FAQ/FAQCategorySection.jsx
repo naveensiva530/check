@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Plus, Minus, Share2, Check, ThumbsUp, Sparkles, HelpCircle } from 'lucide-react';
+import { Plus, Minus, Share2, Check, ThumbsUp } from 'lucide-react';
 
 export default function FAQCategorySection({ 
   category, 

@@ -17,5 +17,9 @@ export default defineConfig([
       globals: globals.browser,
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
+    rules: {
+      // React is supplied by the automatic JSX runtime; JSX-only imports are not unused.
+      'no-unused-vars': ['error', { varsIgnorePattern: '^React$' }],
+    },
   },
 ])

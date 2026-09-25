@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ScrollRevealHeading from '../Services/common/ScrollRevealHeading';
@@ -17,27 +18,32 @@ const industries = [
   {
     title: "Health Care",
     desc: "Build trust through clear, responsible, useful communication.",
-    img: imgHealth
+    img: imgHealth,
+    path: "/industries/health-care"
   },
   {
     title: "Real Estate",
     desc: "Turn properties, projects, locations, and expertise into content people can discover and remember.",
-    img: imgRealEstate
+    img: imgRealEstate,
+    path: "/industries/real-estate"
   },
   {
     title: "Education",
     desc: "Create content that informs students, parents, professionals, and decision-makers.",
-    img: imgEducation
+    img: imgEducation,
+    path: "/industries/education"
   },
   {
     title: "IT-Tech / SaaS",
     desc: "Make complex products easier to understand through useful, visual, and educational content.",
-    img: imgTech
+    img: imgTech,
+    path: "/industries/it-tech-saas"
   },
   {
     title: "Beauty & Salon",
     desc: "Use visual storytelling, social proof, community, and short-form content to make the brand more discoverable.",
-    img: imgBeauty
+    img: imgBeauty,
+    path: "/industries/beauty-salon"
   }
 ];
 
@@ -79,7 +85,7 @@ export default function Industries() {
         
         {/* Header Section */}
         <div className="flex flex-col items-center text-center mb-16 max-w-3xl mx-auto">
-          <div className="flex items-center gap-2 mb-6">
+          <div className="about-eyebrow flex items-center gap-2 mb-6">
             <span className="flex items-center justify-center w-5 h-5 rounded-full border border-gray-200 shadow-sm flex-shrink-0" style={{ background: 'var(--accent-orange)' }}>
               <span style={{ color: '#fff', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
             </span>
@@ -122,10 +128,12 @@ export default function Industries() {
             const cardHeight = heights[idx] || '220px';
 
             return (
-              <div
+              <Link
+                to={ind.path}
                 key={idx}
                 ref={el => cardsRef.current[idx] = el}
-                className="flex flex-col items-center group relative z-10 hover:z-20 cursor-pointer"
+                className="flex flex-col items-center group relative z-10 hover:z-20 cursor-pointer no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--brand-orange)]"
+                style={{ textDecoration: 'none' }}
               >
                 {/* Oval Image Card */}
                 <div
@@ -192,7 +200,7 @@ export default function Industries() {
                     {ind.desc}
                   </p>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>

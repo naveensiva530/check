@@ -7,7 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function CommonFAQ({ faqs = [], tagText, headingWords }) {
+export default function CommonFAQ({ faqs = [], tagText, headingWords, referenceHeaderStyle = false }) {
   const sectionRef = useRef(null);
   const headingRef = useRef(null);
   const faqRefs = useRef([]);
@@ -39,13 +39,16 @@ export default function CommonFAQ({ faqs = [], tagText, headingWords }) {
     <section ref={sectionRef} className="w-full py-14 sm:py-20 md:py-24 bg-white relative font-primary">
       <div className="max-w-[1000px] w-full mx-auto px-4 md:px-8 relative z-10">
         <div ref={headingRef} className="flex flex-col items-center text-center mb-16">
-          <div className="flex items-center gap-2 mb-6">
-            <span className="flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0" style={{ background: 'var(--accent-orange)' }}>
-              <span style={{ color: '#fff', fontSize: '12px', fontWeight: 'bold' }}>+</span>
+          <div className="services-eyebrow flex items-center gap-2 mb-6">
+            <span
+              className={`flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0 ${referenceHeaderStyle ? 'bg-white border border-slate-200 shadow-sm' : ''}`}
+              style={referenceHeaderStyle ? undefined : { background: 'var(--accent-orange)' }}
+            >
+              <span style={{ color: referenceHeaderStyle ? 'var(--accent-orange, #e08326)' : '#fff', fontSize: '12px', fontWeight: 'bold' }}>+</span>
             </span>
             <span
               className="italic font-semibold uppercase tracking-widest"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '13px', color: 'var(--accent-orange)' }}
+              style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '13px', color: referenceHeaderStyle ? 'var(--brand-navy, #1e2f57)' : 'var(--accent-orange)' }}
             >
               {tagText}
             </span>

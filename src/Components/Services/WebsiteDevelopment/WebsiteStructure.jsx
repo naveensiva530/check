@@ -55,7 +55,7 @@ export default function WebsiteStructure() {
       <div className="max-w-[1280px] w-full mx-auto px-4 md:px-8 relative z-10">
 
         <div ref={headingRef} className="flex flex-col items-center text-center mb-16">
-          <div className="flex items-center gap-2 mb-6">
+          <div className="services-eyebrow flex items-center gap-2 mb-6">
             <span className="flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0"
               style={{ background: 'var(--accent-orange)', boxShadow: '0 2px 8px rgba(224,131,38,0.35)' }}>
               <span style={{ color: '#fff', fontSize: '12px', fontWeight: 'bold' }}>+</span>

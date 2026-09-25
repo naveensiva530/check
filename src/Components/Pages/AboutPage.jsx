@@ -8,7 +8,7 @@ import WhoWeAre from '../About/WhoWeAre';
 import WhatWeBelieve from '../About/WhatWeBelieve';
 import HowWeThink from '../About/HowWeThink';
 import Strengths from '../About/Strengths';
-import Capabilities from '../About/Capabilities';
+import Services from '../HomePage/Services/Services';
 import WhoWeWorkWith from '../About/WhoWeWorkWith';
 import Industries from '../About/Industries';
 import Collaboration from '../About/Collaboration';
@@ -18,6 +18,7 @@ import Trust from '../About/Trust';
 import QuickFacts from '../About/QuickFacts';
 import AboutFAQ from '../About/AboutFAQ';
 import AboutFinalCTA from '../About/AboutFinalCTA';
+import '../About/about.css';
 
 export default function AboutPage() {
   // Ensure the page loads at the top when navigating to it
@@ -26,7 +27,7 @@ export default function AboutPage() {
   }, []);
 
   return (
-    <div className="font-sans bg-white min-h-screen flex flex-col">
+    <div className="about-page font-sans bg-white min-h-screen flex flex-col">
       <Navbar />
 
       <AboutHero />
@@ -34,7 +35,9 @@ export default function AboutPage() {
       <WhatWeBelieve />
       <HowWeThink />
       <Strengths />
-      <Capabilities />
+      <div id="about-capabilities" className="scroll-mt-24">
+        <Services />
+      </div>
       <WhoWeWorkWith />
       <Industries />
       <Collaboration />

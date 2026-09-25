@@ -35,7 +35,7 @@ export default function ProjectsDemonstrate() {
 
         {/* Header in Services Style */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="flex items-center justify-center gap-2 mb-6">
+          <div className="services-eyebrow flex items-center justify-center gap-2 mb-6">
             <span
               className="flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0"
               style={{ background: 'var(--accent-orange)' }}

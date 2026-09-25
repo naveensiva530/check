@@ -38,7 +38,7 @@ export const heroData = {
   description3: "No shortcuts. No keyword stuffing. No promises of overnight rankings. Just search strategy built around how people actually discover businesses.",
   button1Text: "Grow My Organic Visibility",
   button2Text: "View Our Services",
-  button2Link: "/#services"
+  button2Link: "/services/seo-services#seo-services-what-we-do"
 };
 
 export const problemData = {

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../common.css';
 import { ArrowUpRight, Plus, Minus } from 'lucide-react';
 import creativeImg from '../../../assets/HomePage/CreativeShowcase/Creative_site.webp';
+import ScrollRevealHeading from '../../Services/common/ScrollRevealHeading';
 
 const categories = [
   { title: "Social Content", desc: "Platform-native content built around audience behaviour." },
@@ -12,6 +14,7 @@ const categories = [
 
 export default function CreativeShowcase() {
   const [openIndex, setOpenIndex] = useState(0); // First item open by default
+  const navigate = useNavigate();
 
   return (
     <section className="w-full pt-14 sm:pt-20 bg-white relative font-primary overflow-hidden">
@@ -35,9 +38,17 @@ export default function CreativeShowcase() {
             </div>
 
             {/* H2 */}
-            <h2 className="text-[26px] sm:text-[34px] md:text-[42px] font-extrabold leading-[1.1] tracking-tight mb-4" style={{ color: 'var(--text-dark-blue)' }}>
-              Make people stop scrolling.
-            </h2>
+            <ScrollRevealHeading
+              className="mb-4"
+              words={[
+                { text: 'Make' },
+                { text: 'people', italic: true },
+                { text: 'stop', italic: true },
+                { break: true },
+                { text: 'scrolling.' },
+              ]}
+              style={{ fontSize: 'clamp(1.55rem, 3vw, 2.65rem)' }}
+            />
 
             {/* Copy */}
             <p className="text-[14px] sm:text-[14.5px] font-medium leading-relaxed mb-6 sm:mb-8" style={{ color: 'var(--text-gray)' }}>
@@ -90,11 +101,13 @@ export default function CreativeShowcase() {
             {/* CTA Button */}
             <div className="mt-8">
               <button
-                className="group relative flex items-center gap-2 px-6 py-3 bg-[#1e2f57] text-white text-[14px] font-bold rounded-full shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
-                onClick={() => window.location.href = '/projects'}
+                className="know-more-btn mt-2 cursor-pointer"
+                onClick={() => navigate('/projects')}
               >
                 <span>See Our Creative Work</span>
-                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <div className="know-more-icon">
+                  <ArrowUpRight className="w-5 h-5" strokeWidth={2.5} />
+                </div>
               </button>
             </div>
           </div>

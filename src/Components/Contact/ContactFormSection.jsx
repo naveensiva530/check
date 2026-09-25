@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Clock, Send, CheckCircle2, AlertCircle, ShieldCheck } from 'lucide-react';
+import { Mail, Phone, Send, CheckCircle2, AlertCircle, ShieldCheck } from 'lucide-react';
 import ScrollRevealHeading from '../Services/common/ScrollRevealHeading';
 import { contactDetails, enquiryFormData } from './contactData';
 
@@ -26,32 +26,51 @@ const inputBase = "w-full px-4 py-3.5 bg-white border border-slate-200 rounded-x
 const labelClass = "block text-[11px] font-black uppercase tracking-widest mb-2";
 
 export default function ContactFormSection({ preselectedService }) {
+  const [lastPreselectedService, setLastPreselectedService] = useState(preselectedService);
   const [formData, setFormData] = useState({
     fullName: '',
     workEmail: '',
     company: '',
     website: '',
-    serviceInterest: preselectedService || 'SEO Services',
+    serviceInterests: preselectedService ? [preselectedService] : [],
     projectDetails: '',
-    consent: true,
+    consent: false,
   });
 
-  // Update when preselectedService prop changes
-  React.useEffect(() => {
+  // Apply changed service presets during render so the form updates without an effect-driven extra render.
+  if (preselectedService !== lastPreselectedService) {
+    setLastPreselectedService(preselectedService);
     if (preselectedService) {
-      setFormData((prev) => ({ ...prev, serviceInterest: preselectedService }));
+      setFormData((prev) => ({
+        ...prev,
+        serviceInterests: prev.serviceInterests.includes(preselectedService)
+          ? prev.serviceInterests
+          : [...prev.serviceInterests, preselectedService],
+      }));
     }
-  }, [preselectedService]);
+  }
 
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState(null); // 'success' | 'error' | null
+  const [serviceError, setServiceError] = useState(false);
+
+  const toggleService = (service) => {
+    setFormData((prev) => ({
+      ...prev,
+      serviceInterests: prev.serviceInterests.includes(service)
+        ? prev.serviceInterests.filter((item) => item !== service)
+        : [...prev.serviceInterests, service],
+    }));
+    setServiceError(false);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.consent) {
-      alert("Please agree to the privacy consent to submit your enquiry.");
+    if (formData.serviceInterests.length === 0) {
+      setServiceError(true);
       return;
     }
+    setServiceError(false);
     setLoading(true);
     setStatus(null);
 
@@ -64,12 +83,13 @@ export default function ContactFormSection({ preselectedService }) {
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          _subject: `New ADSSERV Enquiry: ${formData.fullName} (${formData.serviceInterest})`,
+          _subject: `New ADSSERV Enquiry: ${formData.fullName} (${formData.serviceInterests.join(', ')})`,
           "Full Name": formData.fullName,
           "Work Email": formData.workEmail,
           "Company": formData.company || "Not provided",
           "Website": formData.website || "Not provided",
-          "Service Interest": formData.serviceInterest,
+          "Service Interest": formData.serviceInterests.join(', '),
+          "Privacy Consent": formData.consent ? 'Agreed' : 'Not provided',
           "Project Details": formData.projectDetails,
           _template: "table",
           _captcha: "false"
@@ -110,13 +130,13 @@ export default function ContactFormSection({ preselectedService }) {
               <div className="flex items-center gap-2 mb-6">
                 <span
                   className="flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0"
-                  style={{ background: 'var(--accent-orange, #e08326)', boxShadow: '0 2px 8px rgba(224,131,38,0.30)' }}
+                  style={{ background: '#fff', border: '1px solid #e2e8f0', boxShadow: '0 2px 6px rgba(30,47,87,0.08)' }}
                 >
-                  <span style={{ color: '#fff', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
+                  <span style={{ color: 'var(--accent-orange, #e08326)', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
                 </span>
                 <span
                   className="italic font-semibold uppercase tracking-widest"
-                  style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '13px', color: 'var(--accent-orange, #e08326)' }}
+                  style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '13px', color: 'var(--brand-navy, #1e2f57)' }}
                 >
                   {contactDetails.eyebrow}
                 </span>
@@ -185,13 +205,13 @@ export default function ContactFormSection({ preselectedService }) {
                 <div className="flex items-center gap-2 mb-6">
                   <span
                     className="flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0"
-                    style={{ background: 'var(--accent-orange, #e08326)', boxShadow: '0 2px 8px rgba(224,131,38,0.30)' }}
+                    style={{ background: '#fff', border: '1px solid #e2e8f0', boxShadow: '0 2px 6px rgba(30,47,87,0.08)' }}
                   >
-                    <span style={{ color: '#fff', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
+                    <span style={{ color: 'var(--accent-orange, #e08326)', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
                   </span>
                   <span
                     className="italic font-semibold uppercase tracking-widest"
-                    style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '13px', color: 'var(--accent-orange, #e08326)' }}
+                    style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '13px', color: 'var(--brand-navy, #1e2f57)' }}
                   >
                     {enquiryFormData.eyebrow}
                   </span>
@@ -221,7 +241,8 @@ export default function ContactFormSection({ preselectedService }) {
                   <button
                     onClick={() => {
                       setStatus(null);
-                      setFormData({ fullName: '', workEmail: '', company: '', website: '', serviceInterest: 'SEO Services', projectDetails: '', consent: true });
+                      setFormData({ fullName: '', workEmail: '', company: '', website: '', serviceInterests: [], projectDetails: '', consent: false });
+                      setServiceError(false);
                     }}
                     className="px-7 py-3 rounded-full font-bold text-[14px] text-white transition-all hover:opacity-90"
                     style={{ backgroundColor: 'var(--brand-navy)' }}
@@ -235,7 +256,7 @@ export default function ContactFormSection({ preselectedService }) {
                   {/* Field 01 & 02 */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                      <label className={labelClass} style={{ color: 'var(--brand-navy)' }}>Full Name *</label>
+                      <label className={labelClass} style={{ color: 'var(--brand-navy)' }}>Full Name <span className="text-red-500">*</span></label>
                       <input
                         type="text"
                         required
@@ -247,7 +268,7 @@ export default function ContactFormSection({ preselectedService }) {
                     </div>
 
                     <div>
-                      <label className={labelClass} style={{ color: 'var(--brand-navy)' }}>Work Email *</label>
+                      <label className={labelClass} style={{ color: 'var(--brand-navy)' }}>Work Email <span className="text-red-500">*</span></label>
                       <input
                         type="email"
                         required
@@ -262,7 +283,7 @@ export default function ContactFormSection({ preselectedService }) {
                   {/* Field 03 & 04 */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                      <label className={labelClass} style={{ color: 'var(--brand-navy)' }}>Company / Business</label>
+                      <label className={labelClass} style={{ color: 'var(--brand-navy)' }}>Company / Business <span className="text-slate-400 normal-case tracking-normal font-medium">(Optional)</span></label>
                       <input
                         type="text"
                         value={formData.company}
@@ -273,7 +294,7 @@ export default function ContactFormSection({ preselectedService }) {
                     </div>
 
                     <div>
-                      <label className={labelClass} style={{ color: 'var(--brand-navy)' }}>Website</label>
+                      <label className={labelClass} style={{ color: 'var(--brand-navy)' }}>Website <span className="text-slate-400 normal-case tracking-normal font-medium">(Optional)</span></label>
                       <input
                         type="url"
                         value={formData.website}
@@ -284,46 +305,39 @@ export default function ContactFormSection({ preselectedService }) {
                     </div>
                   </div>
 
-                  {/* Field 05: What can we help with? */}
-                  <div>
-                    <label className={labelClass} style={{ color: 'var(--brand-navy)' }}>What can we help with? *</label>
-                    <select
-                      value={formData.serviceInterest}
-                      onChange={(e) => setFormData({ ...formData, serviceInterest: e.target.value })}
-                      className={inputBase}
-                    >
-                      {enquiryFormData.servicesOptions.map((opt, i) => (
-                        <option key={i} value={opt}>
-                          {opt}
-                        </option>
-                      ))}
-                    </select>
-
-                    {/* Quick selection chips */}
-                    <div className="flex flex-wrap gap-2 mt-3">
-                      {['SEO Services', 'Social Media Marketing', 'Performance Marketing', 'Website Development'].map((chip) => (
-                        <button
-                          key={chip}
-                          type="button"
-                          onClick={() => setFormData({ ...formData, serviceInterest: chip })}
-                          className="px-3 py-1.5 rounded-full text-[12px] font-bold transition-all border"
-                          style={
-                            formData.serviceInterest === chip
-                              ? { backgroundColor: 'var(--brand-orange)', color: '#fff', borderColor: 'var(--brand-orange)' }
-                              : { backgroundColor: 'var(--bg-light-purple)', color: 'var(--brand-navy)', borderColor: 'rgba(110,60,170,0.25)' }
-                          }
-                        >
-                          + {chip}
-                        </button>
-                      ))}
+                  {/* Field 05: required multi-select service list */}
+                  <fieldset className="w-full">
+                    <legend className={labelClass} style={{ color: 'var(--brand-navy)' }}>
+                      What can we help with? <span className="text-red-500">*</span>
+                      <span className="ml-2 normal-case tracking-normal font-medium text-slate-500">Choose all that apply</span>
+                    </legend>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 rounded-xl border border-slate-200 bg-white p-4">
+                      {enquiryFormData.servicesOptions.map((service) => {
+                        const isSelected = formData.serviceInterests.includes(service);
+                        return (
+                          <label key={service} className="flex items-center gap-3 rounded-lg px-3 py-2.5 cursor-pointer hover:bg-orange-50 transition-colors">
+                            <input
+                              type="checkbox"
+                              checked={isSelected}
+                              onChange={() => toggleService(service)}
+                              className="w-4 h-4 rounded cursor-pointer accent-[#e08326]"
+                            />
+                            <span className="text-sm font-medium text-[#1e2f57]">{service}</span>
+                          </label>
+                        );
+                      })}
                     </div>
-                  </div>
+                    {serviceError && (
+                      <p className="mt-2 text-sm font-semibold text-red-600" role="alert">
+                        Select at least one service to continue.
+                      </p>
+                    )}
+                  </fieldset>
 
                   {/* Field 06: Tell us about your project */}
                   <div>
-                    <label className={labelClass} style={{ color: 'var(--brand-navy)' }}>Tell us about your project *</label>
+                    <label className={labelClass} style={{ color: 'var(--brand-navy)' }}>Tell us about your project <span className="text-slate-400 normal-case tracking-normal font-medium">(Optional)</span></label>
                     <textarea
-                      required
                       rows={5}
                       value={formData.projectDetails}
                       onChange={(e) => setFormData({ ...formData, projectDetails: e.target.value })}
@@ -342,7 +356,7 @@ export default function ContactFormSection({ preselectedService }) {
                       className="mt-1 w-4 h-4 rounded cursor-pointer accent-[#e08326]"
                     />
                     <label htmlFor="consent-checkbox" className="text-[13px] font-medium leading-relaxed cursor-pointer select-none" style={{ color: '#3f6a93' }}>
-                      {enquiryFormData.consent}
+                      {enquiryFormData.consent} <span className="text-slate-500">(Optional)</span>
                     </label>
                   </div>
 

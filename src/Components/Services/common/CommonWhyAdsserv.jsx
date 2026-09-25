@@ -44,13 +44,13 @@ export default function CommonWhyAdsserv({
       <section ref={sectionRef} className="w-full py-14 sm:py-20 md:py-24 relative font-primary" style={{ backgroundColor: 'var(--bg-light-purple)' }}>
         <div className="max-w-[1200px] w-full mx-auto px-4 md:px-8">
           <div ref={headingRef} className={`flex flex-col items-center text-center ${points && points.length > 0 ? 'mb-16' : ''}`}>
-            <div className="flex items-center gap-2 mb-6">
+            <div className="services-eyebrow flex items-center gap-2 mb-6">
               <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white border border-gray-200 shadow-sm flex-shrink-0">
                 <span style={{ color: '#f97316', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
               </span>
               <span className="italic font-semibold uppercase tracking-widest" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '13px', color: 'var(--accent-orange)' }}>{tagText}</span>
             </div>
-            <ScrollRevealHeading maxW="800px" words={headingWords} />
+            <ScrollRevealHeading maxW="800px" justify="center" words={headingWords} />
             {paragraphs.length > 0 && (
               <div className="flex flex-col gap-4 text-[16px] md:text-[18px] font-medium leading-relaxed text-slate-600 max-w-[750px] mt-8">
                 {paragraphs.map((p, i) => <p key={i}>{p}</p>)}
@@ -101,7 +101,7 @@ export default function CommonWhyAdsserv({
       <div className="max-w-[1200px] w-full mx-auto px-4 md:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div ref={leftRef} className="flex flex-col">
-            <div className="flex items-center gap-2 mb-6">
+            <div className="services-eyebrow flex items-center gap-2 mb-6">
               <span className="flex items-center justify-center w-5 h-5 rounded-full border border-gray-200 shadow-sm flex-shrink-0" style={{ background: 'var(--accent-orange)' }}>
                 <span style={{ color: '#fff', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
               </span>

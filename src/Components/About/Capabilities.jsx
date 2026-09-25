@@ -143,8 +143,9 @@ export default function Capabilities() {
 
   return (
     <section
+      id="about-capabilities"
       ref={sectionRef}
-      className="relative overflow-hidden pb-40 lg:pb-64 px-4 pt-32 md:pt-40"
+      className="relative scroll-mt-24 overflow-hidden pb-40 lg:pb-64 px-4 pt-32 md:pt-40"
       style={{ background: 'var(--bg-light-purple)', fontFamily: 'var(--font-primary)' }}
     >
       <div className="relative mx-auto max-w-7xl z-20">
@@ -154,7 +155,7 @@ export default function Capabilities() {
         <div ref={headingRef} className="relative mb-10 sm:mb-14 flex flex-col items-start justify-start text-left">
           <div className="w-full flex items-center justify-between gap-4 mb-3">
             {/* Eyebrow — ⊕ icon + italic Playfair serif */}
-            <div className="flex items-center gap-2">
+            <div className="about-eyebrow flex items-center gap-2">
               <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white border border-gray-200 shadow-sm flex-shrink-0">
                 <span style={{ color: '#f97316', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
               </span>

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ScrollRevealHeading from './ScrollRevealHeading';
@@ -17,30 +18,35 @@ const industries = [
   {
     category: "HEALTHCARE MARKETING",
     title: "Health Care",
+    path: "/industries/health-care",
     desc: "Build trust through clear, responsible, useful communication.",
     img: imgHealth
   },
   {
     category: "PROPERTY MARKETING",
     title: "Real Estate",
+    path: "/industries/real-estate",
     desc: "Turn properties, projects, locations, and expertise into content people can discover and remember.",
     img: imgRealEstate
   },
   {
     category: "EDUCATION MARKETING",
     title: "Education",
+    path: "/industries/education",
     desc: "Create content that informs students, parents, professionals, and decision-makers.",
     img: imgEducation
   },
   {
     category: "TECH MARKETING",
     title: "IT-Tech / SaaS",
+    path: "/industries/it-tech-saas",
     desc: "Make complex products easier to understand through useful, visual, and educational content.",
     img: imgTech
   },
   {
     category: "LIFESTYLE MARKETING",
     title: "Beauty & Salon",
+    path: "/industries/beauty-salon",
     desc: "Use visual storytelling, social proof, community, and short-form content to make the brand more discoverable.",
     img: imgBeauty
   }
@@ -80,11 +86,11 @@ export default function SocialIndustries() {
 
   return (
     <section ref={sectionRef} className="w-full py-14 sm:py-20 md:py-24 bg-white relative font-primary overflow-hidden">
-      <div className="max-w-[1400px] w-full mx-auto px-4 md:px-6 relative z-10">
+      <div className="services-eyebrow max-w-[1400px] w-full mx-auto px-4 md:px-6 relative z-10">
         
         {/* Header Section */}
         <div className="flex flex-col items-center text-center mb-16 max-w-3xl mx-auto">
-          <div className="flex items-center gap-2 mb-6">
+          <div className="services-eyebrow flex items-center gap-2 mb-6">
             <span className="flex items-center justify-center w-5 h-5 rounded-full border border-gray-200 shadow-sm flex-shrink-0" style={{ background: 'var(--accent-orange)' }}>
               <span style={{ color: '#fff', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
             </span>
@@ -122,10 +128,11 @@ export default function SocialIndustries() {
             const cardHeight = heights[idx] || '220px';
 
             return (
-              <div
+              <Link
+                to={ind.path}
                 key={idx}
                 ref={el => cardsRef.current[idx] = el}
-                className="flex flex-col items-center group relative z-10 hover:z-20 cursor-pointer"
+                className="flex flex-col items-center group relative z-10 hover:z-20 cursor-pointer no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent-orange)]"
               >
                 {/* Oval Image Card */}
                 <div
@@ -193,7 +200,7 @@ export default function SocialIndustries() {
                     {ind.desc}
                   </p>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>

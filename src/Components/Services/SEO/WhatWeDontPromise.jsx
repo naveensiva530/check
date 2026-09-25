@@ -42,7 +42,7 @@ export default function WhatWeDontPromise() {
     <section ref={sectionRef} className="w-full py-24 bg-white relative font-primary">
       <div className="max-w-[1200px] w-full mx-auto px-4 md:px-8">
         <div className="flex flex-col items-center text-center mb-16">
-          <div className="flex items-center gap-2 mb-6">
+          <div className="services-eyebrow flex items-center gap-2 mb-6">
             <span className="flex items-center justify-center w-5 h-5 rounded-full border border-gray-200 shadow-sm flex-shrink-0" style={{ background: 'var(--accent-orange)' }}>
               <span style={{ color: '#fff', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
             </span>

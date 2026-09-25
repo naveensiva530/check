@@ -1,6 +1,9 @@
 import imgSeoAi from '../../assets/Blog/SEO & AI Search.webp';
 import imgSocialMarketing from '../../assets/Blog/Social Media marketing.webp';
 import imgDigitalMarketing from '../../assets/Blog/Digital_Marketing.webp';
+import articleSeoImage from '../../assets/Blog/Artical Inside image/Ai-seo.webp';
+import articleSocialImage from '../../assets/Blog/Artical Inside image/Social Media.webp';
+import articleStrategyImage from '../../assets/Blog/Artical Inside image/Performance Marketing.webp';
 
 export const blogPosts = [
   {
@@ -19,6 +22,7 @@ export const blogPosts = [
     published: '9 August 2026',
     readTime: '7 min read',
     image: imgSeoAi,
+    articleImage: articleSeoImage,
     cardBg: '#FFF9F5',
     circleBg: '#FCE6D2',
     featured: true,
@@ -35,10 +39,11 @@ export const blogPosts = [
       'Platform-native creative tailored to modern attention spans',
       'Focusing on engagement that drives real retention and pipeline'
     ],
-    meta: 'Social Media Marketing · 9 Aug 2026 · 6 min read',
+    meta: 'Social Media Marketing · 9 Aug 2026 · 10 min read',
     published: '9 August 2026',
-    readTime: '6 min read',
+    readTime: '10 min read',
     image: imgSocialMarketing,
+    articleImage: articleSocialImage,
     cardBg: '#F8FAFC',
     circleBg: '#E4EDF7',
   },
@@ -48,16 +53,17 @@ export const blogPosts = [
     category: 'DIGITAL MARKETING STRATEGY',
     categoryLabel: 'Digital Marketing Strategy',
     title: 'How to Build a Digital Marketing Strategy That Connects Every Channel',
-    excerpt: 'SEO, social media, paid advertising, content and your website should not operate as disconnected activities. A connected digital marketing strategy helps each channel support the customer journey and the larger business objective.',
+    excerpt: 'Learn how to connect SEO, content, social media, paid advertising, email and your website around shared business goals and the full customer journey.',
     bullets: [
-      'Connecting SEO, paid ads, and social into a unified flywheel',
-      'Eliminating siloed marketing channels and conflicting messaging',
-      'End-to-end customer journey tracking with clear commercial KPIs'
+      'Give every channel a clear role in the customer journey',
+      'Connect campaigns, content and measurement across channels',
+      'Build a practical strategy around objectives and useful KPIs'
     ],
-    meta: 'Digital Marketing Strategy · 9 Aug 2026 · 8 min read',
+    meta: 'Digital Marketing Strategy · 9 Aug 2026 · 12 min read',
     published: '9 August 2026',
-    readTime: '8 min read',
+    readTime: '12 min read',
     image: imgDigitalMarketing,
+    articleImage: articleStrategyImage,
     cardBg: '#FFF9F5',
     circleBg: '#FCE6D2',
   },

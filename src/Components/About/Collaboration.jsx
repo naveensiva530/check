@@ -64,7 +64,7 @@ export default function Collaboration() {
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 mb-16">
           <div ref={ref('eyebrow')} className="lg:w-1/2">
             {/* Eyebrow */}
-            <div className="flex items-center gap-2 mb-6">
+            <div className="about-eyebrow flex items-center gap-2 mb-6">
               <span
                 className="flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0"
                 style={{ background: 'var(--accent-orange, #e08326)', boxShadow: '0 2px 8px rgba(224,131,38,0.30)' }}

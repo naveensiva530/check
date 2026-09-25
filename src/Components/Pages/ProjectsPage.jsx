@@ -45,8 +45,12 @@ export default function ProjectsPage() {
   };
 
   const handleExploreClick = () => {
-    const el = document.getElementById('selected-projects');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    const el = document.getElementById('noqu-tam');
+    if (el && window.__lenis) {
+      window.__lenis.scrollTo(el, { offset: -90 });
+    } else if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   };
 
   return (

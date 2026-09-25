@@ -90,7 +90,7 @@ const platforms = [
   },
   {
     name: 'WhatsApp',
-    handle: '+1 7603912438',
+    handle: '+91-7603912438',
     desc: 'Direct customer communication, broadcast lists, and community group management.',
     Icon: FaWhatsapp,
     color: '#25D366',
@@ -203,7 +203,7 @@ export default function Platforms() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
           {/* Left */}
           <div className="flex flex-col">
-            <div className="flex items-center gap-2 mb-6">
+            <div className="services-eyebrow flex items-center gap-2 mb-6">
               <span
                 className="flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0"
                 style={{ background: 'var(--accent-orange)', boxShadow: '0 2px 8px rgba(224,131,38,0.30)' }}

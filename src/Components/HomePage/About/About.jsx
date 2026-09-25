@@ -1,16 +1,18 @@
 import { useRef, useEffect } from "react";
 import person1 from "../../../assets/HomePage/About/About_First_image.webp";
 import person2 from "../../../assets/HomePage/About/About_Second_image.webp";
-import person3 from "../../../assets/HomePage/About/About_Third_image.webp";
 import logo from "../../../assets/logo.webp";
 import { ArrowUpRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "../common.css";
+import ScrollRevealHeading from '../../Services/common/ScrollRevealHeading';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function About() {
+  const navigate = useNavigate();
   const sectionRef = useRef(null);
   const leftRef = useRef(null);
   const rightRef = useRef(null);
@@ -97,6 +99,7 @@ export default function About() {
                 src={person1}
                 alt="Team member working"
                 className="w-full h-full object-cover rounded-t-full rounded-b-[110px] sm:rounded-b-[155px] md:rounded-b-[194px]"
+                style={{ objectPosition: "center 15px", transform: "scale(0.96) translateY(5px)" }}
                 loading="lazy"
                 decoding="async"
               />
@@ -137,14 +140,20 @@ export default function About() {
             </div>
 
             {/* Headline */}
-            <h2 className="text-[#1a233a] mb-6">
-              <span
-                className="block text-[28px] sm:text-[38px] md:text-[50px] lg:text-[36px] italic font-medium leading-[1.15] mb-2"
-                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-              >
-               The internet changed. Your marketing should too.
-              </span>
-            </h2>
+            <ScrollRevealHeading
+              className="mb-6"
+              words={[
+                { text: 'The' },
+                { text: 'internet', italic: true },
+                { text: 'changed.' },
+                { break: true },
+                { text: 'Your' },
+                { text: 'marketing', italic: true },
+                { text: 'should' },
+                { text: 'too.' },
+              ]}
+              style={{ fontSize: 'clamp(1.7rem, 3.5vw, 3rem)' }}
+            />
 
             {/* Description */}
             <p className="text-[15px] md:text-[16px] leading-relaxed mb-8 max-w-[540px] text-gray-500 font-medium">
@@ -157,10 +166,7 @@ We connect the creative, strategic, technical, and performance sides of digital 
 
             {/* CTA - Uiverse button style with brand colors */}
             <div className="mb-10 sm:mb-14">
-              <button
-                className="know-more-btn"
-                onClick={() => window.location.href = '/about'}
-              >
+              <button className="know-more-btn" onClick={() => navigate('/contact')}>
                 <span>Meet ADSSERV</span>
                 <div className="know-more-icon">
                   <ArrowUpRight className="w-5 h-5" strokeWidth={2.5} />

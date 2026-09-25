@@ -39,7 +39,7 @@ export const heroData = {
   description2: "ADSSERV builds social media marketing strategies around your audience, platform behaviour, content, creative direction, community, and business goals. From the first idea to ongoing optimisation, we turn social media into a more intentional part of your digital marketing.",
   button1Text: "Start Your Social Strategy",
   button2Text: "View Our Services",
-  button2Link: "/#services"
+  button2Link: "/services/social-media-marketing#social-what-we-do"
 };
 
 export const problemData = {

@@ -1,4 +1,4 @@
-import { Camera, Layout, Share2, MessageCircle, BarChart2, CheckCircle2, PlayCircle, Palette, Monitor, Search, Megaphone } from 'lucide-react';
+import { Camera, Layout, Share2, PlayCircle, Palette, Search, Megaphone } from 'lucide-react';
 import bgImage from '../../assets/All the Hero Section bg/Instragram Marketing.webp';
 import approachImg from '../../assets/Our_Approch (2).webp';
 
@@ -58,7 +58,7 @@ export const heroData = {
   description2: "ADSSERV builds Instagram strategies around your audience, content, brand and business goals — from what you post to how people move from a post to your next conversion.",
   button1Text: "Build My Instagram Strategy",
   button2Text: "Explore Our Services",
-  button2Link: "/#services"
+  button2Link: "/services/instagram-marketing#instagram-marketing-what-we-do"
 };
 
 export const introData = {

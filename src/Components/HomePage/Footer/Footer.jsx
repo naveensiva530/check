@@ -1,8 +1,10 @@
 import React, { useRef, useEffect } from "react";
-import { ArrowUp, ChevronRight, ArrowUpRight } from "lucide-react";
+import { ArrowUp, ChevronRight } from "lucide-react";
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Link } from "react-router-dom";
+import ButtonWithIcon from "../../ui/button-with-icon";
+import { usePopup } from "../../context/PopupContext";
 import "../common.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -37,6 +39,7 @@ const linkHoverIn = (e) => (e.currentTarget.style.color = "var(--accent-orange)"
 const linkHoverOut = (e) => (e.currentTarget.style.color = "rgba(255,255,255,0.7)");
 
 export default function Footer() {
+  const { openPopup } = usePopup();
   const footerRef = useRef(null);
 
   useEffect(() => {
@@ -86,17 +89,7 @@ export default function Footer() {
             </p>
 
             <div className="mt-2 sm:mt-4">
-              <Link
-                to="/contact"
-                onClick={() => window.scrollTo(0, 0)}
-                className="group relative inline-flex items-center justify-center gap-3 px-6 sm:px-7 py-3 sm:py-3.5 bg-[var(--accent-orange)] text-white text-[14px] sm:text-[14.5px] font-bold rounded-full shadow-[0_10px_30px_rgba(224,131,38,0.2)] hover:shadow-[0_15px_40px_rgba(224,131,38,0.4)] hover:-translate-y-1 transition-all duration-300"
-                style={{ textDecoration: "none" }}
-              >
-                <span>Start a Project</span>
-                <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center text-[var(--accent-orange)] group-hover:scale-110 transition-transform">
-                  <ArrowUpRight className="w-3.5 h-3.5" strokeWidth={2.5} />
-                </div>
-              </Link>
+              <ButtonWithIcon onClick={openPopup}>Start a Project</ButtonWithIcon>
             </div>
 
             {/* Contact info */}
@@ -170,23 +163,27 @@ export default function Footer() {
             <div className="w-8 h-[3px] mb-5 sm:mb-6 rounded-full" style={{ background: "var(--accent-orange)" }} />
             <ul className="flex flex-col gap-1">
               {[
-                "Health Care",
-                "Real Estate",
-                "Education",
-                "IT-Tech / SaaS",
-                "Beauty & Salon",
+                { name: "Health Care", path: "/industries/health-care" },
+                { name: "Real Estate", path: "/industries/real-estate" },
+                { name: "Education", path: "/industries/education" },
+                { name: "IT-Tech / SaaS", path: "/industries/it-tech-saas" },
+                { name: "Beauty & Salon", path: "/industries/beauty-salon" },
               ].map((industry) => (
-                <li key={industry}>
-                  <div
-                    className="flex items-center gap-2 text-[13.5px] sm:text-[14px] font-medium min-h-[44px] py-1"
+                <li key={industry.name}>
+                  <Link
+                    to={industry.path}
+                    onClick={() => window.scrollTo(0, 0)}
+                    className="flex items-center gap-2 text-[13.5px] sm:text-[14px] font-medium transition-all duration-200 group min-h-[44px] py-1"
                     style={linkStyle}
+                    onMouseEnter={linkHoverIn}
+                    onMouseLeave={linkHoverOut}
                   >
                     <ChevronRight
-                      className="w-3.5 h-3.5 flex-shrink-0"
+                      className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 flex-shrink-0"
                       style={{ color: "var(--accent-orange)" }}
                     />
-                    {industry}
-                  </div>
+                    {industry.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -216,10 +213,11 @@ export default function Footer() {
           className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 pt-8 pb-5 md:py-5 flex flex-col md:flex-row items-center justify-between text-[13px] sm:text-[14.5px] font-medium text-center md:text-left"
           style={{ color: "rgba(255,255,255,0.9)" }}
         >
-          <p>© 2025 <span className="font-bold">ADSSERV.</span> All rights reserved.</p>
-          <div className="flex items-center gap-4 sm:gap-6 mt-3 md:mt-0">
-            <a href="#" className="hover:underline transition-all min-h-[44px] flex items-center" style={{ color: "rgba(255,255,255,0.9)", textDecoration: "none" }}>Privacy Policy</a>
-            <a href="#" className="hover:underline transition-all min-h-[44px] flex items-center" style={{ color: "rgba(255,255,255,0.9)", textDecoration: "none" }}>Terms &amp; Conditions</a>
+          <p>&copy; 2026 <span className="font-bold">ADSSERV.</span> All rights reserved. | Website developed by <span className="font-bold">ADSSERV</span></p>
+          <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 mt-3 md:mt-0">
+            <Link to="/privacy-policy" onClick={() => window.scrollTo(0, 0)} className="hover:underline transition-all min-h-[44px] flex items-center" style={{ color: "rgba(255,255,255,0.9)", textDecoration: "none" }}>Privacy Policy</Link>
+            <Link to="/terms-and-conditions" onClick={() => window.scrollTo(0, 0)} className="hover:underline transition-all min-h-[44px] flex items-center" style={{ color: "rgba(255,255,255,0.9)", textDecoration: "none" }}>Terms &amp; Conditions</Link>
+            <Link to="/refund-cancellation" onClick={() => window.scrollTo(0, 0)} className="hover:underline transition-all min-h-[44px] flex items-center" style={{ color: "rgba(255,255,255,0.9)", textDecoration: "none" }}>Refund &amp; Cancellation Policy</Link>
           </div>
         </div>
       </div>
@@ -227,3 +225,5 @@ export default function Footer() {
     </footer>
   );
 }
+
+

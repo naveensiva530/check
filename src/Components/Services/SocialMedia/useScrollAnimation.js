@@ -13,6 +13,7 @@ gsap.registerPlugin(ScrollTrigger);
 export function useScrollAnimation(animateFn) {
   const sectionRef = useRef(null);
   const refsMap = useRef({});
+  const animateRef = useRef(animateFn);
 
   const ref = (key) => (el) => {
     if (el) refsMap.current[key] = el;
@@ -26,8 +27,12 @@ export function useScrollAnimation(animateFn) {
   };
 
   useEffect(() => {
+    animateRef.current = animateFn;
+  }, [animateFn]);
+
+  useEffect(() => {
     const ctx = gsap.context(() => {
-      animateFn(refsMap.current, sectionRef.current);
+      animateRef.current(refsMap.current, sectionRef.current);
     }, sectionRef);
     return () => ctx.revert();
   }, []);
@@ -109,3 +114,5 @@ export function scaleIn(targets, options = {}) {
     }
   );
 }
+
+

@@ -204,7 +204,7 @@ export default function PerformanceChannels() {
           {/* Left Column */}
           <div className="flex flex-col">
             {/* Eyebrow */}
-            <div className="flex items-center gap-2 mb-6">
+            <div className="services-eyebrow flex items-center gap-2 mb-6">
               <span
                 className="flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0"
                 style={{ background: 'var(--accent-orange)', boxShadow: '0 2px 8px rgba(224,131,38,0.30)' }}

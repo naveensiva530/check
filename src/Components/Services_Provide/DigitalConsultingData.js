@@ -1,5 +1,5 @@
 import { Search, Share2, Megaphone, Monitor, Palette, FileText } from 'lucide-react';
-import { Target, BarChart2, Zap, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Target, BarChart2, Zap, CheckCircle2 } from 'lucide-react';
 import bgImage from '../../assets/All the Hero Section bg/DIGITAL CONSULTING.webp';
 import approachImg from '../../assets/Our_Approch (2).webp';
 
@@ -40,7 +40,7 @@ export const heroData = {
   description2: "ADSSERV helps you identify what's working, what's getting in the way, where the real opportunities are, and what to prioritise next.",
   button1Text: "Talk to a Digital Strategist",
   button2Text: "View Our Services",
-  button2Link: "/#services"
+  button2Link: "/services/digital-consulting#digital-consulting-what-we-do"
 };
 
 export const whatWeHelpSolveData = {

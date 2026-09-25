@@ -9,8 +9,9 @@ export default function CommonWhatWeDo({
   headingWords,
   description,
   buttonText = "View More",
+  buttonAction,
+  sectionId,
   services = [],
-  icons = [] // Array of Icon components to render in the phone UI
 }) {
   const [currentIdx, setCurrentIdx] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -25,12 +26,12 @@ export default function CommonWhatWeDo({
   const prevSlide = () => setCurrentIdx((prev) => (prev - 1 + services.length) % services.length);
 
   return (
-    <section className="w-full py-14 sm:py-20 md:py-24 relative font-primary overflow-hidden" style={{ backgroundColor: 'var(--bg-light-purple)' }}>
+    <section id={sectionId} className="w-full py-14 sm:py-20 md:py-24 relative font-primary overflow-hidden" style={{ backgroundColor: 'var(--bg-light-purple)' }}>
       <div className="max-w-[1200px] w-full mx-auto px-4 md:px-8 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12 sm:gap-16 lg:gap-24">
           
           <div className="flex-1 text-center lg:text-left relative z-10">
-            <div className="flex items-center justify-center lg:justify-start gap-2 mb-6">
+            <div className="services-eyebrow flex items-center justify-center lg:justify-start gap-2 mb-6">
               <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white border border-gray-200 shadow-sm flex-shrink-0">
                 <span style={{ color: 'var(--brand-red-orange)', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
               </span>
@@ -45,7 +46,11 @@ export default function CommonWhatWeDo({
               {description}
             </p>
 
-            <ButtonWithIcon to="/contact">{buttonText}</ButtonWithIcon>
+            {buttonAction ? (
+              <ButtonWithIcon onClick={buttonAction}>{buttonText}</ButtonWithIcon>
+            ) : (
+              <ButtonWithIcon to="/contact">{buttonText}</ButtonWithIcon>
+            )}
           </div>
 
           <div className="w-full lg:w-[420px] flex justify-center flex-shrink-0 relative z-20">
@@ -79,16 +84,6 @@ export default function CommonWhatWeDo({
                       {svc.img && <img src={svc.img} alt={svc.title} className="w-full h-full object-cover object-center" loading="lazy" decoding="async" width="300" height="200" />}
                     </div>
                     <div className="absolute bottom-0 inset-x-0 h-[35%] flex flex-col justify-end p-6 pb-12 z-40 bg-white">
-                      
-                      {icons.length > 0 && (
-                        <div className="flex -space-x-1.5 mb-4">
-                           {icons.map((IconComp, i) => (
-                              <div key={i} className={`w-7 h-7 rounded-full border border-gray-200 bg-gray-50 flex items-center justify-center ${i === 0 ? 'text-[var(--accent-orange)]' : i === 1 ? 'text-[var(--brand-navy)]' : 'text-[var(--brand-purple,#8b5cf6)]'}`}>
-                                <IconComp size={12} strokeWidth={2.5} />
-                              </div>
-                           ))}
-                        </div>
-                      )}
                       
                       <h3 className="text-[var(--brand-navy)] text-[26px] font-extrabold mb-2 tracking-tight leading-tight">{svc.title}</h3>
                       <p className="text-gray-600 text-[14px] font-medium leading-relaxed">{svc.desc}</p>

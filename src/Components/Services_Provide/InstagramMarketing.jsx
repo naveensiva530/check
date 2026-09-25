@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { usePopup } from '../context/PopupContext';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../HomePage/Footer/Footer';
 import '../HomePage/common.css';
@@ -21,13 +22,10 @@ import InstagramIntro from '../Services/InstagramMarketing/InstagramIntro';
 import PlatformFirst from '../Services/InstagramMarketing/PlatformFirst';
 
 // Data
-import {
-  heroData, problemData, approachData, whatWeDoData, whyAdsservInstagramData,
-  faqData, relatedServicesData, ctaData, whoItsForData, introData,
-  contentStrategyData, platformFirstData, conversionJourneyData
-} from './InstagramMarketingData';
+import { heroData, problemData, approachData, whatWeDoData, whyAdsservInstagramData, faqData, relatedServicesData, ctaData, whoItsForData } from './InstagramMarketingData';
 
 export default function InstagramMarketing() {
+  const { openPopup } = usePopup();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -46,7 +44,7 @@ export default function InstagramMarketing() {
       <CommonProblem {...problemData} variant="cards" />
 
       {/* 4. OUR INSTAGRAM SERVICES */}
-      <CommonWhatWeDo {...whatWeDoData} />
+      <CommonWhatWeDo {...whatWeDoData} sectionId="instagram-marketing-what-we-do" buttonAction={openPopup} />
 
       {/* 5. CONTENT STRATEGY */}
       <ContentStrategy />
@@ -73,7 +71,7 @@ export default function InstagramMarketing() {
       <CommonRelatedServices {...relatedServicesData} />
 
       {/* 13. FINAL CTA */}
-      <CommonCTA {...ctaData} />
+      <CommonCTA {...ctaData} button1Action={openPopup} />
 
       <Footer />
     </div>

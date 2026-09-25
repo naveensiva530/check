@@ -1,4 +1,4 @@
-import { FileText, Search, BookOpen, Target, Users, Palette, Share2, Megaphone, Monitor } from 'lucide-react';
+import { FileText, Search, BookOpen, Palette, Share2, Megaphone, Monitor } from 'lucide-react';
 import bgImage from '../../assets/All the Hero Section bg/CONTENT WRITING.webp';
 import approachImg from '../../assets/Our_Approch (2).webp';
 
@@ -53,7 +53,7 @@ export const heroData = {
   description2: "ADSSERV creates clear, purposeful content built around your audience, brand voice, search intent and business goals.",
   button1Text: "Talk About Your Content",
   button2Text: "View Our Services",
-  button2Link: "/#services"
+  button2Link: "/services/content-writing#content-writing-what-we-do"
 };
 
 export const problemData = {

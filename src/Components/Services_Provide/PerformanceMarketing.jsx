@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { usePopup } from '../context/PopupContext';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../HomePage/Footer/Footer';
 import '../HomePage/common.css';
@@ -30,6 +31,7 @@ import {
 } from './PerformanceMarketingData';
 
 export default function PerformanceMarketing() {
+  const { openPopup } = usePopup();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -48,7 +50,7 @@ export default function PerformanceMarketing() {
       <CommonApproach {...approachData} />
 
       {/* 4. WHAT WE DO */}
-      <CommonWhatWeDo {...whatWeDoData} />
+      <CommonWhatWeDo {...whatWeDoData} sectionId="performance-marketing-what-we-do" buttonAction={openPopup} />
 
       {/* 5. PAID CHANNELS */}
       <PerformanceChannels />
@@ -81,7 +83,7 @@ export default function PerformanceMarketing() {
       <CommonRelatedServices {...relatedServicesData} />
 
       {/* 15. FINAL CTA */}
-      <CommonCTA {...ctaData} />
+      <CommonCTA {...ctaData} button1Action={openPopup} />
 
       <Footer />
     </div>

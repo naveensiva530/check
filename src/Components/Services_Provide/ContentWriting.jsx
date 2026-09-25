@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { usePopup } from '../context/PopupContext';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../HomePage/Footer/Footer';
 import '../HomePage/common.css';
@@ -29,6 +30,7 @@ import {
 } from './ContentWritingData';
 
 export default function ContentWriting() {
+  const { openPopup } = usePopup();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -52,7 +54,7 @@ export default function ContentWriting() {
       <ContentObjectives />
 
       {/* 5. WHAT WE WRITE */}
-      <WhatWeWrite />
+      <WhatWeWrite sectionId="content-writing-what-we-do" buttonAction={openPopup} />
 
       {/* 6. CONTENT PROCESS */}
       <ContentProcess />
@@ -85,7 +87,7 @@ export default function ContentWriting() {
       <CommonRelatedServices {...relatedServicesData} />
 
       {/* 16. FINAL CTA */}
-      <CommonCTA {...ctaData} />
+      <CommonCTA {...ctaData} button1Action={openPopup} />
 
       {/* FOOTER */}
       <Footer />

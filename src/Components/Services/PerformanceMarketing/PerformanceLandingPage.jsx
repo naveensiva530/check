@@ -59,7 +59,7 @@ export default function PerformanceLandingPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-20 items-start">
           <div ref={leftRef} className="flex flex-col">
-            <div className="flex items-center gap-2 mb-6">
+            <div className="services-eyebrow flex items-center gap-2 mb-6">
               <span className="flex items-center justify-center w-5 h-5 rounded-full border border-gray-200 shadow-sm flex-shrink-0" style={{ background: 'var(--accent-orange)' }}>
                 <span style={{ color: '#fff', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
               </span>

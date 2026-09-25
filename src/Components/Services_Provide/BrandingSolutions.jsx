@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { usePopup } from '../context/PopupContext';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../HomePage/Footer/Footer';
 import '../HomePage/common.css';
@@ -15,13 +16,10 @@ import CommonCTA from '../Services/common/CommonCTA';
 import BrandingStages from '../Services/BrandingSolutions/BrandingStages';
 
 // Import data
-import {
-  heroData, problemData, approachData, whatWeBuildData, marketingData,
-  digitalBrandingData, rebrandingData, whyAdsservData, faqData, relatedServicesData, ctaData,
-  imgStrategy, imgLogo, imgVisual, imgGuidelines, imgSocialMedia, imgCampaignIdentity
-} from './BrandingSolutionsData';
+import { heroData, problemData, approachData, whatWeBuildData, marketingData, digitalBrandingData, rebrandingData, whyAdsservData, faqData, relatedServicesData, ctaData } from './BrandingSolutionsData';
 
 export default function BrandingSolutions() {
+  const { openPopup } = usePopup();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -36,7 +34,7 @@ export default function BrandingSolutions() {
 
       <CommonApproach {...approachData} />
 
-      <CommonWhatWeDo {...whatWeBuildData} />
+      <CommonWhatWeDo {...whatWeBuildData} sectionId="branding-solutions-what-we-do" buttonAction={openPopup} />
 
       {/* Brand Specialty Sections */}
       <CommonSpecialty
@@ -105,7 +103,7 @@ export default function BrandingSolutions() {
 
       <CommonRelatedServices {...relatedServicesData} />
 
-      <CommonCTA {...ctaData} />
+      <CommonCTA {...ctaData} button1Action={openPopup} />
 
       <Footer />
     </div>

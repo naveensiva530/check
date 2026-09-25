@@ -1,6 +1,7 @@
 import React from 'react';
 import { Zap, Target, Layers, Briefcase, MessageSquare, RefreshCw } from 'lucide-react';
 import '../common.css';
+import ScrollRevealHeading from '../../Services/common/ScrollRevealHeading';
 
 import imgGenZ        from '../../../assets/HomePage/WhyAdsserv/Gen_Z_thinking.webp';
 import imgCreative    from '../../../assets/HomePage/WhyAdsserv/Creative_meets_performance.webp';
@@ -88,9 +89,20 @@ export default function WhyAdsserv() {
             </span>
           </div>
 
-          <h2 className="text-[28px] sm:text-[38px] md:text-[52px] font-extrabold leading-[1.1] tracking-tight mb-6" style={{ color: 'var(--text-dark-blue)' }}>
-            We'd rather be useful than sound impressive.
-          </h2>
+          <ScrollRevealHeading
+            className="mb-6"
+            words={[
+              { text: "We'd" },
+              { text: 'rather' },
+              { text: 'be', italic: true },
+              { text: 'useful', italic: true },
+              { break: true },
+              { text: 'than' },
+              { text: 'sound' },
+              { text: 'impressive.' },
+            ]}
+            style={{ fontSize: 'clamp(1.55rem, 3.2vw, 3.25rem)' }}
+          />
 
           <div className="text-[15px] sm:text-[17px] font-medium leading-relaxed" style={{ color: '#546b8d' }}>
             <p className="mb-2">

@@ -2,9 +2,6 @@ import { useEffect, useRef } from 'react';
 import '../../../Components/HomePage/common.css';
 import ScrollRevealHeading from '../SocialMedia/ScrollRevealHeading';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-const signs = [];
 
 export default function WebsiteRedesign() {
   const sectionRef = useRef(null);

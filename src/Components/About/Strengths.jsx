@@ -78,7 +78,7 @@ export default function Strengths() {
           {/* Left: Text Content */}
           <div ref={ref('eyebrow')} className="flex flex-col max-w-[650px] w-full z-10">
             {/* Eyebrow */}
-            <div className="flex items-center gap-2 mb-6">
+            <div className="about-eyebrow flex items-center gap-2 mb-6">
               <span
                 className="flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0"
                 style={{ background: 'var(--accent-orange, #e08326)', boxShadow: '0 2px 8px rgba(224,131,38,0.30)' }}
@@ -142,10 +142,7 @@ export default function Strengths() {
                 ${idx !== strengths.length - 1 ? 'lg:border-r lg:border-slate-200' : ''}
                 ${idx % 2 === 0 ? 'md:border-r md:border-slate-200 lg:border-r' : ''}`}
             >
-              {/* Top label */}
-              <div className="text-[15px] font-bold mb-6" style={{ color: 'var(--accent-orange, #F5A623)' }}>
-                Strength {s.num}
-              </div>
+
 
               {/* Content row (Image + Text) */}
               <div className="flex flex-col xl:flex-row items-start gap-5">

@@ -44,9 +44,9 @@ export default function CommonApproach({
         </div>
 
         <div ref={rightRef} className="flex-1" style={{ opacity: 0 }}>
-          <div className="flex items-center gap-2 mb-5">
+          <div className="services-eyebrow flex items-center gap-2 mb-5">
             <span className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: 'var(--accent-orange)', boxShadow: '0 2px 8px rgba(224,131,38,0.35)' }}>
-              <span style={{ color: '#fff', fontSize: '12px', fontWeight: 'bold' }}>◆</span>
+              <span style={{ color: '#fff', fontSize: '12px', fontWeight: 'bold' }}>+</span>
             </span>
             <span className="italic font-semibold uppercase tracking-widest" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '13px', color: 'var(--accent-orange)' }}>
               {tagText}

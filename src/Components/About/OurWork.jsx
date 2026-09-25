@@ -1,10 +1,11 @@
-import { Link } from 'react-router-dom';
-import { ArrowUpRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import ButtonWithIcon from '../ui/button-with-icon';
 import '../../Components/HomePage/common.css';
 import ScrollRevealHeading from '../Services/SocialMedia/ScrollRevealHeading';
 import { useScrollAnimation, fadeUp } from '../Services/SocialMedia/useScrollAnimation';
 
 export default function OurWork() {
+  const navigate = useNavigate();
   const { sectionRef, ref } = useScrollAnimation((refs, section) => {
     fadeUp([refs.eyebrow, refs.heading, refs.paragraph], {
       trigger: section,
@@ -27,7 +28,7 @@ export default function OurWork() {
       <div className="max-w-[1200px] w-full mx-auto px-4 md:px-8 relative z-10 text-center flex flex-col items-center">
 
         {/* Eyebrow */}
-        <div ref={ref('eyebrow')} className="flex items-center gap-2 mb-6">
+        <div ref={ref('eyebrow')} className="about-eyebrow flex items-center gap-2 mb-6">
           <span
             className="flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0"
             style={{ background: 'var(--accent-orange, #e08326)', boxShadow: '0 2px 8px rgba(224,131,38,0.30)' }}
@@ -74,19 +75,9 @@ export default function OurWork() {
 
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center w-full">
           <div className="w-full sm:w-auto">
-            <Link
-              ref={ref('cta')}
-              to="/projects"
-              className="group relative flex items-center justify-center gap-4 px-9 py-[18px] bg-[var(--accent-orange)] text-white text-[15px] font-bold rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto"
-            >
-              <span>Explore Projects</span>
-              <div
-                className="w-8 h-8 rounded-full bg-white flex items-center justify-center transition-transform group-hover:scale-110"
-                style={{ color: 'var(--accent-orange)' }}
-              >
-                <ArrowUpRight className="w-4 h-4" strokeWidth={2.5} />
-              </div>
-            </Link>
+            <div ref={ref('cta')}>
+              <ButtonWithIcon onClick={() => navigate('/projects')}>Explore Projects</ButtonWithIcon>
+            </div>
           </div>
         </div>
 

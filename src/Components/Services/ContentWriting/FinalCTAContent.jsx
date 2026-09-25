@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import { ArrowUpRight } from 'lucide-react';
 import ButtonWithIcon from '../../../Components/ui/button-with-icon';
 import '../../../Components/HomePage/common.css';
 import { gsap } from 'gsap';

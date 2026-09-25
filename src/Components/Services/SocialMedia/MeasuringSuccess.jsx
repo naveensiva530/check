@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { m, LazyMotion, domAnimation } from 'motion/react';
 import ScrollRevealHeading from './ScrollRevealHeading';
 import '../../../Components/HomePage/common.css';
@@ -162,7 +162,7 @@ export default function MeasuringSuccess() {
       <section className="w-full relative font-primary py-24 px-4 md:px-8 overflow-hidden" style={{ backgroundColor: 'var(--bg-light-purple)' }}>
 
 
-        <div className="max-w-[1100px] mx-auto relative z-10">
+        <div className="services-eyebrow max-w-[1100px] mx-auto relative z-10">
 
           {/* Header — two column */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-20">

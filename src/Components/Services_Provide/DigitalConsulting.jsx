@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { usePopup } from '../context/PopupContext';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../HomePage/Footer/Footer';
 import '../HomePage/common.css';
@@ -18,7 +19,6 @@ import ConsultingProcess from '../Services/DigitalConsulting/ConsultingProcess';
 import ConsultingServices from '../Services/DigitalConsulting/ConsultingServices';
 import StrategySection from '../Services/DigitalConsulting/StrategySection';
 import RoadmapSection from '../Services/DigitalConsulting/RoadmapSection';
-import ServiceConnection from '../Services/DigitalConsulting/ServiceConnection';
 import TrustSection from '../Services/DigitalConsulting/TrustSection';
 import WhoItsFor from '../Services/DigitalConsulting/WhoItsFor';
 
@@ -29,6 +29,7 @@ import {
 } from './DigitalConsultingData';
 
 export default function DigitalConsulting() {
+  const { openPopup } = usePopup();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -53,7 +54,7 @@ export default function DigitalConsulting() {
       <ConsultingProcess />
 
       {/* 6. CONSULTING SERVICES */}
-      <ConsultingServices />
+      <ConsultingServices sectionId="digital-consulting-what-we-do" buttonAction={openPopup} />
 
       {/* 7. THE DIGITAL STRATEGY */}
       <StrategySection />
@@ -79,7 +80,7 @@ export default function DigitalConsulting() {
       <CommonRelatedServices {...relatedServicesData} />
 
       {/* 14. FINAL CTA */}
-      <CommonCTA {...ctaData} />
+      <CommonCTA {...ctaData} button1Action={openPopup} />
 
       {/* 15. FOOTER */}
       <Footer />

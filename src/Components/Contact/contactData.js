@@ -43,7 +43,7 @@ export const contactDetails = {
   eyebrow: "GET IN TOUCH",
   title: "We’re ready to hear from you.",
   email: "connect@adsserv.in",
-  phone: "+91 7603912438",
+  phone: "+91-7603912438",
 
 };
 
@@ -252,4 +252,3 @@ export const contactCTAData = {
   button1Link: "/contact",
   button2Link: "/services"
 };
-

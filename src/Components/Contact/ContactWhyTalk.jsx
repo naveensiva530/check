@@ -126,13 +126,13 @@ export default function ContactWhyTalk({ onScrollToForm }) {
           <div className="flex items-center justify-center gap-2 mb-6">
             <span
               className="flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0"
-              style={{ background: 'var(--accent-orange, #e08326)', boxShadow: '0 2px 8px rgba(224,131,38,0.30)' }}
+              style={{ background: '#fff', border: '1px solid #e2e8f0', boxShadow: '0 2px 6px rgba(30,47,87,0.08)' }}
             >
-              <span style={{ color: '#fff', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
+              <span style={{ color: 'var(--accent-orange, #e08326)', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
             </span>
             <span
               className="italic font-semibold uppercase tracking-widest text-[13px]"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif", color: 'var(--accent-orange, #e08326)' }}
+              style={{ fontFamily: "'Playfair Display', Georgia, serif", color: 'var(--brand-navy, #1e2f57)' }}
             >
               {whyTalkData.eyebrow}
             </span>

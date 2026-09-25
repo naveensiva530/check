@@ -5,27 +5,15 @@ import CurtainLoader from "./Components/ui/CurtainLoader";
 import Lenis from "lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { preloadAllImages, preloadAllRoutes } from "./lib/preloadAssets";
+import { PopupProvider } from "./Components/context/PopupContext";
+import ProjectPopupForm from "./Components/ui/ProjectPopupForm";
+import PageHead from "./Components/SEO/PageHead";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Kick off full preload immediately when module loads (non-blocking)
-if (typeof window !== "undefined") {
-  // Use requestIdleCallback to preload after first paint so it doesn't block UI
-  const kickPreload = () => {
-    preloadAllRoutes();
-    preloadAllImages();
-  };
-  if (typeof requestIdleCallback !== "undefined") {
-    requestIdleCallback(kickPreload, { timeout: 800 });
-  } else {
-    setTimeout(kickPreload, 800);
-  }
-}
-
 // Global Lenis smooth scroll manager across all routes
 function SmoothScrollManager() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -55,15 +43,29 @@ function SmoothScrollManager() {
   }, []);
 
   useEffect(() => {
-    if (window.__lenis) {
-      window.__lenis.scrollTo(0, { immediate: true });
-    }
-    window.scrollTo(0, 0);
+    const hashScrollTimer = setTimeout(() => {
+      if (hash) {
+        const target = document.getElementById(decodeURIComponent(hash.slice(1)));
+        if (target && window.__lenis) {
+          window.__lenis.scrollTo(target, { offset: -90 });
+        } else if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          window.scrollTo(0, 0);
+        }
+      } else {
+        if (window.__lenis) window.__lenis.scrollTo(0, { immediate: true });
+        window.scrollTo(0, 0);
+      }
+    }, hash ? 50 : 0);
     const refreshTimer = setTimeout(() => {
       ScrollTrigger.refresh();
     }, 250);
-    return () => clearTimeout(refreshTimer);
-  }, [pathname]);
+    return () => {
+      clearTimeout(hashScrollTimer);
+      clearTimeout(refreshTimer);
+    };
+  }, [pathname, hash]);
 
   return null;
 }
@@ -76,6 +78,9 @@ const BlogArticlePage = lazy(() => import("./Components/Pages/BlogArticlePage"))
 const FAQPage = lazy(() => import("./Components/Pages/FAQPage"));
 const ContactPage = lazy(() => import("./Components/Pages/ContactPage"));
 const ServicesPage = lazy(() => import("./Components/Pages/ServicesPage"));
+const PrivacyPolicyPage = lazy(() => import("./Components/Pages/PrivacyPolicyPage"));
+const TermsAndConditionsPage = lazy(() => import("./Components/Pages/TermsAndConditionsPage"));
+const RefundCancellationPage = lazy(() => import("./Components/Pages/RefundCancellationPage"));
 const NotFoundPage = lazy(() => import("./Components/Pages/NotFoundPage"));
 
 // Code-split service detail pages
@@ -89,6 +94,13 @@ const BrandingSolutions = lazy(() => import("./Components/Services_Provide/Brand
 const DigitalConsulting = lazy(() => import("./Components/Services_Provide/DigitalConsulting"));
 const ContentWriting = lazy(() => import("./Components/Services_Provide/ContentWriting"));
 const InstagramMarketing = lazy(() => import("./Components/Services_Provide/InstagramMarketing"));
+
+// Code-split industry pages
+const HealthCare = lazy(() => import("./Components/Industries/HealthCare/HealthCare"));
+const RealEstate = lazy(() => import("./Components/Industries/RealEstate/RealEstate"));
+const Education = lazy(() => import("./Components/Industries/Education/Education"));
+const ItTechSaaS = lazy(() => import("./Components/Industries/ItTechSaaS/ItTechSaaS"));
+const BeautySalon = lazy(() => import("./Components/Industries/BeautySalon/BeautySalon"));
 
 export default function App() {
   const [showLoader, setShowLoader] = useState(() => {
@@ -121,24 +133,20 @@ export default function App() {
     }
   }, [showLoader]);
 
-  // Also preload during the loader phase so everything is ready when it finishes
-  useEffect(() => {
-    preloadAllRoutes();
-    preloadAllImages();
-  }, []);
-
   return (
     <>
       {showLoader && (
         <CurtainLoader
-          title="ADS SERV"
+          title="ADSSERV"
           subtitle="2026"
           onComplete={() => setShowLoader(false)}
         />
       )}
-      <Router>
-        <SmoothScrollManager />
-        <Suspense fallback={<div className="w-full min-h-screen bg-white" />}>
+      <PopupProvider>
+        <Router>
+          <PageHead />
+          <SmoothScrollManager />
+          <Suspense fallback={<div className="w-full min-h-screen bg-white" />}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<AboutPage />} />
@@ -148,6 +156,10 @@ export default function App() {
             <Route path="/faq" element={<FAQPage />} />
             <Route path="/faqs" element={<FAQPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="/terms-and-conditions" element={<TermsAndConditionsPage />} />
+            <Route path="/refund-cancellation" element={<RefundCancellationPage />} />
 
             <Route path="/services/social-media-marketing" element={<SocialMediaMarketing />} />
             <Route path="/services/performance-marketing" element={<PerformanceMarketing />} />
@@ -159,10 +171,20 @@ export default function App() {
             <Route path="/services/digital-consulting" element={<DigitalConsulting />} />
             <Route path="/services/content-writing" element={<ContentWriting />} />
             <Route path="/services/instagram-marketing" element={<InstagramMarketing />} />
+
+            {/* Industry Pages */}
+            <Route path="/industries/health-care" element={<HealthCare />} />
+            <Route path="/industries/real-estate" element={<RealEstate />} />
+            <Route path="/industries/education" element={<Education />} />
+            <Route path="/industries/it-tech-saas" element={<ItTechSaaS />} />
+            <Route path="/industries/beauty-salon" element={<BeautySalon />} />
+
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
       </Router>
+      <ProjectPopupForm />
+      </PopupProvider>
     </>
   );
 }

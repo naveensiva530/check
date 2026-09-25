@@ -1,18 +1,5 @@
 import React from 'react';
-import {
-  ExternalLink,
-  CheckCircle2,
-  ArrowRight,
-  Sparkles,
-  Target,
-  Share2,
-  Briefcase,
-  BookOpen,
-  Bell,
-  MessageSquareHeart,
-  ShieldCheck,
-  Lightbulb
-} from 'lucide-react';
+import { ExternalLink, ArrowRight, Sparkles, BookOpen, Bell, MessageSquareHeart, ShieldCheck } from 'lucide-react';
 import '../../Components/HomePage/common.css';
 
 import icon1 from '../../assets/WhyAdsserv/icon1.png';
@@ -112,7 +99,7 @@ export default function ProjectCaseStudy({ project, isLast }) {
 
             {/* Project Overview */}
             <div className="space-y-3 pt-2">
-              <div className="flex items-center gap-2">
+              <div className="services-eyebrow flex items-center gap-2">
                 <span
                   className="flex items-center justify-center w-4 h-4 rounded-full flex-shrink-0"
                   style={{ background: 'var(--accent-orange)' }}
@@ -142,7 +129,7 @@ export default function ProjectCaseStudy({ project, isLast }) {
                 boxShadow: '0 25px 50px -12px rgba(30, 47, 87, 0.18), 0 10px 24px -6px rgba(30, 47, 87, 0.10), 0 0 0 1px rgba(30, 47, 87, 0.05)'
               }}
             >
-              <div className="flex items-center gap-2 mb-6">
+              <div className="services-eyebrow flex items-center gap-2 mb-6">
                 <span
                   className="flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0"
                   style={{ background: 'var(--accent-orange)' }}
@@ -231,7 +218,7 @@ export default function ProjectCaseStudy({ project, isLast }) {
           }}
         >
           <div className="max-w-3xl mb-8">
-            <div className="flex items-center gap-2 mb-4">
+            <div className="services-eyebrow flex items-center gap-2 mb-4">
               <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white border border-gray-200 shadow-sm flex-shrink-0">
                 <span style={{ color: '#f97316', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
               </span>
@@ -271,7 +258,7 @@ export default function ProjectCaseStudy({ project, isLast }) {
         {/* ── SECTION: FOCUS PILLARS (CommonWhyAdsserv 5-card grid style) ────── */}
         <div className="mb-16">
           <div className="mb-8">
-            <div className="flex items-center gap-2 mb-4">
+            <div className="services-eyebrow flex items-center gap-2 mb-4">
               <span
                 className="flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0"
                 style={{ background: 'var(--accent-orange)' }}
@@ -330,7 +317,7 @@ export default function ProjectCaseStudy({ project, isLast }) {
             }}
           >
             <div className="max-w-2xl mb-8">
-              <div className="flex items-center gap-2 mb-4">
+              <div className="services-eyebrow flex items-center gap-2 mb-4">
                 <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white border border-gray-200 shadow-sm flex-shrink-0">
                   <span style={{ color: '#f97316', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
                 </span>
@@ -384,7 +371,7 @@ export default function ProjectCaseStudy({ project, isLast }) {
           }}
         >
           <div className="mb-8 max-w-3xl">
-            <div className="flex items-center gap-2 mb-4">
+            <div className="services-eyebrow flex items-center gap-2 mb-4">
               <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white border border-gray-200 shadow-sm flex-shrink-0">
                 <span style={{ color: '#f97316', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
               </span>
@@ -438,7 +425,7 @@ export default function ProjectCaseStudy({ project, isLast }) {
         {project.specialInsight && (
           <div className="bg-white rounded-[28px] p-8 md:p-10 border border-orange-200/80 mb-16 shadow-[0_15px_40px_rgba(0,0,0,0.03)]">
             <div className="max-w-3xl mb-6">
-              <div className="flex items-center gap-2 mb-4">
+              <div className="services-eyebrow flex items-center gap-2 mb-4">
                 <span
                   className="flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0"
                   style={{ background: 'var(--accent-orange)' }}

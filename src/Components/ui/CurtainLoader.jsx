@@ -8,7 +8,7 @@ const TOP_STRIP_DELAYS = [0, 0.2, 0.4, 0.6, 0.7, 0.4, 0.2, 0];
 const BOTTOM_STRIP_DELAYS = [0, 0.2, 0.4, 0.6, 0.7, 0.4, 0.2, 0];
 
 export default function CurtainLoader({
-  title = "ADS SERV",
+  title = "ADSSERV",
   subtitle = "2026",
   backgroundColor = "var(--bg-light-purple, #ddd0f5)",
   sectionColor = "#d4c4f0",

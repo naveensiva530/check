@@ -1,5 +1,5 @@
 import { cn } from "../../lib/utils";
-import { useRef, useState, useLayoutEffect } from "react";
+import { useCallback, useRef, useState, useLayoutEffect } from "react";
 import gsap from "gsap";
 
 const defaultItems = [
@@ -34,7 +34,7 @@ export const ConnoisseurStackInteractor = ({
   const mainGroupRef = useRef(null);
   const masterTl = useRef(null);
 
-  const createLoop = (index) => {
+  const createLoop = useCallback((index) => {
     const item = items[index];
     const selector = `#${item.clipId} .path`;
 
@@ -72,14 +72,14 @@ export const ConnoisseurStackInteractor = ({
       });
 
     masterTl.current = tl;
-  };
+  }, [items]);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       createLoop(0);
     }, containerRef);
     return () => ctx.revert();
-  }, []);
+  }, [createLoop]);
 
   const handleItemHover = (index) => {
     if (index === activeIndex) return;

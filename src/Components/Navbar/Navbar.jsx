@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Search, ChevronDown, X, Menu } from "lucide-react";
 import logo from "../../assets/logo.webp";
 import { preloadRoute } from "../../lib/preloadAssets";
+import { usePopup } from "../context/PopupContext";
 
 const serviceLinks = [
   { label: "Social Media Marketing", path: "/services/social-media-marketing" },
@@ -41,6 +42,7 @@ const serviceColumns = [
 ];
 
 const Navbar = () => {
+  const { openPopup } = usePopup();
   const menuItems = ["HOME", "ABOUT", "SERVICES", "PROJECTS", "BLOG"];
 
   const location = useLocation();
@@ -72,15 +74,15 @@ const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+    setMobileServicesOpen(false);
+  };
+
   const servicesRef = useRef(null);
   const scrolledServicesRef = useRef(null);
   const leaveTimerRef = useRef(null);
   const scrolledLeaveTimerRef = useRef(null);
-
-  useEffect(() => {
-    setMobileMenuOpen(false);
-    setMobileServicesOpen(false);
-  }, [location.pathname]);
 
   useEffect(() => {
     if (mobileMenuOpen) {
@@ -306,6 +308,157 @@ const Navbar = () => {
         }
         .mega-menu-link:hover { color: #ff6b35; }
         .mega-menu-link:hover::after { width: 100%; }
+
+        /* ─── Brand Styled btn-17 (Uiverse.io format with Brand Font & Orange Accent) ─── */
+        .btn-17,
+        .btn-17 *,
+        .btn-17 :after,
+        .btn-17 :before,
+        .btn-17:after,
+        .btn-17:before {
+          border: 0 solid;
+          box-sizing: border-box;
+        }
+
+        .btn-17 {
+          -webkit-tap-highlight-color: transparent;
+          -webkit-appearance: button;
+          background-color: #111827;
+          background-image: none;
+          color: #ffffff;
+          cursor: pointer;
+          font-family: var(--font-primary, 'Figtree', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+          font-size: 14px;
+          font-weight: 600;
+          line-height: 1.5;
+          letter-spacing: 0.2px;
+          margin: 0;
+          -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
+          padding: 0.65rem 1.8rem;
+          text-transform: none;
+          border-radius: 99rem;
+          border: 2px solid #111827;
+          z-index: 0;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          white-space: nowrap;
+          text-decoration: none;
+          transition: border-color 0.3s ease, box-shadow 0.3s ease;
+          box-shadow: 0 2px 8px rgba(17, 24, 39, 0.12);
+        }
+
+        .btn-17:disabled {
+          cursor: default;
+        }
+
+        .btn-17:-moz-focusring {
+          outline: auto;
+        }
+
+        .btn-17 svg {
+          display: block;
+          vertical-align: middle;
+        }
+
+        .btn-17 [hidden] {
+          display: none;
+        }
+
+        .btn-17,
+        .btn-17 .text-container {
+          overflow: hidden;
+          position: relative;
+        }
+
+        .btn-17 .text-container {
+          display: block;
+          position: relative;
+          z-index: 2;
+        }
+
+        .btn-17 .text {
+          display: block;
+          position: relative;
+          color: #ffffff;
+        }
+
+        .btn-17:hover {
+          border-color: #ff6b35;
+          box-shadow: 0 4px 18px rgba(255, 107, 53, 0.35);
+        }
+
+        .btn-17:hover .text {
+          -webkit-animation: move-up-alternate 0.3s forwards;
+          animation: move-up-alternate 0.3s forwards;
+        }
+
+        @-webkit-keyframes move-up-alternate {
+          0% {
+            transform: translateY(0);
+          }
+
+          50% {
+            transform: translateY(80%);
+          }
+
+          51% {
+            transform: translateY(-80%);
+          }
+
+          to {
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes move-up-alternate {
+          0% {
+            transform: translateY(0);
+          }
+
+          50% {
+            transform: translateY(80%);
+          }
+
+          51% {
+            transform: translateY(-80%);
+          }
+
+          to {
+            transform: translateY(0);
+          }
+        }
+
+        .btn-17:after,
+        .btn-17:before {
+          --skew: 0.2;
+          background: #ff6b35;
+          content: "";
+          display: block;
+          height: 102%;
+          left: calc(-50% - 50% * var(--skew));
+          pointer-events: none;
+          position: absolute;
+          top: -104%;
+          transform: skew(calc(150deg * var(--skew))) translateY(var(--progress, 0));
+          transition: transform 0.25s ease;
+          width: 100%;
+          z-index: 1;
+        }
+
+        .btn-17:after {
+          --progress: 0%;
+          left: calc(50% + 50% * var(--skew));
+          top: 102%;
+        }
+
+        .btn-17:hover:before {
+          --progress: 100%;
+        }
+
+        .btn-17:hover:after {
+          --progress: -102%;
+        }
       `}</style>
 
       {/* ── Search Popup Overlay ── */}
@@ -329,9 +482,9 @@ const Navbar = () => {
         >
           <div className="w-full px-4 sm:px-8 md:px-12 py-5 sm:py-7 flex justify-between items-center box-border">
             <div className="flex items-center gap-2 sm:gap-3">
-              <div className="w-[140px] h-11 sm:w-[170px] sm:h-14 bg-transparent rounded-xl flex justify-center items-center p-1.5 flex-shrink-0">
-                <img src={logo} alt="Logo" className="w-full h-full object-contain" />
-              </div>
+              <Link to="/" onClick={() => { setIsSearchOpen(false); window.scrollTo(0, 0); }} aria-label="Go to homepage" className="w-[140px] h-11 sm:w-[170px] sm:h-14 bg-transparent rounded-xl flex justify-center items-center p-1.5 flex-shrink-0">
+                <img src={logo} alt="ADS SERV Logo" className="w-full h-full object-contain" />
+              </Link>
             </div>
             <button
               onClick={() => setIsSearchOpen(false)}
@@ -390,7 +543,7 @@ const Navbar = () => {
       <div
         className={`lg:hidden fixed inset-0 bg-black/60 z-[100000] backdrop-blur-sm transition-opacity duration-300 ${mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
           }`}
-        onClick={() => setMobileMenuOpen(false)}
+        onClick={closeMobileMenu}
       />
 
       {/* ── Mobile Slide-Over Drawer Content ── */}
@@ -401,12 +554,12 @@ const Navbar = () => {
         {/* Drawer Header */}
         <div className="p-5 border-b border-gray-100 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="w-[130px] h-10 sm:w-[150px] sm:h-11 rounded-lg bg-transparent p-1 flex items-center justify-center flex-shrink-0 transition-all">
-              <img src={logo} alt="Logo" className="w-full h-full object-contain" />
-            </div>
+            <Link to="/" onClick={() => { closeMobileMenu(); window.scrollTo(0, 0); }} aria-label="Go to homepage" className="w-[130px] h-10 sm:w-[150px] sm:h-11 rounded-lg bg-transparent p-1 flex items-center justify-center flex-shrink-0 transition-all">
+              <img src={logo} alt="ADS SERV Logo" className="w-full h-full object-contain" />
+            </Link>
           </div>
           <button
-            onClick={() => setMobileMenuOpen(false)}
+            onClick={closeMobileMenu}
             className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:text-gray-900 border-none cursor-pointer"
           >
             <X size={18} />
@@ -446,7 +599,7 @@ const Navbar = () => {
                         <Link
                           key={si}
                           to={s.path}
-                          onClick={() => { setMobileMenuOpen(false); window.scrollTo(0, 0); }}
+                          onClick={() => { closeMobileMenu(); window.scrollTo(0, 0); }}
                           style={{ textDecoration: "none" }}
                           className="flex items-center gap-2 text-[14px] font-medium text-gray-600 hover:text-[#ff6b35] transition-colors py-0.5"
                         >
@@ -464,7 +617,7 @@ const Navbar = () => {
               <div key={index} className="border-b border-gray-100 pb-3">
                 <Link
                   to={routeMap[item] || "/"}
-                  onClick={() => { setMobileMenuOpen(false); window.scrollTo(0, 0); }}
+                  onClick={() => { closeMobileMenu(); window.scrollTo(0, 0); }}
                   style={{ textDecoration: "none" }}
                   className={`block text-lg font-bold transition-colors ${active ? "text-[#7c3aed]" : "text-gray-800 hover:text-[#ff6b35]"
                     }`}
@@ -478,14 +631,15 @@ const Navbar = () => {
 
         {/* Drawer Bottom CTA */}
         <div className="p-6 border-t border-gray-100 bg-gray-50/50 space-y-3">
-          <Link
-            to="/contact"
-            onClick={() => { setMobileMenuOpen(false); window.scrollTo(0, 0); }}
-            style={{ textDecoration: "none" }}
-            className="w-full flex items-center justify-center py-3.5 px-6 rounded-full bg-[#111827] text-white font-bold text-[15px] shadow-md hover:bg-[#ff6b35] transition-colors"
+          <button
+            onClick={(e) => { e.preventDefault(); closeMobileMenu(); openPopup(); }}
+            className="btn-17 w-full"
+            style={{ width: "100%", padding: "0.85rem 1.5rem" }}
           >
-            Start a Project
-          </Link>
+            <span className="text-container">
+              <span className="text">Start a Project</span>
+            </span>
+          </button>
           <p className="text-center text-xs text-gray-400 font-medium m-0">
             connect@adsserv.in • Tamil Nadu, India
           </p>
@@ -506,9 +660,9 @@ const Navbar = () => {
         }}
       >
         {/* Scrolled Logo */}
-        <div style={{ display: "flex", alignItems: "center", gap: "12px", cursor: "pointer" }}>
+        <Link to="/" onClick={() => window.scrollTo(0, 0)} aria-label="Go to homepage" style={{ display: "flex", alignItems: "center", gap: "12px", cursor: "pointer" }}>
           <img src={logo} alt="Logo" style={{ width: "180px", height: "65px", objectFit: "contain" }} />
-        </div>
+        </Link>
 
         {/* Scrolled Menu Items */}
         <ul style={{ display: "flex", alignItems: "center", gap: "clamp(18px, 2.2vw, 36px)", listStyle: "none", margin: 0, padding: 0 }}>
@@ -565,12 +719,14 @@ const Navbar = () => {
 
         {/* Right Area: CTA */}
         <div style={{ display: "flex", alignItems: "center", borderLeft: "1px solid #d1d5db", paddingLeft: "24px" }}>
-          <Link to="/contact" style={{ background: "#111827", color: "#ffffff", padding: "10px 24px", borderRadius: "50px", fontSize: "14px", fontWeight: "600", textDecoration: "none", transition: "background 0.3s ease" }}
-            onMouseEnter={(e) => e.currentTarget.style.background = "#ff6b35"}
-            onMouseLeave={(e) => e.currentTarget.style.background = "#111827"}
+          <button
+            onClick={openPopup}
+            className="btn-17"
           >
-            Start a Project
-          </Link>
+            <span className="text-container">
+              <span className="text">Start a Project</span>
+            </span>
+          </button>
         </div>
       </div>
 
@@ -591,12 +747,12 @@ const Navbar = () => {
             boxSizing: "border-box",
           }}
         >
-          <div style={{ display: "flex", alignItems: "center", gap: "14px", cursor: "pointer" }}>
+          <Link to="/" onClick={() => window.scrollTo(0, 0)} aria-label="Go to homepage" style={{ display: "flex", alignItems: "center", gap: "14px", cursor: "pointer" }}>
             <div
               style={{ width: "210px", height: "72px", borderRadius: "10px", background: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, padding: "8px", boxSizing: "border-box" }}>
               <img src={logo} alt="Logo" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
             </div>
-          </div>
+          </Link>
         </div>
 
         {/* ── White Navbar Bar ── */}
@@ -666,13 +822,14 @@ const Navbar = () => {
           {/* Right Area: CTA */}
           <div
             style={{ display: "flex", alignItems: "center", borderLeft: "1px solid #d1d5db", paddingLeft: "24px" }}>
-            <Link to="/contact"
-              style={{ background: "#111827", color: "#ffffff", padding: "10px 24px", borderRadius: "50px", fontSize: "14px", fontWeight: "600", textDecoration: "none", transition: "background 0.3s ease" }}
-              onMouseEnter={(e) => e.currentTarget.style.background = "#ff6b35"}
-              onMouseLeave={(e) => e.currentTarget.style.background = "#111827"}
+            <button
+              onClick={openPopup}
+              className="btn-17"
             >
-              Start a Project
-            </Link>
+              <span className="text-container">
+                <span className="text">Start a Project</span>
+              </span>
+            </button>
           </div>
         </div>
       </header>

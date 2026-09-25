@@ -1,22 +1,23 @@
 // src/components/Services.jsx
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../common.css";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import ScrollRevealHeading from '../../Services/common/ScrollRevealHeading';
 
 // Import all service images from assets/HomePage/Services folder
 import socialMediaImg from "../../../assets/HomePage/Services/Social Media Marketing.webp";
 import performanceImg from "../../../assets/HomePage/Services/Performance marketing.webp";
-import websiteDevImg  from "../../../assets/HomePage/Services/Website Development.webp";
-import influencerImg  from "../../../assets/HomePage/Services/Influncer Marketing.webp";
-import seoImg         from "../../../assets/HomePage/Services/SEO.webp";
-import videoImg       from "../../../assets/HomePage/Services/Video Production.webp";
-import brandingImg    from "../../../assets/Services/Branding Solution.webp";
-import consultingImg  from "../../../assets/HomePage/Services/Digital consulting.webp";
-import contentImg     from "../../../assets/HomePage/Services/Content Writing.webp";
-import instagramImg   from "../../../assets/HomePage/Services/Instragram marketing.webp";
+import websiteDevImg from "../../../assets/HomePage/Services/Website Development.webp";
+import influencerImg from "../../../assets/HomePage/Services/Influncer Marketing.webp";
+import seoImg from "../../../assets/HomePage/Services/SEO.webp";
+import videoImg from "../../../assets/HomePage/Services/Video Production.webp";
+import brandingImg from "../../../assets/Services/Branding Solution.webp";
+import consultingImg from "../../../assets/HomePage/Services/Digital consulting.webp";
+import contentImg from "../../../assets/HomePage/Services/Content Writing.webp";
+import instagramImg from "../../../assets/HomePage/Services/Instragram marketing.webp";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -256,12 +257,21 @@ export default function Services() {
           </div>
 
           {/* title */}
-          <h2
-            className="text-[26px] sm:text-[38px] md:text-[46px] font-extrabold leading-[1.15] tracking-tight max-w-[700px]"
-            style={{ color: "var(--text-dark-blue)" }}
-          >
-            Everything your digital presence needs. Nothing it doesn't.
-          </h2>
+          <ScrollRevealHeading
+            className=""
+            words={[
+              { text: 'Everything' },
+              { text: 'your' },
+              { text: 'digital', italic: true },
+              { text: 'presence', italic: true },
+              { text: 'needs.' },
+              { break: true },
+              { text: 'Nothing' },
+              { text: 'it' },
+              { text: "doesn't." },
+            ]}
+            style={{ fontSize: 'clamp(1.55rem, 3vw, 2.9rem)' }}
+          />
 
           {/* subtitle */}
           <p
@@ -310,10 +320,7 @@ export default function Services() {
                   }}
                   onMouseEnter={() => setHoveredKey(s._key)}
                   onMouseLeave={() => setHoveredKey(null)}
-                  onClick={() => {
-                    navigate(s.path);
-                    window.scrollTo(0, 0);
-                  }}
+                  onClick={() => navigate(s.path)}
                 >
                   {/* FLOATING ICON */}
                   <div
@@ -415,7 +422,6 @@ export default function Services() {
                           onClick={(e) => {
                             e.stopPropagation();
                             navigate(s.path);
-                            window.scrollTo(0, 0);
                           }}
                         >
                           <ArrowUpRight className="h-5 w-5" />

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { createElement, useEffect } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../HomePage/Footer/Footer';
@@ -22,9 +22,9 @@ const articleCTAConfig = {
     relatedSlugs: ['how-to-build-a-digital-marketing-strategy', 'why-your-business-needs-a-social-media-strategy'],
   },
   'why-your-business-needs-a-social-media-strategy': {
-    eyebrow: 'LOOKING FOR STRATEGIC SOCIAL MEDIA GROWTH?',
-    title: 'Turn Followers into Commercial Customers',
-    copy: 'If your social media is not generating meaningful engagement, qualified inquiries or brand recognition, we can help build a platform-native strategy that delivers measurable business outcomes.',
+    eyebrow: 'SOCIAL MEDIA STRATEGY',
+    title: 'Want to Build a Stronger Social Media Presence?',
+    copy: 'If your social media feels inconsistent, difficult to manage or disconnected from your business goals, a clearer strategy can help bring everything together. ADSSERV can help businesses develop social media strategies, content systems and campaigns designed around their audience, brand and growth objectives.',
     primaryLabel: 'Talk to Our Team',
     primaryLink: '/contact',
     secondaryLabel: 'Explore Social Media Services',
@@ -32,9 +32,9 @@ const articleCTAConfig = {
     relatedSlugs: ['seo-in-the-age-of-ai-search', 'how-to-build-a-digital-marketing-strategy'],
   },
   'how-to-build-a-digital-marketing-strategy': {
-    eyebrow: 'READY TO CONNECT EVERY MARKETING CHANNEL?',
-    title: 'Build a Synchronized Growth Engine',
-    copy: 'Stop running disconnected campaigns. ADSSERV helps ambitious businesses unite SEO, paid advertising, social media, and web conversion into a cohesive, high-performing system.',
+    eyebrow: 'CONNECTED DIGITAL MARKETING STRATEGY',
+    title: 'Want a More Connected Digital Marketing Strategy?',
+    copy: 'If your SEO, content, social media, paid advertising and website activity feel disconnected, the first step is to understand what is working, what is missing and where the biggest opportunities are. ADSSERV can help businesses build a more connected digital marketing approach around their audience, objectives, customer journey and measurable business outcomes.',
     primaryLabel: 'Talk to Our Team',
     primaryLink: '/contact',
     secondaryLabel: 'Explore Digital Consulting',
@@ -66,28 +66,28 @@ export default function BlogArticlePage() {
       <Navbar />
       <BlogArticleHero post={post} />
       <main className="flex-1">
-        {/* Featured Visual Image from assets/Blog */}
-        {post.image && (
-          <div className="max-w-[850px] mx-auto px-4 md:px-8 pt-10 -mb-2">
+        {/* Featured article image from assets/Blog/Artical Inside image */}
+        {post.articleImage && (
+          <div className="max-w-[520px] mx-auto px-4 md:px-8 pt-10 -mb-2">
             <div
-              className="w-full h-[300px] sm:h-[380px] md:h-[440px] rounded-[32px] overflow-hidden border border-purple-100/80 shadow-[0_15px_40px_rgba(30,47,87,0.06)] flex items-center justify-center transition-transform duration-500 hover:scale-[1.01]"
-              style={{ backgroundColor: post.cardBg || '#FFF9F5' }}
+              className="w-full aspect-square rounded-[28px] overflow-hidden border border-purple-100/80 shadow-[0_15px_40px_rgba(30,47,87,0.06)] flex items-center justify-center transition-transform duration-500 hover:scale-[1.01]"
+              style={{ backgroundColor: '#D9C6FF' }}
             >
               <div
                 className="w-full h-full rounded-[24px] flex items-center justify-center overflow-hidden"
-                style={{ backgroundColor: post.circleBg || '#FCE6D2' }}
+                style={{ backgroundColor: '#D9C6FF' }}
               >
                 <img
-                  src={post.image}
+                  src={post.articleImage}
                   alt={post.title}
-                  className="w-full h-full object-cover drop-shadow-md"
+                  className="w-full h-full object-contain drop-shadow-md"
                 />
               </div>
             </div>
           </div>
         )}
 
-        <ArticleContent />
+        {createElement(ArticleContent)}
         {ctaConfig && (
           <ArticleCTA
             eyebrow={ctaConfig.eyebrow}
@@ -106,3 +106,5 @@ export default function BlogArticlePage() {
     </div>
   );
 }
+
+

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowUpRight, ChevronLeft, ChevronRight, Sparkles, TrendingUp, Target } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Sparkles, TrendingUp, Target } from 'lucide-react';
 import ButtonWithIcon from '../../../Components/ui/button-with-icon';
 import ScrollRevealHeading from './ScrollRevealHeading';
 import '../../../Components/HomePage/common.css';
@@ -198,7 +198,7 @@ export default function PerformanceWhatWeDo() {
 
                     {/* Image Container (Vertical poster format) */}
                     <div className="absolute top-[88px] inset-x-5 bottom-[34%] rounded-2xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 shadow-md flex items-center justify-center p-4">
-                      {imgErrors[i] ? (
+                      {imgErrors[idx] ? (
                         <div className="w-full h-full flex flex-col items-center justify-center text-gray-400">
                           <Target size={48} strokeWidth={1.5} className="mb-2 text-[var(--accent-orange)]" />
                           <span className="text-sm font-medium">{svc.title}</span>
@@ -209,7 +209,7 @@ export default function PerformanceWhatWeDo() {
                           alt={svc.title}
                           className="w-full h-full object-contain object-center drop-shadow-sm"
                           loading="lazy"
-                          onError={() => handleImgError(i)}
+                          onError={() => handleImgError(idx)}
                         />
                       )}
                     </div>

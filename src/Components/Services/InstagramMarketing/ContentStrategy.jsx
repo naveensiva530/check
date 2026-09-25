@@ -74,7 +74,7 @@ export default function ContentStrategy() {
         <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 mb-20 items-center">
 
           <div ref={leftRef} className="flex flex-col">
-            <div className="flex items-center gap-2 mb-6">
+            <div className="services-eyebrow flex items-center gap-2 mb-6">
               <span className="flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0" style={{ background: 'var(--accent-orange)', boxShadow: '0 2px 8px rgba(224,131,38,0.30)' }}>
                 <span style={{ color: '#fff', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
               </span>

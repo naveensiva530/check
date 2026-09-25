@@ -119,12 +119,16 @@ export default function BlogNewsletter() {
         {/* Headline section */}
         <div ref={headlineRef} className="flex flex-col items-center w-full">
           {/* Eyebrow */}
-          <div className="flex items-center gap-3 mb-8">
-            <div className="w-8 h-[3px] rounded-full" style={{ background: 'var(--brand-orange, #e08326)' }}></div>
-            <span className="text-xs font-bold tracking-[5px] uppercase" style={{ color: 'var(--brand-orange, #e08326)' }}>
+          <div className="flex items-center gap-2 mb-6 sm:mb-8">
+            <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white border border-gray-200 shadow-sm flex-shrink-0">
+              <span style={{ color: 'var(--brand-orange, #f97316)', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
+            </span>
+            <span
+              className="text-[13px] italic font-medium uppercase tracking-wider"
+              style={{ fontFamily: "'Playfair Display', Georgia, serif", color: 'var(--brand-navy)' }}
+            >
               STAY UPDATED
             </span>
-            <div className="w-8 h-[3px] rounded-full" style={{ background: 'var(--brand-orange, #e08326)' }}></div>
           </div>
 
           {/* Heading */}

@@ -2,11 +2,13 @@ import { useRef } from 'react';
 import { LayoutGroup, motion, useScroll, useTransform } from 'motion/react';
 import { TextRotate } from '../../../Components/ui/text-rotate';
 import { ArrowUpRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import '../common.css';
 import processImg from '../../../assets/HomePage/Process/Process_image.webp';
 
 export default function Process() {
   const sectionRef = useRef(null);
+  const navigate = useNavigate();
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -199,7 +201,7 @@ export default function Process() {
           {/* CTA - Uiverse button style with brand colors */}
           <button
             className="know-more-btn mt-2"
-            onClick={() => window.location.href = '/contact'}
+            onClick={() => navigate('/projects')}
           >
             <span>See How We Work</span>
             <div className="know-more-icon">

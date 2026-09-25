@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { usePopup } from '../context/PopupContext';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../HomePage/Footer/Footer';
 import '../HomePage/common.css';
@@ -30,6 +31,7 @@ import {
 } from './SEOServicesData';
 
 export default function SEOServices() {
+  const { openPopup } = usePopup();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -48,7 +50,7 @@ export default function SEOServices() {
       <CommonApproach {...approachData} />
 
       {/* 4. WHAT WE DO */}
-      <CommonWhatWeDo {...whatWeDoData} />
+      <CommonWhatWeDo {...whatWeDoData} sectionId="seo-services-what-we-do" buttonAction={openPopup} />
 
       {/* 5. SPECIALTY SECTIONS */}
       <TechnicalSEO />
@@ -83,10 +85,9 @@ export default function SEOServices() {
       <CommonRelatedServices {...relatedServicesData} />
 
       {/* 14. CTA */}
-      <CommonCTA {...ctaData} />
+      <CommonCTA {...ctaData} button1Action={openPopup} />
 
       <Footer />
     </div>
   );
 }
-

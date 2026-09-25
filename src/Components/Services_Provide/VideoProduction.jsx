@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { usePopup } from '../context/PopupContext';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../HomePage/Footer/Footer';
 import '../HomePage/common.css';
@@ -27,6 +28,7 @@ import {
 } from './VideoProductionData';
 
 export default function VideoProduction() {
+  const { openPopup } = usePopup();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -45,7 +47,7 @@ export default function VideoProduction() {
       <CommonApproach {...approachData} />
 
       {/* 4. WHAT WE DO */}
-      <CommonWhatWeDo {...whatWeDoData} />
+      <CommonWhatWeDo {...whatWeDoData} sectionId="video-production-what-we-do" buttonAction={openPopup} />
 
       {/* 5. SPECIALTY SECTIONS */}
       <ShortFormContent />
@@ -77,10 +79,9 @@ export default function VideoProduction() {
       <CommonRelatedServices {...relatedServicesData} />
 
       {/* 14. CTA */}
-      <CommonCTA {...ctaData} />
+      <CommonCTA {...ctaData} button1Action={openPopup} />
 
       <Footer />
     </div>
   );
 }
-

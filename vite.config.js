@@ -4,5 +4,24 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(),tailwindcss()],
+  plugins: [react(), tailwindcss()],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router-dom') || id.includes('react-helmet-async')) {
+              return 'vendor-react';
+            }
+            if (id.includes('gsap') || id.includes('framer-motion') || id.includes('motion') || id.includes('lenis')) {
+              return 'vendor-animation';
+            }
+            if (id.includes('lucide-react') || id.includes('react-icons')) {
+              return 'vendor-icons';
+            }
+          }
+        },
+      },
+    },
+  },
 })

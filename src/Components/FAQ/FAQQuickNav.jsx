@@ -1,5 +1,4 @@
 import React from 'react';
-import { Compass, Filter, Sparkles } from 'lucide-react';
 
 export default function FAQQuickNav({ 
   categories, 

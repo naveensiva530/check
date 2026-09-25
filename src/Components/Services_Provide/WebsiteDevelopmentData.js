@@ -1,4 +1,4 @@
-import { Palette, PenLine, Search, Share2, Megaphone, Monitor, Sparkles, TrendingUp, Target, Layers, Smartphone, Gauge, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { Palette, PenLine, Search, Share2, Megaphone, Sparkles, TrendingUp, Target } from 'lucide-react';
 import bgImage from '../../assets/All the Hero Section bg/Website Development.webp';
 import approachImg from '../../assets/Our_Approch (2).webp';
 
@@ -40,7 +40,7 @@ export const heroData = {
   description2: "ADSSERV creates modern websites that bring together thoughtful design, clear content, responsive development, SEO foundations, and conversion-focused user experiences — so the site looks right and works for the business behind it.",
   button1Text: "Start My Website",
   button2Text: "View Our Services",
-  button2Link: "/#services"
+  button2Link: "/services/website-development#website-development-what-we-do"
 };
 
 export const problemData = {

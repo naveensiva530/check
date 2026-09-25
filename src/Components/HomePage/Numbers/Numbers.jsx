@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import '../common.css';
 import { useInView, animate } from 'framer-motion';
+import ScrollRevealHeading from '../../Services/common/ScrollRevealHeading';
 
 const stats = [
   { value: 50, suffix: "+", label: "Projects / campaigns delivered" },
@@ -9,31 +10,50 @@ const stats = [
   { value: 98, suffix: "%", label: "Verified result or outcome" },
 ];
 
-function Counter({ from, to, suffix, duration = 2.5 }) {
+function Counter({ from = 0, to, suffix, duration = 2.2, start = false }) {
   const nodeRef = useRef(null);
-  const isInView = useInView(nodeRef, { once: true, margin: "-100px" });
+  const localInView = useInView(nodeRef, { once: true, amount: 0.05 });
+  const hasAnimated = useRef(false);
+
+  const shouldStart = start || localInView;
 
   useEffect(() => {
-    if (isInView) {
+    if (shouldStart && !hasAnimated.current) {
+      hasAnimated.current = true;
       const controls = animate(from, to, {
         duration,
-        ease: "easeOut",
+        ease: [0.16, 1, 0.3, 1],
         onUpdate(value) {
           if (nodeRef.current) {
             nodeRef.current.textContent = Math.round(value) + suffix;
           }
-        }
+        },
       });
       return () => controls.stop();
     }
-  }, [from, to, suffix, duration, isInView]);
+  }, [shouldStart, from, to, suffix, duration]);
 
-  return <span ref={nodeRef}>{from}{suffix}</span>;
+  return (
+    <span ref={nodeRef} style={{ display: 'inline-block' }}>
+      {from}{suffix}
+    </span>
+  );
 }
 
 export default function Numbers() {
+  const sectionRef = useRef(null);
+  const statsGridRef = useRef(null);
+  // amount: 0.05 ensures numbers trigger as soon as section or grid appears on mobile
+  const isSectionInView = useInView(sectionRef, { once: true, amount: 0.05 });
+  const isGridInView = useInView(statsGridRef, { once: true, amount: 0.05 });
+  const startCounters = isSectionInView || isGridInView;
+
   return (
-    <section className="w-full py-16 sm:py-20 md:py-24 relative font-primary" style={{ backgroundColor: 'var(--bg-light-purple)' }}>
+    <section
+      ref={sectionRef}
+      className="w-full py-16 sm:py-20 md:py-24 relative font-primary"
+      style={{ backgroundColor: 'var(--bg-light-purple)' }}
+    >
       <div className="max-w-[1200px] w-full mx-auto px-4 sm:px-6 md:px-8 relative z-10">
         
         <div className="flex flex-col md:flex-row gap-10 sm:gap-12 lg:gap-20 items-center">
@@ -52,9 +72,20 @@ export default function Numbers() {
               </span>
             </div>
             
-            <h2 className="text-[26px] sm:text-[36px] md:text-[48px] font-extrabold leading-[1.1] tracking-tight mb-4 sm:mb-8" style={{ color: 'var(--brand-navy)' }}>
-              Show the work. Then show the numbers.
-            </h2>
+            <ScrollRevealHeading
+              className="mb-4 sm:mb-8"
+              words={[
+                { text: 'Show' },
+                { text: 'the', italic: true },
+                { text: 'work.', italic: true },
+                { break: true },
+                { text: 'Then' },
+                { text: 'show' },
+                { text: 'the' },
+                { text: 'numbers.' },
+              ]}
+              style={{ fontSize: 'clamp(1.55rem, 3vw, 3rem)', color: 'var(--brand-navy)' }}
+            />
             
             <p className="text-[14px] sm:text-[16px] font-medium leading-relaxed mb-3 sm:mb-4 text-slate-700">
               The strongest numbers are the ones we can explain.
@@ -64,11 +95,26 @@ export default function Numbers() {
             </p>
           </div>
 
-          <div className="w-full md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-10 md:gap-12">
+          <div
+            ref={statsGridRef}
+            className="w-full md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-10 md:gap-12"
+          >
             {stats.map((stat, i) => (
-              <div key={i} className="flex flex-col border-l-2 pl-5 sm:pl-6 py-1 sm:py-2 transition-colors duration-500 hover:border-[#f97316]" style={{ borderColor: 'rgba(30, 47, 87, 0.2)' }}>
-                <div className="text-[38px] sm:text-[48px] md:text-[60px] font-extrabold mb-1 sm:mb-2 leading-none" style={{ color: 'var(--brand-navy)' }}>
-                  <Counter from={0} to={stat.value} suffix={stat.suffix} />
+              <div
+                key={i}
+                className="flex flex-col border-l-2 pl-5 sm:pl-6 py-1 sm:py-2 transition-colors duration-500 hover:border-[#f97316]"
+                style={{ borderColor: 'rgba(30, 47, 87, 0.2)' }}
+              >
+                <div
+                  className="text-[38px] sm:text-[48px] md:text-[60px] font-extrabold mb-1 sm:mb-2 leading-none"
+                  style={{ color: 'var(--brand-navy)' }}
+                >
+                  <Counter
+                    from={0}
+                    to={stat.value}
+                    suffix={stat.suffix}
+                    start={startCounters}
+                  />
                 </div>
                 <span className="text-[12px] sm:text-[13px] font-bold uppercase tracking-wide text-slate-600 pr-2 sm:pr-4">
                   {stat.label}

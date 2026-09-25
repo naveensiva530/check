@@ -1,7 +1,9 @@
 import React, { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import '../common.css';
+import ScrollRevealHeading from '../../Services/common/ScrollRevealHeading';
 
 import startupsImg        from '../../../assets/HomePage/WhoWeWorkWith/Startups.webp';
 import growingBizImg      from '../../../assets/HomePage/WhoWeWorkWith/Growing Businesses.webp';
@@ -110,6 +112,7 @@ const StepRow = ({ step, index }) => {
 };
 
 export default function WhoWeWorkWith() {
+  const navigate = useNavigate();
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -137,12 +140,22 @@ export default function WhoWeWorkWith() {
             </span>
           </div>
           
-          <h2 
-            className="text-[26px] sm:text-[36px] md:text-[52px] font-extrabold leading-[1.15] tracking-tight max-w-[900px] mb-4 sm:mb-6"
-            style={{ color: "var(--text-dark-blue)" }}
-          >
-            Different businesses. Different problems. Same need for better marketing.
-          </h2>
+          <ScrollRevealHeading
+            className="mb-4 sm:mb-6"
+            words={[
+              { text: 'Different' },
+              { text: 'businesses.' },
+              { text: 'Different', italic: true },
+              { text: 'problems.', italic: true },
+              { break: true },
+              { text: 'Same' },
+              { text: 'need' },
+              { text: 'for' },
+              { text: 'better', italic: true },
+              { text: 'marketing.' },
+            ]}
+            style={{ fontSize: 'clamp(1.55rem, 3.2vw, 3.25rem)' }}
+          />
           
           <p 
             className="text-[14px] sm:text-[16px] md:text-[17px] font-medium max-w-[650px] leading-relaxed"
@@ -180,7 +193,7 @@ export default function WhoWeWorkWith() {
 
         {/* CTA BUTTON */}
         <div className="mt-16 md:mt-24 flex justify-center relative z-20">
-          <button className="know-more-btn" onClick={() => window.location.href = '/contact'}>
+          <button className="know-more-btn" onClick={() => navigate('/contact')}>
             <span>Talk About Your Business</span>
             <div className="know-more-icon">
               <ArrowUpRight className="w-5 h-5" strokeWidth={2.5} />

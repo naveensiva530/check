@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import ButtonWithIcon from '../../../Components/ui/button-with-icon';
 import '../../../Components/HomePage/common.css';
 import { gsap } from 'gsap';
@@ -56,14 +55,11 @@ export default function CommonCTA({
 
   return (
     <section ref={sectionRef} className="w-full py-16 sm:py-24 md:py-32 relative font-primary overflow-hidden bg-white border-t border-gray-100">
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-20%] right-[-10%] w-[50%] h-[80%] rounded-full opacity-[0.04] blur-[100px]" style={{ background: 'var(--brand-navy)' }}></div>
-        <div className="absolute bottom-[-20%] left-[-10%] w-[40%] h-[60%] rounded-full opacity-[0.05] blur-[80px]" style={{ background: 'var(--accent-orange)' }}></div>
-      </div>
+
 
       <div className="max-w-[1000px] w-full mx-auto px-4 md:px-8 relative z-10 text-center flex flex-col items-center">
 
-        <div ref={eyebrowRef} className="flex items-center gap-2 mb-6">
+        <div ref={eyebrowRef} className="services-eyebrow flex items-center gap-2 mb-6">
           <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white border border-gray-200 shadow-sm flex-shrink-0">
             <span style={{ color: '#f97316', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
           </span>

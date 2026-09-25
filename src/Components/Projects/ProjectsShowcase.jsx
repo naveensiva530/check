@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { ExternalLink, CheckCircle2, ArrowRight, Target, Share2, Sparkles, Layers, ShieldCheck, TrendingUp, Filter } from 'lucide-react';
+import { ExternalLink, CheckCircle2, Target, Share2, Sparkles, Layers, TrendingUp } from 'lucide-react';
 import ScrollRevealHeading from '../Services/common/ScrollRevealHeading';
-import ButtonWithIcon from '../ui/button-with-icon';
 import { projectsData } from './projectsData';
 
 export default function ProjectsShowcase() {
@@ -88,7 +87,7 @@ export default function ProjectsShowcase() {
 
         {/* Project Cards Stack */}
         <div className="space-y-16">
-          {filteredProjects.map((project, index) => (
+          {filteredProjects.map((project) => (
             <article
               key={project.id}
               id={project.id}

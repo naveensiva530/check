@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import ButtonWithIcon from '../ui/button-with-icon';
+import { usePopup } from '../../Components/context/PopupContext';
 import '../../Components/HomePage/common.css';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -8,6 +8,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function ProjectsFinalCTA() {
+  const { openPopup } = usePopup();
   const sectionRef = useRef(null);
   const eyebrowRef = useRef(null);
   const headingRef = useRef(null);
@@ -61,7 +62,7 @@ export default function ProjectsFinalCTA() {
       <div className="max-w-[1000px] w-full mx-auto px-4 md:px-8 relative z-10 text-center flex flex-col items-center">
         
         {/* Eyebrow in Services Style */}
-        <div ref={eyebrowRef} className="flex items-center gap-2 mb-6">
+        <div ref={eyebrowRef} className="services-eyebrow flex items-center gap-2 mb-6">
           <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white border border-gray-200 shadow-sm flex-shrink-0">
             <span style={{ color: '#f97316', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
           </span>
@@ -94,13 +95,13 @@ export default function ProjectsFinalCTA() {
 
         {/* Buttons in Services Style */}
         <div ref={buttonsRef} className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 w-full">
-          <Link to="/contact">
+          <div onClick={openPopup} className="cursor-pointer">
             <ButtonWithIcon>Start a Project</ButtonWithIcon>
-          </Link>
+          </div>
           
-          <Link to="/services">
+          <div onClick={openPopup} className="cursor-pointer">
             <ButtonWithIcon outline={true}>View Services</ButtonWithIcon>
-          </Link>
+          </div>
         </div>
 
       </div>

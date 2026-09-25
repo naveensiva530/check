@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowUpRight, ChevronLeft, ChevronRight, Sparkles, TrendingUp, Target } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Sparkles, TrendingUp, Target } from 'lucide-react';
 import ButtonWithIcon from '../../../Components/ui/button-with-icon';
 import ScrollRevealHeading from './ScrollRevealHeading';
 import '../../../Components/HomePage/common.css';

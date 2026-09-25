@@ -95,7 +95,7 @@ export default function WhyAdsserv() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 mb-16 lg:mb-20 items-start">
           <div ref={leftRef} className="lg:col-span-6 flex flex-col">
             {/* Eyebrow */}
-            <div className="flex items-center gap-2 mb-6">
+            <div className="about-eyebrow flex items-center gap-2 mb-6">
               <span
                 className="flex items-center justify-center w-5 h-5 rounded-full bg-white border border-gray-200 shadow-sm flex-shrink-0"
               >

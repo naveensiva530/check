@@ -29,18 +29,12 @@ export default function ProjectsHero({ onExploreClick }) {
         />
 
         <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 w-full max-w-4xl mx-auto mb-6 sm:mb-8">
-          <h1
-            className="font-extrabold text-white mb-4 tracking-tight leading-tight"
-            style={{ fontSize: 'clamp(1.8rem, 5vw, 3.8rem)', textShadow: '0 4px 20px rgba(0,0,0,0.3)' }}
-          >
-            Our Projects
-          </h1>
-          <div className="flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-2.5 rounded-full mt-1 border border-slate-200/40 bg-white/95 backdrop-blur-sm shadow-md">
-            <Link to="/" className="flex items-center gap-1 sm:gap-1.5 transition-opacity hover:opacity-75" style={{ color: 'var(--brand-orange, #e08326)', fontWeight: 700, fontSize: '14px' }}>
-              <Home className="w-3 h-3 sm:w-3.5 sm:h-3.5" strokeWidth={2.5} />
-              <span>Home</span>
+          <div className="flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 rounded-full mt-1 bg-white">
+            <Link to="/" className="uiverse-home-btn">
+              <Home strokeWidth={2.5} />
+              <p>Home</p>
             </Link>
-            <ChevronRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-slate-400" strokeWidth={2} />
+            <ChevronRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" style={{ color: '#9ca3af' }} strokeWidth={2} />
             <span className="text-[13px] sm:text-[15px] font-semibold text-slate-800">Projects</span>
           </div>
         </div>
@@ -64,7 +58,7 @@ export default function ProjectsHero({ onExploreClick }) {
         <div className="max-w-[1200px] mx-auto">
 
           {/* Eyebrow */}
-          <div className="flex items-center gap-2 mb-4 sm:mb-6">
+          <div className="services-eyebrow flex items-center gap-2 mb-4 sm:mb-6">
             <span
               className="flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0"
               style={{ background: 'var(--accent-orange, #e08326)', boxShadow: '0 2px 8px rgba(224,131,38,0.30)' }}
@@ -75,25 +69,21 @@ export default function ProjectsHero({ onExploreClick }) {
               className="italic font-semibold uppercase tracking-widest text-[12px] sm:text-[13px]"
               style={{ fontFamily: "'Playfair Display', Georgia, serif", color: 'var(--accent-orange, #e08326)' }}
             >
-              CLIENTS WORK
+              SELECTED CLIENT WORK
             </span>
           </div>
 
           {/* Heading */}
-          <div className="mb-6 sm:mb-10">
-            <ScrollRevealHeading
-              words={[
-                { text: "Real" },
-                { text: "Client" },
-                { text: "Projects.", italic: true },
-                { text: "Real" },
-                { text: "Marketing" },
-                { text: "Execution." }
-              ]}
-              maxW="950px"
-              style={{ fontSize: 'clamp(1.6rem, 4.2vw, 3.6rem)' }}
-            />
-          </div>
+          <ScrollRevealHeading
+            className="mb-6 sm:mb-8"
+            words={[
+              { text: "Projects" },
+              { text: "built" },
+              { text: "around" },
+              { text: "business", italic: true },
+              { text: "goals." }
+            ]}
+          />
 
           {/* Dual-Column → stacks on mobile */}
           <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 items-stretch">
@@ -126,13 +116,17 @@ export default function ProjectsHero({ onExploreClick }) {
                     if (onExploreClick) {
                       onExploreClick();
                     } else {
-                      const el = document.getElementById('selected-projects');
-                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                      const el = document.getElementById('noqu-tam');
+                      if (el && window.__lenis) {
+                        window.__lenis.scrollTo(el, { offset: -90 });
+                      } else if (el) {
+                        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      }
                     }
                   }}
                   className="w-full justify-center"
                 >
-                  Explore Client Work
+                  Explore Work
                 </ButtonWithIcon>
               </div>
             </div>

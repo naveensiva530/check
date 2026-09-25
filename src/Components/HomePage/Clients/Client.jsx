@@ -1,7 +1,5 @@
 import React, { useRef, useEffect } from 'react';
 import { ArrowUpRight } from 'lucide-react';
-import { LayoutGroup, motion } from 'motion/react';
-import { TextRotate } from '../../../Components/ui/text-rotate';
 import client1 from '../../../assets/HomePage/clients/client1.webp';
 import client2 from '../../../assets/HomePage/clients/client2.webp';
 import client3 from '../../../assets/HomePage/clients/client3.webp';
@@ -35,28 +33,45 @@ const clientImages = [
   client16, client17, client18, client19
 ];
 
-/* ─── Infinite Scroll Track ─────────────────────────────────── */
+/* ─── Seamless Infinite Marquee Track ────────────────────────── */
 const LogoTrack = () => {
-  const items = [...clientImages, ...clientImages]; // duplicate for seamless loop
-
   return (
     <div className="client-overflow-wrapper">
       <div className="client-fade-left" />
       <div className="client-fade-right" />
-      <div className="client-scroll-track">
-        {items.map((img, i) => (
-          <div key={i} className="client-logo-card">
-            <img
-              src={img}
-              alt={`Client ${i + 1}`}
-              className="client-logo-img"
-              loading="lazy"
-              decoding="async"
-              width="120"
-              height="60"
-            />
-          </div>
-        ))}
+      <div className="client-marquee">
+        {/* Primary Group */}
+        <div className="client-marquee-group">
+          {clientImages.map((img, i) => (
+            <div key={`g1-${i}`} className="client-logo-card">
+              <img
+                src={img}
+                alt={`Client ${i + 1}`}
+                className="client-logo-img"
+                loading="eager"
+                decoding="async"
+                width="120"
+                height="60"
+              />
+            </div>
+          ))}
+        </div>
+        {/* Duplicate Group for Seamless 0-jump Infinite Loop */}
+        <div className="client-marquee-group" aria-hidden="true">
+          {clientImages.map((img, i) => (
+            <div key={`g2-${i}`} className="client-logo-card">
+              <img
+                src={img}
+                alt={`Client ${i + 1}`}
+                className="client-logo-img"
+                loading="eager"
+                decoding="async"
+                width="120"
+                height="60"
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -73,16 +88,16 @@ const Client = () => {
       // Heading block: fade up from below
       gsap.fromTo(
         headingRef.current,
-        { y: 40, opacity: 0 },
+        { y: 30, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 0.9,
+          duration: 0.8,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top 85%',
-            toggleActions: 'play none none reverse',
+            start: 'top 90%',
+            once: true,
           },
         }
       );
@@ -90,17 +105,17 @@ const Client = () => {
       // Logo track: fade in slightly later
       gsap.fromTo(
         trackRef.current,
-        { opacity: 0, y: 20 },
+        { opacity: 0, y: 15 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.8,
-          delay: 0.2,
+          duration: 0.7,
+          delay: 0.15,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse',
+            start: 'top 85%',
+            once: true,
           },
         }
       );
@@ -366,6 +381,8 @@ const Client = () => {
         position: relative;
         width: 100%;
         overflow: hidden;
+        touch-action: pan-y;
+        -webkit-overflow-scrolling: touch;
       }
 
       .client-fade-left {
@@ -390,18 +407,24 @@ const Client = () => {
         pointer-events: none;
       }
 
-      /* ── Scrolling Track ── */
-      .client-scroll-track {
+      /* ── Continuous Infinite Marquee (Seamless, Unbroken Loop) ── */
+      .client-marquee {
         display: flex;
-        align-items: center;
-        gap: 6px;
         width: max-content;
-        padding: 14px 12px;
-        animation: clientScrollLeft 30s linear infinite;
+        user-select: none;
+        -webkit-user-select: none;
       }
 
-      .client-scroll-track:hover {
-        animation-play-state: paused;
+      .client-marquee-group {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+        will-change: transform;
+        animation: clientContinuousMarquee 26s linear infinite;
+        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
       }
 
       /* ── Individual Logo Card ── */
@@ -409,17 +432,21 @@ const Client = () => {
         display: flex;
         align-items: center;
         justify-content: center;
-        min-width: 150px;
-        height: 85px;
-        padding: 10px 25px;
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
-        cursor: pointer;
+        min-width: 140px;
+        height: 78px;
+        padding: 8px 18px;
+        margin: 0 4px;
         flex-shrink: 0;
+        user-select: none;
+        -webkit-user-select: none;
+        transition: transform 0.25s ease;
       }
 
-      .client-logo-card:hover {
-        transform: translateY(-3px);
-      
+      /* Only subtle lift on real desktop mouse hover, NEVER pauses or breaks */
+      @media (hover: hover) and (pointer: fine) {
+        .client-logo-card:hover {
+          transform: translateY(-3px);
+        }
       }
 
       .client-logo-img {
@@ -428,16 +455,39 @@ const Client = () => {
         object-fit: contain;
         width: 100%;
         height: 100%;
+        pointer-events: none;
       }
 
-      /* ── Keyframe ── */
-      @keyframes clientScrollLeft {
-        0%   { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
+      @media (max-width: 768px) {
+        .client-marquee-group {
+          animation-duration: 20s;
+        }
+        .client-logo-card {
+          min-width: 105px;
+          height: 56px;
+          padding: 6px 12px;
+          margin: 0 2px;
+        }
+        .client-fade-left,
+        .client-fade-right {
+          width: 25px;
+        }
+      }
+
+      /* ── Seamless 0-jump Infinite Loop Keyframe ── */
+      @keyframes clientContinuousMarquee {
+        0% {
+          transform: translate3d(0, 0, 0);
+          -webkit-transform: translate3d(0, 0, 0);
+        }
+        100% {
+          transform: translate3d(-100%, 0, 0);
+          -webkit-transform: translate3d(-100%, 0, 0);
+        }
       }
 
       @media (prefers-reduced-motion: reduce) {
-        .client-scroll-track {
+        .client-marquee-group {
           animation: none !important;
         }
       }

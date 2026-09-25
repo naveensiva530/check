@@ -13,8 +13,6 @@ export default function CommonHero({
   description1,
   description2,
   description3,
-  button1Text = "Talk About Your Content",
-  button1Link = "/contact",
   button2Text = "Explore Our Services",
   button2Link = "/#services",
   children
@@ -35,18 +33,13 @@ export default function CommonHero({
         <div className="absolute z-[2]" style={{ bottom: '-30px', right: '-30px', width: '180px', height: '180px', borderRadius: '50%', background: 'rgba(167,139,250,0.20)', filter: 'blur(35px)', animation: 'floatBlob 8s ease-in-out infinite reverse' }} />
 
         <div className="relative z-10 flex flex-col items-center justify-center text-center px-4">
-          <h1
-            className="font-extrabold text-white mb-4 tracking-tight leading-tight"
-            style={{ fontSize: 'clamp(1.8rem, 5vw, 3.6rem)', textShadow: '0 4px 24px rgba(80,0,180,0.25)' }}
-          >
-            {title}
-          </h1>
           <div
             className="flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 rounded-full mt-1"
             style={{ background: '#ffffff', boxShadow: '0 4px 20px rgba(80,0,180,0.12)' }}
           >
-            <Link to="/" className="flex items-center gap-1 sm:gap-1.5 transition-opacity hover:opacity-70" style={{ color: '#fb923c', fontWeight: 700, fontSize: '14px' }}>
-              <Home className="w-3 h-3 sm:w-3.5 sm:h-3.5" strokeWidth={2.5} /><span>Home</span>
+            <Link to="/" className="uiverse-home-btn">
+              <Home strokeWidth={2.5} />
+              <p>Home</p>
             </Link>
             <ChevronRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" style={{ color: '#9ca3af' }} strokeWidth={2} />
             <span className="text-[13px] sm:text-[15px] font-semibold" style={{ color: '#1e2f57' }}>{breadcrumbText || title}</span>
@@ -69,10 +62,10 @@ export default function CommonHero({
 
       {/* ── EDITORIAL CONTENT SECTION ─────────────────────────── */}
       <section className="w-full bg-white pt-8 sm:pt-12 md:pt-16 pb-10 sm:pb-16 md:pb-20 px-4 md:px-8" style={{ fontFamily: "'Inter', sans-serif" }}>
-        <div className="max-w-[1200px] mx-auto">
+        <div className="services-eyebrow max-w-[1200px] mx-auto">
 
           {/* Eyebrow */}
-          <div className="flex items-center gap-2 mb-4 sm:mb-6">
+          <div className="services-eyebrow flex items-center gap-2 mb-4 sm:mb-6">
             <span className="flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0" style={{ background: 'var(--accent-orange, #e08326)', boxShadow: '0 2px 8px rgba(224,131,38,0.30)' }}>
               <span style={{ color: '#fff', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
             </span>
@@ -88,18 +81,15 @@ export default function CommonHero({
                 {description1 && <p className="leading-relaxed mb-4 text-[14px] sm:text-[15px] md:text-[17px]" style={{ color: '#475569' }}>{description1}</p>}
                 {description2 && <p className="leading-relaxed mb-4 text-[14px] sm:text-[15px] md:text-[17px]" style={{ color: '#475569' }}>{description2}</p>}
                 {description3 && <p className="leading-relaxed mb-6 text-[14px] sm:text-[15px] md:text-[17px]" style={{ color: '#475569' }}>{description3}</p>}
-                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full">
-                  <div className="w-full sm:w-auto">
-                    <ButtonWithIcon to={button1Link || "/contact"} className="w-full sm:w-auto justify-center">
-                      {button1Text}
-                    </ButtonWithIcon>
+                {button2Text && (
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full">
+                    <div className="w-full sm:w-auto">
+                      <ButtonWithIcon to={button2Link || "/services"} outline={true} className="w-full sm:w-auto justify-center">
+                        {button2Text}
+                      </ButtonWithIcon>
+                    </div>
                   </div>
-                  <div className="w-full sm:w-auto">
-                    <ButtonWithIcon to={button2Link || "/services"} outline={true} className="w-full sm:w-auto justify-center">
-                      {button2Text}
-                    </ButtonWithIcon>
-                  </div>
-                </div>
+                )}
               </div>
               {children}
             </div>
@@ -128,18 +118,15 @@ export default function CommonHero({
                     </p>
                   )}
                   {/* Buttons — full width on mobile */}
-                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full">
-                    <div className="w-full sm:w-auto">
-                      <ButtonWithIcon to={button1Link || "/contact"} className="w-full sm:w-auto justify-center">
-                        {button1Text}
-                      </ButtonWithIcon>
+                  {button2Text && (
+                    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full">
+                      <div className="w-full sm:w-auto">
+                        <ButtonWithIcon to={button2Link || "/services"} outline={true} className="w-full sm:w-auto justify-center">
+                          {button2Text}
+                        </ButtonWithIcon>
+                      </div>
                     </div>
-                    <div className="w-full sm:w-auto">
-                      <ButtonWithIcon to={button2Link || "/services"} outline={true} className="w-full sm:w-auto justify-center">
-                        {button2Text}
-                      </ButtonWithIcon>
-                    </div>
-                  </div>
+                  )}
                 </div>
               </div>
             </>

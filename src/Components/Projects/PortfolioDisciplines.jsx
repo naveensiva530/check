@@ -1,5 +1,5 @@
 import React from 'react';
-import { Target, Share2, ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import { Target, Share2, ArrowUpRight } from 'lucide-react';
 import ScrollRevealHeading from '../Services/common/ScrollRevealHeading';
 import '../../Components/HomePage/common.css';
 
@@ -15,7 +15,7 @@ export default function PortfolioDisciplines() {
         
         {/* Section Header matching Services CommonWhyAdsserv */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="flex items-center justify-center gap-2 mb-6">
+          <div className="services-eyebrow flex items-center justify-center gap-2 mb-6">
             <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white border border-gray-200 shadow-sm flex-shrink-0">
               <span style={{ color: '#f97316', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
             </span>

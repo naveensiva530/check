@@ -54,7 +54,7 @@ export default function ProjectsSummaryCards() {
 
         {/* Section Header */}
         <div className="mb-14">
-          <div className="flex items-center gap-2 mb-4">
+          <div className="services-eyebrow flex items-center gap-2 mb-4">
             <span
               className="flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0"
               style={{ background: 'var(--accent-orange, #e08326)', boxShadow: '0 2px 8px rgba(224,131,38,0.30)' }}
@@ -147,4 +147,3 @@ export default function ProjectsSummaryCards() {
     </section>
   );
 }
-

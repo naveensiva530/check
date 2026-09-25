@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, FileText, Search, BookOpen, Target } from 'lucide-react';
+import { ChevronLeft, ChevronRight, FileText, Search, BookOpen } from 'lucide-react';
 import ButtonWithIcon from '../../../Components/ui/button-with-icon';
 import ScrollRevealHeading from './ScrollRevealHeading';
 import '../../../Components/HomePage/common.css';
@@ -24,7 +24,7 @@ const services = [
   { num: "08", title: "Brand Messaging", desc: "Consistent words, positioning and messaging that help your brand sound recognisable across different channels.", img: imgBrandMessaging },
 ];
 
-export default function WhatWeWrite() {
+export default function WhatWeWrite({ sectionId, buttonAction }) {
   const [currentIdx, setCurrentIdx] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -35,11 +35,11 @@ export default function WhatWeWrite() {
   }, [isPaused]);
 
   return (
-    <section className="w-full py-24 relative font-primary overflow-hidden" style={{ backgroundColor: 'var(--bg-light-purple)' }}>
+    <section id={sectionId} className="w-full py-24 relative font-primary overflow-hidden" style={{ backgroundColor: 'var(--bg-light-purple)' }}>
       <div className="max-w-[1200px] w-full mx-auto px-4 md:px-8 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
           <div className="flex-1 text-center lg:text-left relative z-10">
-            <div className="flex items-center justify-center lg:justify-start gap-2 mb-6">
+            <div className="services-eyebrow flex items-center justify-center lg:justify-start gap-2 mb-6">
               <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white border border-gray-200 shadow-sm flex-shrink-0">
                 <span style={{ color: 'var(--brand-red-orange)', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
               </span>
@@ -51,7 +51,7 @@ export default function WhatWeWrite() {
             <p className="text-[16px] md:text-[18px] leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0 font-medium" style={{ color: 'var(--brand-navy)', opacity: 0.85 }}>
               Your audience does not consume every piece of content in the same way. We adapt the format, structure and message to the channel and the moment.
             </p>
-            <ButtonWithIcon>See What We Write</ButtonWithIcon>
+            <ButtonWithIcon onClick={buttonAction}>See What We Write</ButtonWithIcon>
           </div>
 
           <div className="w-full lg:w-[420px] flex justify-center flex-shrink-0 relative z-20">

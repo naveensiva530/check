@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { usePopup } from '../context/PopupContext';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../HomePage/Footer/Footer';
 import '../HomePage/common.css';
@@ -20,14 +21,10 @@ import PlatformFit from '../Services/InfluencerMarketing/PlatformFit';
 import CampaignProcess from '../Services/InfluencerMarketing/CampaignProcess';
 
 // Import data
-import {
-  heroData, problemData, approachData, whatWeDoData,
-  creativeDirectionData, whatWeMeasureData,
-  whoThisIsForData, contentValueData, whyAdsservInfluencerData,
-  faqData, relatedServicesData, ctaData
-} from './InfluencerMarketingData';
+import { heroData, problemData, approachData, whatWeDoData, creativeDirectionData, whatWeMeasureData, whoThisIsForData, whyAdsservInfluencerData, faqData, relatedServicesData, ctaData } from './InfluencerMarketingData';
 
 export default function InfluencerMarketing() {
+  const { openPopup } = usePopup();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -46,7 +43,7 @@ export default function InfluencerMarketing() {
       <CommonApproach {...approachData} />
 
       {/* 4. WHAT WE DO */}
-      <CommonWhatWeDo {...whatWeDoData} />
+      <CommonWhatWeDo {...whatWeDoData} sectionId="influencer-marketing-what-we-do" buttonAction={openPopup} />
 
       <InfluencerCreatorTypes />
 
@@ -144,7 +141,7 @@ export default function InfluencerMarketing() {
 
       <CommonRelatedServices {...relatedServicesData} />
 
-      <CommonCTA {...ctaData} />
+      <CommonCTA {...ctaData} button1Action={openPopup} />
 
       <Footer />
     </div>

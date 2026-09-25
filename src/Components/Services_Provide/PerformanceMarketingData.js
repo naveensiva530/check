@@ -1,4 +1,4 @@
-import { ArrowUpRight, Sparkles, TrendingUp, Target } from 'lucide-react';
+import { Sparkles, TrendingUp, Target } from 'lucide-react';
 import bgImage from '../../assets/All the Hero Section bg/PerformanceMarketing.webp';
 import approachImg from '../../assets/Our_Approch (2).webp';
 
@@ -47,8 +47,8 @@ export const heroData = {
   description1: "Paid advertising should do more than put your brand in front of people.",
   description2: "ADSSERV builds performance marketing campaigns around the audience, offer, creative, landing experience, budget, and conversion goal — then uses campaign data to understand what is working and what needs to change. From Google Ads and paid social to ongoing optimisation, we focus on making every part of the journey more accountable.",
   button1Text: "Plan My Campaign",
-  button2Text: "Talk to ADSSERV",
-  button2Link: "/contact"
+  button2Text: "View Our Services",
+  button2Link: "/services/performance-marketing#performance-marketing-what-we-do"
 };
 
 export const problemData = {

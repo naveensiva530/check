@@ -48,7 +48,7 @@ export default function CommonSpecialty({
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           
           <div ref={leftRef}>
-            <div className="flex items-center gap-2 mb-6">
+            <div className="services-eyebrow flex items-center gap-2 mb-6">
               <span className={`flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0 ${bgColor === 'purple' ? 'bg-white border border-gray-200 shadow-sm' : ''}`} style={{ background: bgColor === 'purple' ? '' : 'var(--accent-orange)', boxShadow: bgColor === 'purple' ? '' : '0 2px 8px rgba(224,131,38,0.30)' }}>
                 <span style={{ color: bgColor === 'purple' ? '#f97316' : '#fff', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
               </span>

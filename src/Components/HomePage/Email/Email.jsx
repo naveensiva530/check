@@ -107,19 +107,21 @@ export default function Email() {
   return (
     <section ref={sectionRef} className="w-full bg-white py-16 sm:py-24 md:py-32 font-sans flex flex-col items-center justify-center text-center px-4 overflow-hidden relative">
 
-      {/* Subtle bg accent */}
-      <div className="absolute top-0 right-0 w-80 h-80 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(30,47,87,0.04) 0%, transparent 70%)' }} />
-      <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(224,131,38,0.05) 0%, transparent 70%)' }} />
-
       <div className="max-w-[1200px] w-full mx-auto flex flex-col items-center relative z-10">
 
         {/* Headline section (Animated together) */}
         <div ref={headlineRef} className="flex flex-col items-center w-full">
           {/* Eyebrow */}
-          <div className="flex items-center gap-3 mb-6 sm:mb-8">
-            <div className="w-6 sm:w-8 h-[3px] rounded-full" style={{ background: '#e08326' }}></div>
-            <span className="text-[11px] sm:text-xs font-bold tracking-[3px] sm:tracking-[5px] uppercase" style={{ color: '#e08326' }}>NEWSLETTER</span>
-            <div className="w-6 sm:w-8 h-[3px] rounded-full" style={{ background: '#e08326' }}></div>
+          <div className="flex items-center gap-2 mb-6 sm:mb-8">
+            <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white border border-gray-200 shadow-sm flex-shrink-0">
+              <span style={{ color: '#f97316', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
+            </span>
+            <span
+              className="text-[14px] md:text-[15px] italic font-medium uppercase tracking-wider"
+              style={{ fontFamily: "'Playfair Display', Georgia, serif", color: 'var(--brand-navy)' }}
+            >
+              NEWSLETTER
+            </span>
           </div>
 
           {/* Big headline with pill image */}

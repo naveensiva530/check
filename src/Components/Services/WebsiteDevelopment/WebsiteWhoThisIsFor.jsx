@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react';
 import '../../../Components/HomePage/common.css';
 import ScrollRevealHeading from '../SocialMedia/ScrollRevealHeading';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import { Target, Laptop } from 'lucide-react';
 

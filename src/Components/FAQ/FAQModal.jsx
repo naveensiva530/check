@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Send, CheckCircle2, MessageSquare, ArrowRight } from 'lucide-react';
+import { X, Send, CheckCircle2 } from 'lucide-react';
 
 export default function FAQModal({ isOpen, onClose, initialQuestion = '' }) {
   const [formData, setFormData] = useState({

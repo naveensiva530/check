@@ -1,4 +1,4 @@
-import { Share2, Monitor, Video, PenLine, Megaphone, Globe, RefreshCw, Sparkles, Palette, Layers } from 'lucide-react';
+import { Share2, Monitor, Video, PenLine, Megaphone, Sparkles, Palette, Layers } from 'lucide-react';
 import bgImage from '../../assets/All the Hero Section bg/DIGITAL CONSULTING.webp';
 import approachImg from '../../assets/Our_Approch (2).webp';
 
@@ -45,7 +45,7 @@ export const heroData = {
   description3: "ADSSERV builds branding systems that give businesses a clearer identity, a stronger presence, and a consistent way to show up across digital and real-world touchpoints.",
   button1Text: "Build My Brand",
   button2Text: "View Our Services",
-  button2Link: "/#services"
+  button2Link: "/services/branding-solutions#branding-solutions-what-we-do"
 };
 
 export const problemData = {

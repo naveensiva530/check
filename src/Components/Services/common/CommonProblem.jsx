@@ -47,7 +47,7 @@ export default function CommonProblem({
       <div className="max-w-[1200px] w-full mx-auto px-4 md:px-8 relative z-10">
         <div className={`common-problem-grid grid grid-cols-1 ${variant === 'fragments' ? 'lg:grid-cols-12' : 'lg:grid-cols-2'} gap-12 lg:gap-16 items-start`}>
           <div ref={leftRef} className={`${variant === 'fragments' ? 'lg:col-span-5' : ''} flex flex-col justify-start`}>
-            <div className="flex items-center gap-2 mb-6">
+            <div className="services-eyebrow flex items-center gap-2 mb-6">
               <span className={`flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0 ${variant === 'fragments' ? 'bg-white border border-gray-200 shadow-sm' : ''}`} style={{ background: variant === 'fragments' ? '' : 'var(--accent-orange)', boxShadow: variant === 'fragments' ? '' : '0 2px 8px rgba(224,131,38,0.30)' }}>
                 <span style={{ color: variant === 'fragments' ? '#f97316' : '#fff', fontSize: '12px', fontWeight: 'bold', lineHeight: 1 }}>+</span>
               </span>
@@ -61,7 +61,7 @@ export default function CommonProblem({
           <div ref={rightRef} className={`${variant === 'fragments' ? 'lg:col-span-7' : ''} flex flex-col gap-6 text-[16px] md:text-[18px] font-medium leading-relaxed text-slate-700`}>
             {variant === "fragments" && paragraphs.length > 0 && paragraphs.map((p, i) => <p key={i}>{p}</p>)}
 
-            {variant === "fragments" ? (
+            {variant === "fragments" && (items.length > 0 || bottomText1) ? (
               <div ref={cardRef} className="common-problem-card bg-white p-5 sm:p-8 rounded-2xl shadow-sm border border-gray-100 mt-2">
                 <ul className="flex flex-col gap-4">
                   {items.map((item, idx) => (

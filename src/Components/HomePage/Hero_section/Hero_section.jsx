@@ -5,6 +5,7 @@ import heroBg from "../../../assets/All the Hero Section bg/Hero_Section_bg.webp
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FlowButton } from "../../../Components/ui/FlowButton";
+import { usePopup } from "../../../Components/context/PopupContext";
 import "../common.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -30,6 +31,7 @@ const SplitWords = ({ text, className = "" }) => (
 );
 
 const Hero_section = () => {
+  const { openPopup } = usePopup();
   const heroRef = useRef(null);
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
@@ -707,7 +709,7 @@ const Hero_section = () => {
               />
             </svg>
 
-            <div className="primary-cta-wrap" ref={primaryBtnRef}>
+            <div className="primary-cta-wrap" ref={primaryBtnRef} onClick={openPopup} style={{ cursor: 'pointer' }}>
               <FlowButton text="Start a Project" />
             </div>
 
@@ -727,6 +729,7 @@ const Hero_section = () => {
                 cursor: "pointer",
                 transition: "all 0.3s ease",
               }}
+              onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
               onMouseEnter={(e) => {
                 e.currentTarget.style.background = 'var(--text-dark)';
                 e.currentTarget.style.color = '#fff';

@@ -13,7 +13,7 @@ import ContactFinalCTA from '../Contact/ContactFinalCTA';
 import '../HomePage/common.css';
 
 export default function ContactPage() {
-  const [preselectedService, setPreselectedService] = useState('SEO Services');
+  const [preselectedService, setPreselectedService] = useState('');
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -38,37 +38,8 @@ export default function ContactPage() {
     scrollToForm();
   };
 
-  // Schema.org JSON-LD Structured Data
-  const jsonLdData = {
-    "@context": "https://schema.org",
-    "@type": "ContactPage",
-    "name": "Contact ADSSERV - Digital Marketing Agency",
-    "description": "Have a new idea, a growth challenge or a digital presence that needs a rethink? Contact ADSSERV today.",
-    "url": "https://adsserv.in/contact",
-    "mainEntity": {
-      "@type": "Organization",
-      "name": "ADSSERV",
-      "email": "connect@adsserv.in",
-      "telephone": "+1 (555) 019-2834",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "450 Lexington Ave",
-        "addressLocality": "New York",
-        "addressRegion": "NY",
-        "postalCode": "10017",
-        "addressCountry": "US"
-      }
-    }
-  };
-
   return (
     <div className="font-sans bg-white min-h-screen flex flex-col selection:bg-orange-500 selection:text-white">
-      {/* Schema.org Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdData) }}
-      />
-
       {/* Navbar */}
       <Navbar />
 
